@@ -66,6 +66,9 @@ form:
                   type: tab
                   title: Twitter 
                   fields:
+                    header.twitterid:
+                      type: text
+                      label: Twitter ID
                     header.twittercardoptions:
                       type: select
                       label: Select twitter card type
