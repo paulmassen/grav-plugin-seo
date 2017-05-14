@@ -41,9 +41,6 @@ form:
             header.canonical:
               type: text
               label: Canonical url
-            header.shareimg:
-              type: pagemediaselect
-              label: share image
 
             tabs1:
               type: tabs
@@ -73,13 +70,13 @@ form:
                       type: select
                       label: Select twitter card type
                       options:
-                        1: Gallery
-                        2: Photo
-                        3: Product
-                        4: Summary
-                        5: Player
-                        6: App
-                        7: Summary Large Image
+                        gallery: Gallery
+                        photo: Photo
+                        product: Product
+                        summary: Summary
+                        player: Player
+                        app: App
+                        summary_large_image: Summary Large Image
                     header.titlecardtwitter:
                       type: section
                       title: Twitter cards
