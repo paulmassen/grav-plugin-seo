@@ -1,0 +1,11 @@
+<meta charset="utf-8">
+<title>{% if page.header.googletitle %}{{ page.header.googletitle}}{% else %}{{ page.header.title }} | {{ site.title }}{% endif %}</title>
+<meta name="description" content="{% if page.header.googledesc %}{{ page.header.googledesc}}{% else %}{{ config.plugins.seo.header.googledesc }}{% endif %} ">
+<meta name="robots" content="index, follow">
+<meta name="author" content="">
+{# twitter #}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@flickr" />
+<meta name="twitter:title" content="{% if page.header.twittertitle is not empty %}{{ page.header.twittertitle }}{% else %} {% if config.plugins['seo'].site_title %}{{config.plugins['seo'].site_title}}{% else %}{{ site.title }}{% endif %}{% endif %}" />
+<meta name="twitter:description" content="{% if page.header.twitterdescription %}{{ page.header.twitterdescription}}{% elseif config.plugins['seo'].header.twitterdescription %}{{config.plugins['seo'].header.twitterdescription}}{% endif %}" />
+<meta name="twitter:image" content="{{page.media[header.shareimg].url}}" />

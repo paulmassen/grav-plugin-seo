@@ -1,5 +1,7 @@
 {% if field.security is empty or authorize(array(field.security)) %}
-
+{% if admin.route %}
+    {% set context = admin.page(true) %}
+{% endif %}
     {% if field.title or field.underline %}
     <h1 {% if not field.underline %}class="no_underline"{% endif %}>{% if grav.twig.twig.filters['tu'] is defined %}{{ field.title|tu }}{% else %}{{ field.title|t }}{% endif %}</h1>
     {% endif %}
@@ -8,20 +10,20 @@
    <div class="f-card">
   <div class="header">
     <div class="options"><i class="fa fa-chevron-down"></i></div>
-    <img class="co-logo" src="http://placehold.it/40x40" />
-    <div class="co-name"><a href="#">PureCSS</a></div>
-    <div class="time"><a href="#">2hrs</a> · <i class="fa fa-globe"></i></div>
+    <img class="co-logo" src="https://scontent-cdg2-1.xx.fbcdn.net/v/t34.0-1/p160x160/16176889_112685309244626_578204711_n.jpg?oh=5b8021c6cd00eb1f13cf0fbed2adf9da&oe=591AC023" />
+    <div class="co-name"><a href="#">Mark Zuckerberg</a></div>
+    <div class="time"><a href="#">{{ page.date|date("j M, g:ia")}}</a> · <i class="fa fa-globe"></i></div>
   </div>
   <div class="facebookcontent">
-    <p>Height is optional, if no height is specified the image will be a square.Example: <a href="http://placehold.it/300">http://placehold.it/300</a> See More</p>
+    <p>Check this website!</p>
   </div>
 
   <div class="reference">
-    <img class="reference-thumb" src="http://placehold.it/476x249" />
+    <img class="reference-thumb" src="{{context.media[context.header.facebookimg].url}}" />
     <div class="reference-content">
-      <div class="reference-title">A quick and simple image placeholder service. | PLACEHOLDER.it</div>
-      <div class="reference-subtitle">How does it work? Just put your image size after our URL and you'll get a placeholder.</div>
-      <div class="reference-font">placeholder.it</div>
+      <div class="reference-title">{% if context.header.facebooktitle %}{{ context.header.facebooktitle}}{% else %}{{ context.header.title }} | {{ site.title }}{% endif %}</div>
+      <div class="reference-subtitle">{% if context.header.facebookdesc %}{{ context.header.facebookdesc}}{% elseif context.summary %}{{context.summary|striptags}}{% else %}{{ config.plugins.seo.header.facebookdesc }}{% endif %}</div>
+      <div class="reference-font">{{uri.host|replace({"http://": "","/":" › " }) }}</div>
     </div>
   </div>
   <div class="social">

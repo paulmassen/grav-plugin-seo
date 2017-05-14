@@ -73,6 +73,9 @@ form:
                       type: section
                       title: Twitter cards
                       underline: true
+                    header.shareimg:
+                      type: pagemediaselect
+                      label: share image
                     header.twittertitle:
                       type: text
                       label: twitter title
@@ -91,6 +94,16 @@ form:
                   type: tab
                   title: Facebook 
                   fields:
+                    header.facebooktitle:
+                      type: text
+                      label: Facebook title
+                    header.facebookdesc:
+                      type: textarea
+                      label: Facebook description
+                    header.facebookimg:
+                      type: pagemediaselect
+                      label: Facebook image
+                    
                     header.facebookshare:
                       type: facebook
                       label: facebook

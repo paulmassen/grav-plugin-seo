@@ -12,167 +12,243 @@ bugs: "https://github.com/sommerregen/grav-plugin-external-links/issues"
 license: "MIT/GPL"
 
 form:
-  validation: strict
-
   fields:
     tabs:
       type: tabs
       active: 1
-      class: subtle
 
       fields:
-        external_links:
+        gallery:
           type: tab
-          title: PLUGINS.EXTERNAL_LINKS.PLUGIN_NAME
+          title: SEO
 
           fields:
-            enabled:
-              type: toggle
-              label: PLUGIN_ADMIN.PLUGIN_STATUS
-              help: PLUGINS.EXTERNAL_LINKS.STATUS_HELP
-              highlight: 1
-              default: 1
+            header.robots:
+              type: select
+              label: Sélectionner
               options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-
-            built_in_css:
-              type: toggle
-              label: PLUGINS.EXTERNAL_LINKS.BUILTIN_CSS
-              highlight: 1
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.YES
-                0: PLUGIN_ADMIN.NO
-              validate:
-                type: bool
-
-            weight:
+                2: index
+                3: noindex
+                4: noimageindex
+                5: none
+                6: follow
+                7: nofollow
+                8: noarchive
+                9: nocache
+                10: nosnippet
+                11: noodp
+                12: noydir
+            header.canonical:
               type: text
-              size: x-small
-              label: PLUGINS.EXTERNAL_LINKS.WEIGHT
-              default: 0
-              validate:
-                type: int
-                min: -100
-                max: 100
+              label: Canonical url
+            header.shareimg:
+              type: pagemediaselect
+              label: share image
 
-        settings:
-          type: tab
-          title: PLUGINS.EXTERNAL_LINKS.SETTINGS
-
-          fields:
-            links:
-              type: section
-              title: PLUGINS.EXTERNAL_LINKS.LINKS.SECTION
-              text: PLUGINS.EXTERNAL_LINKS.LINKS.SECTION_HELP
-
+            tabs1:
+              type: tabs
+              active: 1
+              title: Settings
               fields:
-                links.www:
-                  type: toggle
-                  label: PLUGINS.EXTERNAL_LINKS.LINKS.WWW
-                  help: PLUGINS.EXTERNAL_LINKS.LINKS.WWW_HELP
-                  default: 0
-                  options:
-                    1: PLUGIN_ADMIN.YES
-                    0: PLUGIN_ADMIN.NO
-                  validate:
-                    type: bool
+                googlefields:
+                  type: tab
+                  title: google 
+                  fields:
+                    header.googledesc:
+                      type: textarea
+                      label: Add google description
+                      id: desc
+                    header.googletitle:
+                      type: text
+                      label: Add google title
+                      id: text
+                    header.mymaingoogle:
+                      type: google
+                      label: test
+                twitterfields:
+                  type: tab
+                  title: Twitter 
+                  fields:
+                    header.twittercardoptions:
+                      type: select
+                      label: Select twitter card type
+                      options:
+                        1: Gallery
+                        2: Photo
+                        3: Product
+                        4: Summary
+                        5: Player
+                        6: App
+                        7: Summary Large Image
+                    header.titlecardtwitter:
+                      type: section
+                      title: Twitter cards
+                      underline: true
+                    
+                    header.twittertitle:
+                      type: text
+                      label: twitter title
+                      id: twittertitle
+                    header.twitterdescription:
+                      type: textarea
+                      text: twitter description
+                      id: twitterdescription
+                    header.twitterlabel:
+                      type: section
+                      text: Here is how it will look on Donald Trump's timeline
+                    header.testtwitter:
+                      type: twitter
+                      label: Add twitter card
+                facebookfields:
+                  type: tab
+                  title: Facebook 
+                  fields:
+                    header.facebookshare:
+                      type: facebook
+                      label: facebook
+                schemajson:
+                  type: tab
+                  title: Schema - JSON-LD
+                  id: schematab
+                  fields:
+                    header.schematype:
+                      type: select
+                      options: 
+                        1: Produit
+                        2: Article
+                        3: Organisation
+                        4: Website
+                        5: Aggregate Offer
+                        6: Aggregate Rating
+                        7: Music Album
+                        8: Music Playlist
+                        9: Person
+                        10: Product Offer
+                        11: Recipe
+                        12: Restaurant
+                        13: Review
+                        14: Software Application
+                        15: Video
 
-                links.schemes:
-                  type: selectize
-                  size: large
-                  label: PLUGINS.EXTERNAL_LINKS.LINKS.SCHEMES
-                  help: PLUGINS.EXTERNAL_LINKS.LINKS.SCHEMES_HELP
-                  validate:
-                    type: commalist
+                    header.recipename:
+                      type: text
+                      label: Recipe Name
+                      classes: recipe
+                    header.recipephoto:
+                      type: text
+                      name: @recipephoto
+                      label: Recipe photo
+                      classes: recipe
+                    header.recipecreator:
+                      type: text
+                      label: Recipe creator
+                      classes: recipe
+                    header.recipedescription:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    header.recipeingredients:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    header.recipepreptime:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    header.recipecooktime:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    header.recipetotaltime:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    header.recipeyield:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    header.recipecalories:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    header.recipefat:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    
+                    header.eventname:
+                      type: text
+                      label: Event Name
+                    header.eventdescription:
+                      type: text
+                      label: Event Name
+                    header.eventstartdate:
+                      type: text
+                      label: Event Name
+                    header.eventenddate:
+                      type: text
+                      label: Event Name
+                    header.eventnameoflocation:
+                      type: text
+                      label: Event Name
+                    header.eventstreetadress:
+                      type: text
+                      label: Event Name
+                    header.eventcity:
+                      type: text
+                      label: Event Name
+                    header.eventstate:
+                      type: text
+                      name: event
+                      label: Event Name
+                      id: eventid
+                    header.jsonoutput:
+                      type: editor
+                      label: Jsonoutput
+                      id: json_output
+                      default: " "
+                      codemirror:
+                        mode: javascript
+                        lint: true
+                        lineNumbers: true
+                        
+                      
+                      
+                    
+                    header.generatedjson:
+                      type: json
+                      
 
-            exclude:
-              type: section
-              title: PLUGINS.EXTERNAL_LINKS.EXCLUDE.SECTION
-              text: PLUGINS.EXTERNAL_LINKS.EXCLUDE.SECTION_HELP
-
-              fields:
-                exclude.classes:
-                  type: selectize
-                  size: large
-                  label: PLUGINS.EXTERNAL_LINKS.EXCLUDE.CLASSES
-                  help: PLUGINS.EXTERNAL_LINKS.EXCLUDE.CLASSES_HELP
-                  validate:
-                    type: commalist
-
-                exclude.domains:
-                  type: selectize
-                  size: large
-                  label: PLUGINS.EXTERNAL_LINKS.EXCLUDE.DOMAINS
-                  help: PLUGINS.EXTERNAL_LINKS.EXCLUDE.DOMAINS_HELP
-                  placeholder: "localhost/*, img.domain.com/*"
-                  validate:
-                    type: commalist
-
-        content:
-          type: tab
-          title: PLUGINS.EXTERNAL_LINKS.CONTENT
-
-          fields:
-            process:
-              type: toggle
-              label: PLUGINS.EXTERNAL_LINKS.PROCESS
-              highlight: 1
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.YES
-                0: PLUGIN_ADMIN.NO
-              validate:
-                type: bool
-
-            title:
-              type: toggle
-              label: PLUGINS.EXTERNAL_LINKS.TITLE
-              default: 0
-              options:
-                1: PLUGIN_ADMIN.YES
-                0: PLUGIN_ADMIN.NO
-              validate:
-                type: bool
-
-            no_follow:
-              type: toggle
-              label: PLUGINS.EXTERNAL_LINKS.NO_FOLLOW
-              default: 1
-              options:
-                1: PLUGIN_ADMIN.YES
-                0: PLUGIN_ADMIN.NO
-              validate:
-                type: bool
-
-            target:
-              type: select
-              size: large
-              label: PLUGINS.EXTERNAL_LINKS.TARGET
-              default: _blank
-              placeholder: _blank
-              selectize:
-                create: true
-              options:
-                _blank: PLUGINS.EXTERNAL_LINKS.TARGET_BLANK
-                _self: PLUGINS.EXTERNAL_LINKS.TARGET_SELF
-                _parent: PLUGINS.EXTERNAL_LINKS.TARGET_PARENT
-                _top: PLUGINS.EXTERNAL_LINKS.TARGET_TOP
-              validate:
-                type: string
-
-            mode:
-              type: select
-              size: large
-              classes: fancy
-              label: PLUGINS.EXTERNAL_LINKS.MODE
-              help: PLUGINS.EXTERNAL_LINKS.MODE_HELP
-              default: active
-              options:
-                active: PLUGINS.EXTERNAL_LINKS.MODE_ACTIVE
-                passive: PLUGINS.EXTERNAL_LINKS.MODE_PASSIVE
-              validate:
-                type: string
+header.articleheadline:
+  type: text
+  label: Event Name
+header.articledescription:
+  type: text
+  label: Event Name
+header.articledatepublished:
+  type: text
+  label: Event Name
+header.articleimageurl:
+  type: text
+  label: Event Name
+header.articleimageheight:
+  type: text
+  label: Event Name
+header.articleimagewidth:
+  type: text
+  label: Event Name
+header.articleauthor:
+  type: text
+  label: Event Name
+header.articlepublisher:
+  type: text
+  label: Event Name
+header.articlepublisherlogourl:
+  type: text
+  label: Event Name
+header.articlefullbody:
+  type: text
+  label: Event Name
+header.article:
+  type: text
+  label: Event Name
