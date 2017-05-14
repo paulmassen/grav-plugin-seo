@@ -74,8 +74,9 @@ form:
                       title: Twitter cards
                       underline: true
                     header.shareimg:
-                      type: pagemediaselect
+                      type: filepicker
                       label: share image
+                      preview_images: true
                     header.twittertitle:
                       type: text
                       label: twitter title
@@ -101,8 +102,9 @@ form:
                       type: textarea
                       label: Facebook description
                     header.facebookimg:
-                      type: pagemediaselect
+                      type: filepicker
                       label: Facebook image
+                      preview_images: true
                     
                     header.facebookshare:
                       type: facebook
