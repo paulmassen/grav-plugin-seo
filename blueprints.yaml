@@ -1,14 +1,14 @@
-name: "Grav SEO"
-version: "1.5.3"
-description: "This plugin adds small icons to external and mailto links, informing users the link will take them to a new site or open their email client."
-icon: "external-link"
+name: "Awesome SEO"
+version: "0.1"
+description: "Awesome SEO is an user friendly plugin to manage your SEO across all pages."
+icon: "facebook"
 author:
-  name: "Sommerregen"
-  email: "sommerregen@benjamin-regler.de"
-homepage: "https://github.com/sommerregen/grav-plugin-external-links"
-keywords: ["external", "links", "filter", "formatter", "plugin"]
-docs: "https://github.com/sommerregen/grav-plugin-external-links/blob/master/README.md"
-bugs: "https://github.com/sommerregen/grav-plugin-external-links/issues"
+  name: "Paul Massendari"
+  email: "paul@massendari.com"
+homepage: "https://github.com/paulmassen/grav-plugin-awesome-seo"
+keywords: ["seo", "meta", "microdata", "schema", "plugin"]
+docs: "https://github.com/paulmassen/grav-plugin-awesome-seo"
+bugs: "https://github.com/paulmassen/grav-plugin-awesome-seo/issues"
 license: "MIT/GPL"
 
 form:
@@ -27,17 +27,17 @@ form:
               type: select
               label: Sélectionner
               options:
-                2: index
-                3: noindex
-                4: noimageindex
-                5: none
-                6: follow
-                7: nofollow
-                8: noarchive
-                9: nocache
-                10: nosnippet
-                11: noodp
-                12: noydir
+                index: index
+                noindex: noindex
+                noimageindex: noimageindex
+                none: none
+                follow: follow
+                nofollow: nofollow
+                noarchive: noarchive
+                nocache: nocache
+                nosnippet: nosnippet
+                noodp: noodp
+                noydir: noydir
             header.canonical:
               type: text
               label: Canonical url
@@ -106,149 +106,3 @@ form:
                     header.facebookshare:
                       type: facebook
                       label: facebook
-                schemajson:
-                  type: tab
-                  title: Schema - JSON-LD
-                  id: schematab
-                  fields:
-                    header.schematype:
-                      type: select
-                      options: 
-                        1: Produit
-                        2: Article
-                        3: Organisation
-                        4: Website
-                        5: Aggregate Offer
-                        6: Aggregate Rating
-                        7: Music Album
-                        8: Music Playlist
-                        9: Person
-                        10: Product Offer
-                        11: Recipe
-                        12: Restaurant
-                        13: Review
-                        14: Software Application
-                        15: Video
-
-                    header.recipename:
-                      type: text
-                      label: Recipe Name
-                      classes: recipe
-                    header.recipephoto:
-                      type: text
-                      name: @recipephoto
-                      label: Recipe photo
-                      classes: recipe
-                    header.recipecreator:
-                      type: text
-                      label: Recipe creator
-                      classes: recipe
-                    header.recipedescription:
-                      type: text
-                      label: Recipe Description
-                      classes: recipe
-                    header.recipeingredients:
-                      type: text
-                      label: Recipe Description
-                      classes: recipe
-                    header.recipepreptime:
-                      type: text
-                      label: Recipe Description
-                      classes: recipe
-                    header.recipecooktime:
-                      type: text
-                      label: Recipe Description
-                      classes: recipe
-                    header.recipetotaltime:
-                      type: text
-                      label: Recipe Description
-                      classes: recipe
-                    header.recipeyield:
-                      type: text
-                      label: Recipe Description
-                      classes: recipe
-                    header.recipecalories:
-                      type: text
-                      label: Recipe Description
-                      classes: recipe
-                    header.recipefat:
-                      type: text
-                      label: Recipe Description
-                      classes: recipe
-                    
-                    header.eventname:
-                      type: text
-                      label: Event Name
-                    header.eventdescription:
-                      type: text
-                      label: Event Name
-                    header.eventstartdate:
-                      type: text
-                      label: Event Name
-                    header.eventenddate:
-                      type: text
-                      label: Event Name
-                    header.eventnameoflocation:
-                      type: text
-                      label: Event Name
-                    header.eventstreetadress:
-                      type: text
-                      label: Event Name
-                    header.eventcity:
-                      type: text
-                      label: Event Name
-                    header.eventstate:
-                      type: text
-                      name: event
-                      label: Event Name
-                      id: eventid
-                    header.jsonoutput:
-                      type: editor
-                      label: Jsonoutput
-                      id: json_output
-                      default: " "
-                      codemirror:
-                        mode: javascript
-                        lint: true
-                        lineNumbers: true
-                        
-                      
-                      
-                    
-                    header.generatedjson:
-                      type: json
-                      
-
-header.articleheadline:
-  type: text
-  label: Event Name
-header.articledescription:
-  type: text
-  label: Event Name
-header.articledatepublished:
-  type: text
-  label: Event Name
-header.articleimageurl:
-  type: text
-  label: Event Name
-header.articleimageheight:
-  type: text
-  label: Event Name
-header.articleimagewidth:
-  type: text
-  label: Event Name
-header.articleauthor:
-  type: text
-  label: Event Name
-header.articlepublisher:
-  type: text
-  label: Event Name
-header.articlepublisherlogourl:
-  type: text
-  label: Event Name
-header.articlefullbody:
-  type: text
-  label: Event Name
-header.article:
-  type: text
-  label: Event Name
