@@ -17,7 +17,8 @@ form:
           fields:
             header.robots:
               type: select
-              label: Sélectionner
+              label: Select robots value
+              multiple: true
               options:
                 index: index
                 noindex: noindex
