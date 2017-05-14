@@ -1,4 +1,4 @@
-# [![Grav SEO Plugin](https://avatars3.githubusercontent.com/u/8237355?v=3&s=400)][project]
+# ![Grav SEO Plugin](https://avatars3.githubusercontent.com/u/8237355?v=3&s=400)
 
 
 > This plugin adds an user-friendly tab to manage SEO metatags.
