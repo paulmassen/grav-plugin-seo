@@ -9,3 +9,7 @@
 <meta name="twitter:title" content="{% if page.header.twittertitle is not empty %}{{ page.header.twittertitle }}{% else %} {% if config.plugins['seo'].site_title %}{{config.plugins['seo'].site_title}}{% else %}{{ site.title }}{% endif %}{% endif %}" />
 <meta name="twitter:description" content="{% if page.header.twitterdescription %}{{ page.header.twitterdescription}}{% elseif config.plugins['seo'].header.twitterdescription %}{{config.plugins['seo'].header.twitterdescription}}{% endif %}" />
 <meta name="twitter:image" content="{{page.media[header.shareimg].url}}" />
+
+<meta property="og:title" content="{{ page.header.facebooktitle }}" />
+<meta property="og:url" content="{{ page.url }}" />
+<meta property="og:image" content="{{page.media[header.facebookimg].url}}" />
