@@ -1,0 +1,59 @@
+{% if field.security is empty or authorize(array(field.security)) %}
+
+    {% if field.title or field.underline %}
+    <h1 {% if not field.underline %}class="no_underline"{% endif %}>{% if grav.twig.twig.filters['tu'] is defined %}{{ field.title|tu }}{% else %}{{ field.title|t }}{% endif %}</h1>
+    {% endif %}
+
+    {% set context = admin.page(true) %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+    
+    var formObject = {};
+    
+    $('#btnsubmit').click(function(){
+        
+       var formInputString = $('.active .form-tab input.recipe').serialize();
+       console.log(formInputString);
+       var inputParameters = formInputString.split('&');
+       var nameValues = [];
+        $.each(inputParameters,function(i){
+            var inputParameter = inputParameters[i].split('='); // 0 - keyName , 1 - keyValue
+            var keyName = inputParameter[0];
+            var keyValue = inputParameter[1];
+            if(keyName == 'subjects'){
+                nameValues.push({ name : keyValue});
+                formObject[keyName] = nameValues;
+            }else{
+                formObject[keyName] = keyValue;
+            }
+
+        });
+        
+var myString = JSON.stringify(formObject);
+// var encodestring= JSON.stringify(myString);
+      var deecode = decodeURIComponent(myString);
+      var removestring = deecode.replace(/data|header|\[/g, '');
+      var removebracket = removestring.replace(/]/g, '');
+       $('span[role="presentation"]').append(removebracket);
+        //CodeMirror.doc.setValue(removebracket);
+    });
+    
+});
+    </script>
+    <a id="btnsubmit">Envoyer</a>
+    <div id="oldjson_output" style="width:600px; color:#fff; background-color: #253a47; margin-left: auto; margin-right: auto; height:600px; word-wrap: break-word; padding: 20px;"></div>
+    {% if field.text %}
+    {% endif %}
+
+    {% if field.fields %}
+        <div class="form-section {{ field.field_classes }}">
+        {% for field in field.fields %}
+            {% if field.type %}
+                {% set value = data.value(field.name) %}
+                {% include ["forms/fields/#{field.type}/#{field.type}.html.twig", 'forms/fields/text/text.html.twig'] %}
+            {% endif %}
+        {% endfor %}
+        </div>
+    {% endif %}
+
+{% endif %}

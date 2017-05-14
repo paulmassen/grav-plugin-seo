@@ -1,0 +1,242 @@
+title: SEO
+'@extends':
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        gallery:
+          type: tab
+          title: SEO
+
+          fields:
+            header.robots:
+              type: select
+              label: Sélectionner
+              options:
+                2: index
+                3: noindex
+                4: noimageindex
+                5: none
+                6: follow
+                7: nofollow
+                8: noarchive
+                9: nocache
+                10: nosnippet
+                11: noodp
+                12: noydir
+            header.canonical:
+              type: text
+              label: Canonical url
+
+            tabs1:
+              type: tabs
+              active: 1
+              title: Settings
+              fields:
+                googlefields:
+                  type: tab
+                  title: google 
+                  fields:
+                    header.googledesc:
+                      type: textarea
+                      label: Add google description
+                      id: desc
+                    header.googletitle:
+                      type: text
+                      label: Add google title
+                      id: text
+                    header.mymaingoogle:
+                      type: google
+                      label: test
+                twitterfields:
+                  type: tab
+                  title: Twitter 
+                  fields:
+                    header.twittercardoptions:
+                      type: select
+                      label: Select twitter card type
+                      options:
+                        1: Gallery
+                        2: Photo
+                        3: Product
+                        4: Summary
+                        5: Player
+                        6: App
+                        7: Summary Large Image
+                    header.titltecardtwitter:
+                      type: section
+                      title: Twitter cards
+                      underline: true
+                    header.twittertitle:
+                      type: text
+                      label: twitter title
+                      id: twittertitle
+                    header.twitterdescription:
+                      type: textarea
+                      text: twitter description
+                      id: twitterdescription
+                    header.twitterlabel:
+                      type: section
+                      text: Here is how it will look on Donald Trump's timeline
+                    header.testtwitter:
+                      type: twitter
+                      label: Add twitter card
+                facebookfields:
+                  type: tab
+                  title: Facebook 
+                  fields:
+                    header.facebookshare:
+                      type: facebook
+                      label: facebook
+                schemajson:
+                  type: tab
+                  title: Schema - JSON-LD
+                  id: schematab
+                  fields:
+                    header.schematype:
+                      type: select
+                      options: 
+                        1: Produit
+                        2: Article
+                        3: Organisation
+                        4: Website
+                        5: Aggregate Offer
+                        6: Aggregate Rating
+                        7: Music Album
+                        8: Music Playlist
+                        9: Person
+                        10: Product Offer
+                        11: Recipe
+                        12: Restaurant
+                        13: Review
+                        14: Software Application
+                        15: Video
+
+                    header.recipename:
+                      type: text
+                      label: Recipe Name
+                      classes: recipe
+                    header.recipephoto:
+                      type: text
+                      name: @recipephoto
+                      label: Recipe photo
+                      classes: recipe
+                    header.recipecreator:
+                      type: text
+                      label: Recipe creator
+                      classes: recipe
+                    header.recipedescription:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    header.recipeingredients:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    header.recipepreptime:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    header.recipecooktime:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    header.recipetotaltime:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    header.recipeyield:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    header.recipecalories:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    header.recipefat:
+                      type: text
+                      label: Recipe Description
+                      classes: recipe
+                    
+                    header.eventname:
+                      type: text
+                      label: Event Name
+                    header.eventdescription:
+                      type: text
+                      label: Event Name
+                    header.eventstartdate:
+                      type: text
+                      label: Event Name
+                    header.eventenddate:
+                      type: text
+                      label: Event Name
+                    header.eventnameoflocation:
+                      type: text
+                      label: Event Name
+                    header.eventstreetadress:
+                      type: text
+                      label: Event Name
+                    header.eventcity:
+                      type: text
+                      label: Event Name
+                    header.eventstate:
+                      type: text
+                      name: event
+                      label: Event Name
+                      id: eventid
+                    header.jsonoutput:
+                      type: editor
+                      label: Jsonoutput
+                      id: json_output
+                      default: " "
+                      codemirror:
+                        mode: javascript
+                        lint: true
+                        lineNumbers: true
+                        
+                      
+                      
+                    
+                    header.generatedjson:
+                      type: json
+                      
+
+header.articleheadline:
+  type: text
+  label: Event Name
+header.articledescription:
+  type: text
+  label: Event Name
+header.articledatepublished:
+  type: text
+  label: Event Name
+header.articleimageurl:
+  type: text
+  label: Event Name
+header.articleimageheight:
+  type: text
+  label: Event Name
+header.articleimagewidth:
+  type: text
+  label: Event Name
+header.articleauthor:
+  type: text
+  label: Event Name
+header.articlepublisher:
+  type: text
+  label: Event Name
+header.articlepublisherlogourl:
+  type: text
+  label: Event Name
+header.articlefullbody:
+  type: text
+  label: Event Name
+header.article:
+  type: text
+  label: Event Name
