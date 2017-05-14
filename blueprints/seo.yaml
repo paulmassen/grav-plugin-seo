@@ -51,7 +51,7 @@ form:
                       type: text
                       label: Add google title
                       id: text
-                    header.mymaingoogle:
+                    header.googlepreview:
                       type: google
                       label: test
                 twitterfields:
@@ -88,7 +88,7 @@ form:
                     header.twitterlabel:
                       type: section
                       text: Here is how it will look on Donald Trump's timeline
-                    header.testtwitter:
+                    header.twitterpreview:
                       type: twitter
                       label: Add twitter card
                 facebookfields:
@@ -106,6 +106,6 @@ form:
                       label: Facebook image
                       preview_images: true
                     
-                    header.facebookshare:
+                    header.facebookpreview:
                       type: facebook
                       label: facebook

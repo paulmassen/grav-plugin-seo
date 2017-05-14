@@ -49,17 +49,17 @@ form:
               fields:
                 googlefields:
                   type: tab
-                  title: google 
+                  title: Google 
                   fields:
                     header.googledesc:
                       type: textarea
-                      label: Add google description
+                      label: Customize google description
                       id: desc
                     header.googletitle:
                       type: text
-                      label: Add google title
+                      label: Customize google title
                       id: text
-                    header.mymaingoogle:
+                    header.googlepreview:
                       type: google
                       label: test
                 twitterfields:
@@ -93,13 +93,13 @@ form:
                     header.twitterlabel:
                       type: section
                       text: Here is how it will look on Donald Trump's timeline
-                    header.testtwitter:
+                    header.twitterpreview:
                       type: twitter
                       label: Add twitter card
                 facebookfields:
                   type: tab
                   title: Facebook 
                   fields:
-                    header.facebookshare:
+                    header.facebookpreview:
                       type: facebook
                       label: facebook
