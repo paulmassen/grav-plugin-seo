@@ -16,7 +16,7 @@ form:
 
           fields:
             header.robots:
-              type: select
+              type: selectize
               label: Select robots value
               multiple: true
               options:
@@ -59,6 +59,14 @@ form:
                   type: tab
                   title: Twitter 
                   fields:
+                    header.twitterenable:
+                      type: toggle
+                      label: enable twitter card
+                      options:
+                        1: PLUGIN_ADMIN.YES
+                        2: PLUGIN_ADMIN.NO
+                      validate:
+                        type: bool
                     header.twittercardoptions:
                       type: select
                       label: Select twitter card type
@@ -70,11 +78,11 @@ form:
                         player: Player
                         app: App
                         summary_large_image: Summary Large Image
-                    header.titltecardtwitter:
+                    header.titlecardtwitter:
                       type: section
                       title: Twitter cards
                       underline: true
-                    header.shareimg:
+                    header.twittershareimg:
                       type: filepicker
                       label: share image
                       preview_images: true
@@ -96,6 +104,14 @@ form:
                   type: tab
                   title: Facebook 
                   fields:
+                    header.facebookenable:
+                      type: toggle
+                      label: enable Facebook OpenGraph
+                      options:
+                        1: PLUGIN_ADMIN.YES
+                        2: PLUGIN_ADMIN.NO
+                      validate:
+                        type: bool
                     header.facebooktitle:
                       type: text
                       label: Facebook title
@@ -106,7 +122,6 @@ form:
                       type: filepicker
                       label: Facebook image
                       preview_images: true
-                    
                     header.facebookpreview:
                       type: facebook
                       label: facebook

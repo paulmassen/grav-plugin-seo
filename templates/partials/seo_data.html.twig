@@ -1,15 +1,40 @@
 <meta charset="utf-8">
-<title>{% if page.header.googletitle %}{{ page.header.googletitle}}{% else %}{{ page.header.title }} | {{ site.title }}{% endif %}</title>
-<meta name="description" content="{% if page.header.googledesc %}{{ page.header.googledesc}}{% else %}{{ config.plugins.seo.header.googledesc }}{% endif %} ">
-<meta name="robots" content="index, follow">
-<meta name="author" content="">
-{# twitter #}
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:site" content="{{ config.plugins['seo'].header.twitterid }}" />
-<meta name="twitter:title" content="{% if page.header.twittertitle is not empty %}{{ page.header.twittertitle }}{% else %} {% if config.plugins['seo'].site_title %}{{config.plugins['seo'].site_title}}{% else %}{{ site.title }}{% endif %}{% endif %}" />
-<meta name="twitter:description" content="{% if page.header.twitterdescription %}{{ page.header.twitterdescription}}{% elseif config.plugins['seo'].header.twitterdescription %}{{config.plugins['seo'].header.twitterdescription}}{% endif %}" />
-<meta name="twitter:image" content="{{page.media[header.shareimg].url}}" />
 
-<meta property="og:title" content="{{ page.header.facebooktitle }}" />
-<meta property="og:url" content="{{ page.url }}" />
-<meta property="og:image" content="{{page.media[header.facebookimg].url}}" />
+{% set settings = config.plugins.seo.header %}
+
+{% if page.header.googletitle or settings.googletitle %}
+<title>{% if page.header.googletitle %}{{ page.header.googletitle}}{% else %}{{ page.header.title }} | {{ site.title }}{% endif %}</title>
+{% endif %}
+
+<meta name="description" content="{{ page.header.googledesc|default(setting.googledesc)|default(page.summary|striptags)|default(site.description) }}">
+{% if settings.robots or page.header.robots is defined %}
+<meta name="robots" content="{{ page.header.robots|default(settings.robots)|default('index') }}">
+{% endif %}
+
+{#<meta name="author" content="">#}
+{# twitter #}
+{% if settings.twitterenable == "1" or page.header.twitterenable == "1" %}
+    <meta name="twitter:card" content="{{ page.header.twittercardoptions|default(settings.twittercardoptions)|default('summary') }}" />
+    {% if settings.twitterid %}
+    <meta name="twitter:site" content="{{ settings.twitterid }}" />
+    {% endif %}
+    <meta name="twitter:title" content="{{ page.header.twittertitle|default(settings.twittertitle)|default(site.title) }}" />
+    <meta name="twitter:description" content="{% if page.header.twitterdescription %}{{ page.header.twitterdescription}}{% elseif settings.twitterdescription %}{{settings.twitterdescription}}{% endif %}" />
+    {% if page.header.twittercardoptions or settings.twittercardoptions == "summary" %}
+        {% if page.header.twittershareimg %}
+        <meta name="twitter:image" content="{{page.media[header.twittershareimg].url(true)}}" />
+        {% else %}
+        <meta name="twitter:image" content="{{base_url_absolute }}{{page.media.images|first.url}}" />
+        {% endif %}
+    {% endif %}
+{% endif %}
+{% if settings.facebookenable == "1" or page.header.facebookenable == "1" %}
+<meta property="og:title" content="{{ page.header.facebooktitle|default(settings.facebooktitle)|default(site.title) }}" />
+<meta property="og:url" content="{{ page.url(true) }}" />
+{% if page.header.facebookimg %}
+<meta property="og:image" content="{{page.media[header.facebookimg].url(true)}}" />
+{% else %}
+<meta property="og:image" content="{{page.media.images|first.url(true)}}" />
+{% endif %}
+<meta property="og:description" content="{{ page.header.facebookdesc|default(settings.facebookdesc)|default(page.summary)|default(site.description) }}" />
+{% endif %}
