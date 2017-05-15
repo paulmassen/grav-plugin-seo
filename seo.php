@@ -58,7 +58,8 @@ class seoPlugin extends Plugin
     public static function getSubscribedEvents()
     {
         return [
-            'onPluginsInitialized' => ['onPluginsInitialized', 0]
+            'onPluginsInitialized' => ['onPluginsInitialized', 0],
+            'onBlueprintCreated' => ['onBlueprintCreated',  0]
         ];
     }
 
@@ -97,14 +98,16 @@ class seoPlugin extends Plugin
      * @param Event $event
      */
     public function onBlueprintCreated(Event $event)
-    {
-        /** @var Blueprints $blueprint */
+ {
+        
         $blueprint = $event['blueprint'];
         if ($blueprint->get('form/fields/tabs', null, '/')) {
             $blueprints = new Blueprints(__DIR__ . '/blueprints/');
             $extends = $blueprints->get($this->name);
             $blueprint->extend($extends, true);
+        
         }
+        //$this->grav->fireEvent('onBlueprintCreated', new Event(['blueprint' => $blueprint, 'type' => $type]));
     }
 
     /**
@@ -156,9 +159,9 @@ class seoPlugin extends Plugin
      */
     public function onTwigSiteVariables()
     {
-        if ($this->config->get('plugins.external_links.built_in_css')) {
-            $this->grav['assets']->add('plugin://external_links/assets/css/external_links.css');
-        }
+     //   if ($this->config->get('plugins.external_links.built_in_css')) {
+     //       $this->grav['assets']->add('plugin://external_links/assets/css/external_links.css');
+     //   }
     }
 
     /**

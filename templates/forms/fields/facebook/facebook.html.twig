@@ -22,7 +22,7 @@
     <img class="reference-thumb" src="{{context.media[context.header.facebookimg].cropZoom(480,300).url}}" />
     <div class="reference-content">
       <div class="reference-title">{% if context.header.facebooktitle %}{{ context.header.facebooktitle}}{% else %}{{ context.header.title }} | {{ site.title }}{% endif %}</div>
-      <div class="reference-subtitle">{% if context.header.facebookdesc %}{{ context.header.facebookdesc}}{% elseif context.summary %}{{context.summary|striptags}}{% else %}{{ config.plugins.seo.header.facebookdesc }}{% endif %}</div>
+      <div class="reference-subtitle">{{ context.header.facebookdesc|default(context.header.summary|striptags)|default(config.plugins.seo.header.facebookdesc)}}</div>
       <div class="reference-font">{{uri.host|replace({"http://": "","/":" › " }) }}</div>
     </div>
   </div>

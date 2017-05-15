@@ -62,9 +62,11 @@ form:
                     header.twitterenable:
                       type: toggle
                       label: enable twitter card
+                      default: 1
+                      highlight: 0
                       options:
                         1: PLUGIN_ADMIN.YES
-                        2: PLUGIN_ADMIN.NO
+                        0: PLUGIN_ADMIN.NO
                       validate:
                         type: bool
                     header.twittercardoptions:
@@ -107,11 +109,14 @@ form:
                     header.facebookenable:
                       type: toggle
                       label: enable Facebook OpenGraph
+                      default: 1
+                      highlight: 0
                       options:
                         1: PLUGIN_ADMIN.YES
-                        2: PLUGIN_ADMIN.NO
+                        0: PLUGIN_ADMIN.NO
                       validate:
                         type: bool
+                     
                     header.facebooktitle:
                       type: text
                       label: Facebook title
