@@ -11,9 +11,9 @@
 
 ## Todo
 
-[] Do not load tab if page is modular
-[] Cleanup seo.php
-[] Clenup doc from external_links plugin from
+- [ ] Do not load tab if page is modular
+- [ ] Cleanup seo.php
+- [ ] Clenup doc from external_links plugin from
 
 ## About
 
