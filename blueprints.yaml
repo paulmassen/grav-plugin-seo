@@ -7,8 +7,8 @@ author:
   email: "paul@massendari.com"
 homepage: "https://github.com/paulmassen/grav-plugin-awesome-seo"
 keywords: ["seo", "meta", "microdata", "schema", "plugin"]
-docs: "https://github.com/paulmassen/grav-plugin-awesome-seo"
-bugs: "https://github.com/paulmassen/grav-plugin-awesome-seo/issues"
+docs: "https://github.com/paulmassen/grav_seo_plugin"
+bugs: "https://github.com/paulmassen/grav_seo_plugin/issues"
 license: "MIT/GPL"
 
 form:

@@ -9,6 +9,12 @@
 * [Contributing](#contributing)
 * [License](#license)
 
+## Todo
+
+- [ ] Do not load tab if page is modular
+- [ ] Cleanup seo.php
+- [ ] Clenup doc from external_links plugin from
+
 ## About
 
 `Awesome Seo` is an user-friendly plugin for [GetGrav.org](http://getgrav.org) used to manage all your metatags and customize your pages appearance in Search Engine Results or social networks.
