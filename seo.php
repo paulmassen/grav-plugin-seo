@@ -22,7 +22,7 @@ namespace Grav\Plugin;
 use Grav\Common\Plugin;
 use Grav\Common\Page\Page;
 use Grav\Common\Data\Blueprints;
-
+use Grav\Common\Page\Pages;
 use RocketTheme\Toolbox\Event\Event;
 
 /**
@@ -99,13 +99,20 @@ class seoPlugin extends Plugin
      */
     public function onBlueprintCreated(Event $event)
  {
-        
-        $blueprint = $event['blueprint'];
+     $newtype = $event['type'];
+     if (0 === strpos($newtype, 'modular/')) {
+   // It starts with 'http'
+       // if ($event['type'] != 'modular') {
+
+
+        } else {
+                    $blueprint = $event['blueprint'];
         if ($blueprint->get('form/fields/tabs', null, '/')) {
             $blueprints = new Blueprints(__DIR__ . '/blueprints/');
             $extends = $blueprints->get($this->name);
             $blueprint->extend($extends, true);
         
+        }
         }
         //$this->grav->fireEvent('onBlueprintCreated', new Event(['blueprint' => $blueprint, 'type' => $type]));
     }
