@@ -19,15 +19,23 @@ If you are interested in seeing this plugin in action, here is a demo:
 
 ## Installation and Updates
 
-Installing or updating the `External Links` plugin can be done in one of three ways. Using the GPM (Grav Package Manager) installation update method (i.e. `bin/gpm install awesome_seo`) or manual install by downloading [this plugin](https://github.com/paulmassen/grav-plugin-awesome-seo) and extracting all plugin files to
+Installing or updating the `Awesome SEO` plugin can be done in one of three ways. Using the GPM (Grav Package Manager) installation update method (i.e. `bin/gpm install awesome_seo`) or manual install by downloading [this plugin](https://github.com/paulmassen/grav_seo_plugin) and extracting all plugin files to
 
-    /your/site/grav/user/plugins/awesome-seo
+    /your/site/grav/user/plugins/seo
 
+Once installed, just include the metadata snippet in your base.html.twig template, between <head> and </head> as below:
+```
+{% include 'partials/seo_data.html.twig' %}
+```
 
+Notes:
+
+As the plugin takes care of generating the title tag and the description tag, make sure those are removed from your base template.
 
 ## Usage
 
-The `Awesome Seo` plugin allows you to set site-wide default value and customize it on a per-page basis:
+The `Awesome Seo` plugin allows you to set site-wide default value and customize it on a per-page basis. 
+Site-wide settings are set in the plugin configuration and are overridden when set on a page.
 
 ### Config Defaults
 
