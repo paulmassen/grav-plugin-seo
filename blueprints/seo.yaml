@@ -17,7 +17,7 @@ form:
           fields:
             header.robots:
               type: selectize
-              label: Select robots value
+              label: PLUGINS.AWESOME_SEO.ROBOTS
               multiple: true
               options:
                 index: index
