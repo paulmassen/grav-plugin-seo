@@ -12,15 +12,7 @@ bugs: "https://github.com/paulmassen/grav-plugin-awesome-seo/issues"
 license: "MIT/GPL"
 
 form:
-  fields:
-    tabs:
-      type: tabs
-      active: 1
 
-      fields:
-        gallery:
-          type: tab
-          title: SEO
 
           fields:
             header.robots:
