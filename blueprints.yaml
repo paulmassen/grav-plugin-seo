@@ -76,6 +76,7 @@ form:
                               type: toggle
                               label: PLUGIN_ADMIN.ENABLED
                               highlight: 1
+                              default: 1
                               help: PLUGIN_ADMIN.ENABLED_HELP
                               options:
                                   1: PLUGIN_ADMIN.YES
