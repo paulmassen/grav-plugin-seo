@@ -15,25 +15,25 @@ form:
           title: SEO
 
           fields:
-            header.robots:
-              type: selectize
-              label: PLUGINS.SEO.ROBOTS
-              multiple: true
-              options:
-                index: index
-                noindex: noindex
-                noimageindex: noimageindex
-                none: none
-                follow: follow
-                nofollow: nofollow
-                noarchive: noarchive
-                nocache: nocache
-                nosnippet: nosnippet
-                noodp: noodp
-                noydir: noydir
-            header.canonical:
-              type: text
-              label: PLUGINS.SEO.CANONICAL_URL
+#            header.robots:
+#              type: selectize
+#              label: PLUGINS.SEO.ROBOTS
+#              multiple: true
+#              options:
+#                index: index
+#                noindex: noindex
+#                noimageindex: noimageindex
+#                none: none
+#                follow: follow
+#                nofollow: nofollow
+#                noarchive: noarchive
+#                nocache: nocache
+#                nosnippet: nosnippet
+#                noodp: noodp
+#                noydir: noydir
+#            header.canonical:
+#              type: text
+#              label: PLUGINS.SEO.CANONICAL_URL
 
             tabs1:
               type: tabs
