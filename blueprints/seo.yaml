@@ -59,73 +59,101 @@ form:
                   type: tab
                   title: Twitter 
                   fields:
-                    header.twitterenable:
-                      type: toggle
-                      label: PLUGINS.SEO.TWITTER_ENABLE
-                      default: 1
-                      highlight: 0
-                      options:
-                        1: PLUGIN_ADMIN.YES
-                        0: PLUGIN_ADMIN.NO
-                      validate:
-                        type: bool
-                    header.twittercardoptions:
-                      type: select
-                      label: PLUGINS.SEO.TWITTER_CARD_SELECT
-                      options:
-                        gallery: PLUGINS.SEO.TWITTER_CARD_GALLERY
-                        photo: PLUGINS.SEO.TWITTER_CARD_PHOTO
-                        product: PLUGINS.SEO.TWITTER_CARD_PRODUCT
-                        summary: PLUGINS.SEO.TWITTER_CARD_SUMMARY
-                        player: PLUGINS.SEO.TWITTER_CARD_PLAYER
-                        app: PLUGINS.SEO.TWITTER_CARD_APP
-                        summary_large_image: PLUGINS.SEO.TWITTER_CARD_SUMLARGIMG
-                    header.titlecardtwitter:
-                      type: section
-                      title: PLUGINS.SEO.TWITTER_CARD_SECTITLE
-                      underline: true
-                    header.twittershareimg:
-                      type: filepicker
-                      label: PLUGINS.SEO.TWITTER_SHAREIMG
-                      preview_images: true
-                    header.twittertitle:
-                      type: text
-                      label: PLUGINS.SEO.TWITTER_TITLE
-                      id: twittertitle
-                    header.twitterdescription:
-                      type: textarea
-                      text: PLUGINS.SEO.TWITTER_DESCRIPTION
-                      id: twitterdescription
-                    header.twitterlabel:
-                      type: section
-                      text: PLUGINS.SEO.TWITTER_PREVIEWDESC
-                    header.twitterpreview:
-                      type: twitter
+                    columns:
+                      type: columns
+                      fields:
+                        column1:
+                          type: column
+                          fields:
+                            header.twitterenable:
+                              type: toggle
+                              label: PLUGINS.SEO.TWITTER_ENABLE
+                              default: 1
+                              highlight: 0
+                              options:
+                                1: PLUGIN_ADMIN.YES
+                                0: PLUGIN_ADMIN.NO
+                              validate:
+                                type: bool
+                            header.twittercardoptions:
+                              type: select
+                              label: PLUGINS.SEO.TWITTER_CARD_SELECT
+                              options:
+                                gallery: PLUGINS.SEO.TWITTER_CARD_GALLERY
+                                photo: PLUGINS.SEO.TWITTER_CARD_PHOTO
+                                product: PLUGINS.SEO.TWITTER_CARD_PRODUCT
+                                summary: PLUGINS.SEO.TWITTER_CARD_SUMMARY
+                                player: PLUGINS.SEO.TWITTER_CARD_PLAYER
+                                app: PLUGINS.SEO.TWITTER_CARD_APP
+                                summary_large_image: PLUGINS.SEO.TWITTER_CARD_SUMLARGIMG
+                            header.titlecardtwitter:
+                              type: section
+                              title: PLUGINS.SEO.TWITTER_CARD_SECTITLE
+                              underline: true
+                            header.twittershareimg:
+                              type: filepicker
+                              label: PLUGINS.SEO.TWITTER_SHAREIMG
+                              preview_images: true
+                            header.twittertitle:
+                              type: text
+                              label: PLUGINS.SEO.TWITTER_TITLE
+                              id: twittertitle
+                            header.twitterdescription:
+                              type: textarea
+                              text: PLUGINS.SEO.TWITTER_DESCRIPTION
+                              id: twitterdescription
+
+                            # .... subfields
+                    
+                        column2:
+                          type: column
+                          fields:
+                            header.twitterlabel:
+                              type: section
+                              text: PLUGINS.SEO.TWITTER_PREVIEWDESC
+                    
+                            header.twitterpreview:
+                              type: twitter
+                            # .... other subfields
+                    
+                    
                 facebookfields:
                   type: tab
                   title: Facebook 
                   fields:
-                    header.facebookenable:
-                      type: toggle
-                      label: PLUGINS.SEO.FACEBOOK_ENABLE
-                      default: 1
-                      highlight: 0
-                      options:
-                        1: PLUGIN_ADMIN.YES
-                        0: PLUGIN_ADMIN.NO
-                      validate:
-                        type: bool
-                     
-                    header.facebooktitle:
-                      type: text
-                      label: PLUGINS.SEO.FACEBOOK_TITLE
-                    header.facebookdesc:
-                      type: textarea
-                      label: PLUGINS.SEO.FACEBOOK_DESC
-                    header.facebookimg:
-                      type: filepicker
-                      label: PLUGINS.SEO.FACEBOOK_SHAREIMG
-                      preview_images: true
-                    header.facebookpreview:
-                      type: facebook
-                      label: PLUGINS.SEO.FACEBOOK_PREVIEWDESC
+                    columns2:
+                      type: columns
+                      fields:
+                        column3:
+                          type: column
+                          fields:
+                            header.facebookenable:
+                              type: toggle
+                              label: PLUGINS.SEO.FACEBOOK_ENABLE
+                              default: 1
+                              highlight: 0
+                              options:
+                                1: PLUGIN_ADMIN.YES
+                                0: PLUGIN_ADMIN.NO
+                              validate:
+                                type: bool
+                             
+                            header.facebooktitle:
+                              type: text
+                              label: PLUGINS.SEO.FACEBOOK_TITLE
+                            header.facebookdesc:
+                              type: textarea
+                              label: PLUGINS.SEO.FACEBOOK_DESC
+                            header.facebookimg:
+                              type: filepicker
+                              label: PLUGINS.SEO.FACEBOOK_SHAREIMG
+                              preview_images: true
+                             # .... subfields
+                        column4:
+                          type: column
+                          fields:
+
+                                # .... subfields
+                            header.facebookpreview:
+                              type: facebook
+                              label: PLUGINS.SEO.FACEBOOK_PREVIEWDESC

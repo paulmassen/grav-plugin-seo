@@ -5,10 +5,9 @@ icon: "facebook"
 author:
   name: "Paul Massendari"
   email: "paul@massendari.com"
-homepage: "https://github.com/paulmassen/grav-plugin-awesome-seo"
+homepage: "https://github.com/paulmassen/grav-plugin-seo"
 keywords: ["seo", "meta", "microdata", "schema", "plugin"]
-docs: "https://github.com/paulmassen/grav_seo_plugin"
-bugs: "https://github.com/paulmassen/grav_seo_plugin/issues"
+bugs: "https://github.com/paulmassen/grav-plugin-seo/issues"
 license: "MIT/GPL"
 
 form:

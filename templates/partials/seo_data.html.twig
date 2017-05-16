@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-
+{% spaceless %}
 {% set settings = config.plugins.seo.header %}
 
 {% if page.header.googletitle or settings.googletitle %}
@@ -36,5 +36,7 @@
 {% else %}
 <meta property="og:image" content="{{page.media.images|first.url(true)}}" />
 {% endif %}
-<meta property="og:description" content="{{ page.header.facebookdesc|default(settings.facebookdesc)|default(page.summary)|default(site.description) }}" />
+<meta property="og:description" content="{{ page.header.facebookdesc|default(settings.facebookdesc)|default(page.summary|striptags)|default(site.description) }}" />
 {% endif %}
+
+{% endspaceless %}

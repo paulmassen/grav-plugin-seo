@@ -13,7 +13,7 @@
 
 - [x] Do not load tab if page is modular
 - [x] Cleanup seo.php
-- [ ] Clenup doc from external_links plugin from
+- [x] Clenup doc from external_links plugin from
 
 ## About
 
