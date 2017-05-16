@@ -10,7 +10,7 @@ form:
       active: 1
 
       fields:
-        gallery:
+        seo:
           type: tab
           title: SEO
 
