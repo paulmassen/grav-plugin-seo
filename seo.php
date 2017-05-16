@@ -47,7 +47,7 @@ class seoPlugin extends Plugin
     {
         return [
             'onPluginsInitialized' => ['onPluginsInitialized', 0],
-            'onBlueprintCreated' => ['onBlueprintCreated',  0]
+          //  'onBlueprintCreated' => ['onBlueprintCreated',  0]
         ];
     }
 
