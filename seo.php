@@ -1,20 +1,18 @@
 <?php
 /**
- * External Links v1.5.3
+ * SEO v0.8.0
  *
  * This plugin adds small icons to external and mailto links, informing
  * users the link will take them to a new site or open their email client.
  *
- * Dual licensed under the MIT or GPL Version 3 licenses, see LICENSE.
- * http://benjamin-regler.de/license/
+ * Licensed under the MIT license, see LICENSE.
  *
- * @package     External Links
- * @version     1.5.3
- * @link        <https://github.com/sommerregen/grav-plugin-external-links>
- * @author      Benjamin Regler <sommerregen@benjamin-regler.de>
- * @copyright   2017, Benjamin Regler
+ * @package     SEO
+ * @version     0.8.0
+ * @link        <https://github.com/paulmassen/grav-plugin-seo>
+ * @author      Paul Massendari <paul@massendari.com>
+ * @copyright   2017, Paul Massendari
  * @license     <http://opensource.org/licenses/MIT>        MIT
- * @license     <http://opensource.org/licenses/GPL-3.0>    GPLv3
  */
 
 namespace Grav\Plugin;
@@ -26,23 +24,13 @@ use Grav\Common\Page\Pages;
 use RocketTheme\Toolbox\Event\Event;
 
 /**
- * External Links Plugin
+ * SEO Plugin
  *
- * This plugin adds small icons to external and mailto links, informing
- * users the link will take them to a new site or open their email client.
+ * This plugin adds an user-friendly SEO tab for your user to manage metadata tags
+ * and appearance on Search Engine Results and Social Networks.
  */
 class seoPlugin extends Plugin
 {
-    /**
-     * @var ExternaLinksPlugin
-     */
-
-    /**
-     * Instance of ExternalLinks class
-     *
-     * @var \Grav\Plugin\ExternalLinks
-     */
-    protected $external_links;
 
     /** -------------
      * Public methods
@@ -68,15 +56,10 @@ class seoPlugin extends Plugin
      */
     public function onPluginsInitialized()
     {
-        // Process contents order according to weight option
-        $weight = $this->config->get('plugins.external_links.weight', 0);
 
         // Set default events
         $events = [
-            'onTwigInitialized' => ['onTwigInitialized', 0],
-            'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
             'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
-            'onPageContentProcessed' => ['onPageContentProcessed', $weight]
         ];
 
         // Set admin specific events
@@ -93,7 +76,7 @@ class seoPlugin extends Plugin
     }
 
     /**
-     * Extend page blueprints with ExternalLinks configuration options.
+     * Extend page blueprints with SEO configuration options.
      *
      * @param Event $event
      */
@@ -101,10 +84,6 @@ class seoPlugin extends Plugin
  {
      $newtype = $event['type'];
      if (0 === strpos($newtype, 'modular/')) {
-   // It starts with 'http'
-       // if ($event['type'] != 'modular') {
-
-
         } else {
                     $blueprint = $event['blueprint'];
         if ($blueprint->get('form/fields/tabs', null, '/')) {
@@ -114,121 +93,7 @@ class seoPlugin extends Plugin
         
         }
         }
-        //$this->grav->fireEvent('onBlueprintCreated', new Event(['blueprint' => $blueprint, 'type' => $type]));
-    }
-
-    /**
-     * Apply external links filter to content, when each page has not been
-     * cached yet.
-     *
-     * @param  Event  $event The event when 'onPageContentProcessed' was
-     *                       fired.
-     */
-    public function onPageContentProcessed(Event $event)
-    {
-        /** @var Page $page */
-        $page = $event['page'];
-
-        $config = $this->mergeConfig($page);
-        $enabled = ($config->get('process') && $config->get('enabled')) ? true : false;
-
-        if ($enabled && $this->compileOnce($page)) {
-            // Do nothing, if a route for a given page does not exist and check if
-            // mode option is valid
-            $mode = strtolower($config->get('mode', 'passive'));
-            if (!$page->route() || !in_array($mode, array('active', 'passive'))) {
-                return;
-            }
-
-            // Get content and list of exclude tags
-            $content = $page->getRawContent();
-
-            // Apply external links filter and save modified page content
-          //  $page->setRawContent(
-            //    $this->externalLinksFilter($content, $config->toArray(), $page)
-            //);
-        }
-    }
-
-    /**
-     * Initialize Twig configuration and filters.
-     */
-    public function onTwigInitialized()
-    {
-        // Expose function
-        $this->grav['twig']->twig()->addFilter(
-            new \Twig_SimpleFilter('external_links', [$this, 'externalLinksFilter'], ['is_safe' => ['html']])
-        );
-    }
-
-    /**
-     * Set needed variables to display external links.
-     */
-    public function onTwigSiteVariables()
-    {
-     //   if ($this->config->get('plugins.external_links.built_in_css')) {
-     //       $this->grav['assets']->add('plugin://external_links/assets/css/external_links.css');
-     //   }
-    }
-
-    /**
-     * Filter to parse external links.
-     *
-     * @param  string $content The content to be filtered.
-     * @param  array  $options Array of options for the External links filter.
-     *
-     * @return string          The filtered content.
-     */
-   // public function externalLinksFilter($content, $params = [])
-    //{
-        // Get custom user configuration
-//        $page = func_num_args() > 2 ? func_get_arg(2) : $this->grav['page'];
-  //      $config = $this->mergeConfig($page, true, $params);
-
-        // Render
-    //    return $this->init()->render($content, $config, $page);
-    //}
-
-    /** -------------------------------
-     * Private/protected helper methods
-     * --------------------------------
-     */
-
-    /**
-     * Checks if a page has already been compiled yet.
-     *
-     * @param  Page    $page The page to check
-     * @return boolean       Returns true if page has already been
-     *                       compiled yet, false otherwise
-     */
-    protected function compileOnce(Page $page)
-    {
-        static $processed = [];
-
-        $id = md5($page->path());
-        // Make sure that contents is only processed once
-        if (!isset($processed[$id]) || ($processed[$id] < $page->modified())) {
-            $processed[$id] = $page->modified();
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Initialize plugin and all dependencies.
-     *
-     * @return \Grav\Plugin\ExternalLinks   Returns ExternalLinks instance.
-     */
-    protected function init()
-    {
-        //if (!$this->external_links) {
-            // Initialize ExternalLinks instance
-          //  require_once(__DIR__ . '/classes/ExternalLinks.php');
-            //$this->external_links = new ExternalLinks();
-    //    }
-
-        return $this->external_links;
+        
     }
 
     public function onTwigTemplatePaths()
