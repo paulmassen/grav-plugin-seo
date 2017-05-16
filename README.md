@@ -12,15 +12,18 @@
 ## Todo
 
 - [x] Do not load tab if page is modular
-- [ ] Cleanup seo.php
+- [x] Cleanup seo.php
 - [ ] Clenup doc from external_links plugin from
 
 ## About
 
-`Awesome Seo` is an user-friendly plugin for [GetGrav.org](http://getgrav.org) used to manage all your metatags and customize your pages appearance in Search Engine Results or social networks.
+`Seo` is an user-friendly plugin for [GetGrav.org](http://getgrav.org) used to manage all your metatags and customize your pages appearance in Search Engine Results or social networks.
 
 If you are interested in seeing this plugin in action, here is a demo:
 
+## Features
+
+- 
 
 
 ## Installation and Updates
@@ -33,6 +36,10 @@ Once installed, just include the metadata snippet in your base.html.twig templat
 ```
 {% include 'partials/seo_data.html.twig' %}
 ```
+
+#### GPM Installation
+
+####
 
 Notes:
 
