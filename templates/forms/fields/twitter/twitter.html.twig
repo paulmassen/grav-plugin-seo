@@ -9,14 +9,21 @@
     {% set context = admin.page(true) %}
     <div class="tweetcontainer"><div class="tweet-card"> <div class="tweethead"> <img src="https://pbs.twimg.com/profile_images/842992378960986112/Yd1Z53jW_400x400.jpg" width="50" height="50" class="twitterimg"> <span class="twitterusername">Twitter team <br><span class="twitternick">@twitter</span></span> </div><blockquote class="twitter-tweet"> 
     <p class="twittcontent"> Great website! </p>
-    <div class="SummaryCardContainer"> <div class="SummaryCard"> <img src="{{context.media[context.header.shareimg].url}}" width="100%"> <div class="cardtext">
+    <div class="SummaryCardContainer"> <div class="SummaryCard"> <img id="twittliveimg" src="{{context.media[context.header.shareimg].url}}" width="100%"> <div class="cardtext">
          <h2 class="cardtitle" id="titletwtarget">
          {% if context.header.twittertitle is not empty %}{{ context.header.twittertitle }}{% else %} {% if config.plugins['seo'].site_title %}{{config.plugins['seo'].site_title}}{% else %}{{ site.title }}{% endif %}{% endif %}
         </h2>
         <p style="padding:0px;" id="twittdesc">{% if context.header.twitterdescription %}{{ context.header.twitterdescription}}{% elseif config.plugins['seo'].header.twitterdescription %}{{config.plugins['seo'].header.twitterdescription}}{% else %} No description set in plugin config{% endif %}</p>
         <span class="sitename">{{uri.host|replace({"http://": "","/":" › " }) }}</span>
     </div></div></div></blockquote>
-    <span class="iconcontainer"> <i class="fa fa-reply twittericon"></i> <i class="fa fa-heart twittericon"></i><i class="fa fa-retweet twittericon"></i></span></div></div><style>.tweet-card{min-height:180px;width:31%;min-width:500px}.SummaryCardContainer{border:1px solid #e1e8ed;border-radius:8px;width:95%}blockquote{font-size:17.5px; border-left:0px!important;}.tweet-card{padding:0 0 6px;margin: auto;background:#fff;border:1px solid #e1e8ed;border-radius:5px}.cardtext{padding:1em;font-family:arial}.cardtitle{margin:0 0 .15em;font-size:1em;font-weight:700}.sitename{color:#8899A6}.usertwitt{color:#2b7bb9}.twittcontent{font-family:arial;background-color:#fff;white-space:normal;color:#1c2022;clear:left;margin-top:14px}.twittericon{color:grey;margin-left:15px}.iconcontainer{padding-left:25px}.twitterimg{border-radius:6px;margin-top:19px;margin-left:39px;float:left}.twitterusername{font-weight:700;font-family:arial;padding-top:15px;padding-left:15px;float:left}.twitternick{font-weight:500;color:grey;padding-top:3px}</style><script type="text/javascript">$('#twittertitle').keyup(function(){var keyed = $(this).val();$("#titletwtarget").html(keyed); });$('#twitterdescription').keyup(function(){var keyed = $(this).val();$("#twittdesc").html(keyed); })</script>
+    <span class="iconcontainer"> <i class="fa fa-reply twittericon"></i> <i class="fa fa-heart twittericon"></i><i class="fa fa-retweet twittericon"></i></span></div></div><style>.tweet-card{min-height:180px;width:31%;min-width:500px}.SummaryCardContainer{border:1px solid #e1e8ed;border-radius:8px;width:95%}blockquote{font-size:17.5px; border-left:0px!important;}.tweet-card{padding:0 0 6px;margin: auto;background:#fff;border:1px solid #e1e8ed;border-radius:5px}.cardtext{padding:1em;font-family:arial}.cardtitle{margin:0 0 .15em;font-size:1em;font-weight:700}.sitename{color:#8899A6}.usertwitt{color:#2b7bb9}.twittcontent{font-family:arial;background-color:#fff;white-space:normal;color:#1c2022;clear:left;margin-top:14px}.twittericon{color:grey;margin-left:15px}.iconcontainer{padding-left:25px}.twitterimg{border-radius:6px;margin-top:19px;margin-left:39px;float:left}.twitterusername{font-weight:700;font-family:arial;padding-top:15px;padding-left:15px;float:left}.twitternick{font-weight:500;color:grey;padding-top:3px}</style><script type="text/javascript">$('#twittertitle').keyup(function(){var keyed = $(this).val();$("#titletwtarget").html(keyed); });$('#twitterdescription').keyup(function(){var keyed = $(this).val();$("#twittdesc").html(keyed); });
+    $('#twittimgselect').on('change', function() {
+  var valueselect = this.value ;
+  var newimg = "{{ context.url }}/" + this.value ;
+  $('#twittliveimg').attr("src", newimg);
+})
+
+    </script>
     {% if field.text %}
     {% endif %}
 

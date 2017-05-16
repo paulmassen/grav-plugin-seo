@@ -19,10 +19,10 @@
   </div>
 
   <div class="reference">
-    <img class="reference-thumb" src="{{context.media[context.header.facebookimg].cropZoom(480,300).url}}" />
+    <img class="reference-thumb" id="liveimg" src="{{context.media[context.header.facebookimg].cropZoom(480,300).url}}" />
     <div class="reference-content">
-      <div class="reference-title">{% if context.header.facebooktitle %}{{ context.header.facebooktitle}}{% else %}{{ context.header.title }} | {{ site.title }}{% endif %}</div>
-      <div class="reference-subtitle">{{ context.header.facebookdesc|default(context.header.summary|striptags)|default(config.plugins.seo.header.facebookdesc)}}</div>
+      <div class="reference-title" id="facebooktargtitle">{% if context.header.facebooktitle %}{{ context.header.facebooktitle}}{% else %}{{ context.header.title }} | {{ site.title }}{% endif %}</div>
+      <div class="reference-subtitle" id="facebooktargdesc">{{ context.header.facebookdesc|default(context.header.summary|striptags)|default(config.plugins.seo.header.facebookdesc)}}</div>
       <div class="reference-font">{{uri.host|replace({"http://": "","/":" › " }) }}</div>
     </div>
   </div>
@@ -191,7 +191,14 @@
 .social-buttons span i {
   padding-right:4px;
 }</style>
-<script type="text/javascript">$('#facebooktitle').keyup(function(){var keyed = $(this).val();$("#facebooktargtitle").html(keyed); });$('#facebookdesc').keyup(function(){var keyed = $(this).val();$("#facebooktargdesc").html(keyed);});</script>
+<script type="text/javascript">$('#facebooktitle').keyup(function(){var keyed = $(this).val();$("#facebooktargtitle").html(keyed); });$('#facebookdesc').keyup(function(){var keyed = $(this).val();$("#facebooktargdesc").html(keyed);});
+$('#fbimgselect').on('change', function() {
+  var valueselect = this.value ;
+  var newimg = "{{ context.url }}/" + this.value ;
+  $('#liveimg').attr("src", newimg);
+})
+
+</script>
     {% if field.text %}
     {% endif %}
 

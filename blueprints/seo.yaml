@@ -42,7 +42,7 @@ form:
               fields:
                 googlefields:
                   type: tab
-                  title: google 
+                  title: Google 
                   fields:
                     header.googledesc:
                       type: textarea
@@ -65,16 +65,16 @@ form:
                         column1:
                           type: column
                           fields:
-                            header.twitterenable:
+                            twitter.twitterenable:
                               type: toggle
-                              label: PLUGINS.SEO.TWITTER_ENABLE
-                              default: 1
-                              highlight: 0
+                              label: PLUGIN_ADMIN.ENABLED
+                              highlight: 1
+                              help: PLUGIN_ADMIN.ENABLED_HELP
                               options:
-                                1: PLUGIN_ADMIN.YES
-                                0: PLUGIN_ADMIN.NO
+                                  1: PLUGIN_ADMIN.YES
+                                  0: PLUGIN_ADMIN.NO
                               validate:
-                                type: bool
+                                  type: bool
                             header.twittercardoptions:
                               type: select
                               label: PLUGINS.SEO.TWITTER_CARD_SELECT
@@ -94,6 +94,7 @@ form:
                               type: filepicker
                               label: PLUGINS.SEO.TWITTER_SHAREIMG
                               preview_images: true
+                              id: twittimgselect
                             header.twittertitle:
                               type: text
                               label: PLUGINS.SEO.TWITTER_TITLE
@@ -141,11 +142,15 @@ form:
                             header.facebooktitle:
                               type: text
                               label: PLUGINS.SEO.FACEBOOK_TITLE
+                              id: facebooktitle
+                              
                             header.facebookdesc:
                               type: textarea
                               label: PLUGINS.SEO.FACEBOOK_DESC
+                              id: facebookdesc
                             header.facebookimg:
                               type: filepicker
+                              id: fbimgselect
                               label: PLUGINS.SEO.FACEBOOK_SHAREIMG
                               preview_images: true
                              # .... subfields
