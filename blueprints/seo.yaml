@@ -79,12 +79,12 @@ form:
                               type: select
                               label: PLUGINS.SEO.TWITTER_CARD_SELECT
                               options:
-                                gallery: PLUGINS.SEO.TWITTER_CARD_GALLERY
-                                photo: PLUGINS.SEO.TWITTER_CARD_PHOTO
-                                product: PLUGINS.SEO.TWITTER_CARD_PRODUCT
+                               #gallery: PLUGINS.SEO.TWITTER_CARD_GALLERY
+                               #photo: PLUGINS.SEO.TWITTER_CARD_PHOTO
+                              # product: PLUGINS.SEO.TWITTER_CARD_PRODUCT
                                 summary: PLUGINS.SEO.TWITTER_CARD_SUMMARY
-                                player: PLUGINS.SEO.TWITTER_CARD_PLAYER
-                                app: PLUGINS.SEO.TWITTER_CARD_APP
+                              # player: PLUGINS.SEO.TWITTER_CARD_PLAYER
+                              # app: PLUGINS.SEO.TWITTER_CARD_APP
                                 summary_large_image: PLUGINS.SEO.TWITTER_CARD_SUMLARGIMG
                             header.titlecardtwitter:
                               type: section

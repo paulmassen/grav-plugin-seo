@@ -1,12 +1,12 @@
 <meta charset="utf-8">
-{% spaceless %}
+
 {% set settings = config.plugins.seo.header %}
 
 {% if page.header.googletitle or settings.googletitle %}
 <title>{% if page.header.googletitle %}{{ page.header.googletitle}}{% else %}{{ page.header.title }} | {{ site.title }}{% endif %}</title>
 {% endif %}
 
-<meta name="description" content="{{ page.header.googledesc|default(setting.googledesc)|default(page.summary|striptags)|default(site.description) }}">
+<meta name="description" content="{{ page.header.googledesc|default(settings.googledesc)|default(site.description) }}">
 {% if settings.robots or page.header.robots is defined %}
 <meta name="robots" content="{{ page.header.robots|default(settings.robots)|default('index') }}">
 {% endif %}
@@ -36,7 +36,6 @@
 {% else %}
 <meta property="og:image" content="{{page.media.images|first.url(true)}}" />
 {% endif %}
-<meta property="og:description" content="{{ page.header.facebookdesc|default(settings.facebookdesc)|default(page.summary|striptags)|default(site.description) }}" />
+<meta property="og:description" content="{{ page.header.facebookdesc|default(settings.facebookdesc)|default(site.description) }}" />
 {% endif %}
 
-{% endspaceless %}
