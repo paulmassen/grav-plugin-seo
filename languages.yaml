@@ -1,20 +1,61 @@
 # en
-fr:
+en:
   PLUGINS:
-    AWESOME_SEO:
+    SEO:
       ROBOTS: "Select robots meta value"
-      PLUGIN_STATUS: "Statut du plugin"
+      CANONICAL_URL: "Canonical URL"
+      PLUGIN_STATUS: "Plugin status"
       STATUS_HELP: "Set to false to disable this plugin completely."
+      GOOGLE_DESC: "Add Google Description"
+      GOOGLE_TITLE: "Set google title"
+      GOOGLE_PREVIEWDESC: "Here is a preview of your page on Google results"
+      TWITTER_ENABLE: "Activate twitter card"
+      TWITTER_CARD_SELECT: "Select twitter card type"
+      TWITTER_CARD_GALLERY: "Select "
+      TWITTER_CARD_PHOTO: "Photo"
+      TWITTER_CARD_PRODUCT: "Product"
+      TWITTER_CARD_SUMMARY: "Summary"
+      TWITTER_CARD_PLAYER: "Player"
+      TWITTER_CARD_APP: "App"
+      TWITTER_CARD_SUMLARGIMG: "Summary Large Image"
+      TWITTER_CARD_SECTITLE: "Twitter Card"
+      TWITTER_SHAREIMG: "Twitter Image"
+      TWITTER_TITLE: "Twitter title"
+      TWITTER_DESCRIPTION: "Twitter Description"
+      TWITTER_PREVIEWDESC: "Here is a preview of your page as shared on twitter"
+      FACEBOOK_ENABLE: "Enable facebook"
+      FACEBOOK_TITLE: "Facebook Title"
+      FACEBOOK_DESC: "Facebook Description"
+      FACEBOOK_SHAREIMG: "Facebook Share Image"
+      FACEBOOK_PREVIEWDESC: "Here is a preview of your page as shared on Facebook"
 
-# French
-fr:
-  PLUGINS:
-    AWESOME_SEO:
-      ROBOTS: "Sélectionner la base Meta robots"
-      PLUGIN_STATUS: "Statut du plugin"
-      STATUS_HELP: "Set to false to disable this plugin completely."
-
-# Russian
-ru:
-  PLUGINS:
-    AWESOME_SEO:
+# en
+#fr:
+#  PLUGINS:
+#    SEO:
+#      ROBOTS: ""
+#      CANONICAL_URL: ""
+#      PLUGIN_STATUS: "Statut du plugin"
+#      STATUS_HELP: "Set to false to disable this plugin completely."
+#      GOOGLE_DESC: ""
+#      GOOGLE_TITLE: ""
+#      GOOGLE_PREVIEWDESC: ""
+#      TWITTER_ENABLE: ""
+#      TWITTER_CARD_SELECT: ""
+#      TWITTER_CARD_GALLERY: ""
+#      TWITTER_CARD_PHOTO: ""
+#      TWITTER_CARD_PRODUCT: ""
+#      TWITTER_CARD_SUMMARY: ""
+#      TWITTER_CARD_PLAYER: ""
+#      TWITTER_CARD_APP: ""
+#      TWITTER_CARD_SUMLARGIMG: ""
+#      TWITTER_CARD_SECTITLE: ""
+#      TWITTER_SHAREIMG: ""
+#      TWITTER_TITLE: ""
+#      TWITTER_DESCRIPTION: ""
+#      TWITTER_PREVIEWDESC: ""
+#      FACEBOOK_ENABLE: ""
+#      FACEBOOK_TITLE: ""
+#      FACEBOOK_DESC: ""
+#      FACEBOOK_SHAREIMG: ""
+#      FACEBOOK_PREVIEWDESC: ""
