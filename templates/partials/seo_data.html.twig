@@ -3,17 +3,17 @@
 {% set settings = config.plugins.seo.header %}
 
 {% if page.header.googletitle or settings.googletitle %}
-<title>{% if page.header.googletitle %}{{ page.header.googletitle}}{% else %}{{ page.header.title }} | {{ site.title }}{% endif %}</title>
+<title>{{ page.header.googletitle|default(page.header.googletitle)|default(page.header.title |  site.title )}}</title>
 {% endif %}
 
 <meta name="description" content="{{ page.header.googledesc|default(settings.googledesc)|default(site.description) }}">
-{% if settings.robots or page.header.robots is defined %}
+{# if settings.robots or page.header.robots is defined %}
 <meta name="robots" content="{{ page.header.robots|default(settings.robots)|default('index') }}">
-{% endif %}
+{% endif #}
 
 {#<meta name="author" content="">#}
 {# twitter #}
-{% if settings.twitterenable == "1" or page.header.twitterenable == "1" %}
+{% if settings.twitterenable == "1" and page.header.twitterenable != "0" %}
     <meta name="twitter:card" content="{{ page.header.twittercardoptions|default(settings.twittercardoptions)|default('summary') }}" />
     {% if settings.twitterid %}
     <meta name="twitter:site" content="{{ settings.twitterid }}" />
@@ -28,7 +28,7 @@
         {% endif %}
     {% endif %}
 {% endif %}
-{% if settings.facebookenable == "1" or page.header.facebookenable == "1" %}
+{% if settings.facebookenable == "1" and page.header.facebookenable != "0" %}
 <meta property="og:title" content="{{ page.header.facebooktitle|default(settings.facebooktitle)|default(site.title) }}" />
 <meta property="og:url" content="{{ page.url(true) }}" />
 {% if page.header.facebookimg %}
