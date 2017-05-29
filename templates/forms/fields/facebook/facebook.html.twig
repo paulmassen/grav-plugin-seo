@@ -19,10 +19,10 @@
   </div>
 
   <div class="reference">
-    <img class="reference-thumb" id="liveimg" src="{{context.media[context.header.facebookimg].cropZoom(480,300).url}}" />
+    <img class="reference-thumb" id="liveimg" src="{{context.media[context.header.facebookimg].cropZoom(480,300).url|default(context.media.images|first.url)}}" />
     <div class="reference-content">
-      <div class="reference-title" id="facebooktargtitle">{% if context.header.facebooktitle %}{{ context.header.facebooktitle}}{% else %}{{ context.header.title }} | {{ site.title }}{% endif %}</div>
-      <div class="reference-subtitle" id="facebooktargdesc">{{ context.header.facebookdesc|default(context.header.summary|striptags)|default(config.plugins.seo.header.facebookdesc)}}</div>
+      <div class="reference-title" id="facebooktargtitle">{{ context.header.facebooktitle|default(context.header.title ~ " | " ~ site.title )}}</div>
+      <div class="reference-subtitle" id="facebooktargdesc">{{ context.header.facebookdesc|default(context.summary|striptags) }}</div>
       <div class="reference-font">{{uri.host|replace({"http://": "","/":" › " }) }}</div>
     </div>
   </div>
@@ -34,6 +34,7 @@
       <span><i class="fa fa-share"></i>Share</span></div>
   </div>
 </div>
+<div id="fbcount" style="text-align:center"></div>
 <style>*, *:before, *:after {
     -webkit-box-sizing: border-box;
        -moz-box-sizing: border-box;
@@ -191,7 +192,13 @@
 .social-buttons span i {
   padding-right:4px;
 }</style>
-<script type="text/javascript">$('#facebooktitle').keyup(function(){var keyed = $(this).val();$("#facebooktargtitle").html(keyed); });$('#facebookdesc').keyup(function(){var keyed = $(this).val();$("#facebooktargdesc").html(keyed);});
+<script type="text/javascript">
+$('#facebooktitle').keyup(function(){
+  var keyed = $(this).val();$("#facebooktargtitle").html(keyed); 
+  
+});$('#facebookdesc').keyup(function(){var keyed = $(this).val();$("#facebooktargdesc").html(keyed);
+   $("#fbcount").text("Characters left: " + (300 - $(this).val().length));
+});
 $('#fbimgselect').on('change', function() {
   var valueselect = this.value ;
   var newimg = "{{ context.url }}/" + this.value ;

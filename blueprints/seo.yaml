@@ -44,14 +44,14 @@ form:
                   type: tab
                   title: Google 
                   fields:
-                    header.googledesc:
-                      type: textarea
-                      label: PLUGINS.SEO.GOOGLE_DESC
-                      id: desc
                     header.googletitle:
                       type: text
                       label: PLUGINS.SEO.GOOGLE_TITLE
                       id: text
+                    header.googledesc:
+                      type: textarea
+                      label: PLUGINS.SEO.GOOGLE_DESC
+                      id: desc
                     header.googlepreview:
                       type: google
                       label: PLUGINS.SEO.GOOGLE_PREVIEWDESC
@@ -68,6 +68,7 @@ form:
                             twitter.twitterenable:
                               type: toggle
                               label: PLUGIN_ADMIN.ENABLED
+                              default: 1
                               highlight: 1
                               help: PLUGIN_ADMIN.ENABLED_HELP
                               options:
@@ -132,7 +133,7 @@ form:
                               type: toggle
                               label: PLUGINS.SEO.FACEBOOK_ENABLE
                               default: 1
-                              highlight: 0
+                              highlight: 1
                               options:
                                 1: PLUGIN_ADMIN.YES
                                 0: PLUGIN_ADMIN.NO
@@ -148,6 +149,7 @@ form:
                               type: textarea
                               label: PLUGINS.SEO.FACEBOOK_DESC
                               id: facebookdesc
+                              placeholder: 'Max 300 character'
                             header.facebookimg:
                               type: filepicker
                               id: fbimgselect

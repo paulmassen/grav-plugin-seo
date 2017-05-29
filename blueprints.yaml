@@ -12,154 +12,20 @@ bugs: "https://github.com/paulmassen/grav-plugin-seo/issues"
 license: "MIT/GPL"
 
 form:
+  validation: strict
   fields:
-    tabs:
-      type: tabs
-      active: 1
+    enabled:
+      type: toggle
+      label: PLUGIN_ADMIN.PLUGIN_STATUS
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    twitterid:
+      type: text
+      label: Twitter ID
+      placeholder: '@yourusername'
 
-      fields:
-        seo:
-          type: tab
-          title: SEO
-
-          fields:
-#            header.robots:
-#              type: selectize
-#              label: PLUGINS.SEO.ROBOTS
-#              multiple: true
-#              options:
-#                index: index
-#                noindex: noindex
-#                noimageindex: noimageindex
-#                none: none
-#                follow: follow
-#                nofollow: nofollow
-#                noarchive: noarchive
-#                nocache: nocache
-#                nosnippet: nosnippet
-#                noodp: noodp
-#                noydir: noydir
-#            header.canonical:
-#              type: text
-#              label: PLUGINS.SEO.CANONICAL_URL
-
-            tabs1:
-              type: tabs
-              active: 1
-              title: Settings
-              fields:
-                googlefields:
-                  type: tab
-                  title: Google 
-                  fields:
-                    header.googledesc:
-                      type: textarea
-                      label: PLUGINS.SEO.GOOGLE_DESC
-                      id: desc
-                    header.googletitle:
-                      type: text
-                      label: PLUGINS.SEO.GOOGLE_TITLE
-                      id: text
-                    header.googlepreview:
-                      type: google
-                      label: PLUGINS.SEO.GOOGLE_PREVIEWDESC
-                twitterfields:
-                  type: tab
-                  title: Twitter 
-                  fields:
-                    columns:
-                      type: columns
-                      fields:
-                        column1:
-                          type: column
-                          fields:
-                            twitter.twitterenable:
-                              type: toggle
-                              label: PLUGIN_ADMIN.ENABLED
-                              highlight: 1
-                              default: 1
-                              help: PLUGIN_ADMIN.ENABLED_HELP
-                              options:
-                                  1: PLUGIN_ADMIN.YES
-                                  0: PLUGIN_ADMIN.NO
-                              validate:
-                                  type: bool
-                            header.twittercardoptions:
-                              type: select
-                              label: PLUGINS.SEO.TWITTER_CARD_SELECT
-                              options:
-                               #gallery: PLUGINS.SEO.TWITTER_CARD_GALLERY
-                               #photo: PLUGINS.SEO.TWITTER_CARD_PHOTO
-                              # product: PLUGINS.SEO.TWITTER_CARD_PRODUCT
-                                summary: PLUGINS.SEO.TWITTER_CARD_SUMMARY
-                              # player: PLUGINS.SEO.TWITTER_CARD_PLAYER
-                              # app: PLUGINS.SEO.TWITTER_CARD_APP
-                                summary_large_image: PLUGINS.SEO.TWITTER_CARD_SUMLARGIMG
-                            header.titlecardtwitter:
-                              type: section
-                              title: PLUGINS.SEO.TWITTER_CARD_SECTITLE
-                              underline: true
-                              id: twittimgselect
-                            header.twittertitle:
-                              type: text
-                              label: PLUGINS.SEO.TWITTER_TITLE
-                              id: twittertitle
-                            header.twitterdescription:
-                              type: textarea
-                              text: PLUGINS.SEO.TWITTER_DESCRIPTION
-                              id: twitterdescription
-
-                            # .... subfields
-                    
-                        column2:
-                          type: column
-                          fields:
-                            header.twitterlabel:
-                              type: section
-                              text: PLUGINS.SEO.TWITTER_PREVIEWDESC
-                    
-                            header.twitterpreview:
-                              type: twitter
-                            # .... other subfields
-                    
-                    
-                facebookfields:
-                  type: tab
-                  title: Facebook 
-                  fields:
-                    columns2:
-                      type: columns
-                      fields:
-                        column3:
-                          type: column
-                          fields:
-                            header.facebookenable:
-                              type: toggle
-                              label: PLUGINS.SEO.FACEBOOK_ENABLE
-                              default: 1
-                              highlight: 0
-                              options:
-                                1: PLUGIN_ADMIN.YES
-                                0: PLUGIN_ADMIN.NO
-                              validate:
-                                type: bool
-                             
-                            header.facebooktitle:
-                              type: text
-                              label: PLUGINS.SEO.FACEBOOK_TITLE
-                              id: facebooktitle
-                              
-                            header.facebookdesc:
-                              type: textarea
-                              label: PLUGINS.SEO.FACEBOOK_DESC
-                              id: facebookdesc
-
-                             # .... subfields
-                        column4:
-                          type: column
-                          fields:
-
-                                # .... subfields
-                            header.facebookpreview:
-                              type: facebook
-                              label: PLUGINS.SEO.FACEBOOK_PREVIEWDESC

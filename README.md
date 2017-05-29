@@ -9,50 +9,45 @@
 * [Contributing](#contributing)
 * [License](#license)
 
-## Todo
-
-- [x] Do not load tab if page is modular
-- [x] Cleanup seo.php
-- [x] Clenup doc from external_links plugin from
 
 ## About
 
 `Seo` is an user-friendly plugin for [GetGrav.org](http://getgrav.org) used to manage all your metatags and customize your pages appearance in Search Engine Results or social networks.
 
-If you are interested in seeing this plugin in action, here is a demo:
+This plugins add a SEO tab, where you or your end user can customize these settings. The plugins also has an user-friendly live-update preview functionality as shown below:
+
 
 ## Features
 
-- 
+As for now, you can customize how your website will look:
+- On Google Search Results
+- When shared on Twitter
+- When shared on Facebook and Google +
 
 
 ## Installation and Updates
 
-Installing or updating the `Awesome SEO` plugin can be done in one of three ways. Using the GPM (Grav Package Manager) installation update method (i.e. `bin/gpm install awesome_seo`) or manual install by downloading [this plugin](https://github.com/paulmassen/grav_seo_plugin) and extracting all plugin files to
+Installing or updating the `SEO` plugin can be done in one of three ways. Using the GPM (Grav Package Manager) installation update method (i.e. `bin/gpm install seo`) or manual install by downloading [this plugin](https://github.com/paulmassen/grav-plugin-seo) and extracting all plugin files to
 
     /your/site/grav/user/plugins/seo
 
-Once installed, just include the metadata snippet in your base.html.twig template, between <head> and </head> as below:
+Once installed, the first step is to include the metadata snippet in your base.html.twig template, between <head> and </head> as below:
+The if condition is here in order to not throw an error if the plugin is deactivated.
 ```
+{% if config.plugins.seo.enabled %}
 {% include 'partials/seo_data.html.twig' %}
+{% endif %}
 ```
 
-#### GPM Installation
+Step 2: If you use a Grav Theme or Skeleton, make sure to remove the `<title></title>` tags as well as the meta description tag that comes with most of them inside base.html.twig, as the plugin takes care of rendering it.
 
-####
+Step 3: If you plan on using the Twitter sharing settings, make sure to fill your user ID in tab Plugins > SEO > Twitter ID
 
-Notes:
-
-As the plugin takes care of generating the title tag and the description tag, make sure those are removed from your base template.
 
 ## Usage
 
-The `Awesome Seo` plugin allows you to set site-wide default value and customize it on a per-page basis. 
-Site-wide settings are set in the plugin configuration and are overridden when set on a page.
-
-### Config Defaults
-
-
+The `SEO` plugin appends a SEO tab on every pages where you can manage and define how your website will look on search engine results and on social networks. 
+Plugins sets some default values when fields are not filled.
 
 ## Contributing
 
@@ -63,8 +58,6 @@ After that please note:
 * If you find a bug, would like to make a feature request or suggest an improvement, [please open a new issue][issues]. If you have any interesting ideas for additions to the syntax please do suggest them as well!
 * Feature requests are more likely to get attention if you include a clearly described use case.
 
-
-### Support and donations
 
 
 ## License
