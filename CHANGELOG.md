@@ -1,3 +1,11 @@
+# v0.9.2
+## 06/01/2017
+
+1. [](#new)
+    * New feature: Microdata generation
+2. [](#bugfix)
+    * Fix Page title not rendered correctly
+
 # v0.9.1
 ## 06/01/2017
 

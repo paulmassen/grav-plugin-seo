@@ -1,4 +1,4 @@
-# ![Grav SEO Plugin](https://github.com/paulmassen/grav_seo_plugin/blob/develop/gravlogo3.png?raw=true)
+# ![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/develop/gravlogo3.png?raw=true)
 
 
 ##### Table of Contents:
@@ -16,7 +16,7 @@
 
 This plugins add a SEO tab, where you or your end user can customize these settings. The plugins also has an user-friendly live-update preview functionality as shown below:
 
-![Grav SEO Plugin](https://github.com/paulmassen/grav_seo_plugin/blob/develop/demoseoplugin.gif?raw=true)
+![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/develop/demoseoplugin.gif?raw=true)
 
 ## Features
 
@@ -24,6 +24,8 @@ As for now, you can customize how your website will look:
 - On Google Search Results
 - When shared on Twitter
 - When shared on Facebook and Google +
+
+You can also generate Schema.org JSON Microdata from the admin.
 
 
 ## Installation and Updates
