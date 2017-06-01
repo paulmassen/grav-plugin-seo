@@ -39,8 +39,8 @@
 
 
 {% if header.articleenabled %}
-{% set fullimagepath = base_url_absolute ~ page.url ~ header.article.image.url %}
-{% set fulllogopath = base_url_absolute ~ page.url ~ header.article.publisher.logo.url %}
+{% set fullimagepath = base_url_absolute ~ page.url ~ header.article.image %}
+{% set fulllogopath = base_url_absolute ~ page.url ~ header.article.publisher.logo %}
 {% set article = header.article|merge({'image' : {
     'url': fullimagepath,
     '@type': 'ImageObject',
@@ -61,6 +61,20 @@
 {% if header.eventenabled %}
 <script  type="application/ld+json">
 {{ header.event|json_encode(constant('JSON_PRETTY_PRINT') b-or constant('JSON_UNESCAPED_SLASHES'))|raw }}
+</script>
+{% endif %}
+{% if header.musicalbumenabled %}
+{% set fullalbumimgpath = base_url_absolute ~ page.url ~ header.musicalbum.image %}
+{% set musicalbum = header.musicalbum|merge({'image' : fullalbumimgpath }) %}
+<script  type="application/ld+json">
+{{ musicalbum|json_encode(constant('JSON_PRETTY_PRINT') b-or constant('JSON_UNESCAPED_SLASHES'))|raw }}
+</script>
+{% endif %}
+{% if header.restaurantenabled %}
+{% set fullrestaurantimgpath = base_url_absolute ~ page.url ~ header.restaurant.image %}
+{% set restaurant = header.restaurant|merge({'image' : fullrestaurantimgpath }) %}
+<script  type="application/ld+json">
+{{ restaurant|json_encode(constant('JSON_PRETTY_PRINT') b-or constant('JSON_UNESCAPED_SLASHES'))|raw }}
 </script>
 {% endif %}
 

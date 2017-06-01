@@ -142,68 +142,71 @@ form:
                                 type: text
                                 label: Headline
                                 disabled: false
-                                classes: togglearticle
+                                field_classes: togglearticle
                               header.article.datePublished:
                                 type: date
                                 label: Article Description
                                 disabled: false
-                                classes: togglearticle
+                                field_classes: togglearticle
                               header.article.description:
                                 type: date
                                 label: Date published
                                 disabled: false
-                                classes: togglearticle
+                                field_classes: togglearticle
                               header.article.image.@type:
                                 type: hidden
                                 default: ImageObject
                                 disabled: false
-                                classes: togglearticle
+                                field_classes: togglearticle
                               header.article.image.url:
                                 type: filepicker
                                 label: Image
+                                preview_images: true
                                 disabled: false
-                                classes: togglearticle
+                                field_classes: togglearticle
                               header.article.image.height:
                                 type: text
                                 label: Image Height (px)
                                 disabled: false
-                                classes: togglearticle
+                                field_classes: togglearticle
                               header.article.image.width:
                                 type: text
                                 label: Image Width (px)
                                 disabled: false
-                                classes: togglearticle
+                                field_classes: togglearticle
                               header.article.author:
                                 type: text
                                 label: Article Author
                                 disabled: false
-                                classes: togglearticle
+                                field_classes: togglearticle
                               header.article.publisher.@type:
                                 type: hidden
                                 label: Article Publisher
                                 default: Organization
                                 disabled: false
-                                classes: togglearticle
+                                field_classes: togglearticle
                               header.article.publisher.logo.@type:
                                 type: hidden
                                 default: ImageObject
                                 disabled: false
-                                classes: togglearticle
+                                field_classes: togglearticle
                               header.article.publisher.logo.url:
                                 type: filepicker
                                 label: Publisher logo
                                 disabled: false
-                                classes: togglearticle
+                                preview_images: true
+                                field_classes: togglearticle
                               header.article.publisher.name:
                                 type: text
                                 label: Publisher Name
                                 disabled: false
-                                classes: togglearticle
+                                field_classes: togglearticle
                               header.article.articleBody:
                                 type: textarea
                                 label: Full Article Body
                                 disabled: false
-                                classes: togglearticle
+                                field_classes: togglearticle
+                                
                           column5:
                             type: column
                             fields:
@@ -225,18 +228,22 @@ form:
                               header.person.name:
                                 type: text
                                 label: Name
+                                field_classes: toggleperson
                               header.person.jobTitle:
                                 type: text
                                 label: Job Title
+                                field_classes: toggleperson
                               header.person.address.@type:
                                 type: hidden
                                 default: PostalAddress
                               header.person.address.addressLocality:
                                 type: text
                                 label: Address Locality
+                                field_classes: toggleperson
                               header.person.address.addressRegion:
                                 type: text
                                 label: Address Region
+                                field_classes: toggleperson
                               header.eventenabled:
                                 type: toggle
                                 label: Add Event Microdata
@@ -255,30 +262,174 @@ form:
                               header.event.name:
                                 type: text
                                 label: Event Name
+                                field_classes: toggleevent
                               header.event.description:
                                 type: text
                                 label: Event Description
+                                field_classes: toggleevent
                               header.event.startDate:
                                 type: date
                                 label: Event start date
+                                field_classes: toggleevent
                               header.event.endDate:
                                 type: date
                                 label: Event end date
+                                field_classes: toggleevent
                               header.event.location.@type:
                                 type: hidden
                                 default: Place
+                                field_classes: toggleevent
                               header.event.location.name:
                                 type: text
                                 label: Location Name
+                                field_classes: toggleevent
                               header.event.location.address.streetAddress:
                                 type: text
                                 label: Location Street address
+                                field_classes: toggleevent
                               header.event.location.address.addressLocality:
                                 type: text
                                 label: Address Locality
+                                field_classes: toggleevent
                               header.event.location.address.addressRegion:
                                 type: text
                                 label: Address Region
+                                field_classes: toggleevent
+                              header.musicalbumenabled:
+                                type: toggle
+                                label: Add Music Album Microdata
+                                default: 0
+                                options:
+                                    1: PLUGIN_ADMIN.YES
+                                    0: PLUGIN_ADMIN.NO
+                                validate:
+                                    type: bool
+                              header.musicalbum.@context:
+                                type: hidden    
+                                default: http://schema.org/
+                                field_classes: togglemusicalbum
+                              header.musicalbum.@type:
+                                type: hidden    
+                                default: MusicAlbum
+                              header.musicalbum.name:
+                                type: text
+                                label: Album Name
+                                field_classes: togglemusicalbum
+                              header.musicalbum.byArtist.@type:
+                                type: hidden    
+                                default: MusicGroup
+                              header.musicalbum.byArtist.name:
+                                type: text
+                                label: Name of band
+                                field_classes: togglemusicalbum
+                              header.musicalbum.image:
+                                type: filepicker
+                                label: album image
+                                field_classes: togglemusicalbum
+                              header.musicalbum.url:
+                                type: text
+                                label: Music Album url
+                                field_classes: togglemusicalbum
+                              header.musicalbum.genre: 
+                                type: text
+                                label: Music Abum Genre
+                                field_classes: togglemusicalbum
+                              header.musicalbum.numtracks:
+                                type: text
+                                label: Number of tracks
+                                field_classes: togglemusicalbum
+                              header.musicalbum.track:
+                                type: list   
+                                field_classes: togglemusicalbum
+                                default:
+                                fields:
+                                  .@type:
+                                    type: hidden
+                                    default: MusicRecording
+                                  .position:
+                                    type: text
+                                    label: track position
+                                  .name:
+                                    type: text
+                                    label: Name
+                                  .url:
+                                    type: text
+                                    label: Track url
+                                  .duration:
+                                    type: text
+                                    label: Track duration
+                              header.restaurantenabled:
+                                type: toggle
+                                label: Add Restaurant Microdata
+                                default: 0
+                                options:
+                                    1: PLUGIN_ADMIN.YES
+                                    0: PLUGIN_ADMIN.NO
+                                validate:
+                                    type: bool      
+                              header.restaurant.@context:
+                                type: hidden
+                                default: http://schema.org/
+                              header.restaurant.@type:
+                                type: hidden
+                                default: Restaurant
+                              header.restaurant.name:
+                                type: text
+                                label: Restaurant Name
+                                field_classes: togglerestaurant
+                              header.restaurant.acceptsReservations:
+                                type: select
+                                label: Accept Reservation
+                                field_classes: togglerestaurant
+                                options:
+                                  yes: yes
+                                  no: no
+                              header.restaurant.menu:
+                                type: text
+                                label: menu url
+                                field_classes: togglerestaurant
+                              header.restaurant.image:
+                                type: filepicker
+                                label: Restaurant Image
+                                preview_images: true
+                              header.restaurant.servesCuisine:
+                                placeholder: seafood
+                                type: text
+                                label: Cuisine
+                                field_classes: togglerestaurant
+                              header.restaurant.priceRange:
+                                type: select
+                                label: Price Range
+                                field_classes: togglerestaurant
+                                options:
+                                  $: $
+                                  $$: $$
+                                  $$$: $$$
+                              header.restaurant.address.@type:
+                                type: hidden
+                                default: PostalAddress
+                              header.restaurant.address.streetAddress:
+                                type: text
+                                label: Street Address
+                                field_classes: togglerestaurant
+                              header.restaurant.address.addressLocality:
+                                type: text
+                                label: Address Locality
+                                field_classes: togglerestaurant
+                              header.restaurant.address.addressRegion:
+                                type: text
+                                label: Address Region
+                                field_classes: togglerestaurant
+                              header.restaurant.address.postalCode:
+                                type: text
+                                label: Postal Code
+                                field_classes: togglerestaurant
+                              header.restaurant.telephone:
+                                type: text
+                                label: Telephone
+                                field_classes: togglerestaurant
+                              header.scripttoggle:
+                                type: schema
                 facebookfields:
                   type: tab
                   title: Facebook 
@@ -316,6 +467,7 @@ form:
                               label: PLUGINS.SEO.FACEBOOK_SHAREIMG
                               preview_images: true
                              # .... subfields
+                            
                         column4:
                           type: column
                           fields:
