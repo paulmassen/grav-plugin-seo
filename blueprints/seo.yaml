@@ -117,159 +117,168 @@ form:
                   type: tab
                   title: Microdata
                   fields:
-                    header.articleenabled:
-                      type: toggle
-                      label: add Article Microdata
-                      default: 0
-                      options:
-                          1: PLUGIN_ADMIN.YES
-                          0: PLUGIN_ADMIN.NO
-                      validate:
-                          type: bool
-                    header.article.@context:
-                      type: hidden
-                      default: 'http://schema.org/'
-                    header.article.@type:
-                      type: hidden
-                      default: 'NewsArticle'
-                    header.article.headline:
-                      type: text
-                      label: Headline
-                      disabled: true
-                      classes: togglearticle
-                    header.article.datePublished:
-                      type: date
-                      label: Article Description
-                      disabled: true
-                      classes: togglearticle
-                    header.article.description:
-                      type: date
-                      label: Date published
-                      disabled: true
-                      classes: togglearticle
-                    header.article.image.@type:
-                      type: hidden
-                      default: ImageObject
-                      disabled: true
-                      classes: togglearticle
-                    header.article.image.url:
-                      type: filepicker
-                      label: Image
-                      disabled: true
-                      classes: togglearticle
-                    header.article.image.height:
-                      type: text
-                      label: Image Height (px)
-                      disabled: true
-                      classes: togglearticle
-                    header.article.image.width:
-                      type: text
-                      label: Image Width (px)
-                      disabled: true
-                      classes: togglearticle
-                    header.article.author:
-                      type: text
-                      label: Article Author
-                      disabled: true
-                      classes: togglearticle
-                    header.article.publisher.@type:
-                      type: hidden
-                      label: Article Publisher
-                      default: Organization
-                      disabled: true
-                      classes: togglearticle
-                    header.article.publisher.logo.@type:
-                      type: hidden
-                      default: ImageObject
-                      disabled: true
-                      classes: togglearticle
-                    header.article.publisher.logo.url:
-                      type: filepicker
-                      label: Publisher logo
-                      disabled: true
-                      classes: togglearticle
-                    header.article.publisher.name:
-                      type: text
-                      label: Publisher Name
-                      disabled: true
-                      classes: togglearticle
-                    header.article.articleBody:
-                      type: textarea
-                      label: Full Article Body
-                      disabled: true
-                      classes: togglearticle
-                    header.personenabled:
-                      type: toggle
-                      label: Add person microdata
-                      default: 0
-                      options:
-                          1: PLUGIN_ADMIN.YES
-                          0: PLUGIN_ADMIN.NO
-                      validate:
-                          type: bool
-                    header.person.@context:
-                      type: hidden
-                      default: 'http://schema.org/'
-                    header.person.@type:
-                      type: hidden
-                      default: person
-                    header.person.name:
-                      type: text
-                      label: Name
-                    header.person.jobTitle:
-                      type: text
-                      label: Job Title
-                    header.person.address.@type:
-                      type: hidden
-                      default: PostalAddress
-                    header.person.address.addressLocality:
-                      type: text
-                      label: Address Locality
-                    header.person.address.addressRegion:
-                      type: text
-                      label: Address Region
-                    header.eventenabled:
-                      type: toggle
-                      label: Add Event Microdata
-                      default: 0
-                      options:
-                          1: PLUGIN_ADMIN.YES
-                          0: PLUGIN_ADMIN.NO
-                      validate:
-                          type: bool
-                    header.event.@context:
-                      type: hidden
-                      default: http://schema.org/
-                    header.event.@type:
-                      type: hidden
-                      default: Event
-                    header.event.name:
-                      type: text
-                      label: Event Name
-                    header.event.description:
-                      type: text
-                      label: Event Description
-                    header.event.startDate:
-                      type: date
-                      label: Event start date
-                    header.event.endDate:
-                      type: date
-                      label: Event end date
-                    header.event.location.@type:
-                      type: hidden
-                      default: Place
-                    header.event.location.name:
-                      type: text
-                      label: Location Name
-                    header.event.location.address.streetAddress:
-                      type: text
-                      label: Location Street address
-                    header.event.location.address.addressLocality:
-                      type: text
-                      label: Address Locality
-                    header.event.location.address.addressRegion:
-                      type: text
-                      label: Address Region
+                    columns:
+                        type: columns
+                        fields:
+                          column4:
+                            type: column
+                            fields:
+                              header.articleenabled:
+                                type: toggle
+                                label: add Article Microdata
+                                default: 0
+                                options:
+                                    1: PLUGIN_ADMIN.YES
+                                    0: PLUGIN_ADMIN.NO
+                                validate:
+                                    type: bool
+                              header.article.@context:
+                                type: hidden
+                                default: 'http://schema.org/'
+                              header.article.@type:
+                                type: hidden
+                                default: 'NewsArticle'
+                              header.article.headline:
+                                type: text
+                                label: Headline
+                                disabled: false
+                                classes: togglearticle
+                              header.article.datePublished:
+                                type: date
+                                label: Article Description
+                                disabled: false
+                                classes: togglearticle
+                              header.article.description:
+                                type: date
+                                label: Date published
+                                disabled: false
+                                classes: togglearticle
+                              header.article.image.@type:
+                                type: hidden
+                                default: ImageObject
+                                disabled: false
+                                classes: togglearticle
+                              header.article.image.url:
+                                type: filepicker
+                                label: Image
+                                disabled: false
+                                classes: togglearticle
+                              header.article.image.height:
+                                type: text
+                                label: Image Height (px)
+                                disabled: false
+                                classes: togglearticle
+                              header.article.image.width:
+                                type: text
+                                label: Image Width (px)
+                                disabled: false
+                                classes: togglearticle
+                              header.article.author:
+                                type: text
+                                label: Article Author
+                                disabled: false
+                                classes: togglearticle
+                              header.article.publisher.@type:
+                                type: hidden
+                                label: Article Publisher
+                                default: Organization
+                                disabled: false
+                                classes: togglearticle
+                              header.article.publisher.logo.@type:
+                                type: hidden
+                                default: ImageObject
+                                disabled: false
+                                classes: togglearticle
+                              header.article.publisher.logo.url:
+                                type: filepicker
+                                label: Publisher logo
+                                disabled: false
+                                classes: togglearticle
+                              header.article.publisher.name:
+                                type: text
+                                label: Publisher Name
+                                disabled: false
+                                classes: togglearticle
+                              header.article.articleBody:
+                                type: textarea
+                                label: Full Article Body
+                                disabled: false
+                                classes: togglearticle
+                          column5:
+                            type: column
+                            fields:
+                              header.personenabled:
+                                type: toggle
+                                label: Add person microdata
+                                default: 0
+                                options:
+                                    1: PLUGIN_ADMIN.YES
+                                    0: PLUGIN_ADMIN.NO
+                                validate:
+                                    type: bool
+                              header.person.@context:
+                                type: hidden
+                                default: 'http://schema.org/'
+                              header.person.@type:
+                                type: hidden
+                                default: person
+                              header.person.name:
+                                type: text
+                                label: Name
+                              header.person.jobTitle:
+                                type: text
+                                label: Job Title
+                              header.person.address.@type:
+                                type: hidden
+                                default: PostalAddress
+                              header.person.address.addressLocality:
+                                type: text
+                                label: Address Locality
+                              header.person.address.addressRegion:
+                                type: text
+                                label: Address Region
+                              header.eventenabled:
+                                type: toggle
+                                label: Add Event Microdata
+                                default: 0
+                                options:
+                                    1: PLUGIN_ADMIN.YES
+                                    0: PLUGIN_ADMIN.NO
+                                validate:
+                                    type: bool
+                              header.event.@context:
+                                type: hidden
+                                default: http://schema.org/
+                              header.event.@type:
+                                type: hidden
+                                default: Event
+                              header.event.name:
+                                type: text
+                                label: Event Name
+                              header.event.description:
+                                type: text
+                                label: Event Description
+                              header.event.startDate:
+                                type: date
+                                label: Event start date
+                              header.event.endDate:
+                                type: date
+                                label: Event end date
+                              header.event.location.@type:
+                                type: hidden
+                                default: Place
+                              header.event.location.name:
+                                type: text
+                                label: Location Name
+                              header.event.location.address.streetAddress:
+                                type: text
+                                label: Location Street address
+                              header.event.location.address.addressLocality:
+                                type: text
+                                label: Address Locality
+                              header.event.location.address.addressRegion:
+                                type: text
+                                label: Address Region
                 facebookfields:
                   type: tab
                   title: Facebook 

@@ -1,7 +1,7 @@
 {% set settings = config.plugins.seo.header %}
 
 
-<title>{%if page.header.googletitle is defined and not empty %}{{ page.header.googletitle}}{% else %}{{ page.header.title |  site.title }}{% endif %}</title>
+<title>{% if page.header.googletitle is defined and not empty %}{{ page.header.googletitle}}{% else %}{{ page.title }} | {{ site.title }}{% endif %}</title>
 
 
 <meta name="description" content="{% if page.header.googledesc is defined and not empty %}{{ page.header.googledesc }}{% else %} {{ page.summary|striptags|truncate(180)|default(site.description) }}{% endif %}">

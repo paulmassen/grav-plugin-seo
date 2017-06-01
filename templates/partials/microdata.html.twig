@@ -1,14 +1,27 @@
-<script>
+
 {% if header.articleenabled %}
 {% set fullimagepath = base_url_absolute ~ page.url ~ header.article.image.url %}
-{% set article = header.article|merge({'image' : {'url': fullimagepath, '@type': 'ImageObject','height': header.article.image.height, 'width': header.article.image.width} }) %}
+{% set fulllogopath = base_url_absolute ~ page.url ~ header.article.publisher.logo.url %}
+{% set article = header.article|merge({'image' : {
+    'url': fullimagepath,
+    '@type': 'ImageObject',
+    'height': header.article.image.height,
+    'width': header.article.image.width
+    
+} }) %}
+{% set article = article|merge({'publisher': { '@type': 'Organization', 'name': header.article.publisher.name, 'logo':{'@type': 'ImageObject', 'url': fulllogopath } } }) %}
+<script  type="application/ld+json">
 {{ article|json_encode(constant('JSON_PRETTY_PRINT') b-or constant('JSON_UNESCAPED_SLASHES'))|raw }}
-
+</script>
 {% endif %}
 {% if header.personenabled %}
+<script  type="application/ld+json">
 {{ header.person|json_encode(constant('JSON_PRETTY_PRINT') b-or constant('JSON_UNESCAPED_SLASHES'))|raw }}
+</script>
 {% endif %}
 {% if header.eventenabled %}
+<script  type="application/ld+json">
 {{ header.event|json_encode(constant('JSON_PRETTY_PRINT') b-or constant('JSON_UNESCAPED_SLASHES'))|raw }}
-{% endif %}
 </script>
+{% endif %}
+
