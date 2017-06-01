@@ -1,8 +1,9 @@
-# v0.8.1
-## 05/16/2017
+# v0.9.1
+## 06/01/2017
 
 1. [](#new)
-    * ChangeLog started...
+    * Removed the site-wide configuration.
+    * Multiples layout fix
 2. [](#bugfix)
-    * Removed `Theme` from theme's class causing events to not process - https://github.com/getgrav/grav/issues/1047
-    * Typo in README.md
+    * Fix blueprint causing toggle fields to duplicate.
+    * Fix fallback value when fields are not filled.
