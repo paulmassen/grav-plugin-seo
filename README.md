@@ -36,6 +36,7 @@ The if condition is here in order to not throw an error if the plugin is deactiv
 ```
 {% if config.plugins.seo.enabled %}
 {% include 'partials/seo_data.html.twig' %}
+{% include 'partials/microdata.html.twig' %}
 {% endif %}
 ```
 
