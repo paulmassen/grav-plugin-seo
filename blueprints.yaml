@@ -1,6 +1,6 @@
 name: "SEO"
-version: "0.9.1"
-description: "Awesome SEO is an user friendly plugin to manage your SEO across all pages."
+version: "0.9.2"
+description: "SEO is an user friendly plugin to manage your SEO across all your pages."
 icon: "facebook"
 testing: true
 author:
