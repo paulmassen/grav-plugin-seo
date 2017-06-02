@@ -206,6 +206,256 @@ form:
                                 label: Full Article Body
                                 disabled: false
                                 field_classes: togglearticle
+                              header.musiceventenabled:
+                                type: toggle
+                                label: Add Music Event Microdata
+                                default: 0
+                                options:
+                                    1: PLUGIN_ADMIN.YES
+                                    0: PLUGIN_ADMIN.NO
+                                validate:
+                                    type: bool
+                              header.musicevent.@context:
+                                type: hidden
+                                default: http://schema.org/
+                              header.musicevent.@type:
+                                type: hidden
+                                default: MusicEvent
+                              header.musicevent.location.@type:
+                                type: hidden
+                                default: MusicVenue
+                              header.musicevent.location.name:
+                                type: text
+                                label: Location Name
+                                field_classes: togglemusicevent
+                              header.musicevent.location.address:
+                                type: text
+                                label: Location Address
+                                field_classes: togglemusicevent
+                              header.musicevent.name:
+                                type: text
+                                label: Event Name
+                                field_classes: togglemusicevent
+                              header.musicevent.offers.@type:
+                                type: hidden
+                                default: Offer
+                                label: Event Description
+                                field_classes: togglemusicevent
+                              header.musicevent.offers.url:
+                                type: text
+                                label: Ticket URL
+                                field_classes: togglemusicevent
+                              header.musicevent.offers.price:
+                                type: text
+                                label: Price
+                                field_classes: togglemusicevent
+                              header.musicevent.offers.priceCurrency:
+                                type: select
+                                label: Price Currency
+                                field_classes: togglemusicevent
+                                options:
+                                  AED: AED	
+                                  AFN: AFN
+                                  ALL: ALL		
+                                  AMD: AMD		
+                                  ANG: ANG		
+                                  AOA: AOA		
+                                  ARS: ARS		
+                                  AUD: AUD		
+                                  AWG: AWG		
+                                  AZN: AZN		
+                                  BAM: BAM		
+                                  BBD: BBD		
+                                  BDT: BDT		
+                                  BGN: BGN		
+                                  BHD: BHD		
+                                  BIF: BIF		
+                                  BMD: BMD		
+                                  BND: BND		
+                                  BOB: BOB		
+                                  BRL: BRL		
+                                  BSD: BSD		
+                                  BTN: BTN		
+                                  BWP: BWP		
+                                  BYN: BYN		
+                                  BZD: BZD		
+                                  CAD: CAD		
+                                  CDF: CDF		
+                                  CHF: CHF		
+                                  CLP: CLP		
+                                  CNY: CNY		
+                                  COP: COP		
+                                  CRC: CRC		
+                                  CUC: CUC		
+                                  CUP: CUP		
+                                  CVE: CVE		
+                                  CZK: CZK		
+                                  DJF: DJF		
+                                  DKK: DKK		
+                                  DOP: DOP		
+                                  DZD: DZD		
+                                  EGP: EGP		
+                                  ERN: ERN		
+                                  ETB: ETB		
+                                  EUR: EUR		
+                                  FJD: FJD		
+                                  FKP: FKP		
+                                  GBP: GBP		
+                                  GEL: GEL		
+                                  GGP: GGP		
+                                  GHS: GHS		
+                                  GIP: GIP		
+                                  GMD: GMD		
+                                  GNF: GNF		
+                                  GTQ: GTQ		
+                                  GYD: GYD		
+                                  HKD: HKD		
+                                  HNL: HNL		
+                                  HRK: HRK		
+                                  HTG: HTG		
+                                  HUF: HUF		
+                                  IDR: IDR		
+                                  ILS: ILS		
+                                  IMP: IMP		
+                                  INR: INR		
+                                  IQD: IQD		
+                                  IRR: IRR		
+                                  ISK: ISK		
+                                  JEP: JEP		
+                                  JMD: JMD		
+                                  JOD: JOD		
+                                  JPY: JPY		
+                                  KES: KES		
+                                  KGS: KGS		
+                                  KHR: KHR		
+                                  KMF: KMF		
+                                  KPW: KPW		
+                                  KRW: KRW		
+                                  KWD: KWD		
+                                  KYD: KYD		
+                                  KZT: KZT		
+                                  LAK: LAK		
+                                  LBP: LBP		
+                                  LKR: LKR		
+                                  LRD: LRD		
+                                  LSL: LSL		
+                                  LYD: LYD		
+                                  MAD: MAD		
+                                  MDL: MDL		
+                                  MGA: MGA		
+                                  MKD: MKD		
+                                  MMK: MMK		
+                                  MNT: MNT		
+                                  MOP: MOP		
+                                  MRO: MRO		
+                                  MUR: MUR		
+                                  MVR: MVR		
+                                  MWK: MWK		
+                                  MXN: MXN		
+                                  MYR: MYR		
+                                  MZN: MZN		
+                                  NAD: NAD		
+                                  NGN: NGN		
+                                  NIO: NIO		
+                                  NOK: NOK		
+                                  NPR: NPR		
+                                  NZD: NZD		
+                                  OMR: OMR		
+                                  PAB: PAB		
+                                  PEN: PEN		
+                                  PGK: PGK		
+                                  PHP: PHP		
+                                  PKR: PKR		
+                                  PLN: PLN		
+                                  PYG: PYG		
+                                  QAR: QAR		
+                                  RON: RON		
+                                  RSD: RSD		
+                                  RUB: RUB		
+                                  RWF: RWF		
+                                  SAR: SAR		
+                                  SBD: SBD		
+                                  SCR: SCR		
+                                  SDG: SDG		
+                                  SEK: SEK		
+                                  SGD: SGD		
+                                  SHP: SHP		
+                                  SLL: SLL		
+                                  SOS: SOS		
+                                  SRD: SRD		
+                                  STD: STD		
+                                  SVC: SVC		
+                                  SYP: SYP		
+                                  SZL: SZL		
+                                  THB: THB		
+                                  TJS: TJS		
+                                  TMT: TMT		
+                                  TND: TND		
+                                  TOP: TOP		
+                                  TRY: TRY		
+                                  TTD: TTD		
+                                  TVD: TVD		
+                                  TWD: TWD		
+                                  TZS: TZS		
+                                  UAH: UAH		
+                                  UGX: UGX		
+                                  USD: USD		
+                                  UYU: UYU		
+                                  UZS: UZS		
+                                  VEF: VEF		
+                                  VND: VND		
+                                  VUV: VUV		
+                                  WST: WST		
+                                  XAF: XAF		
+                                  XCD: XCD		
+                                  XDR: XDR		
+                                  XOF: XOF		
+                                  XPF: XPF		
+                                  YER: YER		
+                                  ZAR: ZAR		
+                                  ZMW: ZMW		
+                                  ZWD: ZWD	
+                              
+                              header.musicevent.performer:
+                                type: list
+                                label: Add performer
+                                field_classes: togglemusicevent
+                                fields:
+                                  .@type:
+                                    type: select
+                                    label: Performer type
+                                    options:
+                                      MusicGroup: MusicGroup
+                                      Person: Person
+                                    field_classes: togglemusicevent
+                                  .name:
+                                    type: text
+                                    label: Name of performer
+                                  .sameAs:
+                                    type: text
+                                    label: Same as
+                                    placeholder: 'http://en.wikipedia.org/wiki/Artist_Page'
+                              header.musicevent.startDate: 
+                                type: datetime
+                                label: Date Event
+                                field_classes: togglemusicevent
+                              header.musicevent.workPerformed:
+                                type: list
+                                label: Work Performed
+                                field_classes: togglemusicevent
+                                fields:
+                                  .@type:
+                                    type: hidden
+                                    default: CreativeWork
+                                  .name:
+                                    type: text
+                                    label: Name of work
+                                  .sameAs:
+                                    type: text
+                                    label: Wikipedia URL
+                                    field_classes: togglemusicevent
+
+
                                 
                           column5:
                             type: column
@@ -392,6 +642,7 @@ form:
                                 type: filepicker
                                 label: Restaurant Image
                                 preview_images: true
+                                field_classes: togglerestaurant
                               header.restaurant.servesCuisine:
                                 placeholder: seafood
                                 type: text

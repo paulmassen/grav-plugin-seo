@@ -1,3 +1,10 @@
+# v1.0.4
+## 06/02/2017
+
+1. [](#new)
+    * New Microdata type: Music Event, MusicAlbum
+    * Toggle will now display or hide the related fields 
+
 # v1.0.3
 ## 06/01/2017
 

@@ -77,4 +77,10 @@
 {{ restaurant|json_encode(constant('JSON_PRETTY_PRINT') b-or constant('JSON_UNESCAPED_SLASHES'))|raw }}
 </script>
 {% endif %}
+{% if header.musiceventenabled %}
+<script  type="application/ld+json">
+{% set musicevent = header.musicevent|merge({'startDate' : header.musicevent.startDate|date('c')}) %}
+{{ musicevent|json_encode(constant('JSON_PRETTY_PRINT') b-or constant('JSON_UNESCAPED_SLASHES'))|raw }}
+</script>
+{% endif %}
 
