@@ -2,7 +2,6 @@ name: "SEO"
 version: "1.0.3"
 description: "SEO is an user friendly plugin to manage your SEO across all your pages."
 icon: "facebook"
-testing: true
 author:
   name: "Paul Massendari"
   email: "paul@massendari.com"
