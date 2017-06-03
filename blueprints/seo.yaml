@@ -94,7 +94,7 @@ form:
                               destination: 'self@'
                               random_name: false
                               avoid_overwriting: false
-                              limit: 10
+                              limit: 1
                               filesize: 5
                               accept:
                                 - image/*
