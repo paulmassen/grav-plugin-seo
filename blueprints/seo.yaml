@@ -37,7 +37,7 @@ form:
               fields:
                 googlefields:
                   type: tab
-                  title: Google 
+                  title: Google
                   fields:
                     header.googletitle:
                       type: text
@@ -52,7 +52,7 @@ form:
                       label: PLUGINS.SEO.GOOGLE_PREVIEWDESC
                 twitterfields:
                   type: tab
-                  title: Twitter 
+                  title: Twitter
                   fields:
                     columns:
                       type: columns
@@ -76,7 +76,7 @@ form:
                               label: PLUGINS.SEO.TWITTER_CARD_SELECT
                               options:
                                #gallery: PLUGINS.SEO.TWITTER_CARD_GALLERY
-                               #photo: PLUGINS.SEO.TWITTER_CARD_PHOTO
+                                photo: PLUGINS.SEO.TWITTER_CARD_PHOTO
                               # product: PLUGINS.SEO.TWITTER_CARD_PRODUCT
                                 summary: PLUGINS.SEO.TWITTER_CARD_SUMMARY
                               # player: PLUGINS.SEO.TWITTER_CARD_PLAYER
@@ -87,10 +87,17 @@ form:
                               title: PLUGINS.SEO.TWITTER_CARD_SECTITLE
                               underline: true
                             header.twittershareimg:
-                              type: filepicker
+                              type: file
                               label: PLUGINS.SEO.TWITTER_SHAREIMG
                               preview_images: true
                               id: twittimgselect
+                              destination: 'self@'
+                              random_name: false
+                              avoid_overwriting: false
+                              limit: 10
+                              filesize: 5
+                              accept:
+                                - image/*
                             header.twittertitle:
                               type: text
                               label: PLUGINS.SEO.TWITTER_TITLE
@@ -101,18 +108,18 @@ form:
                               id: twitterdescription
 
                             # .... subfields
-                    
+
                         column2:
                           type: column
                           fields:
                             header.twitterlabel:
                               type: section
                               text: PLUGINS.SEO.TWITTER_PREVIEWDESC
-                    
+
                             header.twitterpreview:
                               type: twitter
                             # .... other subfields
-                    
+
                 jsonfield:
                   type: tab
                   title: Microdata
@@ -254,168 +261,168 @@ form:
                                 label: Price Currency
                                 field_classes: togglemusicevent
                                 options:
-                                  AED: AED	
+                                  AED: AED
                                   AFN: AFN
-                                  ALL: ALL		
-                                  AMD: AMD		
-                                  ANG: ANG		
-                                  AOA: AOA		
-                                  ARS: ARS		
-                                  AUD: AUD		
-                                  AWG: AWG		
-                                  AZN: AZN		
-                                  BAM: BAM		
-                                  BBD: BBD		
-                                  BDT: BDT		
-                                  BGN: BGN		
-                                  BHD: BHD		
-                                  BIF: BIF		
-                                  BMD: BMD		
-                                  BND: BND		
-                                  BOB: BOB		
-                                  BRL: BRL		
-                                  BSD: BSD		
-                                  BTN: BTN		
-                                  BWP: BWP		
-                                  BYN: BYN		
-                                  BZD: BZD		
-                                  CAD: CAD		
-                                  CDF: CDF		
-                                  CHF: CHF		
-                                  CLP: CLP		
-                                  CNY: CNY		
-                                  COP: COP		
-                                  CRC: CRC		
-                                  CUC: CUC		
-                                  CUP: CUP		
-                                  CVE: CVE		
-                                  CZK: CZK		
-                                  DJF: DJF		
-                                  DKK: DKK		
-                                  DOP: DOP		
-                                  DZD: DZD		
-                                  EGP: EGP		
-                                  ERN: ERN		
-                                  ETB: ETB		
-                                  EUR: EUR		
-                                  FJD: FJD		
-                                  FKP: FKP		
-                                  GBP: GBP		
-                                  GEL: GEL		
-                                  GGP: GGP		
-                                  GHS: GHS		
-                                  GIP: GIP		
-                                  GMD: GMD		
-                                  GNF: GNF		
-                                  GTQ: GTQ		
-                                  GYD: GYD		
-                                  HKD: HKD		
-                                  HNL: HNL		
-                                  HRK: HRK		
-                                  HTG: HTG		
-                                  HUF: HUF		
-                                  IDR: IDR		
-                                  ILS: ILS		
-                                  IMP: IMP		
-                                  INR: INR		
-                                  IQD: IQD		
-                                  IRR: IRR		
-                                  ISK: ISK		
-                                  JEP: JEP		
-                                  JMD: JMD		
-                                  JOD: JOD		
-                                  JPY: JPY		
-                                  KES: KES		
-                                  KGS: KGS		
-                                  KHR: KHR		
-                                  KMF: KMF		
-                                  KPW: KPW		
-                                  KRW: KRW		
-                                  KWD: KWD		
-                                  KYD: KYD		
-                                  KZT: KZT		
-                                  LAK: LAK		
-                                  LBP: LBP		
-                                  LKR: LKR		
-                                  LRD: LRD		
-                                  LSL: LSL		
-                                  LYD: LYD		
-                                  MAD: MAD		
-                                  MDL: MDL		
-                                  MGA: MGA		
-                                  MKD: MKD		
-                                  MMK: MMK		
-                                  MNT: MNT		
-                                  MOP: MOP		
-                                  MRO: MRO		
-                                  MUR: MUR		
-                                  MVR: MVR		
-                                  MWK: MWK		
-                                  MXN: MXN		
-                                  MYR: MYR		
-                                  MZN: MZN		
-                                  NAD: NAD		
-                                  NGN: NGN		
-                                  NIO: NIO		
-                                  NOK: NOK		
-                                  NPR: NPR		
-                                  NZD: NZD		
-                                  OMR: OMR		
-                                  PAB: PAB		
-                                  PEN: PEN		
-                                  PGK: PGK		
-                                  PHP: PHP		
-                                  PKR: PKR		
-                                  PLN: PLN		
-                                  PYG: PYG		
-                                  QAR: QAR		
-                                  RON: RON		
-                                  RSD: RSD		
-                                  RUB: RUB		
-                                  RWF: RWF		
-                                  SAR: SAR		
-                                  SBD: SBD		
-                                  SCR: SCR		
-                                  SDG: SDG		
-                                  SEK: SEK		
-                                  SGD: SGD		
-                                  SHP: SHP		
-                                  SLL: SLL		
-                                  SOS: SOS		
-                                  SRD: SRD		
-                                  STD: STD		
-                                  SVC: SVC		
-                                  SYP: SYP		
-                                  SZL: SZL		
-                                  THB: THB		
-                                  TJS: TJS		
-                                  TMT: TMT		
-                                  TND: TND		
-                                  TOP: TOP		
-                                  TRY: TRY		
-                                  TTD: TTD		
-                                  TVD: TVD		
-                                  TWD: TWD		
-                                  TZS: TZS		
-                                  UAH: UAH		
-                                  UGX: UGX		
-                                  USD: USD		
-                                  UYU: UYU		
-                                  UZS: UZS		
-                                  VEF: VEF		
-                                  VND: VND		
-                                  VUV: VUV		
-                                  WST: WST		
-                                  XAF: XAF		
-                                  XCD: XCD		
-                                  XDR: XDR		
-                                  XOF: XOF		
-                                  XPF: XPF		
-                                  YER: YER		
-                                  ZAR: ZAR		
-                                  ZMW: ZMW		
-                                  ZWD: ZWD	
-                              
+                                  ALL: ALL
+                                  AMD: AMD
+                                  ANG: ANG
+                                  AOA: AOA
+                                  ARS: ARS
+                                  AUD: AUD
+                                  AWG: AWG
+                                  AZN: AZN
+                                  BAM: BAM
+                                  BBD: BBD
+                                  BDT: BDT
+                                  BGN: BGN
+                                  BHD: BHD
+                                  BIF: BIF
+                                  BMD: BMD
+                                  BND: BND
+                                  BOB: BOB
+                                  BRL: BRL
+                                  BSD: BSD
+                                  BTN: BTN
+                                  BWP: BWP
+                                  BYN: BYN
+                                  BZD: BZD
+                                  CAD: CAD
+                                  CDF: CDF
+                                  CHF: CHF
+                                  CLP: CLP
+                                  CNY: CNY
+                                  COP: COP
+                                  CRC: CRC
+                                  CUC: CUC
+                                  CUP: CUP
+                                  CVE: CVE
+                                  CZK: CZK
+                                  DJF: DJF
+                                  DKK: DKK
+                                  DOP: DOP
+                                  DZD: DZD
+                                  EGP: EGP
+                                  ERN: ERN
+                                  ETB: ETB
+                                  EUR: EUR
+                                  FJD: FJD
+                                  FKP: FKP
+                                  GBP: GBP
+                                  GEL: GEL
+                                  GGP: GGP
+                                  GHS: GHS
+                                  GIP: GIP
+                                  GMD: GMD
+                                  GNF: GNF
+                                  GTQ: GTQ
+                                  GYD: GYD
+                                  HKD: HKD
+                                  HNL: HNL
+                                  HRK: HRK
+                                  HTG: HTG
+                                  HUF: HUF
+                                  IDR: IDR
+                                  ILS: ILS
+                                  IMP: IMP
+                                  INR: INR
+                                  IQD: IQD
+                                  IRR: IRR
+                                  ISK: ISK
+                                  JEP: JEP
+                                  JMD: JMD
+                                  JOD: JOD
+                                  JPY: JPY
+                                  KES: KES
+                                  KGS: KGS
+                                  KHR: KHR
+                                  KMF: KMF
+                                  KPW: KPW
+                                  KRW: KRW
+                                  KWD: KWD
+                                  KYD: KYD
+                                  KZT: KZT
+                                  LAK: LAK
+                                  LBP: LBP
+                                  LKR: LKR
+                                  LRD: LRD
+                                  LSL: LSL
+                                  LYD: LYD
+                                  MAD: MAD
+                                  MDL: MDL
+                                  MGA: MGA
+                                  MKD: MKD
+                                  MMK: MMK
+                                  MNT: MNT
+                                  MOP: MOP
+                                  MRO: MRO
+                                  MUR: MUR
+                                  MVR: MVR
+                                  MWK: MWK
+                                  MXN: MXN
+                                  MYR: MYR
+                                  MZN: MZN
+                                  NAD: NAD
+                                  NGN: NGN
+                                  NIO: NIO
+                                  NOK: NOK
+                                  NPR: NPR
+                                  NZD: NZD
+                                  OMR: OMR
+                                  PAB: PAB
+                                  PEN: PEN
+                                  PGK: PGK
+                                  PHP: PHP
+                                  PKR: PKR
+                                  PLN: PLN
+                                  PYG: PYG
+                                  QAR: QAR
+                                  RON: RON
+                                  RSD: RSD
+                                  RUB: RUB
+                                  RWF: RWF
+                                  SAR: SAR
+                                  SBD: SBD
+                                  SCR: SCR
+                                  SDG: SDG
+                                  SEK: SEK
+                                  SGD: SGD
+                                  SHP: SHP
+                                  SLL: SLL
+                                  SOS: SOS
+                                  SRD: SRD
+                                  STD: STD
+                                  SVC: SVC
+                                  SYP: SYP
+                                  SZL: SZL
+                                  THB: THB
+                                  TJS: TJS
+                                  TMT: TMT
+                                  TND: TND
+                                  TOP: TOP
+                                  TRY: TRY
+                                  TTD: TTD
+                                  TVD: TVD
+                                  TWD: TWD
+                                  TZS: TZS
+                                  UAH: UAH
+                                  UGX: UGX
+                                  USD: USD
+                                  UYU: UYU
+                                  UZS: UZS
+                                  VEF: VEF
+                                  VND: VND
+                                  VUV: VUV
+                                  WST: WST
+                                  XAF: XAF
+                                  XCD: XCD
+                                  XDR: XDR
+                                  XOF: XOF
+                                  XPF: XPF
+                                  YER: YER
+                                  ZAR: ZAR
+                                  ZMW: ZMW
+                                  ZWD: ZWD
+
                               header.musicevent.performer:
                                 type: list
                                 label: Add performer
@@ -435,7 +442,7 @@ form:
                                     type: text
                                     label: Same as
                                     placeholder: 'http://en.wikipedia.org/wiki/Artist_Page'
-                              header.musicevent.startDate: 
+                              header.musicevent.startDate:
                                 type: datetime
                                 label: Date Event
                                 field_classes: togglemusicevent
@@ -456,7 +463,7 @@ form:
                                     field_classes: togglemusicevent
 
 
-                                
+
                           column5:
                             type: column
                             fields:
@@ -555,18 +562,18 @@ form:
                                 validate:
                                     type: bool
                               header.musicalbum.@context:
-                                type: hidden    
+                                type: hidden
                                 default: http://schema.org/
                                 field_classes: togglemusicalbum
                               header.musicalbum.@type:
-                                type: hidden    
+                                type: hidden
                                 default: MusicAlbum
                               header.musicalbum.name:
                                 type: text
                                 label: Album Name
                                 field_classes: togglemusicalbum
                               header.musicalbum.byArtist.@type:
-                                type: hidden    
+                                type: hidden
                                 default: MusicGroup
                               header.musicalbum.byArtist.name:
                                 type: text
@@ -580,7 +587,7 @@ form:
                                 type: text
                                 label: Music Album url
                                 field_classes: togglemusicalbum
-                              header.musicalbum.genre: 
+                              header.musicalbum.genre:
                                 type: text
                                 label: Music Abum Genre
                                 field_classes: togglemusicalbum
@@ -589,7 +596,7 @@ form:
                                 label: Number of tracks
                                 field_classes: togglemusicalbum
                               header.musicalbum.track:
-                                type: list   
+                                type: list
                                 field_classes: togglemusicalbum
                                 default:
                                 fields:
@@ -616,7 +623,7 @@ form:
                                     1: PLUGIN_ADMIN.YES
                                     0: PLUGIN_ADMIN.NO
                                 validate:
-                                    type: bool      
+                                    type: bool
                               header.restaurant.@context:
                                 type: hidden
                                 default: http://schema.org/
@@ -683,7 +690,7 @@ form:
                                 type: schema
                 facebookfields:
                   type: tab
-                  title: Facebook 
+                  title: Facebook
                   fields:
                     columns2:
                       type: columns
@@ -701,12 +708,12 @@ form:
                                 0: PLUGIN_ADMIN.NO
                               validate:
                                 type: bool
-                             
+
                             header.facebooktitle:
                               type: text
                               label: PLUGINS.SEO.FACEBOOK_TITLE
                               id: facebooktitle
-                              
+
                             header.facebookdesc:
                               type: textarea
                               label: PLUGINS.SEO.FACEBOOK_DESC
@@ -718,7 +725,7 @@ form:
                               label: PLUGINS.SEO.FACEBOOK_SHAREIMG
                               preview_images: true
                              # .... subfields
-                            
+
                         column4:
                           type: column
                           fields:
