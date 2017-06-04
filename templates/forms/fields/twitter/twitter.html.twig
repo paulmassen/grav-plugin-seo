@@ -13,7 +13,7 @@
          <img id="twittliveimg" src="{{context.media[context.header.shareimg].url|default(context.media.images|first.url)}}" width="100%">
     <div class="cardtext">
          <h2 class="cardtitle" id="titletwtarget">
-         {{ context.header.twittertitle|default(page.title ~ " | " ~ site.title )}}
+         {{ context.header.twittertitle|default(context.title ~ " | " ~ site.title )}}
         </h2>
         <p style="padding:0px;" id="twittdesc">{{ context.header.twitterdescription|default(context.summary|striptags|truncate(140))}}</p>
         <span class="sitename">{{uri.host|replace({"http://": "","/":" › " }) }}</span>
