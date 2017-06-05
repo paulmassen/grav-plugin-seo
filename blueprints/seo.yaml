@@ -7,29 +7,10 @@ form:
       fields:
         seo:
           type: tab
+          field_classes: fixoverlap
           title: SEO
 
           fields:
-#            header.robots:
-#              type: selectize
-#              label: PLUGINS.SEO.ROBOTS
-#              multiple: true
-#              options:
-#                index: index
-#                noindex: noindex
-#                noimageindex: noimageindex
-#                none: none
-#                follow: follow
-#                nofollow: nofollow
-#                noarchive: noarchive
-#                nocache: nocache
-#                nosnippet: nosnippet
-#                noodp: noodp
-#                noydir: noydir
-#            header.canonical:
-#              type: text
-#              label: PLUGINS.SEO.CANONICAL_URL
-
             tabs1:
               type: tabs
               active: 1
@@ -90,6 +71,7 @@ form:
                               type: filepicker
                               label: PLUGINS.SEO.TWITTER_SHAREIMG
                               preview_images: true
+                              folder: '@self'
                               id: twittimgselect
                             header.twittertitle:
                               type: text
@@ -97,7 +79,7 @@ form:
                               id: twittertitle
                             header.twitterdescription:
                               type: textarea
-                              text: PLUGINS.SEO.TWITTER_DESCRIPTION
+                              label: PLUGINS.SEO.TWITTER_DESCRIPTION
                               id: twitterdescription
 
                             # .... subfields
@@ -125,7 +107,7 @@ form:
                             fields:
                               header.articleenabled:
                                 type: toggle
-                                label: add Article Microdata
+                                label: PLUGINS.SEO.ADD_ARTICLE_MICRODATA
                                 default: 0
                                 options:
                                     1: PLUGIN_ADMIN.YES
@@ -140,17 +122,17 @@ form:
                                 default: 'NewsArticle'
                               header.article.headline:
                                 type: text
-                                label: Headline
+                                label: PLUGINS.SEO.HEADLINE
                                 disabled: false
                                 field_classes: togglearticle
                               header.article.datePublished:
                                 type: date
-                                label: Article Description
+                                label: PLUGINS.SEO.ARTICLE_DESCRIPTION
                                 disabled: false
                                 field_classes: togglearticle
                               header.article.description:
                                 type: date
-                                label: Date published
+                                label: PLUGINS.SEO.DATE_PUBLISHED
                                 disabled: false
                                 field_classes: togglearticle
                               header.article.image.@type:
@@ -160,28 +142,29 @@ form:
                                 field_classes: togglearticle
                               header.article.image.url:
                                 type: filepicker
-                                label: Image
+                                label: PLUGINS.SEO.ARTICLE_IMAGE
+                                folder: '@self'
                                 preview_images: true
                                 disabled: false
                                 field_classes: togglearticle
                               header.article.image.height:
                                 type: text
-                                label: Image Height (px)
+                                label: PLUGINS.SEO.IMAGE_HEIGHT_PX
                                 disabled: false
                                 field_classes: togglearticle
                               header.article.image.width:
                                 type: text
-                                label: Image Width (px)
+                                label: PLUGINS.SEO.IMAGE_WIDTH_PX
                                 disabled: false
                                 field_classes: togglearticle
                               header.article.author:
                                 type: text
-                                label: Article Author
+                                label: PLUGINS.SEO.ARTICLE_AUTHOR
                                 disabled: false
                                 field_classes: togglearticle
                               header.article.publisher.@type:
                                 type: hidden
-                                label: Article Publisher
+                                label: PLUGINS.SEO.ARTICLE_PUBLISHER
                                 default: Organization
                                 disabled: false
                                 field_classes: togglearticle
@@ -192,18 +175,19 @@ form:
                                 field_classes: togglearticle
                               header.article.publisher.logo.url:
                                 type: filepicker
-                                label: Publisher logo
+                                label: PLUGINS.SEO.PUBLISHER_LOGO
                                 disabled: false
+                                folder: '@self'
                                 preview_images: true
                                 field_classes: togglearticle
                               header.article.publisher.name:
                                 type: text
-                                label: Publisher Name
+                                label: PLUGINS.SEO.PUBLISHER_NAME
                                 disabled: false
                                 field_classes: togglearticle
                               header.article.articleBody:
                                 type: textarea
-                                label: Full Article Body
+                                label: PLUGINS.SEO.ARTICLE_BODY
                                 disabled: false
                                 field_classes: togglearticle
                               header.musiceventenabled:
@@ -574,6 +558,7 @@ form:
                                 field_classes: togglemusicalbum
                               header.musicalbum.image:
                                 type: filepicker
+                                folder: '@self'
                                 label: album image
                                 field_classes: togglemusicalbum
                               header.musicalbum.url:
@@ -640,6 +625,7 @@ form:
                                 field_classes: togglerestaurant
                               header.restaurant.image:
                                 type: filepicker
+                                folder: '@self'
                                 label: Restaurant Image
                                 preview_images: true
                                 field_classes: togglerestaurant
@@ -694,6 +680,7 @@ form:
                             header.facebookenable:
                               type: toggle
                               label: PLUGINS.SEO.FACEBOOK_ENABLE
+                              id: facebookenable
                               default: 1
                               highlight: 1
                               options:
@@ -715,6 +702,7 @@ form:
                             header.facebookimg:
                               type: filepicker
                               id: fbimgselect
+                              folder: '@self'
                               label: PLUGINS.SEO.FACEBOOK_SHAREIMG
                               preview_images: true
                              # .... subfields
@@ -727,3 +715,17 @@ form:
                             header.facebookpreview:
                               type: facebook
                               label: PLUGINS.SEO.FACEBOOK_PREVIEWDESC
+                            
+#                            conditional_new_entries:
+#                             type: conditional
+#                              condition: "header.facebookenable ? 'false' : 'true'"
+#                              classes: overlay bottom
+#                      
+#                              fields:
+#                                  field-a:
+#                                      label: New Field A
+#                                      type: text
+#                      
+#                                  field-b:
+#                                      label: New Field B
+#                                      type: text
