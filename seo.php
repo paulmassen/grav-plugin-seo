@@ -1,6 +1,6 @@
 <?php
 /**
- * SEO v1.0.4
+ * SEO v1.0.5
  *
  * This plugin adds an SEO Tab to every pages for managing SEO data.
  *

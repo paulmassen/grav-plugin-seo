@@ -1,3 +1,9 @@
+# v1.0.5
+## 06/06/2017
+
+1. [](#bugfix)
+    * Fix Twitter title not displayed correctly
+
 # v1.0.4
 ## 06/02/2017
 
