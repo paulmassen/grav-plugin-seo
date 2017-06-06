@@ -192,7 +192,7 @@ form:
                                 field_classes: togglearticle
                               header.musiceventenabled:
                                 type: toggle
-                                label: Add Music Event Microdata
+                                label: PLUGINS.SEO.ADDMUSICEVENT
                                 default: 0
                                 options:
                                     1: PLUGIN_ADMIN.YES
@@ -210,58 +210,57 @@ form:
                                 default: MusicVenue
                               header.musicevent.location.name:
                                 type: text
-                                label: Location Name
+                                label: PLUGINS.SEO.LOCATION_NAME
                                 field_classes: togglemusicevent
                               header.musicevent.location.address:
                                 type: text
-                                label: Location Address
+                                label: PLUGINS.SEO.LOCATION_ADDRESS
                                 field_classes: togglemusicevent
                               header.musicevent.name:
                                 type: text
-                                label: Event Name
+                                label: PLUGINS.SEO.MUSICEVENT_NAME
                                 field_classes: togglemusicevent
                               header.musicevent.description:
                                 type: textarea
-                                label: Event Description
+                                label: PLUGINS.SEO.MUSICEVENT_DESCRIPTION
                                 field_classes: togglemusicevent
                               header.musicevent.image:
                                 type: filepicker
-                                label: Music Event Image
+                                label: PLUGINS.SEO.MUSICEVENT_IMAGE
                                 folder: '@self'
                                 field_classes: togglemusicevent
                               header.musicevent.offers.@type:
                                 type: hidden
                                 default: Offer
-                                label: Event Description
                                 field_classes: togglemusicevent
                               header.musicevent.offers.availability:
                                 type: select
                                 options:
-                                  'http://schema.org/PreOrder': Preorder
-                                  'http://schema.org/OutOfStock': Out of stock
-                                  'http://schema.org/PreSale': Pre Sale
-                                  'http://schema.org/InStock': In Stock
-                                  'http://schema.org/Discontinued': Discontinued
-                                  'http://schema.org/InStoreOnly': In Store Only 
-                                  'http://schema.org/OutOfStock': Out of Stock
-                                  'http://schema.org/SoldOut': Sold Out
-                                  'http://schema.org/OnlineOnly': Online Only
+                                  'http://schema.org/PreOrder': PLUGINS.SEO.PREORDER
+                                  'http://schema.org/OutOfStock': PLUGINS.SEO.OUTOFSTOCK
+                                  'http://schema.org/PreSale': PLUGINS.SEO.PRESALE
+                                  'http://schema.org/InStock': PLUGINS.SEO.INSTOCK
+                                  'http://schema.org/Discontinued': PLUGINS.SEO.DISCONTINUED
+                                  'http://schema.org/InStoreOnly': PLUGINS.SEO. INSTOREONLY
+                                  'http://schema.org/OutOfStock': PLUGINS.SEO.OUTOFSTOCK
+                                  'http://schema.org/SoldOut': PLUGINS.SEO.SOLDOUT
+                                  'http://schema.org/OnlineOnly': PLUGINS.SEO.ONLINEONLY
                                 field_classes: togglemusicevent
                                   
                               header.musicevent.offers.url:
                                 type: text
-                                label: Ticket URL
+                                label: PLUGINS.SEO.TICKET_URL
                                 field_classes: togglemusicevent
                               header.musicevent.offers.validFrom:
                                 type: datetime
-                                label: Valid From
+                                label: PLUGINS.SEO.VALID_FROM
                               header.musicevent.offers.price:
                                 type: text
-                                label: Price
+                                label: PLUGINS.SEO.MUSICEVENT_PRICE
                                 field_classes: togglemusicevent
                               header.musicevent.offers.priceCurrency:
                                 type: select
-                                label: Price Currency
+                                label: PLUGINS.SEO.PRICE_CURRENCY
                                 field_classes: togglemusicevent
                                 options:
                                   AED: AED	
@@ -428,34 +427,34 @@ form:
                               
                               header.musicevent.performer:
                                 type: list
-                                label: Add performer
+                                label: PLUGINS.SEO.ADD_PERFORMER
                                 field_classes: togglemusicevent
                                 fields:
                                   .@type:
                                     type: select
-                                    label: Performer type
+                                    label: PLUGINS.SEO.PERFORMER_TYPE
                                     options:
-                                      MusicGroup: MusicGroup
-                                      Person: Person
+                                      MusicGroup: PLUGINS.SEO.MUSICGROUP
+                                      Person: PLUGINS.SEO.PERSON
                                     field_classes: togglemusicevent
                                   .name:
                                     type: text
-                                    label: Name of performer
+                                    label: PLUGINS.SEO.PERFORMER_NAME
                                   .sameAs:
                                     type: text
                                     label: Same as
                                     placeholder: 'http://en.wikipedia.org/wiki/Artist_Page'
                               header.musicevent.startDate: 
                                 type: datetime
-                                label: Date Start Event
+                                label: PLUGINS.SEO.MUSICEVENT_DATE_START
                                 field_classes: togglemusicevent
                               header.musicevent.endDate:
                                 type: datetime
-                                label: End of event
+                                label: PLUGINS.SEO.MUSICEVENT_DATE_END
                                 field_classes: togglemusicevent
                               header.musicevent.workPerformed:
                                 type: list
-                                label: Work Performed
+                                label: PLUGINS.SEO.WORK_PERFORMED
                                 field_classes: togglemusicevent
                                 fields:
                                   .@type:
@@ -463,10 +462,10 @@ form:
                                     default: CreativeWork
                                   .name:
                                     type: text
-                                    label: Name of work
+                                    label: PLUGINS.SEO.WORK_PERFORMED_NAME
                                   .sameAs:
                                     type: text
-                                    label: Wikipedia URL
+                                    label: Wikipedia or official URL
                                     field_classes: togglemusicevent
 
 
@@ -476,7 +475,7 @@ form:
                             fields:
                               header.personenabled:
                                 type: toggle
-                                label: Add person microdata
+                                label: PLUGINS.SEO.ADD_PERSON
                                 default: 0
                                 options:
                                     1: PLUGIN_ADMIN.YES
@@ -491,26 +490,26 @@ form:
                                 default: person
                               header.person.name:
                                 type: text
-                                label: Name
+                                label: PLUGINS.SEO.PERSON_NAME
                                 field_classes: toggleperson
                               header.person.jobTitle:
                                 type: text
-                                label: Job Title
+                                label: PLUGINS.SEO.PERSON_JOB_TITLE
                                 field_classes: toggleperson
                               header.person.address.@type:
                                 type: hidden
                                 default: PostalAddress
                               header.person.address.addressLocality:
                                 type: text
-                                label: Address Locality
+                                label: PLUGINS.SEO.PERSON_ADDRESS_LOCALITY 
                                 field_classes: toggleperson
                               header.person.address.addressRegion:
                                 type: text
-                                label: Address Region
+                                label: PLUGINS.SEO.PERSON_ADDRESS_REGION  
                                 field_classes: toggleperson
                               header.eventenabled:
                                 type: toggle
-                                label: Add Event Microdata
+                                label: PLUGINS.SEO.ADD_EVENT
                                 default: 0
                                 options:
                                     1: PLUGIN_ADMIN.YES
@@ -525,19 +524,19 @@ form:
                                 default: Event
                               header.event.name:
                                 type: text
-                                label: Event Name
+                                label: PLUGINS.SEO.EVENT_NAME
                                 field_classes: toggleevent
                               header.event.description:
                                 type: text
-                                label: Event Description
+                                label: PLUGINS.SEO.EVENT_DESCRIPTION 
                                 field_classes: toggleevent
                               header.event.startDate:
                                 type: date
-                                label: Event start date
+                                label: PLUGINS.SEO.EVENT_START_DATE
                                 field_classes: toggleevent
                               header.event.endDate:
                                 type: date
-                                label: Event end date
+                                label: PLUGINS.SEO.EVENT_END_DATE
                                 field_classes: toggleevent
                               header.event.location.@type:
                                 type: hidden
@@ -545,23 +544,23 @@ form:
                                 field_classes: toggleevent
                               header.event.location.name:
                                 type: text
-                                label: Location Name
+                                label: PLUGINS.SEO.EVENT_LOCATION_NAME
                                 field_classes: toggleevent
                               header.event.location.address.streetAddress:
                                 type: text
-                                label: Location Street address
+                                label: PLUGINS.SEO.EVENT_LOCATION_STREET_ADDRESS
                                 field_classes: toggleevent
                               header.event.location.address.addressLocality:
                                 type: text
-                                label: Address Locality
+                                label: PLUGINS.SEO.EVENT_LOCATION_ADDRESS_LOCALITY
                                 field_classes: toggleevent
                               header.event.location.address.addressRegion:
                                 type: text
-                                label: Address Region
+                                label: PLUGINS.SEO.EVENT_LOCATION_ADDRESS_REGION
                                 field_classes: toggleevent
                               header.musicalbumenabled:
                                 type: toggle
-                                label: Add Music Album Microdata
+                                label: PLUGINS.SEO.ADD_MUSICALBUM
                                 default: 0
                                 options:
                                     1: PLUGIN_ADMIN.YES
@@ -577,35 +576,36 @@ form:
                                 default: MusicAlbum
                               header.musicalbum.name:
                                 type: text
-                                label: Album Name
+                                label: PLUGINS.SEO.MUSICALBUM_NAME
                                 field_classes: togglemusicalbum
                               header.musicalbum.byArtist.@type:
                                 type: hidden    
                                 default: MusicGroup
                               header.musicalbum.byArtist.name:
                                 type: text
-                                label: Name of band
+                                label: PLUGINS.SEO.MUSICALBUM_NAMEOFBAND
                                 field_classes: togglemusicalbum
                               header.musicalbum.image:
                                 type: filepicker
                                 folder: '@self'
-                                label: album image
+                                label: PLUGINS.SEO.MUSICALBUM_IMAGE
                                 field_classes: togglemusicalbum
                               header.musicalbum.url:
                                 type: text
-                                label: Music Album url
+                                label: PLUGINS.SEO.MUSICALBUM_URL 
                                 field_classes: togglemusicalbum
                               header.musicalbum.genre: 
                                 type: text
-                                label: Music Abum Genre
+                                label: PLUGINS.SEO.MUSICALBUM_GENRE
                                 field_classes: togglemusicalbum
                               header.musicalbum.numtracks:
                                 type: text
-                                label: Number of tracks
+                                label: PLUGINS.SEO.MUSICALBUM_TRACK_NUMBER
                                 field_classes: togglemusicalbum
                               header.musicalbum.track:
                                 type: list   
                                 field_classes: togglemusicalbum
+                                label: PLUGINS.SEO.MUSICALBUM_ADD_TRACK
                                 default:
                                 fields:
                                   .@type:
@@ -613,19 +613,19 @@ form:
                                     default: MusicRecording
                                   .position:
                                     type: text
-                                    label: track position
+                                    label: PLUGINS.SEO.MUSICALBUM_TRACK_POSITION 
                                   .name:
                                     type: text
-                                    label: Name
+                                    label: PLUGINS.SEO.MUSICALBUM_TRACK_NAME
                                   .url:
                                     type: text
-                                    label: Track url
+                                    label: PLUGINS.SEO.MUSICALBUM_TRACK_URL
                                   .duration:
                                     type: text
-                                    label: Track duration
+                                    label: PLUGINS.SEO.MUSICALBUM_TRACK_DURATION
                               header.restaurantenabled:
                                 type: toggle
-                                label: Add Restaurant Microdata
+                                label: PLUGINS.SEO.ADD_RESTAURANT
                                 default: 0
                                 options:
                                     1: PLUGIN_ADMIN.YES
@@ -640,33 +640,33 @@ form:
                                 default: Restaurant
                               header.restaurant.name:
                                 type: text
-                                label: Restaurant Name
+                                label: PLUGINS.SEO.RESTAURANT_NAME
                                 field_classes: togglerestaurant
                               header.restaurant.acceptsReservations:
                                 type: select
-                                label: Accept Reservation
+                                label: PLUGINS.SEO.RESTAURANT_ACCEPT_RESERVATION
                                 field_classes: togglerestaurant
                                 options:
                                   yes: yes
                                   no: no
                               header.restaurant.menu:
                                 type: text
-                                label: menu url
+                                label: PLUGINS.SEO.RESTAURANT_MENU_URL
                                 field_classes: togglerestaurant
                               header.restaurant.image:
                                 type: filepicker
                                 folder: '@self'
-                                label: Restaurant Image
+                                label: PLUGINS.SEO.RESTAURANT_IMAGE
                                 preview_images: true
                                 field_classes: togglerestaurant
                               header.restaurant.servesCuisine:
                                 placeholder: seafood
                                 type: text
-                                label: Cuisine
+                                label: PLUGINS.SEO.RESTAURANT_CUISINE
                                 field_classes: togglerestaurant
                               header.restaurant.priceRange:
                                 type: select
-                                label: Price Range
+                                label: PLUGINS.SEO.RESTAURANT_PRICE_RANGE
                                 field_classes: togglerestaurant
                                 options:
                                   $: $
@@ -677,23 +677,23 @@ form:
                                 default: PostalAddress
                               header.restaurant.address.streetAddress:
                                 type: text
-                                label: Street Address
+                                label: PLUGINS.SEO.RESTAURANT_STREET
                                 field_classes: togglerestaurant
                               header.restaurant.address.addressLocality:
                                 type: text
-                                label: Address Locality
+                                label: PLUGINS.SEO.RESTAURANT_LOCALITY
                                 field_classes: togglerestaurant
                               header.restaurant.address.addressRegion:
                                 type: text
-                                label: Address Region
+                                label: PLUGINS.SEO.RESTAURANT_REGION
                                 field_classes: togglerestaurant
                               header.restaurant.address.postalCode:
                                 type: text
-                                label: Postal Code
+                                label: PLUGINS.SEO.RESTAURANT_POSTAL_CODE
                                 field_classes: togglerestaurant
                               header.restaurant.telephone:
                                 type: text
-                                label: Telephone
+                                label: PLUGINS.SEO.RESTAURANT_TELEPHONE
                                 field_classes: togglerestaurant
                               header.scripttoggle:
                                 type: schema
