@@ -28,6 +28,24 @@ en:
       FACEBOOK_DESC: "Facebook Description"
       FACEBOOK_SHAREIMG: "Facebook Share Image"
       FACEBOOK_PREVIEWDESC: "Here is a preview of your page as shared on Facebook"
+      IMAGE_HEIGHT_PX: "Image Height (px)"
+      IMAGE_WIDTH_PX: "Image Width (px)"
+      ARTICLE_IMAGE: "Article Image"
+      DATE_PUBLISHED: "Published date"
+      ARTICLE_DESCRIPTION: "Article Description"
+      HEADLINE: "Headline"
+      ADD_ARTICLE_MICRODATA: "Add Article Microdata"
+      ARTICLE_AUTHOR: "Article Author"
+      ARTICLE_PUBLISHER: "Article Publisher"
+      PUBLISHER_LOGO: "Publisher Logo"
+      PUBLISHER_NAME: "Publisher Name"
+      ARTICLE_BODY: "Full Article Body"
+      
+      
+      
+      
+      
+      
 
 # en
 #fr:

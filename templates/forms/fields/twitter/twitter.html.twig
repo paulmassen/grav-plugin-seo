@@ -1,4 +1,4 @@
-{% if field.security is empty or authorize(array(field.security)) %}
+
 {% if admin.route %}
     {% set context = admin.page(true) %}
 {% endif %}
@@ -47,5 +47,3 @@
         {% endfor %}
         </div>
     {% endif %}
-
-{% endif %}

@@ -220,15 +220,41 @@ form:
                                 type: text
                                 label: Event Name
                                 field_classes: togglemusicevent
+                              header.musicevent.description:
+                                type: textarea
+                                label: Event Description
+                                field_classes: togglemusicevent
+                              header.musicevent.image:
+                                type: filepicker
+                                label: Music Event Image
+                                folder: '@self'
+                                field_classes: togglemusicevent
                               header.musicevent.offers.@type:
                                 type: hidden
                                 default: Offer
                                 label: Event Description
                                 field_classes: togglemusicevent
+                              header.musicevent.offers.availability:
+                                type: select
+                                options:
+                                  'http://schema.org/PreOrder': Preorder
+                                  'http://schema.org/OutOfStock': Out of stock
+                                  'http://schema.org/PreSale': Pre Sale
+                                  'http://schema.org/InStock': In Stock
+                                  'http://schema.org/Discontinued': Discontinued
+                                  'http://schema.org/InStoreOnly': In Store Only 
+                                  'http://schema.org/OutOfStock': Out of Stock
+                                  'http://schema.org/SoldOut': Sold Out
+                                  'http://schema.org/OnlineOnly': Online Only
+                                field_classes: togglemusicevent
+                                  
                               header.musicevent.offers.url:
                                 type: text
                                 label: Ticket URL
                                 field_classes: togglemusicevent
+                              header.musicevent.offers.validFrom:
+                                type: datetime
+                                label: Valid From
                               header.musicevent.offers.price:
                                 type: text
                                 label: Price
@@ -421,7 +447,11 @@ form:
                                     placeholder: 'http://en.wikipedia.org/wiki/Artist_Page'
                               header.musicevent.startDate: 
                                 type: datetime
-                                label: Date Event
+                                label: Date Start Event
+                                field_classes: togglemusicevent
+                              header.musicevent.endDate:
+                                type: datetime
+                                label: End of event
                                 field_classes: togglemusicevent
                               header.musicevent.workPerformed:
                                 type: list
