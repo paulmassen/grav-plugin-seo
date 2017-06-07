@@ -18,6 +18,17 @@ This plugins add a SEO tab, where you or your end user can customize these setti
 
 ![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/develop/demoseoplugin.gif?raw=true)
 
+#### Feedback needed
+
+As this plugin is in its early stage, please do not hesitate to leave a feedback, to suggest modification or features.
+
+### TO-DO
+
+- [ ] Add more Microdata type
+- [ ] Add Translations
+- [ ] Add the possibility to add multiple microdata of the same type
+
+
 ## Features
 
 As for now, you can customize how your website will look:
@@ -26,6 +37,7 @@ As for now, you can customize how your website will look:
 - When shared on Facebook and Google +
 
 You can also generate Schema.org JSON Microdata from the admin.
+
 
 
 ## Installation and Updates
@@ -50,7 +62,7 @@ Step 3: If you plan on using the Twitter sharing settings, make sure to fill you
 ## Usage
 
 The `SEO` plugin appends a SEO tab on every pages where you can manage and define how your website will look on search engine results and on social networks. 
-Plugins sets some default values when fields are not filled.
+
 
 ## Contributing
 
