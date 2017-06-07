@@ -1,13 +1,13 @@
 <?php
 /**
- * SEO v1.0.5
+ * SEO v1.0.6
  *
  * This plugin adds an SEO Tab to every pages for managing SEO data.
  *
  * Licensed under the MIT license, see LICENSE.
  *
  * @package     SEO
- * @version     1.0.4
+ * @version     1.0.6
  * @link        <https://github.com/paulmassen/grav-plugin-seo>
  * @author      Paul Massendari <paul@massendari.com>
  * @copyright   2017, Paul Massendari
