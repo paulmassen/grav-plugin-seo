@@ -24,6 +24,7 @@
 {% else %}
 <meta name="twitter:image" content="{% if not system.absolute_urls %}{{ uri.base()}}{% endif %}{{page.media.images|first.url(true)}}" />
 {% endif %}
+<meta name="twitter:url" content="{{page.url(true) }}"/>
 {# {% endif %}#}
 {% endif %}
 {% if page.header.facebookenable != "0" %}
