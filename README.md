@@ -1,4 +1,4 @@
-# ![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/develop/gravlogo3.png?raw=true)
+# ![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/develop/logoseo.png?raw=true)
 
 
 ##### Table of Contents:
@@ -16,7 +16,7 @@
 
 This plugins add a SEO tab, where you or your end user can customize these settings. The plugins also has an user-friendly live-update preview functionality as shown below:
 
-![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/develop/logoseo.png?raw=true)
+![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/develop/demoseoplugin.gif?raw=true)
 
 ## Features
 
