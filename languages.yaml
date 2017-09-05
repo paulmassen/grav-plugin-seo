@@ -38,6 +38,7 @@ en:
       ADD_ARTICLE_MICRODATA: "Add Article Microdata"
       ARTICLE_AUTHOR: "Article Author"
       ARTICLE_PUBLISHER: "Article Publisher"
+      ENABLEMUSICEVENT: "Enable Music Event"
       PUBLISHER_LOGO: "Publisher Logo"
       PUBLISHER_NAME: "Publisher Name"
       ARTICLE_BODY: "Full Article Body"
