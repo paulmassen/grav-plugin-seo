@@ -1,0 +1,46 @@
+# v2.0.0
+## 09/05/2017
+
+1. [](#new)
+    * Complete Refactor of the plugin with proper metadata integration
+    * Users now just have to add {{json}} in the head of their base.html.twig
+    * Added configuration for enabling or disabling microdata fields
+    * Use of the fieldset and conditional fields
+    * Changed filepicker for the new mediapicker field
+
+# v1.0.6
+## 06/07/2017
+
+1. [](#bugfix)
+    * Added Twitter URL Meta
+
+# v1.0.5
+## 06/06/2017
+
+1. [](#bugfix)
+    * Fix Twitter title not displayed correctly
+
+# v1.0.4
+## 06/02/2017
+
+1. [](#new)
+    * New Microdata type: Music Event, MusicAlbum
+    * Toggle will now display or hide the related fields 
+
+# v1.0.3
+## 06/01/2017
+
+1. [](#new)
+    * New feature: Microdata generation
+2. [](#bugfix)
+    * Fix Page title not rendered correctly
+
+# v0.9.1
+## 06/01/2017
+
+1. [](#new)
+    * Removed the site-wide configuration.
+    * Multiples layout fix
+2. [](#bugfix)
+    * Fix blueprint causing toggle fields to duplicate.
+    * Fix fallback value when fields are not filled.
