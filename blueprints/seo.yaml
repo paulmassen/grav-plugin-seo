@@ -182,6 +182,7 @@ form:
                             header.musicevents:
                               type: list
                               label: PLUGINS.SEO.ADDMUSICEVENT
+                              style: vertical
                               fields:
                                 .musicevent_location_name:
                                   type: text
@@ -303,6 +304,7 @@ form:
                           fields:
                             header.addevent:
                               type: list
+                              style: vertical
                               label: PLUGINS.SEO.ADD_EVENT
                               fields:
                                 .event_name:
@@ -369,6 +371,7 @@ form:
                                   type: bool
                             header.addperson:
                               type: list
+                              style: vertical
                               label: PLUGINS.SEO.ADD_PERSON
                               fields:
                                 .person_name:
@@ -408,6 +411,7 @@ form:
                                   type: bool
                             header.musicalbums:
                               type: list
+                              style: vertical
                               label: PLUGINS.SEO.ADD_MUSICALBUM
                               fields:
                                 .musicalbum_name:
