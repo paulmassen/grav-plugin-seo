@@ -26,7 +26,7 @@ As this plugin is in its early stage, please do not hesitate to leave a feedback
 
 - [ ] Add more Microdata type
 - [ ] Add Translations
-- [ ] Add the possibility to add multiple microdata of the same type
+- [x] Add the possibility to add multiple microdata of the same type
 
 
 ## Features
@@ -46,15 +46,11 @@ Installing or updating the `SEO` plugin can be done in one of three ways. Using 
 
     /your/site/grav/user/plugins/seo
 
-Once installed, the first step is to include the metadata snippet in your base.html.twig template, between <head> and </head> as below:
-The if condition is here in order to not throw an error if the plugin is deactivated.
+Once installed, the only thing you have to do is to add 
 ```
-{% if config.plugins.seo.enabled %}
-{% include 'partials/seo_data.html.twig' %}
-{% endif %}
+{{ json }}
 ```
-
-Step 2: If you use a Grav Theme or Skeleton, make sure to remove the `<title></title>` tags as well as the meta description tag that comes with most of them inside base.html.twig, as the plugin takes care of rendering it.
+between the `<head>` and `</head>` tags in your base.html.twig
 
 Step 3: If you plan on using the Twitter sharing settings, make sure to fill your user ID in tab Plugins > SEO > Twitter ID
 
