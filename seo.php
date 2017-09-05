@@ -214,7 +214,7 @@ class seoPlugin extends Plugin
             $myvar = $fixedurl;
             $imagefolder = $page->find($fixedurl)->folder();
             $imagename = preg_replace($pattern, '$3', $imageurl);
-            $im = getimagesize($this->grav['uri']->rootUrl() . 'user/pages/' . $imagefolder . '/' . $imagename);
+            $im = @getimagesize($this->grav['uri']->rootUrl() . 'user/pages/' . $imagefolder . '/' . $imagename);
             $musiceventimage = [
                  
                       '@type' => 'ImageObject',
@@ -333,7 +333,7 @@ class seoPlugin extends Plugin
             $myvar = $fixedurl;
             $imagefolder = $page->find($fixedurl)->folder();
             $imagename = preg_replace($pattern, '$3', $imageurl);
-            $im = getimagesize($this->grav['uri']->rootUrl() . 'user/pages/' . $imagefolder . '/' . $imagename);
+            $im = @getimagesize($this->grav['uri']->rootUrl() . 'user/pages/' . $imagefolder . '/' . $imagename);
             $microdata['article']['publisher']['logo']['width'] =  "$im[0]";
             $microdata['article']['publisher']['logo']['height'] =  "$im[1]";
             
@@ -348,7 +348,7 @@ class seoPlugin extends Plugin
             $myvar = $fixedurl;
             $imagefolder = $page->find($fixedurl)->folder();
             $imagename = preg_replace($pattern, '$3', $imageurl);
-            $im = getimagesize('user/pages/' . $imagefolder . '/' . $imagename);
+            $im = @getimagesize('user/pages/' . $imagefolder . '/' . $imagename);
             
             $microdata['article']['image']['width'] = "$im[0]";
             $microdata['article']['image']['height'] = "$im[1]";
