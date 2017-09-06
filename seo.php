@@ -191,7 +191,7 @@ class seoPlugin extends Plugin
       
        if ($page->header()->musiceventenabled and $this->config['plugins']['seo']['musicevent']) {
            $musiceventsarray = $page->header()->musicevents;
-           
+            if (count($musiceventsarray) > 1) {
            foreach ($musiceventsarray as $event) {
               foreach ($event[musicevent_performer] as $artist){
               $performerarray[] = [
@@ -252,10 +252,13 @@ class seoPlugin extends Plugin
               
               
             }
+            }
            
        }
        if ($page->header()->eventenabled and $this->config['plugins']['seo']['event']) {
            $eventsarray = $page->header()->addevent;
+           
+           if (count($eventsarray) > 1) {
            foreach ($eventsarray as $event) {
               $microdata[] = [
                   '@context' => 'http://schema.org',
@@ -288,6 +291,7 @@ class seoPlugin extends Plugin
               
               
             }
+           }
            
        }
        if ($page->header()->articleenabled and $this->config['plugins']['seo']['article']) {
