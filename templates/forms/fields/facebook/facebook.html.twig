@@ -19,7 +19,7 @@
   </div>
 
   <div class="reference">
-    <img class="reference-thumb" id="liveimg" src="{{context.media[context.header.facebookimg].cropZoom(480,300).url|default(context.media.images|first.url)}}" />
+    <img class="reference-thumb" id="liveimg" src="{% if context.header.facebookimg %}{{base_url_absolute}}{{context.header.facebookimg }} {% else %} {{context.media.images|first.url }}{% endif %}" />
     <div class="reference-content">
       <div class="reference-title" id="facebooktargtitle">{{ context.header.facebooktitle|default(context.header.title ~ " | " ~ site.title )}}</div>
       <div class="reference-subtitle" id="facebooktargdesc">{{ context.header.facebookdesc|default(context.summary|striptags) }}</div>
@@ -201,10 +201,13 @@ $('#facebooktitle').keyup(function(){
 });$('#facebookdesc').keyup(function(){var keyed = $(this).val();$("#facebooktargdesc").html(keyed);
    $("#fbcount").text("Characters left: " + (300 - $(this).val().length));
 });
-$('#fbimgselect').on('change', function() {
-  var valueselect = this.value ;
-  var newimg = "{{ page.url(true) }}/" + this.value ;
-  $('#liveimg').attr("src", newimg);
+$('#fbimgselect').on('click', function() {
+   $('.js__media-element').on('click', function() {
+      var valueselect = $(this).attr("data-file-url") ;
+      var newimg = "{{ base_url_absolute }}" + valueselect ;
+      $('#liveimg').attr("src", newimg);
+   });
+  
 })
 
 </script>
