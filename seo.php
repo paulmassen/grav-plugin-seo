@@ -91,6 +91,7 @@ class seoPlugin extends Plugin
         $content = strip_tags($page->content());
         $pattern = '~((\/[^\/]+)+)\/([^\/]+)~';
         $replacement = '$1';
+        $outputjson = "";
         $cleanContent = $this->cleanText ($content, $config);
         $microdata = [];
         $meta = $page->metadata(null);
@@ -110,6 +111,8 @@ class seoPlugin extends Plugin
              /**
              * Set Twitter Metatags
              */
+
+        if (property_exists($page->header(),'twitterenable')) {
         if ($page->header()->twitterenable == 'true') {
             
         
@@ -143,6 +146,8 @@ class seoPlugin extends Plugin
             $meta['twitter:url']['property']  = 'twitter:url';
             $meta['twitter:url']['content']   = $page->url(true);
         }
+        }
+         if (property_exists($page->header(),'facebookenable')){
          if ($page->header()->facebookenable == 'true') {
          
                 $meta['og:sitename']['name']        = 'og:sitename';
@@ -184,12 +189,14 @@ class seoPlugin extends Plugin
             }
        
          }
+             
+         }
         // Add metadata
       $page->metadata($meta);
         // Set Json-Ld Microdata
         // Article Microdata
-      
-       if ($page->header()->musiceventenabled and $this->config['plugins']['seo']['musicevent']) {
+      if (property_exists($page->header(),'musiceventenabled')){
+       if (($page->header()->musiceventenabled) and $this->config['plugins']['seo']['musicevent']) {
            $musiceventsarray = $page->header()->musicevents;
             if (count($musiceventsarray) > 1) {
            foreach ($musiceventsarray as $event) {
@@ -253,12 +260,13 @@ class seoPlugin extends Plugin
               
             }
             }
-           
+       }   
        }
+       if (property_exists($page->header(),'eventenabled')){
        if ($page->header()->eventenabled and $this->config['plugins']['seo']['event']) {
            $eventsarray = $page->header()->addevent;
            
-           if (count($eventsarray) > 1) {
+           if (count($eventsarray) > 0) {
            foreach ($eventsarray as $event) {
               $microdata[] = [
                   '@context' => 'http://schema.org',
@@ -294,6 +302,31 @@ class seoPlugin extends Plugin
            }
            
        }
+       }
+        if (property_exists($page->header(),'restaurantenabled')){
+        if ($page->header()->restaurantenabled and $this->config['plugins']['seo']['restaurant']) {
+
+              $microdata[] = [
+                  '@context' => 'http://schema.org',
+                  '@type' => 'Restaurant',
+                  'name' => $page->header()->restaurant[name],
+                  
+                  'address' => [
+                      '@type' => 'PostalAddress',
+                      'addressLocality' => $page->header()->restaurant[address_addressLocality],
+                      'addressRegion' => $page->header()->restaurant[address_addressRegion],
+                      'streetAddress' => $page->header()->restaurant[address_streetAddress],
+                      'postalCode' => $page->header()->restaurant[address_postalCode],
+                      ],
+                  'servesCuisine' => $page->header()->restaurant[servesCuisine],
+                  'priceRange' => $page->header()->restaurant[priceRange],
+                  'telephone' => $page->header()->restaurant[telephone],
+                  
+                  ];
+
+       }
+        }
+       if (property_exists($page->header(),'articleenabled')){
        if ($page->header()->articleenabled and $this->config['plugins']['seo']['article']) {
         $microdata['article']      = [
             '@context' => 'http://schema.org',
@@ -352,13 +385,13 @@ class seoPlugin extends Plugin
             $myvar = $fixedurl;
             $imagefolder = $page->find($fixedurl)->folder();
             $imagename = preg_replace($pattern, '$3', $imageurl);
-            $im = @getimagesize('user/pages/' . $imagefolder . '/' . $imagename);
+            $im = @getimagesize($this->grav['uri']->rootUrl() . 'user/pages/' . $imagefolder . '/' . $imagename);
             
             $microdata['article']['image']['width'] = "$im[0]";
             $microdata['article']['image']['height'] = "$im[1]";
           
-            };
-               
+            }
+       }       
       };
       // Encode to json
       foreach ($microdata as $key => $value){
@@ -366,9 +399,9 @@ class seoPlugin extends Plugin
         $outputjson = $outputjson . $jsonscript;
       }
       
-      // Add the script tag and bind it to twig var
+
       $this->grav['twig']->twig_vars['json'] = $outputjson;
-      $this->grav['twig']->twig_vars['mynewvar'] =  $myvar ;
+     
     }
     
 
