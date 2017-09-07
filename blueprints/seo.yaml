@@ -72,6 +72,7 @@ form:
                               label: PLUGINS.SEO.TWITTER_SHAREIMG
                               preview_images: true
                               id: twittimgselect
+                            
                             header.twittertitle:
                               type: text
                               label: PLUGINS.SEO.TWITTER_TITLE
@@ -302,6 +303,15 @@ form:
                           collapsed: true
                           collapsible: true
                           fields:
+                            header.eventenabled:
+                              type: toggle
+                              label: PLUGINS.SEO.ENABLEEVENT
+                              default: 0
+                              options:
+                                  1: PLUGIN_ADMIN.YES
+                                  0: PLUGIN_ADMIN.NO
+                              validate:
+                                  type: bool
                             header.addevent:
                               type: list
                               style: vertical
@@ -525,7 +535,7 @@ form:
                               type: text
                               label: PLUGINS.SEO.RESTAURANT_POSTAL_CODE
                               field_classes: togglerestaurant
-                            header.restaurant_telephone:
+                            header.restaurant.telephone:
                               type: text
                               label: PLUGINS.SEO.RESTAURANT_TELEPHONE
                               field_classes: togglerestaurant

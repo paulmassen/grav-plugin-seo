@@ -258,7 +258,7 @@ class seoPlugin extends Plugin
        if ($page->header()->eventenabled and $this->config['plugins']['seo']['event']) {
            $eventsarray = $page->header()->addevent;
            
-           if (count($eventsarray) > 1) {
+           if (count($eventsarray) > 0) {
            foreach ($eventsarray as $event) {
               $microdata[] = [
                   '@context' => 'http://schema.org',
@@ -294,6 +294,29 @@ class seoPlugin extends Plugin
            }
            
        }
+       
+        if ($page->header()->restaurantenabled and $this->config['plugins']['seo']['restaurant']) {
+
+              $microdata[] = [
+                  '@context' => 'http://schema.org',
+                  '@type' => 'Restaurant',
+                  'name' => $page->header()->restaurant[name],
+                  
+                  'address' => [
+                      '@type' => 'PostalAddress',
+                      'addressLocality' => $page->header()->restaurant[address_addressLocality],
+                      'addressRegion' => $page->header()->restaurant[address_addressRegion],
+                      'streetAddress' => $page->header()->restaurant[address_streetAddress],
+                      'postalCode' => $page->header()->restaurant[address_postalCode],
+                      ],
+                  'servesCuisine' => $page->header()->restaurant[servesCuisine],
+                  'priceRange' => $page->header()->restaurant[priceRange],
+                  'telephone' => $page->header()->restaurant[telephone],
+                  
+                  ];
+
+       }
+       
        if ($page->header()->articleenabled and $this->config['plugins']['seo']['article']) {
         $microdata['article']      = [
             '@context' => 'http://schema.org',
@@ -352,7 +375,7 @@ class seoPlugin extends Plugin
             $myvar = $fixedurl;
             $imagefolder = $page->find($fixedurl)->folder();
             $imagename = preg_replace($pattern, '$3', $imageurl);
-            $im = @getimagesize('user/pages/' . $imagefolder . '/' . $imagename);
+            $im = @getimagesize($this->grav['uri']->rootUrl() . 'user/pages/' . $imagefolder . '/' . $imagename);
             
             $microdata['article']['image']['width'] = "$im[0]";
             $microdata['article']['image']['height'] = "$im[1]";
