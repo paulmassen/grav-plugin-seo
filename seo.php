@@ -91,6 +91,7 @@ class seoPlugin extends Plugin
         $content = strip_tags($page->content());
         $pattern = '~((\/[^\/]+)+)\/([^\/]+)~';
         $replacement = '$1';
+        $outputjson = "";
         $cleanContent = $this->cleanText ($content, $config);
         $microdata = [];
         $meta = $page->metadata(null);
@@ -398,9 +399,9 @@ class seoPlugin extends Plugin
         $outputjson = $outputjson . $jsonscript;
       }
       
-      // Add the script tag and bind it to twig var
+
       $this->grav['twig']->twig_vars['json'] = $outputjson;
-      $this->grav['twig']->twig_vars['mynewvar'] =  $myvar ;
+     
     }
     
 
