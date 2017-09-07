@@ -180,7 +180,7 @@ class seoPlugin extends Plugin
             if (isset($page->header()->facebookauthor)) {
                 $meta['article:author']['name']     = 'article:author';
                 $meta['article:author']['property'] = 'article:author';
-                $meta['article:author']['content'] =   $page->header()->articleauthor;
+                $meta['article:author']['content'] =   $page->header()->facebookauthor;
             }
             if (isset($page->header()->facebookimg)) {
                 $meta['og:image']['name']     = 'og:image';
