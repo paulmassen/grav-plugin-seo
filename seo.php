@@ -205,23 +205,23 @@ class seoPlugin extends Plugin
            $musiceventsarray = $page->header()->musicevents;
             if (count($musiceventsarray) > 1) {
            foreach ($musiceventsarray as $event) {
-              foreach ($event[musicevent_performer] as $artist){
+              foreach ($event['musicevent_performer'] as $artist){
               $performerarray[] = [
-                  '@type' => $artist[performer_type],
-                  'name' => $artist[name],
-                  'sameAs' => $artist[sameAs], 
+                  '@type' => $artist['performer_type'],
+                  'name' => $artist['name'],
+                  'sameAs' => $artist['sameAs'], 
                   ];
                
               };
-              foreach ($event[musicevent_workPerformed] as $work){
+              foreach ($event['musicevent_workPerformed'] as $work){
               $workarray[] = [
-                  'name' => $work[name],
-                  'sameAs' => $work[sameAs], 
+                  'name' => $work['name'],
+                  'sameAs' => $work['sameAs'], 
                   ];
                
               };
-            if (isset($event[musicevent_image])){
-            $imageurl = $event[musicevent_image];
+            if (isset($event['musicevent_image'])){
+            $imageurl = $event['musicevent_image'];
             $fixedurl = preg_replace($pattern, $replacement, $imageurl);
             $myvar = $fixedurl;
             $imagefolder = $page->find($fixedurl)->folder();
@@ -232,7 +232,7 @@ class seoPlugin extends Plugin
                       '@type' => 'ImageObject',
                       'width' => "$im[0]",
                       'height' => "$im[1]",
-                      'url' => $this->grav['uri']->base() . $event[musicevent_image],
+                      'url' => $this->grav['uri']->base() . $event['musicevent_image'],
                       
                       ];
                 
@@ -240,25 +240,25 @@ class seoPlugin extends Plugin
               $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'MusicEvent',
-                  'name' => $event[musicevent_location_name],
+                  'name' => $event['musicevent_location_name'],
                   'location' => [
                       '@type' => 'MusicVenue',
-                      'name' => $event[musicevent_location_name],
-                      'address' => $event[musicevent_location_address],
+                      'name' => $event['musicevent_location_name'],
+                      'address' => $event['musicevent_location_address'],
                       ],
-                  'description' => $event[musicevent_description],
-                  'url' => $event[musicevent_url],
+                  'description' => $event['musicevent_description'],
+                  'url' => $event['musicevent_url'],
                   'performer' => $performerarray,
                   'workPerformed' => $workarray, 
                   'image' => $musiceventimage,
                   'offers' => [
                       '@type' => 'Offer',
-                      'price' => $event[musicevent_offers_price],
-                      'priceCurrency' => $event[musicevent_offers_priceCurrency],
-                      'url' => $event[musicevent_offers_url], 
+                      'price' => $event['musicevent_offers_price'],
+                      'priceCurrency' => $event['musicevent_offers_priceCurrency'],
+                      'url' => $event['musicevent_offers_url'], 
                       ],
-                  'startDate' => date("c", strtotime($event[musicevent_startdate])),
-                  'endDate' => date("c", strtotime($event[musicevent_enddate])),
+                  'startDate' => date("c", strtotime($event['musicevent_startdate'])),
+                  'endDate' => date("c", strtotime($event['musicevent_enddate'])),
                   
                   ];
               
@@ -276,29 +276,29 @@ class seoPlugin extends Plugin
               $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Event',
-                  'name' => $event[event_name],
+                  'name' => $event['event_name'],
                   
                   'location' => [
                       '@type' => 'Place',
-                      'name' => $event[event_location_name],
+                      'name' => $event['event_location_name'],
                       'address' => [
                           '@type' => 'PostalAddress',
-                          'addressLocality' => $event[event_location_address_addressLocality],
-                          'addressRegion' => $event[event_location_address_addressRegion],
-                          'streetAddress' => $event[event_location_streetAddress],
+                          'addressLocality' => $event['event_location_address_addressLocality'],
+                          'addressRegion' => $event['event_location_address_addressRegion'],
+                          'streetAddress' => $event['event_location_streetAddress'],
                           ],
-                       'url' => $event[musicevent_location_url],
+                       'url' => $event['musicevent_location_url'],
                       ],
-                  'description' => $event[musicevent_description],
+                  'description' => $event['musicevent_description'],
                   'offers' => [
                       '@type' => 'Offer',
-                      'price' => $event[event_offers_price],
-                      'priceCurrency' => $event[event_offers_priceCurrency],
-                      'url' => $event[event_offers_url], 
+                      'price' => $event['event_offers_price'],
+                      'priceCurrency' => $event['event_offers_priceCurrency'],
+                      'url' => $event['event_offers_url'], 
                       ],
-                  'startDate' => date("c", strtotime($event[event_startdate])),
-                  'endDate' => date("c", strtotime($event[event_enddate])),
-                  'description' => $event[event_description],
+                  'startDate' => date("c", strtotime($event['event_startdate'])),
+                  'endDate' => date("c", strtotime($event['event_enddate'])),
+                  'description' => $event['event_description'],
                   
                   ];
               
@@ -314,18 +314,18 @@ class seoPlugin extends Plugin
               $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Restaurant',
-                  'name' => $page->header()->restaurant[name],
+                  'name' => $page->header()->restaurant['name'],
                   
                   'address' => [
                       '@type' => 'PostalAddress',
-                      'addressLocality' => $page->header()->restaurant[address_addressLocality],
-                      'addressRegion' => $page->header()->restaurant[address_addressRegion],
-                      'streetAddress' => $page->header()->restaurant[address_streetAddress],
-                      'postalCode' => $page->header()->restaurant[address_postalCode],
+                      'addressLocality' => $page->header()->restaurant['address_addressLocality'],
+                      'addressRegion' => $page->header()->restaurant['address_addressRegion'],
+                      'streetAddress' => $page->header()->restaurant['address_streetAddress'],
+                      'postalCode' => $page->header()->restaurant['address_postalCode'],
                       ],
-                  'servesCuisine' => $page->header()->restaurant[servesCuisine],
-                  'priceRange' => $page->header()->restaurant[priceRange],
-                  'telephone' => $page->header()->restaurant[telephone],
+                  'servesCuisine' => $page->header()->restaurant['servesCuisine'],
+                  'priceRange' => $page->header()->restaurant['priceRange'],
+                  'telephone' => $page->header()->restaurant['telephone'],
                   
                   ];
 
