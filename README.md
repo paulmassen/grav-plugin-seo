@@ -24,7 +24,7 @@ You can see and customize how your page will look on Google Search Results.
 ### Twitter
 You can also preview how your page will look when shared on twitter
 
-![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/master/demoseoplugin.gif?raw=true)
+![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/master/twitter.gif?raw=true)
 
 
 ### Facebook
