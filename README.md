@@ -12,12 +12,64 @@
 
 ## About
 
-`Seo` is an user-friendly plugin for [GetGrav.org](http://getgrav.org) used to manage all your metatags and customize your pages appearance in Search Engine Results or social networks.
+`Seo` is an user-friendly plugin for [GetGrav.org](http://getgrav.org) used to manage all your metatags in order to customize your pages appearance in Search Engine Results or social networks. The plugin also allows the generation of JSON-LD Microdata.
 
-This plugins add a SEO tab, where you or your end user can customize these settings. The plugins also has an user-friendly live-update preview functionality as shown below:
+## Features
+
+### Google
+You can see and customize how your page will look on Google Search Results.
 
 ![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/master/demoseoplugin.gif?raw=true)
 
+### Twitter
+You can also preview how your page will look when shared on twitter
+
+![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/master/demoseoplugin.gif?raw=true)
+
+
+### Facebook
+And on Facebook
+
+![Facebook Live Preview](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/develop/facebook.gif)
+
+###JSON-LD
+You can also generate Schema.org JSON Microdata from the admin.
+![Article Microdata](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/develop/article_json.png)
+This will generate the following Json-ld between script tags
+```
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Article Title",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "url": "http://yourwebsite.com"
+    },
+    "articleBody": "Lorem Ipsum dolor sit amet",
+    "datePublished": "2017-12-01T00:00:00+00:00",
+    "dateModified": "2019-01-01T00:00:00+00:00",
+    "description": "Description of the article",
+    "author": "Steve Jobs",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Apple",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://yourwebsite.com/home/logo.png",
+            "width": "200",
+            "height": "100"
+        }
+    },
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://yourwebsite.com/home/myimage.jpg",
+        "width": "800",
+        "height": "600"
+    }
+}
+</script>
+```
 #### Feedback needed
 
 As this plugin is in its early stage, please do not hesitate to leave a feedback, to suggest modification or features.
@@ -28,15 +80,6 @@ As this plugin is in its early stage, please do not hesitate to leave a feedback
 - [ ] Add Translations
 - [x] Add the possibility to add multiple microdata of the same type
 
-
-## Features
-
-As for now, you can customize how your website will look:
-- On Google Search Results
-- When shared on Twitter
-- When shared on Facebook and Google +
-
-You can also generate Schema.org JSON Microdata from the admin.
 
 
 
@@ -72,5 +115,4 @@ After that please note:
 
 
 ## License
-
 

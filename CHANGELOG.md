@@ -1,4 +1,10 @@
 # v2.0.0
+## xx/xx/2017
+1. [](#bugfix)
+    * Fixed missing language.yaml entry
+    * Added style vertical to microdata for better readability
+
+# v2.0.0
 ## 09/05/2017
 
 1. [](#new)
