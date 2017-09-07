@@ -194,8 +194,8 @@ class seoPlugin extends Plugin
       $page->metadata($meta);
         // Set Json-Ld Microdata
         // Article Microdata
-      
-       if ($page->header()->musiceventenabled and $this->config['plugins']['seo']['musicevent']) {
+      if (property_exists($page->header(),'musiceventenabled')){
+       if (($page->header()->musiceventenabled) and $this->config['plugins']['seo']['musicevent']) {
            $musiceventsarray = $page->header()->musicevents;
             if (count($musiceventsarray) > 1) {
            foreach ($musiceventsarray as $event) {
@@ -259,8 +259,9 @@ class seoPlugin extends Plugin
               
             }
             }
-           
+       }   
        }
+       if (property_exists($page->header(),'eventenabled')){
        if ($page->header()->eventenabled and $this->config['plugins']['seo']['event']) {
            $eventsarray = $page->header()->addevent;
            
@@ -300,7 +301,8 @@ class seoPlugin extends Plugin
            }
            
        }
-       
+       }
+        if (property_exists($page->header(),'restaurantenabled')){
         if ($page->header()->restaurantenabled and $this->config['plugins']['seo']['restaurant']) {
 
               $microdata[] = [
@@ -322,7 +324,8 @@ class seoPlugin extends Plugin
                   ];
 
        }
-       
+        }
+       if (property_exists($page->header(),'articleenabled')){
        if ($page->header()->articleenabled and $this->config['plugins']['seo']['article']) {
         $microdata['article']      = [
             '@context' => 'http://schema.org',
@@ -386,8 +389,8 @@ class seoPlugin extends Plugin
             $microdata['article']['image']['width'] = "$im[0]";
             $microdata['article']['image']['height'] = "$im[1]";
           
-            };
-               
+            }
+       }       
       };
       // Encode to json
       foreach ($microdata as $key => $value){
