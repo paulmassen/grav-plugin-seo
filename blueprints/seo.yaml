@@ -126,12 +126,12 @@ form:
                               placeholder: Will use page title if left empty
                               field_classes: togglearticle
                             header.article.datePublished:
-                              type: date
+                              type: datetime
                               label: PLUGINS.SEO.DATE_PUBLISHED
                               disabled: false
                               field_classes: togglearticle
                             header.article.dateModified:
-                              type: date
+                              type: datetime
                               label: PLUGINS.SEO.DATE_MODIFIED
                               disabled: false
                               field_classes: togglearticle
