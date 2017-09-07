@@ -343,7 +343,7 @@ class seoPlugin extends Plugin
         $microdata['article']      = [
             '@context' => 'http://schema.org',
             '@type' => 'Article',
-            'headline' => $page->header()->article[headline] ,
+            'headline' => $headline ,
             'mainEntityOfPage' => [
                 "@type" => "WebPage",
                 'url' => $this->grav['uri']->base(),
