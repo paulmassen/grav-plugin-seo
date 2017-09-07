@@ -110,7 +110,9 @@ class seoPlugin extends Plugin
              /**
              * Set Twitter Metatags
              */
-        if (null !== $page->header()->twitterenable and $page->header()->twitterenable == 'true') {
+
+        if (property_exists($page->header(),'twitterenable')) {
+        if ($page->header()->twitterenable == 'true') {
             
         
             if (isset($config['twitterid'])) {
@@ -143,7 +145,9 @@ class seoPlugin extends Plugin
             $meta['twitter:url']['property']  = 'twitter:url';
             $meta['twitter:url']['content']   = $page->url(true);
         }
-         if (null !== $page->header()->facebookenable and $page->header()->facebookenable == 'true') {
+        }
+         if (property_exists($page->header(),'facebookenable')){
+         if ($page->header()->facebookenable == 'true') {
          
                 $meta['og:sitename']['name']        = 'og:sitename';
                 $meta['og:sitename']['property']    = 'og:sitename';
@@ -183,6 +187,8 @@ class seoPlugin extends Plugin
                 $meta['og:image']['content'] =  $this->grav['uri']->base() . $page->header()->facebookimg;
             }
        
+         }
+             
          }
         // Add metadata
       $page->metadata($meta);
