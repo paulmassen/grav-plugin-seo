@@ -334,7 +334,7 @@ class seoPlugin extends Plugin
        if (property_exists($page->header(),'articleenabled')){
         
         if (property_exists($page->header(), 'article[headline]')){
-           $headline =  $page->header()->article[headline];
+           $headline =  $page->header()->article['headline'];
            
         } else {
             $headline = $cleanTitle;
@@ -349,35 +349,30 @@ class seoPlugin extends Plugin
                 'url' => $this->grav['uri']->base(),
             ],
             'articleBody' =>  $this->cleanMarkdown($content),
-            'datePublished' => date("c", strtotime($page->header()->article[datePublished])),
-            'dateModified' => date("c", strtotime($page->header()->article[dateModified])),
+            'datePublished' => @date("c", strtotime($page->header()->article['datePublished'])),
+            'dateModified' => @date("c", strtotime($page->header()->article['dateModified'])),
         ];
-        if (isset($page->header()->article[description])) {
-            $microdata['article']['description'] = $page->header()->article[description];
+        if (isset($page->header()->article['description'])) {
+            $microdata['article']['description'] = $page->header()->article['description'];
            };
            /*else{
              $microdata['article']['description'] = substr($cleanContent,0,140); 
            };*/
-         if (isset($page->header()->article[headline])) {
-            $microdata['article']['headline'] = $page->header()->article[headline];
-           }
-           else{
-             $microdata['article']['headline'] = $page->title(); 
+
+         if (isset($page->header()->article['author'])) {
+            $microdata['article']['author'] = $page->header()->article['author'];
            };
-         if (isset($page->header()->article[author])) {
-            $microdata['article']['author'] = $page->header()->article[author];
-           };
-           if (isset($page->header()->article[publisher_name])) {
+           if (isset($page->header()->article['publisher_name'])) {
             $microdata['article']['publisher']['@type'] = 'Organization';
-            $microdata['article']['publisher']['name'] = $page->header()->article[publisher_name];
+            $microdata['article']['publisher']['name'] = $page->header()->article['publisher_name'];
            };
-           if (isset($page->header()->article[publisher_logo_url])) {
+           if (isset($page->header()->article['publisher_logo_url'])) {
             $microdata['article']['publisher']['logo']['@type'] = 'ImageObject';
-            $microdata['article']['publisher']['logo']['url'] = $this->grav['uri']->base() . $page->header()->article[publisher_logo_url];
-            $url = $this->grav['uri']->folder . $page->header()->article[publisher_logo_url];
+            $microdata['article']['publisher']['logo']['url'] = $this->grav['uri']->base() . $page->header()->article['publisher_logo_url'];
+            $url = $this->grav['uri']->folder . $page->header()->article['publisher_logo_url'];
             /*$raw = $this->ranger('~/user/pages/02.testtt/ipad.jpg');*/
             //$im = getimagesize($url);
-            $imageurl = $page->header()->article[publisher_logo_url];
+            $imageurl = $page->header()->article['publisher_logo_url'];
             $fixedurl = preg_replace($pattern, $replacement, $imageurl);
             $myvar = $fixedurl;
             $imagefolder = $page->find($fixedurl)->folder();
@@ -387,12 +382,12 @@ class seoPlugin extends Plugin
             $microdata['article']['publisher']['logo']['height'] =  "$im[1]";
             
            };
-           if (isset($page->header()->article[image_url])) {
+           if (isset($page->header()->article['image_url'])) {
             $microdata['article']['image']['@type'] = 'ImageObject';
-            $microdata['article']['image']['url'] = $this->grav['uri']->base() . $page->header()->article[image_url];
+            $microdata['article']['image']['url'] = $this->grav['uri']->base() . $page->header()->article['image_url'];
             
             
-            $imageurl = $page->header()->article[image_url];
+            $imageurl = $page->header()->article['image_url'];
             $fixedurl = preg_replace($pattern, $replacement, $imageurl);
             $myvar = $fixedurl;
             $imagefolder = $page->find($fixedurl)->folder();
