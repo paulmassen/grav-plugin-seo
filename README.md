@@ -32,7 +32,9 @@ And on Facebook
 
 ![Facebook Live Preview](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/develop/facebook.gif)
 
+
 ###JSON-LD
+
 You can also generate Schema.org JSON Microdata from the admin.
 ![Article Microdata](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/develop/article_json.png)
 This will generate the following Json-ld between script tags
