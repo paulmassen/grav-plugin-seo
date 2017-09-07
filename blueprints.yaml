@@ -1,5 +1,5 @@
 name: "SEO"
-version: "2.0.0"
+version: "2.0.1"
 description: "SEO is an user friendly plugin to manage your SEO across all your pages."
 icon: "facebook"
 testing: true
@@ -44,16 +44,16 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
-    #restaurant:
-    #  type: toggle
-    #  label: Enable Restaurant Microdata
-    #  highlight: 1
-    #  default: 0
-    #  options:
-    #    1: PLUGIN_ADMIN.ENABLED
-    #    0: PLUGIN_ADMIN.DISABLED
-    #  validate:
-    #    type: bool
+    restaurant:
+      type: toggle
+      label: Enable Restaurant Microdata
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
     musicevent:
       type: toggle
       label: Enable Music Event Microdata
@@ -64,16 +64,19 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
-    #person:
-    #  type: toggle
-    #  label: Enable Person Microdata
-    #  highlight: 1
-    #  default: 0
-    #  options:
-    #    1: PLUGIN_ADMIN.ENABLED
-    #    0: PLUGIN_ADMIN.DISABLED
-    #  validate:
-    #    type: bool
+    person:
+      type: toggle
+      label: Enable Person Microdata
+      highlight: 1
+      default: 0
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    facebookid:
+      type: text
+      label: Facebook App ID
     twitterid:
       type: text
       label: Twitter ID

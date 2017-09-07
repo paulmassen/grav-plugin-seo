@@ -150,40 +150,45 @@ class seoPlugin extends Plugin
          if (property_exists($page->header(),'facebookenable')){
          if ($page->header()->facebookenable == 'true') {
          
-                $meta['og:sitename']['name']        = 'og:sitename';
+                //$meta['og:sitename']['name']        = 'og:sitename';
                 $meta['og:sitename']['property']    = 'og:sitename';
                 $meta['og:sitename']['content']     = $this->config->get('site.title');
             if (isset($page->header()->facebooktitle)) {
-                $meta['og:title']['name']           = 'og:title';
+                //$meta['og:title']['name']           = 'og:title';
                 $meta['og:title']['property']       = 'og:title';
                 $meta['og:title']['content']        = $page->header()->facebooktitle;
             } else {
-                $meta['og:title']['name']           = 'og:title';
+               // $meta['og:title']['name']           = 'og:title';
                 $meta['og:title']['property']       = 'og:title';
                 $meta['og:title']['content']        = $page->title();
             }
-                $meta['og:type']['name']            = 'og:type';
+            if (isset($config['facebookid'])) {
+                //$meta['twitter:site']['name']      = 'twitter:site';
+                $meta['twitter:site']['property']  = 'og:fb_appid';
+                $meta['twitter:site']['content']   = $config->facebookid;
+            };
+                //$meta['og:type']['name']            = 'og:type';
                 $meta['og:type']['property']        = 'og:type';
                 $meta['og:type']['content']         = 'article';
-                $meta['og:url']['name']             = 'og:url';
+               // $meta['og:url']['name']             = 'og:url';
                 $meta['og:url']['property']         = 'og:url';
                 $meta['og:url']['content']          = $this->grav['uri']->url(true);
             if (isset($page->header()->facebookdesc)) {
-                $meta['og:description']['name']     = 'og:description';
+                //$meta['og:description']['name']     = 'og:description';
                 $meta['og:description']['property'] = 'og:description';
                 $meta['og:description']['content'] =  $page->header()->facebookdesc;
             } else {
-                $meta['og:description']['name']     = 'og:description';
+               // $meta['og:description']['name']     = 'og:description';
                 $meta['og:description']['property'] = 'og:description';
                 $meta['og:description']['content'] =  substr($cleanContent,0,140);
             }
             if (isset($page->header()->facebookauthor)) {
-                $meta['article:author']['name']     = 'article:author';
+              //  $meta['article:author']['name']     = 'article:author';
                 $meta['article:author']['property'] = 'article:author';
                 $meta['article:author']['content'] =   $page->header()->facebookauthor;
             }
             if (isset($page->header()->facebookimg)) {
-                $meta['og:image']['name']     = 'og:image';
+               // $meta['og:image']['name']     = 'og:image';
                 $meta['og:image']['property'] = 'og:image';
                 $meta['og:image']['content'] =  $this->grav['uri']->base() . $page->header()->facebookimg;
             }
