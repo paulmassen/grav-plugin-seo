@@ -93,8 +93,16 @@ Once installed, the only thing you have to do is to add
 {{ json }}
 ```
 between the `<head>` and `</head>` tags in your base.html.twig
+Don't forget to also add the default partials/metadata.html.twig in order to output the twitter and opengraph meta tags.
+The first lines of your base.html.twig should looks like that:
+```     
+<title>{{ header.title|e('html') }} </title>
+{{ json }}
+{% include 'partials/metadata.html.twig' %}
+```
+If you plan on using the Twitter feature, make sure to fill your user ID in tab Plugins > SEO > Twitter ID
 
-Step 3: If you plan on using the Twitter sharing settings, make sure to fill your user ID in tab Plugins > SEO > Twitter ID
+## Configuration
 
 
 ## Usage
