@@ -301,29 +301,29 @@ class seoPlugin extends Plugin
               $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Event',
-                  'name' => $event['event_name'],
+                  'name' => @$event['event_name'],
                   
                   'location' => [
                       '@type' => 'Place',
-                      'name' => $event['event_location_name'],
+                      'name' => @$event['event_location_name'],
                       'address' => [
                           '@type' => 'PostalAddress',
-                          'addressLocality' => $event['event_location_address_addressLocality'],
-                          'addressRegion' => $event['event_location_address_addressRegion'],
-                          'streetAddress' => $event['event_location_streetAddress'],
+                          'addressLocality' => @$event['event_location_address_addressLocality'],
+                          'addressRegion' => @$event['event_location_address_addressRegion'],
+                          'streetAddress' => @$event['event_location_streetAddress'],
                           ],
-                       'url' => $event['musicevent_location_url'],
+                       'url' => @$event['musicevent_location_url'],
                       ],
-                  'description' => $event['musicevent_description'],
+                  'description' => @$event['musicevent_description'],
                   'offers' => [
                       '@type' => 'Offer',
-                      'price' => $event['event_offers_price'],
-                      'priceCurrency' => $event['event_offers_priceCurrency'],
-                      'url' => $event['event_offers_url'], 
+                      'price' => @$event['event_offers_price'],
+                      'priceCurrency' => @$event['event_offers_priceCurrency'],
+                      'url' => @$event['event_offers_url'], 
                       ],
-                  'startDate' => date("c", strtotime($event['event_startdate'])),
-                  'endDate' => date("c", strtotime($event['event_enddate'])),
-                  'description' => $event['event_description'],
+                  'startDate' => @date("c", strtotime($event['event_startdate'])),
+                  'endDate' => @date("c", strtotime($event['event_enddate'])),
+                  'description' => @$event['event_description'],
                   
                   ];
               
@@ -339,18 +339,18 @@ class seoPlugin extends Plugin
               $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Restaurant',
-                  'name' => $page->header()->restaurant['name'],
+                  'name' => @$page->header()->restaurant['name'],
                   
                   'address' => [
                       '@type' => 'PostalAddress',
-                      'addressLocality' => $page->header()->restaurant['address_addressLocality'],
-                      'addressRegion' => $page->header()->restaurant['address_addressRegion'],
-                      'streetAddress' => $page->header()->restaurant['address_streetAddress'],
-                      'postalCode' => $page->header()->restaurant['address_postalCode'],
+                      'addressLocality' => @$page->header()->restaurant['address_addressLocality'],
+                      'addressRegion' => @$page->header()->restaurant['address_addressRegion'],
+                      'streetAddress' => @$page->header()->restaurant['address_streetAddress'],
+                      'postalCode' => @$page->header()->restaurant['address_postalCode'],
                       ],
-                  'servesCuisine' => $page->header()->restaurant['servesCuisine'],
-                  'priceRange' => $page->header()->restaurant['priceRange'],
-                  'telephone' => $page->header()->restaurant['telephone'],
+                  'servesCuisine' => @$page->header()->restaurant['servesCuisine'],
+                  'priceRange' => @$page->header()->restaurant['priceRange'],
+                  'telephone' => @$page->header()->restaurant['telephone'],
                   
                   ];
 
@@ -368,12 +368,12 @@ class seoPlugin extends Plugin
         $microdata['article']      = [
             '@context' => 'http://schema.org',
             '@type' => 'Article',
-            'headline' => $headline ,
+            'headline' => @$headline ,
             'mainEntityOfPage' => [
                 "@type" => "WebPage",
                 'url' => $this->grav['uri']->base(),
             ],
-            'articleBody' =>  $this->cleanMarkdown($content),
+            'articleBody' =>  @$this->cleanMarkdown($content),
             'datePublished' => @date("c", strtotime($page->header()->article['datePublished'])),
             'dateModified' => @date("c", strtotime($page->header()->article['dateModified'])),
         ];
@@ -389,7 +389,7 @@ class seoPlugin extends Plugin
            };
            if (isset($page->header()->article['publisher_name'])) {
             $microdata['article']['publisher']['@type'] = 'Organization';
-            $microdata['article']['publisher']['name'] = $page->header()->article['publisher_name'];
+            $microdata['article']['publisher']['name'] = @$page->header()->article['publisher_name'];
            };
            if (isset($page->header()->article['publisher_logo_url'])) {
             $publisherlogourl = $page->header()->article['publisher_logo_url'];
