@@ -55,7 +55,7 @@ class seoPlugin extends Plugin
         return [
             'onPluginsInitialized' => ['onPluginsInitialized', 0],
             'onPageInitialized'    => ['onPageInitialized', 0],
-            'onOutputGenerated' => ['onOutputGenerated', 0],
+            'onPageContentRaw' => ['onPageContentRaw', 0],
           //  'onBlueprintCreated' => ['onBlueprintCreated',  0]
         ];
     }
@@ -92,7 +92,7 @@ class seoPlugin extends Plugin
         // Set default events
         $events = [
             'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
-            'onOutputGenerated' => ['onOutputGenerated', 0],
+            'onPageContentRaw' => ['onPageContentRaw', 0],
         ];
 
         // Set admin specific events
@@ -101,6 +101,7 @@ class seoPlugin extends Plugin
             $events = [
                 'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
                 'onBlueprintCreated' => ['onBlueprintCreated', 0],
+                'onPageContentRaw' => ['onPageContentRaw', 0],
             ];
         }
 
@@ -510,15 +511,17 @@ class seoPlugin extends Plugin
         $content = \Grav\Plugin\Admin\Utils::slug($content);
         return $content;
     }
-    public function onOutputGenerated(Event $e)
+
+        public function onPageContentRaw(Event $e)
     {
-        $page = $e['page'];
-        $outputjson = $this->onPageInitialized();
-        $content1 = $this->grav->output;
-        $content2 = addslashes(print_r($content1, true));
-        $content = str_replace('<head>', 'bonjour</head>', $content2);
-        $content = stripslashes($content);
-        // return $this->grav->output->register($content);
-        
+        // Get a variable from the plugin configuration
+        $text = $this->onPageInitialized();
+
+        // Get the current raw content
+        $content = $e['page']->getRawContent();
+
+        // Prepend the output with the custom text and set back on the page
+        $e['page']->setRawContent($text . "\n\n" . $content);
     }
+
 }
