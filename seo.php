@@ -58,6 +58,28 @@ class seoPlugin extends Plugin
           //  'onBlueprintCreated' => ['onBlueprintCreated',  0]
         ];
     }
+    private function seoGetimage($imageurl){
+
+    $imagedata = [];
+    $pattern = '~((\/[^\/]+)+)\/([^\/]+)~';
+        $replacement = '$1';
+    $fixedurl = preg_replace($pattern, $replacement, $imageurl);
+    $imagename = preg_replace($pattern, '$3', $imageurl);
+    $imgarray = $this->grav['page']->find($fixedurl)->media()->images();
+    $keyimages = array_keys($imgarray);
+    $imgkey = array_search($imagename, $keyimages);
+    $keyvalue = $keyimages[$imgkey];
+    //$imgkey = array_shift($imgarray);
+    $imgobject = $imgarray[$keyvalue];
+     
+    $im = getimagesize($imgobject->path());
+    $imagedata = [
+    'width' => $im[0],
+    'height' => $im[1],
+    'url' => $imgobject->url(),
+    ];
+    return $imagedata;
+}
     
 
     /**
@@ -114,7 +136,6 @@ class seoPlugin extends Plugin
 
         if (property_exists($page->header(),'twitterenable')) {
         if ($page->header()->twitterenable == 'true') {
-            
         
             if (isset($config['twitterid'])) {
                 $meta['twitter:site']['name']      = 'twitter:site';
@@ -369,14 +390,14 @@ class seoPlugin extends Plugin
            if (isset($page->header()->article['publisher_logo_url'])) {
             $microdata['article']['publisher']['logo']['@type'] = 'ImageObject';
             $microdata['article']['publisher']['logo']['url'] = $this->grav['uri']->base() . $page->header()->article['publisher_logo_url'];
-            $url = $this->grav['uri']->folder . $page->header()->article['publisher_logo_url'];
-            /*$raw = $this->ranger('~/user/pages/02.testtt/ipad.jpg');*/
+            // $url = $this->grav['uri']->folder . $page->header()->article['publisher_logo_url'];
+           
             //$im = getimagesize($url);
             $imageurl = $page->header()->article['publisher_logo_url'];
             $fixedurl = preg_replace($pattern, $replacement, $imageurl);
-            $myvar = $fixedurl;
-            $imagefolder = $page->find($fixedurl)->folder();
             $imagename = preg_replace($pattern, '$3', $imageurl);
+            $imagefolder = $page->find($fixedurl)->folder();
+            
             $im = @getimagesize($this->grav['uri']->rootUrl() . 'user/pages/' . $imagefolder . '/' . $imagename);
             $microdata['article']['publisher']['logo']['width'] =  "$im[0]";
             $microdata['article']['publisher']['logo']['height'] =  "$im[1]";
@@ -384,18 +405,16 @@ class seoPlugin extends Plugin
            };
            if (isset($page->header()->article['image_url'])) {
             $microdata['article']['image']['@type'] = 'ImageObject';
-            $microdata['article']['image']['url'] = $this->grav['uri']->base() . $page->header()->article['image_url'];
+            
             
             
             $imageurl = $page->header()->article['image_url'];
-            $fixedurl = preg_replace($pattern, $replacement, $imageurl);
-            $myvar = $fixedurl;
-            $imagefolder = $page->find($fixedurl)->folder();
-            $imagename = preg_replace($pattern, '$3', $imageurl);
-            $im = @getimagesize($this->grav['uri']->rootUrl() . 'user/pages/' . $imagefolder . '/' . $imagename);
+            $imagedata = $this->seoGetimage($imageurl);
+
             
-            $microdata['article']['image']['width'] = "$im[0]";
-            $microdata['article']['image']['height'] = "$im[1]";
+            $microdata['article']['image']['url'] = $imagedata['url'];
+            $microdata['article']['image']['width'] = $imagedata['width'];
+            $microdata['article']['image']['height'] = $imagedata['height'];
           
             }
        }       
@@ -408,6 +427,7 @@ class seoPlugin extends Plugin
       
 
       $this->grav['twig']->twig_vars['json'] = $outputjson;
+      //$this->grav['twig']->twig_vars['myvar'] = $myvar;
      
     }
     
