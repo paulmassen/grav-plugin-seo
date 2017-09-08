@@ -1,3 +1,10 @@
+# v2.0.3
+## 09/08/2017
+1. [](#bugfix)
+    * Fixed error on empty fields
+    * Added function for getting image width and height
+
+
 # v2.0.2
 ## 09/08/2017
 1. [](#bugfix)
