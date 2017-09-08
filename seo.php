@@ -55,6 +55,7 @@ class seoPlugin extends Plugin
         return [
             'onPluginsInitialized' => ['onPluginsInitialized', 0],
             'onPageInitialized'    => ['onPageInitialized', 0],
+            'onOutputGenerated' => ['onOutputGenerated', 0],
           //  'onBlueprintCreated' => ['onBlueprintCreated',  0]
         ];
     }
@@ -91,19 +92,20 @@ class seoPlugin extends Plugin
         // Set default events
         $events = [
             'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
+            'onOutputGenerated' => ['onOutputGenerated', 0],
         ];
-        $exif_reader = isset(Grav::instance()['exif']) ? Grav::instance()['exif']->getReader() : false;
 
         // Set admin specific events
         if ($this->isAdmin()) {
             $this->active = false;
             $events = [
                 'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
-                'onBlueprintCreated' => ['onBlueprintCreated', 0]
+                'onBlueprintCreated' => ['onBlueprintCreated', 0],
             ];
         }
 
         // Register events
+  
         $this->enable($events);
     }
     public function onPageInitialized()
@@ -427,7 +429,7 @@ class seoPlugin extends Plugin
 
       $this->grav['twig']->twig_vars['json'] = $outputjson;
       //$this->grav['twig']->twig_vars['myvar'] = $myvar;
-     
+     return $outputjson;
     }
     
 
@@ -507,5 +509,16 @@ class seoPlugin extends Plugin
         // Removes special chars.
         $content = \Grav\Plugin\Admin\Utils::slug($content);
         return $content;
+    }
+    public function onOutputGenerated(Event $e)
+    {
+        $page = $e['page'];
+        $outputjson = $this->onPageInitialized();
+        $content1 = $this->grav->output;
+        $content2 = addslashes(print_r($content1, true));
+        $content = str_replace('<head>', 'bonjour</head>', $content2);
+        $content = stripslashes($content);
+        // return $this->grav->output->register($content);
+        
     }
 }
