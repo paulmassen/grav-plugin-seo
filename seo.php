@@ -294,7 +294,7 @@ class seoPlugin extends Plugin
        }
        if (property_exists($page->header(),'eventenabled')){
        if ($page->header()->eventenabled and $this->config['plugins']['seo']['event']) {
-           $eventsarray = $page->header()->addevent;
+           $eventsarray = @$page->header()->addevent;
            
            if (count($eventsarray) > 0) {
            foreach ($eventsarray as $event) {
