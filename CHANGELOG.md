@@ -1,8 +1,10 @@
-# v2.0.0
-## xx/xx/2017
+# v2.0.2
+## 09/08/2017
 1. [](#bugfix)
     * Fixed missing language.yaml entry
     * Added style vertical to microdata for better readability
+    * Fixed many bugs
+    * Fixed bug when image on a modular folder
 
 # v2.0.0
 ## 09/05/2017
