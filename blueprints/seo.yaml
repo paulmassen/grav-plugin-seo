@@ -72,6 +72,7 @@ form:
                               label: PLUGINS.SEO.TWITTER_SHAREIMG
                               preview_images: true
                               id: twittimgselect
+                            
                             header.twittertitle:
                               type: text
                               label: PLUGINS.SEO.TWITTER_TITLE
@@ -125,12 +126,12 @@ form:
                               placeholder: Will use page title if left empty
                               field_classes: togglearticle
                             header.article.datePublished:
-                              type: date
+                              type: datetime
                               label: PLUGINS.SEO.DATE_PUBLISHED
                               disabled: false
                               field_classes: togglearticle
                             header.article.dateModified:
-                              type: date
+                              type: datetime
                               label: PLUGINS.SEO.DATE_MODIFIED
                               disabled: false
                               field_classes: togglearticle
@@ -182,6 +183,7 @@ form:
                             header.musicevents:
                               type: list
                               label: PLUGINS.SEO.ADDMUSICEVENT
+                              style: vertical
                               fields:
                                 .musicevent_location_name:
                                   type: text
@@ -301,8 +303,18 @@ form:
                           collapsed: true
                           collapsible: true
                           fields:
+                            header.eventenabled:
+                              type: toggle
+                              label: PLUGINS.SEO.ENABLEEVENT
+                              default: 0
+                              options:
+                                  1: PLUGIN_ADMIN.YES
+                                  0: PLUGIN_ADMIN.NO
+                              validate:
+                                  type: bool
                             header.addevent:
                               type: list
+                              style: vertical
                               label: PLUGINS.SEO.ADD_EVENT
                               fields:
                                 .event_name:
@@ -369,6 +381,7 @@ form:
                                   type: bool
                             header.addperson:
                               type: list
+                              style: vertical
                               label: PLUGINS.SEO.ADD_PERSON
                               fields:
                                 .person_name:
@@ -408,6 +421,7 @@ form:
                                   type: bool
                             header.musicalbums:
                               type: list
+                              style: vertical
                               label: PLUGINS.SEO.ADD_MUSICALBUM
                               fields:
                                 .musicalbum_name:
@@ -521,7 +535,7 @@ form:
                               type: text
                               label: PLUGINS.SEO.RESTAURANT_POSTAL_CODE
                               field_classes: togglerestaurant
-                            header.restaurant_telephone:
+                            header.restaurant.telephone:
                               type: text
                               label: PLUGINS.SEO.RESTAURANT_TELEPHONE
                               field_classes: togglerestaurant

@@ -1,6 +1,6 @@
 <?php
 /**
- * SEO v2.0.0
+ * SEO v2.0.3
  *
  * This plugin adds an SEO Tab to every pages for managing SEO data.
  *
@@ -58,6 +58,28 @@ class seoPlugin extends Plugin
           //  'onBlueprintCreated' => ['onBlueprintCreated',  0]
         ];
     }
+    private function seoGetimage($imageurl){
+
+    $imagedata = [];
+    $pattern = '~((\/[^\/]+)+)\/([^\/]+)~';
+        $replacement = '$1';
+    $fixedurl = preg_replace($pattern, $replacement, $imageurl);
+    $imagename = preg_replace($pattern, '$3', $imageurl);
+    $imgarray = $this->grav['page']->find($fixedurl)->media()->images();
+    $keyimages = array_keys($imgarray);
+    $imgkey = array_search($imagename, $keyimages);
+    $keyvalue = $keyimages[$imgkey];
+    //$imgkey = array_shift($imgarray);
+    $imgobject = $imgarray[$keyvalue];
+     
+    $im = getimagesize($imgobject->path());
+    $imagedata = [
+    'width' => "$im[0]",
+    'height' => "$im[1]",
+    'url' => $imgobject->url(),
+    ];
+    return $imagedata;
+}
     
 
     /**
@@ -91,6 +113,7 @@ class seoPlugin extends Plugin
         $content = strip_tags($page->content());
         $pattern = '~((\/[^\/]+)+)\/([^\/]+)~';
         $replacement = '$1';
+        $outputjson = "";
         $cleanContent = $this->cleanText ($content, $config);
         $microdata = [];
         $meta = $page->metadata(null);
@@ -110,8 +133,9 @@ class seoPlugin extends Plugin
              /**
              * Set Twitter Metatags
              */
+
+        if (property_exists($page->header(),'twitterenable')) {
         if ($page->header()->twitterenable == 'true') {
-            
         
             if (isset($config['twitterid'])) {
                 $meta['twitter:site']['name']      = 'twitter:site';
@@ -137,90 +161,103 @@ class seoPlugin extends Plugin
             if (isset($page->header()->twittershareimg)) {
                 $meta['twitter:image']['name']      = 'twitter:image';
                 $meta['twitter:image']['property']  = 'twitter:image';
-                $meta['twitter:image']['content']   = $this->grav['uri']->base() . $page->header()->twittershareimg;
+                $twittershareimg = $page->header()->twittershareimg;
+                $imagedata = $this->seoGetimage($twittershareimg);
+                $meta['twitter:image']['content']   = $this->grav['uri']->base() . $imagedata['url'];
             };
             $meta['twitter:url']['name']      = 'twitter:url';
             $meta['twitter:url']['property']  = 'twitter:url';
             $meta['twitter:url']['content']   = $page->url(true);
         }
+        }
+         if (property_exists($page->header(),'facebookenable')){
          if ($page->header()->facebookenable == 'true') {
          
-                $meta['og:sitename']['name']        = 'og:sitename';
-                $meta['og:sitename']['property']    = 'og:sitename';
-                $meta['og:sitename']['content']     = $this->config->get('site.title');
+                //$meta['og:sitename']['name']        = 'og:sitename';
+                $meta['og:site_name']['property']    = 'og:sitename';
+                $meta['og:site_name']['content']     = $this->config->get('site.title');
             if (isset($page->header()->facebooktitle)) {
-                $meta['og:title']['name']           = 'og:title';
+                //$meta['og:title']['name']           = 'og:title';
                 $meta['og:title']['property']       = 'og:title';
                 $meta['og:title']['content']        = $page->header()->facebooktitle;
             } else {
-                $meta['og:title']['name']           = 'og:title';
+               // $meta['og:title']['name']           = 'og:title';
                 $meta['og:title']['property']       = 'og:title';
                 $meta['og:title']['content']        = $page->title();
             }
-                $meta['og:type']['name']            = 'og:type';
+            if (isset($config['facebookid'])) {
+                //$meta['twitter:site']['name']      = 'twitter:site';
+                $meta['fb:app_id']['property']  = 'fb:app_id';
+                $meta['fb:app_id']['content']   = $config->facebookid;
+            };
+                //$meta['og:type']['name']            = 'og:type';
                 $meta['og:type']['property']        = 'og:type';
                 $meta['og:type']['content']         = 'article';
-                $meta['og:url']['name']             = 'og:url';
+               // $meta['og:url']['name']             = 'og:url';
                 $meta['og:url']['property']         = 'og:url';
                 $meta['og:url']['content']          = $this->grav['uri']->url(true);
             if (isset($page->header()->facebookdesc)) {
-                $meta['og:description']['name']     = 'og:description';
+                //$meta['og:description']['name']     = 'og:description';
                 $meta['og:description']['property'] = 'og:description';
                 $meta['og:description']['content'] =  $page->header()->facebookdesc;
             } else {
-                $meta['og:description']['name']     = 'og:description';
+               // $meta['og:description']['name']     = 'og:description';
                 $meta['og:description']['property'] = 'og:description';
                 $meta['og:description']['content'] =  substr($cleanContent,0,140);
             }
             if (isset($page->header()->facebookauthor)) {
-                $meta['article:author']['name']     = 'article:author';
+              //  $meta['article:author']['name']     = 'article:author';
                 $meta['article:author']['property'] = 'article:author';
-                $meta['article:author']['content'] =   $page->header()->articleauthor;
+                $meta['article:author']['content'] =   $page->header()->facebookauthor;
             }
             if (isset($page->header()->facebookimg)) {
-                $meta['og:image']['name']     = 'og:image';
+               // $meta['og:image']['name']     = 'og:image';
                 $meta['og:image']['property'] = 'og:image';
-                $meta['og:image']['content'] =  $this->grav['uri']->base() . $page->header()->facebookimg;
+                $facebookimg = $page->header()->facebookimg;
+                $imagedata = $this->seoGetimage($facebookimg);
+                $meta['og:image']['content'] =  $this->grav['uri']->base() . $imagedata['url'];
             }
        
+         }
+             
          }
         // Add metadata
       $page->metadata($meta);
         // Set Json-Ld Microdata
         // Article Microdata
-      
-       if ($page->header()->musiceventenabled and $this->config['plugins']['seo']['musicevent']) {
+      if (property_exists($page->header(),'musiceventenabled')){
+       if (($page->header()->musiceventenabled) and $this->config['plugins']['seo']['musicevent']) {
            $musiceventsarray = $page->header()->musicevents;
-           
+            if (count($musiceventsarray) > 0) {
            foreach ($musiceventsarray as $event) {
-              foreach ($event[musicevent_performer] as $artist){
+              if (isset($event['musicevent_performer'])){
+              foreach ($event['musicevent_performer'] as $artist){
               $performerarray[] = [
-                  '@type' => $artist[performer_type],
-                  'name' => $artist[name],
-                  'sameAs' => $artist[sameAs], 
+                  '@type' => @$artist['performer_type'],
+                  'name' => @$artist['name'],
+                  'sameAs' => @$artist['sameAs'], 
                   ];
                
               };
-              foreach ($event[musicevent_workPerformed] as $work){
+              }
+              if (isset($event['musicevent_workPerformed'])){
+              foreach ($event['musicevent_workPerformed'] as $work){
               $workarray[] = [
-                  'name' => $work[name],
-                  'sameAs' => $work[sameAs], 
+                  'name' => @$work['name'],
+                  'sameAs' => @$work['sameAs'], 
                   ];
                
-              };
-            if (isset($event[musicevent_image])){
-            $imageurl = $event[musicevent_image];
-            $fixedurl = preg_replace($pattern, $replacement, $imageurl);
-            $myvar = $fixedurl;
-            $imagefolder = $page->find($fixedurl)->folder();
-            $imagename = preg_replace($pattern, '$3', $imageurl);
-            $im = @getimagesize($this->grav['uri']->rootUrl() . 'user/pages/' . $imagefolder . '/' . $imagename);
+              }
+           }
+            if (isset($event['musicevent_image'])){
+            $imageurl = $event['musicevent_image'];
+            $imagedata = $this->seoGetimage($imageurl);
             $musiceventimage = [
                  
                       '@type' => 'ImageObject',
-                      'width' => "$im[0]",
-                      'height' => "$im[1]",
-                      'url' => $this->grav['uri']->base() . $event[musicevent_image],
+                      'width' => $imagedata['width'],
+                      'height' => $imagedata['height'],
+                      'url' => $this->grav['uri']->base() .  $imagedata['url'],
                       
                       ];
                 
@@ -228,133 +265,158 @@ class seoPlugin extends Plugin
               $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'MusicEvent',
-                  'name' => $event[musicevent_location_name],
+                  'name' => @$event['musicevent_location_name'],
                   'location' => [
                       '@type' => 'MusicVenue',
-                      'name' => $event[musicevent_location_name],
-                      'address' => $event[musicevent_location_address],
+                      'name' => @$event['musicevent_location_name'],
+                      'address' => @$event['musicevent_location_address'],
                       ],
-                  'description' => $event[musicevent_description],
-                  'url' => $event[musicevent_url],
-                  'performer' => $performerarray,
-                  'workPerformed' => $workarray, 
-                  'image' => $musiceventimage,
+                  'description' => @$event['musicevent_description'],
+                  'url' => @$event['musicevent_url'],
+                  'performer' => @$performerarray,
+                  'workPerformed' => @$workarray, 
+                  'image' => @$musiceventimage,
                   'offers' => [
                       '@type' => 'Offer',
-                      'price' => $event[musicevent_offers_price],
-                      'priceCurrency' => $event[musicevent_offers_priceCurrency],
-                      'url' => $event[musicevent_offers_url], 
+                      'price' => @$event['musicevent_offers_price'],
+                      'priceCurrency' => @$event['musicevent_offers_priceCurrency'],
+                      'url' => @$event['musicevent_offers_url'], 
                       ],
-                  'startDate' => date("c", strtotime($event[musicevent_startdate])),
-                  'endDate' => date("c", strtotime($event[musicevent_enddate])),
+                  'startDate' => @date("c", strtotime($event['musicevent_startdate'])),
+                  'endDate' => @date("c", strtotime($event['musicevent_enddate'])),
                   
                   ];
               
               
             }
-           
+            }
+       }   
        }
+       if (property_exists($page->header(),'eventenabled')){
        if ($page->header()->eventenabled and $this->config['plugins']['seo']['event']) {
-           $eventsarray = $page->header()->addevent;
+           $eventsarray = @$page->header()->addevent;
+           
+           if (count($eventsarray) > 0) {
            foreach ($eventsarray as $event) {
               $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Event',
-                  'name' => $event[event_name],
+                  'name' => @$event['event_name'],
                   
                   'location' => [
                       '@type' => 'Place',
-                      'name' => $event[event_location_name],
+                      'name' => @$event['event_location_name'],
                       'address' => [
                           '@type' => 'PostalAddress',
-                          'addressLocality' => $event[event_location_address_addressLocality],
-                          'addressRegion' => $event[event_location_address_addressRegion],
-                          'streetAddress' => $event[event_location_streetAddress],
+                          'addressLocality' => @$event['event_location_address_addressLocality'],
+                          'addressRegion' => @$event['event_location_address_addressRegion'],
+                          'streetAddress' => @$event['event_location_streetAddress'],
                           ],
-                       'url' => $event[musicevent_location_url],
+                       'url' => @$event['musicevent_location_url'],
                       ],
-                  'description' => $event[musicevent_description],
+                  'description' => @$event['musicevent_description'],
                   'offers' => [
                       '@type' => 'Offer',
-                      'price' => $event[event_offers_price],
-                      'priceCurrency' => $event[event_offers_priceCurrency],
-                      'url' => $event[event_offers_url], 
+                      'price' => @$event['event_offers_price'],
+                      'priceCurrency' => @$event['event_offers_priceCurrency'],
+                      'url' => @$event['event_offers_url'], 
                       ],
-                  'startDate' => date("c", strtotime($event[event_startdate])),
-                  'endDate' => date("c", strtotime($event[event_enddate])),
-                  'description' => $event[event_description],
+                  'startDate' => @date("c", strtotime($event['event_startdate'])),
+                  'endDate' => @date("c", strtotime($event['event_enddate'])),
+                  'description' => @$event['event_description'],
                   
                   ];
               
               
             }
+           }
            
        }
+       }
+        if (property_exists($page->header(),'restaurantenabled')){
+        if ($page->header()->restaurantenabled and $this->config['plugins']['seo']['restaurant']) {
+
+              $microdata[] = [
+                  '@context' => 'http://schema.org',
+                  '@type' => 'Restaurant',
+                  'name' => @$page->header()->restaurant['name'],
+                  
+                  'address' => [
+                      '@type' => 'PostalAddress',
+                      'addressLocality' => @$page->header()->restaurant['address_addressLocality'],
+                      'addressRegion' => @$page->header()->restaurant['address_addressRegion'],
+                      'streetAddress' => @$page->header()->restaurant['address_streetAddress'],
+                      'postalCode' => @$page->header()->restaurant['address_postalCode'],
+                      ],
+                  'servesCuisine' => @$page->header()->restaurant['servesCuisine'],
+                  'priceRange' => @$page->header()->restaurant['priceRange'],
+                  'telephone' => @$page->header()->restaurant['telephone'],
+                  
+                  ];
+
+       }
+        }
+       if (property_exists($page->header(),'articleenabled')){
+        
+        if (property_exists($page->header(), 'article[headline]')){
+           $headline =  $page->header()->article['headline'];
+           
+        } else {
+            $headline = $cleanTitle;
+        }
        if ($page->header()->articleenabled and $this->config['plugins']['seo']['article']) {
         $microdata['article']      = [
             '@context' => 'http://schema.org',
             '@type' => 'Article',
-            'headline' => $page->header()->article[headline] ,
+            'headline' => @$headline ,
             'mainEntityOfPage' => [
                 "@type" => "WebPage",
                 'url' => $this->grav['uri']->base(),
             ],
-            'articleBody' =>  $this->cleanMarkdown($content),
-            'datePublished' => date("c", strtotime($page->header()->article[datePublished])),
-            'dateModified' => date("c", strtotime($page->header()->article[dateModified])),
+            'articleBody' =>  @$this->cleanMarkdown($content),
+            'datePublished' => @date("c", strtotime($page->header()->article['datePublished'])),
+            'dateModified' => @date("c", strtotime($page->header()->article['dateModified'])),
         ];
-        if (isset($page->header()->article[description])) {
-            $microdata['article']['description'] = $page->header()->article[description];
+        if (isset($page->header()->article['description'])) {
+            $microdata['article']['description'] = $page->header()->article['description'];
            };
            /*else{
              $microdata['article']['description'] = substr($cleanContent,0,140); 
            };*/
-         if (isset($page->header()->article[headline])) {
-            $microdata['article']['headline'] = $page->header()->article[headline];
-           }
-           else{
-             $microdata['article']['headline'] = $page->title(); 
+
+         if (isset($page->header()->article['author'])) {
+            $microdata['article']['author'] = $page->header()->article['author'];
            };
-         if (isset($page->header()->article[author])) {
-            $microdata['article']['author'] = $page->header()->article[author];
-           };
-           if (isset($page->header()->article[publisher_name])) {
+           if (isset($page->header()->article['publisher_name'])) {
             $microdata['article']['publisher']['@type'] = 'Organization';
-            $microdata['article']['publisher']['name'] = $page->header()->article[publisher_name];
+            $microdata['article']['publisher']['name'] = @$page->header()->article['publisher_name'];
            };
-           if (isset($page->header()->article[publisher_logo_url])) {
+           if (isset($page->header()->article['publisher_logo_url'])) {
+            $publisherlogourl = $page->header()->article['publisher_logo_url'];
+            $imagedata = $this->seoGetimage($publisherlogourl);
             $microdata['article']['publisher']['logo']['@type'] = 'ImageObject';
-            $microdata['article']['publisher']['logo']['url'] = $this->grav['uri']->base() . $page->header()->article[publisher_logo_url];
-            $url = $this->grav['uri']->folder . $page->header()->article[publisher_logo_url];
-            /*$raw = $this->ranger('~/user/pages/02.testtt/ipad.jpg');*/
-            //$im = getimagesize($url);
-            $imageurl = $page->header()->article[publisher_logo_url];
-            $fixedurl = preg_replace($pattern, $replacement, $imageurl);
-            $myvar = $fixedurl;
-            $imagefolder = $page->find($fixedurl)->folder();
-            $imagename = preg_replace($pattern, '$3', $imageurl);
-            $im = @getimagesize($this->grav['uri']->rootUrl() . 'user/pages/' . $imagefolder . '/' . $imagename);
-            $microdata['article']['publisher']['logo']['width'] =  "$im[0]";
-            $microdata['article']['publisher']['logo']['height'] =  "$im[1]";
+            $microdata['article']['publisher']['logo']['url'] = $this->grav['uri']->base() . $imagedata['url'];
+
+           
+            $microdata['article']['publisher']['logo']['width'] =  $imagedata['width'];
+            $microdata['article']['publisher']['logo']['height'] =  $imagedata['height'];
             
            };
-           if (isset($page->header()->article[image_url])) {
+           if (isset($page->header()->article['image_url'])) {
             $microdata['article']['image']['@type'] = 'ImageObject';
-            $microdata['article']['image']['url'] = $this->grav['uri']->base() . $page->header()->article[image_url];
             
             
-            $imageurl = $page->header()->article[image_url];
-            $fixedurl = preg_replace($pattern, $replacement, $imageurl);
-            $myvar = $fixedurl;
-            $imagefolder = $page->find($fixedurl)->folder();
-            $imagename = preg_replace($pattern, '$3', $imageurl);
-            $im = @getimagesize('user/pages/' . $imagefolder . '/' . $imagename);
             
-            $microdata['article']['image']['width'] = "$im[0]";
-            $microdata['article']['image']['height'] = "$im[1]";
+            $imageurl = $page->header()->article['image_url'];
+            $imagedata = $this->seoGetimage($imageurl);
+
+            
+            $microdata['article']['image']['url'] = $imagedata['url'];
+            $microdata['article']['image']['width'] = $imagedata['width'];
+            $microdata['article']['image']['height'] = $imagedata['height'];
           
-            };
-               
+            }
+       }       
       };
       // Encode to json
       foreach ($microdata as $key => $value){
@@ -362,9 +424,10 @@ class seoPlugin extends Plugin
         $outputjson = $outputjson . $jsonscript;
       }
       
-      // Add the script tag and bind it to twig var
+
       $this->grav['twig']->twig_vars['json'] = $outputjson;
-      $this->grav['twig']->twig_vars['mynewvar'] =  $myvar ;
+      //$this->grav['twig']->twig_vars['myvar'] = $myvar;
+     
     }
     
 
