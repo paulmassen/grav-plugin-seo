@@ -187,8 +187,8 @@ class seoPlugin extends Plugin
             }
             if (isset($config['facebookid'])) {
                 //$meta['twitter:site']['name']      = 'twitter:site';
-                $meta['og:fb_appid']['property']  = 'og:fb_appid';
-                $meta['og:fb_appid']['content']   = $config->facebookid;
+                $meta['fb:app_id']['property']  = 'fb:app_id';
+                $meta['fb:app_id']['content']   = $config->facebookid;
             };
                 //$meta['og:type']['name']            = 'og:type';
                 $meta['og:type']['property']        = 'og:type';
