@@ -1,13 +1,13 @@
 <?php
 /**
- * SEO v2.0.3
+ * SEO v2.0.4
  *
  * This plugin adds an SEO Tab to every pages for managing SEO data.
  *
  * Licensed under the MIT license, see LICENSE.
  *
  * @package     SEO
- * @version     1.0.6
+ * @version     2.0.4
  * @link        <https://github.com/paulmassen/grav-plugin-seo>
  * @author      Paul Massendari <paul@massendari.com>
  * @copyright   2017, Paul Massendari
@@ -55,6 +55,7 @@ class seoPlugin extends Plugin
         return [
             'onPluginsInitialized' => ['onPluginsInitialized', 0],
             'onPageInitialized'    => ['onPageInitialized', 0],
+           // 'onPageContentRaw' => ['onPageContentRaw', 0],
           //  'onBlueprintCreated' => ['onBlueprintCreated',  0]
         ];
     }
@@ -91,19 +92,21 @@ class seoPlugin extends Plugin
         // Set default events
         $events = [
             'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
+           // 'onPageContentRaw' => ['onPageContentRaw', 0],
         ];
-        $exif_reader = isset(Grav::instance()['exif']) ? Grav::instance()['exif']->getReader() : false;
 
         // Set admin specific events
         if ($this->isAdmin()) {
             $this->active = false;
             $events = [
                 'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
-                'onBlueprintCreated' => ['onBlueprintCreated', 0]
+                'onBlueprintCreated' => ['onBlueprintCreated', 0],
+               // 'onPageContentRaw' => ['onPageContentRaw', 0],
             ];
         }
 
         // Register events
+  
         $this->enable($events);
     }
     public function onPageInitialized()
@@ -111,6 +114,7 @@ class seoPlugin extends Plugin
         $page = $this->grav['page'];
         $config = $this->mergeConfig($page);
         $content = strip_tags($page->content());
+        $assets = $this->grav['assets'];
         $pattern = '~((\/[^\/]+)+)\/([^\/]+)~';
         $replacement = '$1';
         $outputjson = "";
@@ -174,8 +178,8 @@ class seoPlugin extends Plugin
          if ($page->header()->facebookenable == 'true') {
          
                 //$meta['og:sitename']['name']        = 'og:sitename';
-                $meta['og:sitename']['property']    = 'og:sitename';
-                $meta['og:sitename']['content']     = $this->config->get('site.title');
+                $meta['og:site_name']['property']    = 'og:sitename';
+                $meta['og:site_name']['content']     = $this->config->get('site.title');
             if (isset($page->header()->facebooktitle)) {
                 //$meta['og:title']['name']           = 'og:title';
                 $meta['og:title']['property']       = 'og:title';
@@ -187,8 +191,8 @@ class seoPlugin extends Plugin
             }
             if (isset($config['facebookid'])) {
                 //$meta['twitter:site']['name']      = 'twitter:site';
-                $meta['twitter:site']['property']  = 'og:fb_appid';
-                $meta['twitter:site']['content']   = $config->facebookid;
+                $meta['fb:app_id']['property']  = 'fb:app_id';
+                $meta['fb:app_id']['content']   = $config->facebookid;
             };
                 //$meta['og:type']['name']            = 'og:type';
                 $meta['og:type']['property']        = 'og:type';
@@ -294,7 +298,7 @@ class seoPlugin extends Plugin
        }
        if (property_exists($page->header(),'eventenabled')){
        if ($page->header()->eventenabled and $this->config['plugins']['seo']['event']) {
-           $eventsarray = $page->header()->addevent;
+           $eventsarray = @$page->header()->addevent;
            
            if (count($eventsarray) > 0) {
            foreach ($eventsarray as $event) {
@@ -335,7 +339,19 @@ class seoPlugin extends Plugin
        }
         if (property_exists($page->header(),'restaurantenabled')){
         if ($page->header()->restaurantenabled and $this->config['plugins']['seo']['restaurant']) {
-
+         if (isset($page->header()->restaurant['image'])){
+            $imageurl = $page->header()->restaurant['image'];
+            $imagedata = $this->seoGetimage($imageurl);
+            $restaurantimage = [
+                 
+                      '@type' => 'ImageObject',
+                      'width' => $imagedata['width'],
+                      'height' => $imagedata['height'],
+                      'url' => $this->grav['uri']->base() .  $imagedata['url'],
+                      
+                      ];
+                
+            }
               $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Restaurant',
@@ -350,20 +366,20 @@ class seoPlugin extends Plugin
                       ],
                   'servesCuisine' => @$page->header()->restaurant['servesCuisine'],
                   'priceRange' => @$page->header()->restaurant['priceRange'],
+                  'image' => @$restaurantimage,
                   'telephone' => @$page->header()->restaurant['telephone'],
                   
                   ];
+            
 
        }
         }
-       if (property_exists($page->header(),'articleenabled')){
-        
-        if (property_exists($page->header(), 'article[headline]')){
-           $headline =  $page->header()->article['headline'];
-           
-        } else {
-            $headline = $cleanTitle;
-        }
+     if (property_exists($page->header(),'articleenabled')){
+            if (property_exists($page->header(), 'article[headline]')){
+               $headline =  $page->header()->article['headline'];
+            } else {
+                $headline = $cleanTitle;
+            }
        if ($page->header()->articleenabled and $this->config['plugins']['seo']['article']) {
         $microdata['article']      = [
             '@context' => 'http://schema.org',
@@ -374,15 +390,15 @@ class seoPlugin extends Plugin
                 'url' => $this->grav['uri']->base(),
             ],
             'articleBody' =>  @$this->cleanMarkdown($content),
-            'datePublished' => @date("c", strtotime($page->header()->article['datePublished'])),
-            'dateModified' => @date("c", strtotime($page->header()->article['dateModified'])),
+            'datePublished' => @date("c", $page->date()),
+            'dateModified' => @date("c", $page->modified()),
         ];
         if (isset($page->header()->article['description'])) {
             $microdata['article']['description'] = $page->header()->article['description'];
-           };
-           /*else{
+           }
+           else {
              $microdata['article']['description'] = substr($cleanContent,0,140); 
-           };*/
+           };
 
          if (isset($page->header()->article['author'])) {
             $microdata['article']['author'] = $page->header()->article['author'];
@@ -396,22 +412,15 @@ class seoPlugin extends Plugin
             $imagedata = $this->seoGetimage($publisherlogourl);
             $microdata['article']['publisher']['logo']['@type'] = 'ImageObject';
             $microdata['article']['publisher']['logo']['url'] = $this->grav['uri']->base() . $imagedata['url'];
-
-           
             $microdata['article']['publisher']['logo']['width'] =  $imagedata['width'];
             $microdata['article']['publisher']['logo']['height'] =  $imagedata['height'];
             
            };
            if (isset($page->header()->article['image_url'])) {
             $microdata['article']['image']['@type'] = 'ImageObject';
-            
-            
-            
             $imageurl = $page->header()->article['image_url'];
             $imagedata = $this->seoGetimage($imageurl);
-
-            
-            $microdata['article']['image']['url'] = $imagedata['url'];
+            $microdata['article']['image']['url'] = $this->grav['uri']->base() . $imagedata['url'];
             $microdata['article']['image']['width'] = $imagedata['width'];
             $microdata['article']['image']['height'] = $imagedata['height'];
           
@@ -423,11 +432,12 @@ class seoPlugin extends Plugin
         $jsonscript =   PHP_EOL . '<script type="application/ld+json">' . PHP_EOL . json_encode($microdata[$key], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT ) . PHP_EOL . '</script>';
         $outputjson = $outputjson . $jsonscript;
       }
-      
+      $outputjson = '</script>' . $outputjson . '<script>';
 
       $this->grav['twig']->twig_vars['json'] = $outputjson;
       //$this->grav['twig']->twig_vars['myvar'] = $myvar;
-     
+      $assets->addInlineJs($outputjson, 100);
+     // return $outputjson;
     }
     
 
@@ -508,4 +518,6 @@ class seoPlugin extends Plugin
         $content = \Grav\Plugin\Admin\Utils::slug($content);
         return $content;
     }
+
+
 }

@@ -91,18 +91,7 @@ Installing or updating the `SEO` plugin can be done in one of three ways. Using 
 
     /your/site/grav/user/plugins/seo
 
-Once installed, the only thing you have to do is to add 
-```
-{{ json }}
-```
-between the `<head>` and `</head>` tags in your base.html.twig
-Don't forget to also add the default partials/metadata.html.twig in order to output the twitter and opengraph meta tags.
-The first lines of your base.html.twig should looks like that:
-```     
-<title>{{ header.title|e('html') }} </title>
-{{ json }}
-{% include 'partials/metadata.html.twig' %}
-```
+Once installed, the plugin will automatically set the metadata and append the json-ld microdatas to your document.
 If you plan on using the Twitter feature, make sure to fill your user ID in tab Plugins > SEO > Twitter ID
 
 ## Configuration
