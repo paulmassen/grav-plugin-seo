@@ -55,7 +55,7 @@ class seoPlugin extends Plugin
         return [
             'onPluginsInitialized' => ['onPluginsInitialized', 0],
             'onPageInitialized'    => ['onPageInitialized', 0],
-            'onPageContentRaw' => ['onPageContentRaw', 0],
+           // 'onPageContentRaw' => ['onPageContentRaw', 0],
           //  'onBlueprintCreated' => ['onBlueprintCreated',  0]
         ];
     }
@@ -92,7 +92,7 @@ class seoPlugin extends Plugin
         // Set default events
         $events = [
             'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
-            'onPageContentRaw' => ['onPageContentRaw', 0],
+           // 'onPageContentRaw' => ['onPageContentRaw', 0],
         ];
 
         // Set admin specific events
@@ -101,7 +101,7 @@ class seoPlugin extends Plugin
             $events = [
                 'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
                 'onBlueprintCreated' => ['onBlueprintCreated', 0],
-                'onPageContentRaw' => ['onPageContentRaw', 0],
+               // 'onPageContentRaw' => ['onPageContentRaw', 0],
             ];
         }
 
@@ -114,6 +114,7 @@ class seoPlugin extends Plugin
         $page = $this->grav['page'];
         $config = $this->mergeConfig($page);
         $content = strip_tags($page->content());
+        $assets = $this->grav['assets'];
         $pattern = '~((\/[^\/]+)+)\/([^\/]+)~';
         $replacement = '$1';
         $outputjson = "";
@@ -426,11 +427,12 @@ class seoPlugin extends Plugin
         $jsonscript =   PHP_EOL . '<script type="application/ld+json">' . PHP_EOL . json_encode($microdata[$key], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT ) . PHP_EOL . '</script>';
         $outputjson = $outputjson . $jsonscript;
       }
-      
+      $outputjson = '</script>' . $outputjson . '<script>';
 
       $this->grav['twig']->twig_vars['json'] = $outputjson;
       //$this->grav['twig']->twig_vars['myvar'] = $myvar;
-     return $outputjson;
+      $assets->addInlineJs($outputjson, 100);
+     // return $outputjson;
     }
     
 
@@ -512,16 +514,5 @@ class seoPlugin extends Plugin
         return $content;
     }
 
-        public function onPageContentRaw(Event $e)
-    {
-        // Get a variable from the plugin configuration
-        $text = $this->onPageInitialized();
-
-        // Get the current raw content
-        $content = $e['page']->getRawContent();
-
-        // Prepend the output with the custom text and set back on the page
-        $e['page']->setRawContent($text . "\n\n" . $content);
-    }
 
 }
