@@ -383,10 +383,10 @@ class seoPlugin extends Plugin
         ];
         if (isset($page->header()->article['description'])) {
             $microdata['article']['description'] = $page->header()->article['description'];
-           };
-           /*else{
+           }
+           else {
              $microdata['article']['description'] = substr($cleanContent,0,140); 
-           };*/
+           };
 
          if (isset($page->header()->article['author'])) {
             $microdata['article']['author'] = $page->header()->article['author'];
