@@ -378,8 +378,8 @@ class seoPlugin extends Plugin
                 'url' => $this->grav['uri']->base(),
             ],
             'articleBody' =>  @$this->cleanMarkdown($content),
-            'datePublished' => @date("c", strtotime($page->header()->article['datePublished'])),
-            'dateModified' => @date("c", strtotime($page->header()->article['dateModified'])),
+            'datePublished' => @date("c", $page->date()),
+            'dateModified' => @date("c", $page->modified()),
         ];
         if (isset($page->header()->article['description'])) {
             $microdata['article']['description'] = $page->header()->article['description'];
@@ -400,21 +400,14 @@ class seoPlugin extends Plugin
             $imagedata = $this->seoGetimage($publisherlogourl);
             $microdata['article']['publisher']['logo']['@type'] = 'ImageObject';
             $microdata['article']['publisher']['logo']['url'] = $this->grav['uri']->base() . $imagedata['url'];
-
-           
             $microdata['article']['publisher']['logo']['width'] =  $imagedata['width'];
             $microdata['article']['publisher']['logo']['height'] =  $imagedata['height'];
             
            };
            if (isset($page->header()->article['image_url'])) {
             $microdata['article']['image']['@type'] = 'ImageObject';
-            
-            
-            
             $imageurl = $page->header()->article['image_url'];
             $imagedata = $this->seoGetimage($imageurl);
-
-            
             $microdata['article']['image']['url'] = $imagedata['url'];
             $microdata['article']['image']['width'] = $imagedata['width'];
             $microdata['article']['image']['height'] = $imagedata['height'];
