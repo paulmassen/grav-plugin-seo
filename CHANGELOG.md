@@ -1,5 +1,5 @@
 # v2.0.4
-## 09/XX/2017
+## 09/10/2017
 1. [](#bugfix)
     * Microdata is now automatically added to pages
     * Page date and last modified is modified automatically in article microdata
