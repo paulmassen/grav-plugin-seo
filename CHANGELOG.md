@@ -1,3 +1,9 @@
+# v2.0.4
+## 09/XX/2017
+1. [](#bugfix)
+    * Microdata is now automatically added to pages
+
+
 # v2.0.3
 ## 09/08/2017
 1. [](#bugfix)
