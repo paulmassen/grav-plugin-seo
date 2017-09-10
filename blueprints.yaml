@@ -66,8 +66,9 @@ form:
         type: bool
     person:
       type: toggle
-      label: Enable Person Microdata
+      label: Enable Person Microdata /!\ Not available yet
       highlight: 1
+      hidden: true
       default: 0
       options:
         1: PLUGIN_ADMIN.ENABLED
