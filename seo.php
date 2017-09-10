@@ -339,7 +339,19 @@ class seoPlugin extends Plugin
        }
         if (property_exists($page->header(),'restaurantenabled')){
         if ($page->header()->restaurantenabled and $this->config['plugins']['seo']['restaurant']) {
-
+         if (isset($page->header()->restaurant['image'])){
+            $imageurl = $page->header()->restaurant['image'];
+            $imagedata = $this->seoGetimage($imageurl);
+            $restaurantimage = [
+                 
+                      '@type' => 'ImageObject',
+                      'width' => $imagedata['width'],
+                      'height' => $imagedata['height'],
+                      'url' => $this->grav['uri']->base() .  $imagedata['url'],
+                      
+                      ];
+                
+            }
               $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Restaurant',
@@ -354,20 +366,20 @@ class seoPlugin extends Plugin
                       ],
                   'servesCuisine' => @$page->header()->restaurant['servesCuisine'],
                   'priceRange' => @$page->header()->restaurant['priceRange'],
+                  'image' => @$restaurantimage,
                   'telephone' => @$page->header()->restaurant['telephone'],
                   
                   ];
+            
 
        }
         }
-       if (property_exists($page->header(),'articleenabled')){
-        
-        if (property_exists($page->header(), 'article[headline]')){
-           $headline =  $page->header()->article['headline'];
-           
-        } else {
-            $headline = $cleanTitle;
-        }
+     if (property_exists($page->header(),'articleenabled')){
+            if (property_exists($page->header(), 'article[headline]')){
+               $headline =  $page->header()->article['headline'];
+            } else {
+                $headline = $cleanTitle;
+            }
        if ($page->header()->articleenabled and $this->config['plugins']['seo']['article']) {
         $microdata['article']      = [
             '@context' => 'http://schema.org',
@@ -408,7 +420,7 @@ class seoPlugin extends Plugin
             $microdata['article']['image']['@type'] = 'ImageObject';
             $imageurl = $page->header()->article['image_url'];
             $imagedata = $this->seoGetimage($imageurl);
-            $microdata['article']['image']['url'] = $imagedata['url'];
+            $microdata['article']['image']['url'] = $this->grav['uri']->base() . $imagedata['url'];
             $microdata['article']['image']['width'] = $imagedata['width'];
             $microdata['article']['image']['height'] = $imagedata['height'];
           
