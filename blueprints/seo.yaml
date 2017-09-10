@@ -125,16 +125,6 @@ form:
                               disabled: false
                               placeholder: Will use page title if left empty
                               field_classes: togglearticle
-                            header.article.datePublished:
-                              type: datetime
-                              label: PLUGINS.SEO.DATE_PUBLISHED
-                              disabled: false
-                              field_classes: togglearticle
-                            header.article.dateModified:
-                              type: datetime
-                              label: PLUGINS.SEO.DATE_MODIFIED
-                              disabled: false
-                              field_classes: togglearticle
                             header.article.description:
                               type: textarea
                               label: PLUGINS.SEO.ARTICLE_DESCRIPTION
@@ -501,10 +491,8 @@ form:
                               label: PLUGINS.SEO.RESTAURANT_MENU_URL
                               field_classes: togglerestaurant
                             header.restaurant.image:
-                              type: filepicker
-                              folder: '@self'
+                              type: mediapicker
                               label: PLUGINS.SEO.RESTAURANT_IMAGE
-                              preview_images: true
                               field_classes: togglerestaurant
                             header.restaurant.servesCuisine:
                               placeholder: seafood
