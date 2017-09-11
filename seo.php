@@ -1,13 +1,13 @@
 <?php
 /**
- * SEO v2.0.4
+ * SEO v2.0.5
  *
  * This plugin adds an SEO Tab to every pages for managing SEO data.
  *
  * Licensed under the MIT license, see LICENSE.
  *
  * @package     SEO
- * @version     2.0.4
+ * @version     2.0.5
  * @link        <https://github.com/paulmassen/grav-plugin-seo>
  * @author      Paul Massendari <paul@massendari.com>
  * @copyright   2017, Paul Massendari
@@ -337,6 +337,32 @@ class seoPlugin extends Plugin
            
        }
        }
+     if (property_exists($page->header(),'personenabled')){
+        if ($page->header()->personenabled and $this->config['plugins']['seo']['person']) {
+            $personarray = @$page->header()->addperson;
+            if (count($personarray) > 0) {
+           foreach ($personarray as $person) {
+              $microdata[] = [
+                  '@context' => 'http://schema.org',
+                  '@type' => 'Person',
+                  'name' => @$person['person_name'],
+                  
+                  'address' => [
+                      '@type' => 'PostalAddress',
+                      'addressLocality' => @$person['person_address_addressLocality'],
+                      'addressRegion' => @$person['person_address_addressRegion'],
+                      ],
+                  'jobTitle' => @$person['person_jobTitle'],
+                  
+                  ];
+            
+
+       }
+                
+            }
+            
+        }
+        }
         if (property_exists($page->header(),'restaurantenabled')){
         if ($page->header()->restaurantenabled and $this->config['plugins']['seo']['restaurant']) {
          if (isset($page->header()->restaurant['image'])){
@@ -375,7 +401,7 @@ class seoPlugin extends Plugin
        }
         }
      if (property_exists($page->header(),'articleenabled')){
-            if (property_exists($page->header(), 'article[headline]')){
+            if (isset($page->header()->article['headline'])){
                $headline =  $page->header()->article['headline'];
             } else {
                 $headline = $cleanTitle;

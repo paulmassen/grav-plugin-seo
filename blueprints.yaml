@@ -1,8 +1,7 @@
 name: "SEO"
-version: "2.0.4"
+version: "2.0.5"
 description: "SEO is an user friendly plugin to manage your SEO across all your pages."
 icon: "facebook"
-testing: true
 author:
   name: "Paul Massendari"
   email: "paul@massendari.com"
@@ -68,7 +67,6 @@ form:
       type: toggle
       label: Enable Person Microdata /!\ Not available yet
       highlight: 1
-      hidden: true
       default: 0
       options:
         1: PLUGIN_ADMIN.ENABLED

@@ -4,6 +4,7 @@
 ##### Table of Contents:
 
 * [About](#about)
+* [Features](#features)
 * [Installation and Updates](#installation-and-updates)
 * [Usage](#usage)
 * [Contributing](#contributing)
@@ -85,6 +86,11 @@ As this plugin is in its early stage, please do not hesitate to leave a feedback
 
 ## Installation and Updates
 
+### Updating from Previous releases
+
+As there is a lot of changes from previous releases, be careful when updating, as your previously set values might be lost.
+The previous version required to modify your base template, whereas the 2.0+ version of the plugin now adds metadata and microdata automatically to your existing Installation.
+
 Installing or updating the `SEO` plugin can be done in one of three ways. Using the GPM (Grav Package Manager) installation update method (i.e. `bin/gpm install seo`) or manual install by downloading [this plugin](https://github.com/paulmassen/grav-plugin-seo) and extracting all plugin files to
 
     /your/site/grav/user/plugins/seo
@@ -94,6 +100,8 @@ If you plan on using the Twitter feature, make sure to fill your user ID in tab 
 
 ## Configuration
 
+Configuration is done through the plugin configuration page, accessible by clicking on Plugins > Seo. On this page, you can choose to enable the microdata fields you will use.
+Make sure to fill the Facebook ID field as well as the Twitter ID field, in order for your meta tags to be validated.
 
 ## Usage
 

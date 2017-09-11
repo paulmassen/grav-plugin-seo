@@ -113,6 +113,7 @@ en:
       RESTAURANT_LOCALITY: "Locality"
       RESTAURANT_REGION: "Region"
       RESTAURANT_TELEPHONE: "Telephone"
+      ENABLE_PERSON: "Enable Person Microdata"
 
 
 ro:
