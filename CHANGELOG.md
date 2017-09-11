@@ -1,8 +1,15 @@
+# v2.0.5
+## 09/10/2017
+1. [](#bugfix)
+    * First Stable Release - Reads the docs before updating from a 1.0.x Version!
+    * Added Person Microdata
+
 # v2.0.4
 ## 09/10/2017
 1. [](#bugfix)
     * Microdata is now automatically added to pages
     * Page date and last modified is modified automatically in article microdata
+    
 
 
 # v2.0.3
