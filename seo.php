@@ -375,7 +375,7 @@ class seoPlugin extends Plugin
        }
         }
      if (property_exists($page->header(),'articleenabled')){
-            if (property_exists($page->header(), 'article[headline]')){
+            if (isset($page->header()->article['headline'])){
                $headline =  $page->header()->article['headline'];
             } else {
                 $headline = $cleanTitle;
