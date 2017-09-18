@@ -1,6 +1,11 @@
 # v2.0.5
 ## 09/10/2017
 1. [](#bugfix)
+    * Changed Description
+
+# v2.0.5
+## 09/10/2017
+1. [](#bugfix)
     * First Stable Release - Reads the docs before updating from a 1.0.x Version!
     * Added Person Microdata
 
