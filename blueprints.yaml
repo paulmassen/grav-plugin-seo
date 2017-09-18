@@ -1,6 +1,6 @@
 name: "SEO"
-version: "2.0.5"
-description: "SEO is an user friendly plugin to manage your SEO across all your pages."
+version: "2.0.6"
+description: "Manage your site’s meta tags for display in search engine results or social media networks. Includes an easy-to-use live preview feature."
 icon: "facebook"
 author:
   name: "Paul Massendari"
