@@ -1,0 +1,56 @@
+
+{% if admin.route %}
+    {% set context = admin.page(true) %}
+{% endif %}
+    {% if field.title or field.underline %}
+    <h1 {% if not field.underline %}class="no_underline"{% endif %}>{% if grav.twig.twig.filters['tu'] is defined %}{{ field.title|tu }}{% else %}{{ field.title|t }}{% endif %}</h1>
+    {% endif %}
+
+    {% set context = admin.page(true) %}
+    <div class="tweetcontainer"><div class="tweet-card"> <div class="tweethead"> <img src="{{ media['user://plugins/seo/twitter.png'].resize(50, 50).url() }}" width="50" height="50" class="twitterimg"> <span class="twitterusername">Twitter team <br><span class="twitternick">@twitter</span></span> </div><blockquote class="twitter-tweet"> 
+    <p class="twittcontent"> Here is how this page will looks once shared on twitter. </p>
+    <div class="SummaryCardContainer"> <div class="SummaryCard">
+         <img id="twittliveimg" src="{{ base_url_absolute ~ context.header.twittershareimg }}" width="100%">
+    <div class="cardtext">
+         <h2 class="cardtitle" id="titletwtarget">
+         {{ context.header.twittertitle|default(context.title ~ " | " ~ site.title )}}
+        </h2>
+        <p style="padding:0px;" id="twittdesc">{{ context.header.twitterdescription|default(context.summary|striptags|truncate(140))}}</p>
+        <span class="sitename">{{uri.host|replace({"http://": "","/":" › " }) }}</span>
+    </div></div></div></blockquote>
+    <span class="iconcontainer"> <i class="fa fa-reply twittericon"></i> <i class="fa fa-heart twittericon"></i><i class="fa fa-retweet twittericon"></i></span></div></div> <div id="twittcount"></div>
+    
+    <style>.tweet-card{min-height:180px;width:31%;min-width:500px}.SummaryCardContainer{border:1px solid #e1e8ed;border-radius:8px;width:95%}blockquote{font-size:17.5px; border-left:0px!important;}.tweet-card{padding:0 0 6px;margin: auto;background:#fff;border:1px solid #e1e8ed;border-radius:5px}.cardtext{padding:1em;font-family:arial}.cardtitle{margin:0 0 .15em;font-size:1em;font-weight:700}.sitename{color:#8899A6}.usertwitt{color:#2b7bb9}.twittcontent{font-family:arial; padding: 0 1rem!important; background-color:#fff;white-space:normal;color:#1c2022;clear:left;padding-top:17px}.twittericon{color:grey;margin-left:15px}.iconcontainer{padding-left:25px}.twitterimg{border-radius:6px;margin-top:19px;margin-left:39px;float:left}.twitterusername{font-weight:700;font-family:arial;padding-top:15px;padding-left:15px;float:left}.twitternick{font-weight:500;color:grey;padding-top:3px}</style>
+    
+    <script type="text/javascript">$('#twittertitle').keyup(function(){var keyed = $(this).val();$("#titletwtarget").html(keyed); });$('#twitterdescription').keyup(function(){var keyed = $(this).val();$("#twittdesc").html(keyed);
+         $("#twittcount").text("Characters left: " + (140 - $(this).val().length));
+    
+        
+    });
+    $('#twittimgselect').on('click', function() {
+        console.log("inputclick");
+        $('.js__media-element').on('click', function() {
+        
+          var valueselect = $(this).attr("data-file-url") ;
+          var newimg = "{{ base_url_absolute }}" + valueselect ;
+          $('#twittliveimg').attr("src", newimg);
+          console.log(newimg);
+        });
+    }
+    )
+
+
+    </script>
+    {% if field.text %}
+    {% endif %}
+
+    {% if field.fields %}
+        <div class="form-section {{ field.field_classes }}">
+        {% for field in field.fields %}
+            {% if field.type %}
+                {% set value = data.value(field.name) %}
+                {% include ["forms/fields/#{field.type}/#{field.type}.html.twig", 'forms/fields/text/text.html.twig'] %}
+            {% endif %}
+        {% endfor %}
+        </div>
+    {% endif %}

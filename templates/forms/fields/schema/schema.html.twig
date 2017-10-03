@@ -1,0 +1,114 @@
+<script type="text/javascript">
+
+$("[name='data[header][articleenabled]']").click(function() {
+    var status = $(this).val();
+    if (status != 0) {
+        $(".togglearticle").show();
+        console.log("show")
+    } else {
+        $(".togglearticle").hide();
+    }
+});
+
+$(document).ready(function() {
+    var status = $("[name='data[header][articleenabled]'][checked='checked']").val();
+    if (status == 0) {
+        $(".togglearticle").hide();
+        console.log("show");
+    }
+});
+
+$("[name='data[header][personenabled]']").click(function() {
+    var status = $(this).val();
+    if (status != 0) {
+        $(".toggleperson").show();
+        console.log("show");
+    } else {
+        $(".toggleperson").hide();
+    }
+});
+
+$(document).ready(function() {
+    var status = $("[name='data[header][personenabled]'][checked='checked']").val();
+    if (status == 0) {
+        $(".toggleperson").hide();
+        console.log("show");
+
+    }
+});
+
+$("[name='data[header][eventenabled]']").click(function() {
+    var status = $(this).val();
+    if (status != 0) {
+        $(".toggleevent").show();
+        console.log("show");
+    } else {
+        $(".toggleevent").hide();
+    }
+});
+
+$(document).ready(function() {
+    var status = $("[name='data[header][eventenabled]'][checked='checked']").val();
+    if (status == 0) {
+        $(".toggleevent").hide();
+        console.log("show");
+    }
+});
+
+$("[name='data[header][musicalbumenabled]']").click(function() {
+    var status = $(this).val();
+    if (status != 0) {
+        $(".togglemusicalbum").show();
+        console.log("show");
+    } else {
+        $(".togglemusicalbum").hide();
+    }
+});
+
+$(document).ready(function() {
+    var status = $("[name='data[header][musicalbumenabled]'][checked='checked']").val();
+    if (status == 0) {
+        $(".togglemusicalbum").hide();
+        console.log("show");
+    }
+});
+$("[name='data[header][restaurantenabled]']").click(function() {
+    var status = $(this).val();
+    if (status != 0) {
+        $(".togglerestaurant").show();
+        console.log("show");
+    } else {
+        $(".togglerestaurant").hide();
+    }
+});
+
+$(document).ready(function() {
+    var status = $("[name='data[header][restaurantenabled]'][checked='checked']").val();
+    if (status == 0) {
+        $(".togglerestaurant").hide();
+        console.log("show");
+    }
+});
+$("[name='data[header][musiceventenabled]']").click(function() {
+    var status = $(this).val();
+    if (status != 0) {
+        $(".togglemusicevent").show();
+        console.log("show");
+    } else {
+        $(".togglemusicevent").hide();
+    }
+});
+
+$(document).ready(function() {
+    var status = $("[name='data[header][musiceventenabled]'][checked='checked']").val();
+    if (status == 0) {
+        $(".togglemusicevent").hide();
+        console.log("status = 0 hide musicevent");
+    }
+    else {
+        $(".togglemusicevent").show();  
+    };
+        
+    }
+);
+</script>
