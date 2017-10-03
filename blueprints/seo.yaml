@@ -7,10 +7,6 @@ form:
       fields:
         seo:
           type: tab
-<<<<<<< HEAD
-=======
-          field_classes: fixoverlap
->>>>>>> 4a28726fad51b989adf72a777f4f9e96f909e19e
           title: SEO
 
           fields:
@@ -286,7 +282,7 @@ form:
                                       type: text
                                       label: Wikipedia or official URL
                                       field_classes: togglemusicevent
-<<<<<<< HEAD
+
                     header.conditional_orga:
                       type: conditional
                       condition: "config.plugins.seo.organization ? 'true' : 'false'"
@@ -325,8 +321,7 @@ form:
                               type: text
                               label: Organization Phone
                               
-=======
->>>>>>> 4a28726fad51b989adf72a777f4f9e96f909e19e
+
                     header.conditional_new_entries:
                       type: conditional
                       condition: "config.plugins.seo.event ? 'true' : 'false'"
@@ -339,11 +334,7 @@ form:
                           fields:
                             header.eventenabled:
                               type: toggle
-<<<<<<< HEAD
                               label: PLUGINS.SEO.ENABLEORGA
-=======
-                              label: PLUGINS.SEO.ENABLEEVENT
->>>>>>> 4a28726fad51b989adf72a777f4f9e96f909e19e
                               default: 0
                               options:
                                   1: PLUGIN_ADMIN.YES

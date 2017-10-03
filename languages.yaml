@@ -264,7 +264,6 @@ ro:
 #      FACEBOOK_DESC: ""
 #      FACEBOOK_SHAREIMG: ""
 #      FACEBOOK_PREVIEWDESC: ""
-=======
 
 #////////////////
 #LANGUAGE TEMPLATE
@@ -383,4 +382,4 @@ ro:
 #      RESTAURANT_REGION: 
 #      RESTAURANT_TELEPHONE: 
 #      ENABLE_PERSON: 
->>>>>>> 4a28726fad51b989adf72a777f4f9e96f909e19e
+
