@@ -363,6 +363,7 @@ class seoPlugin extends Plugin
             
         }
         }
+<<<<<<< HEAD
         if (property_exists($page->header(),'orgaenabled')){
        if ($page->header()->orgaenabled and $this->config['plugins']['seo']['organization']) {
         $microdata[] = [
@@ -383,6 +384,8 @@ class seoPlugin extends Plugin
            
        }
        }
+=======
+>>>>>>> 4a28726fad51b989adf72a777f4f9e96f909e19e
         if (property_exists($page->header(),'restaurantenabled')){
         if ($page->header()->restaurantenabled and $this->config['plugins']['seo']['restaurant']) {
          if (isset($page->header()->restaurant['image'])){
