@@ -81,6 +81,7 @@ As this plugin is in its early stage, please do not hesitate to leave a feedback
 - [ ] Add Translations (Contribution welcomed!)
 - [x] Add the possibility to add multiple microdata of the same type
 - [ ] YoastSEO text analysis integration (WIP)
+- [ ] Add some microdata on every page
 
 
 
