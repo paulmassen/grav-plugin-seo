@@ -337,16 +337,6 @@ form:
                           collapsed: true
                           collapsible: true
                           fields:
-                            header.myoptgroup:
-                              type: select_optgroup
-                              label: select optgroup
-                              options:
-                                - OptGroup1:
-                                  - Option1
-                                  - Option2
-                                - OptGroup2:
-                                  - Option3
-                                  - Option4
                             header.eventenabled:
                               type: toggle
                               label: PLUGINS.SEO.ENABLEORGA
