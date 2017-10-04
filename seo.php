@@ -16,6 +16,7 @@
 
 namespace Grav\Plugin;
 
+use Grav\Plugin\Admin\Utils as AdminUtils
 use Grav\Common\Plugin;
 use Grav\Common\Page\Page;
 use Grav\Common\Data\Blueprints;
@@ -561,7 +562,7 @@ class seoPlugin extends Plugin
         $content = str_replace('"',"'",$content);
         $content = trim($content);
         // Removes special chars.
-        $content = \Grav\Plugin\Admin\Utils::slug($content);
+        $content = AdminUtils::slug($content);
         return $content;
     }
 
