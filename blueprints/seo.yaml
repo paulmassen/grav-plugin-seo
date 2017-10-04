@@ -320,18 +320,33 @@ form:
                             header.orga.phone:
                               type: text
                               label: Organization Phone
+                            header.orga.logo:
+                              type: text
+                              label: Url to Organization Logo 
+                              placeholder: 'include http://'
                               
 
                     header.conditional_new_entries:
                       type: conditional
                       condition: "config.plugins.seo.event ? 'true' : 'false'"
                       fields:
+                        
                         header.eventfieldset:
                           type: fieldset
                           title: Event Microdata
                           collapsed: true
                           collapsible: true
                           fields:
+                            header.myoptgroup:
+                              type: select_optgroup
+                              label: select optgroup
+                              options:
+                                - OptGroup1:
+                                  - Option1
+                                  - Option2
+                                - OptGroup2:
+                                  - Option3
+                                  - Option4
                             header.eventenabled:
                               type: toggle
                               label: PLUGINS.SEO.ENABLEORGA

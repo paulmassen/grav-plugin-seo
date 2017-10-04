@@ -1,13 +1,13 @@
 <?php
 /**
- * SEO v2.0.7
+ * SEO v2.0.8
  *
  * This plugin adds an SEO Tab to every pages for managing SEO data.
  *
  * Licensed under the MIT license, see LICENSE.
  *
  * @package     SEO
- * @version     2.0.7
+ * @version     2.0.8
  * @link        <https://github.com/paulmassen/grav-plugin-seo>
  * @author      Paul Massendari <paul@massendari.com>
  * @copyright   2017, Paul Massendari
@@ -378,7 +378,7 @@ class seoPlugin extends Plugin
                       'postalCode' => @$page->header()->orga['zipcode'],
                       ],
                   'telephone' => @$page->header()->orga['phone'],
-                  
+                  'logo' => @$page->header()->orga['logo'],
                   ];
            
        }

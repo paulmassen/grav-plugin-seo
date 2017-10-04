@@ -1,5 +1,5 @@
 name: "SEO"
-version: "2.0.7"
+version: "2.0.8"
 description: "Manage your site’s meta tags for display in search engine results or social media networks. Includes an easy-to-use live preview feature."
 icon: "facebook"
 author:
@@ -27,7 +27,7 @@ form:
       type: toggle
       label: Enable Article Microdata
       highlight: 1
-      default: 0
+      default: 1
       options:
         1: PLUGIN_ADMIN.ENABLED
         0: PLUGIN_ADMIN.DISABLED

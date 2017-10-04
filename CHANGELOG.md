@@ -1,3 +1,8 @@
+# v2.0.8
+## 10/04/2017
+1. [](#new)
+    * Added Logo url to Organization Microdata
+
 # v2.0.7
 ## 10/03/2017
 1. [](#new)
