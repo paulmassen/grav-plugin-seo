@@ -16,7 +16,7 @@
 
 namespace Grav\Plugin;
 
-use Grav\Plugin\Admin\Utils as AdminUtils
+use Grav\Plugin\Admin\Utils as AdminUtils;
 use Grav\Common\Plugin;
 use Grav\Common\Page\Page;
 use Grav\Common\Data\Blueprints;
