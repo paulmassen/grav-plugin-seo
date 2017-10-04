@@ -5415,7 +5415,8 @@ AssessorPresenter.prototype.enableMarkerButtons = function () {
     this.render();
 };
 AssessorPresenter.prototype.addMarkerEventHandler = function (identifier, marker) {
-    var container = document.getElementById(this.output);
+    //var container = document.getElementById(this.output);
+    var container = document.getElementById('output');
     var markButton = container.getElementsByClassName("js-assessment-results__mark-" + identifier)[0];
     markButton.addEventListener("click", this.markAssessment.bind(this, identifier, marker));
 };
@@ -7511,7 +7512,7 @@ SnippetPreview.prototype.renderTemplate = function () {
             metaHeight: null
         },
         rendered: {
-            title: document.getElementById("snippet_title"),
+            title: document.getElementById("mytitle"),
             urlBase: document.getElementById("snippet_citeBase"),
             urlPath: document.getElementById("snippet_cite"),
             metaDesc: document.getElementById("snippet_meta")
@@ -7526,7 +7527,7 @@ SnippetPreview.prototype.renderTemplate = function () {
             metaDesc: targetElement.getElementsByClassName("snippet-editor__progress-meta-description")[0]
         },
         container: document.getElementById("snippet_preview"),
-        formContainer: targetElement.getElementsByClassName("snippet-editor__form")[0],
+        // formContainer: targetElement.getElementsByClassName("snippet-editor__form")[0],
         editToggle: targetElement.getElementsByClassName("snippet-editor__edit-button")[0],
         closeEditor: targetElement.getElementsByClassName("snippet-editor__submit")[0],
         formFields: targetElement.getElementsByClassName("snippet-editor__form-field")
