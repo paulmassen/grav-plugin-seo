@@ -92,8 +92,10 @@ window.onload = function () {
 		snippetPreview: snippetPreview,
 		targets: {
 			output: "output",
-			contentOutput: "contentOutput"
+			contentOutput: "contentOutput",
+			snippet: false,
 		},
+		
 		callbacks: {
 			getData: function getData() {
 				return {
@@ -8419,7 +8421,10 @@ module.exports = function (text) {
 
 module.exports = function (text) {
     text = text.replace(/\|/ig, "");
-    text = text.replace(/<h([1-6])(?:[^>]+)?>(.*?)<\/h\1>/ig, "|");
+    //text = text.replace(/<h([1-6])(?:[^>]+)?>(.*?)<\/h\1>/ig, "|");
+    text = text.replace(/(#+)(.*)/ig, "|");
+    
+    
     var subheadings = text.split("|");
     subheadings.shift();
     return subheadings;
@@ -8432,7 +8437,8 @@ module.exports = function (text) {
 var map = require("lodash/map");
 function getSubheadings(text) {
     var subheadings = [];
-    var regex = /<h([1-6])(?:[^>]+)?>(.*?)<\/h\1>/ig;
+    //var regex = /<h([1-6])(?:[^>]+)?>(.*?)<\/h\1>/ig;
+    var regex = /(#+)(.*)/ig;
     var match;
     while ((match = regex.exec(text)) !== null) {
         subheadings.push(match);
@@ -9638,7 +9644,7 @@ module.exports = {
     'assessmentPresenterResult': {},
     'hiddenSpan': {},
     'relevantWords': {},
-    'snippetEditor': {}
+    //'snippetEditor': {}
   };
 
   templates['assessmentPresenterResult'] =   function(obj) {
@@ -9763,7 +9769,7 @@ module.exports = {
     var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
     function print() { __p += __j.call(arguments, '') }
     with (obj) {
-    __p += '<div id="snippet_preview" class="yoast-section">\n	<section class="snippet-editor__preview">\n		<h3 class="snippet-editor__heading snippet-editor__heading-icon snippet-editor__heading-icon-eye">' +
+    __p += '<div id="snippet_preview" class="yoast-section">\n	<section class="snippet-editor--hidden">\n		<h3 class="snippet-editor__heading snippet-editor__heading-icon snippet-editor__heading-icon-eye">' +
     __e( i18n.snippetPreview ) +
     '</h3>\n	<p class="screen-reader-text">' +
     __e( i18n.snippetPreviewDescription ) +
