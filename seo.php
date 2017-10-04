@@ -122,6 +122,8 @@ class seoPlugin extends Plugin
         $route = $this->config->get('plugins.admin.route');
         if ($route && preg_match('#' . $route . '#', $uri->path())) {
             $assets->addJs('user/plugins/seo/js/yoastseo.js', 1);
+            $assets->addJs('user/plugins/seo/js/loadyoast.js', 1);
+            
         }
         
         $cleanContent = $this->cleanText ($content, $config);

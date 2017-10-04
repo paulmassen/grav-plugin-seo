@@ -5,6 +5,25 @@ form:
       active: 1
 
       fields:
+        content:
+          fields:
+            mykeyword:
+              type: text
+              id: focusKeyword
+            content:
+              id: content
+            snippetoutput:
+              type: display
+              id: output
+              content: ''
+            snippettest:
+              type: display
+              id: locale
+              content: ''
+            snippetyoast:
+              type: display
+              id: snippet
+              content: ''
         seo:
           type: tab
           title: SEO

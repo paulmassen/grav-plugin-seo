@@ -5433,7 +5433,7 @@ AssessorPresenter.prototype.removeAllMarks = function () {
     marker(this.assessor.getPaper(), []);
 };
 AssessorPresenter.prototype.renderIndividualRatings = function () {
-    var outputTarget = document.getElementById(this.output);
+    var outputTarget = document.getElementById("output");
     var scores = this.getIndividualRatings();
     outputTarget.innerHTML = template({
         scores: scores,
