@@ -7,23 +7,34 @@ form:
       fields:
         content:
           fields:
-            mykeyword:
-              type: text
-              id: focusKeyword
+            
             content:
               id: content
+            title:
+              id: mytitle
             snippetoutput:
               type: display
               id: output
+              ordering@: 1
+              style: vertical
               content: ''
+            pagemedia:
+              ordering@: 3
             snippettest:
               type: display
               id: locale
-              content: ''
+              content: 'en_US'
+            mybutton:
+              type: button
+              id: 'refresh-analysis'
             snippetyoast:
               type: display
               id: snippet
               content: ''
+            mykeyword:
+              type: text
+              id: focusKeyword
+              ordering@: 0
         seo:
           type: tab
           title: SEO
