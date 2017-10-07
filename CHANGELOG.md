@@ -1,3 +1,8 @@
+# v2.0.9
+## 10/04/2017
+1. [](#bugfix)
+    * Fixed string manipulation causing error on some install
+
 # v2.0.8
 ## 10/04/2017
 1. [](#new)
