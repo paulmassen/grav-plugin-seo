@@ -20,6 +20,10 @@ form:
               content: ''
             pagemedia:
               ordering@: 3
+            header.mynewtitle:
+              type: text
+              label: MY NEW TITLE
+              id: mytitle
             snippettest:
               type: display
               id: locale
@@ -35,6 +39,10 @@ form:
               type: text
               id: focusKeyword
               ordering@: 0
+            mytemplate:
+              type: display
+              id: mytemplate
+              content: ''
         seo:
           type: tab
           title: SEO

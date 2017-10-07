@@ -69,7 +69,7 @@ var escape = require("lodash/escape");
  * binds the renewData function on the change of inputelements.
  */
 var bindEvents = function bindEvents(app) {
-	var elems = ["content", "focusKeyword", "locale"];
+	var elems = ["content", "focusKeyword", "locale", "mytitle"];
 	for (var i = 0; i < elems.length; i++) {
 		document.getElementById(elems[i]).addEventListener("input", app.refresh.bind(app));
 	}
@@ -100,10 +100,19 @@ window.onload = function () {
 			getData: function getData() {
 				return {
 					keyword: document.getElementById("focusKeyword").value,
-					text: document.getElementById("content").value
+					text: document.getElementById("content").value,
+					title: document.getElementById("mytitle").value,
+					metaTitle: document.getElementById("mytitle").value
 				};
 			}
 		},
+		    //fields: {
+                //keyword: drupalSettings.yoast_seo.field_ids.focus_keyword,
+                
+                //nodeTitle: drupalSettings.yoast_seo.field_ids.node_title,
+                //meta: drupalSettings.yoast_seo.field_ids.description,
+                //url: drupalSettings.yoast_seo.field_ids.url
+              //      },
 		marker: function marker(paper, marks) {
 			var text = paper.getText();
 
@@ -1713,7 +1722,8 @@ var PageTitleWidthAssesment = function (_Assessment) {
                 widthCorrect: 9
             }
         };
-        _this.identifier = "titleWidth";
+        // _this.identifier = "titleWidth";
+         _this.identifier = "mytitle";
         _this._config = merge(defaultConfig, config);
         return _this;
     }
@@ -7512,13 +7522,13 @@ SnippetPreview.prototype.renderTemplate = function () {
             metaHeight: null
         },
         rendered: {
-            title: document.getElementById("mytitle"),
+            title: document.getElementById("snippet_title"),
             urlBase: document.getElementById("snippet_citeBase"),
             urlPath: document.getElementById("snippet_cite"),
             metaDesc: document.getElementById("snippet_meta")
         },
         input: {
-            title: targetElement.getElementsByClassName("js-snippet-editor-title")[0],
+            title: document.getElementById("mytitle"),
             urlPath: targetElement.getElementsByClassName("js-snippet-editor-slug")[0],
             metaDesc: targetElement.getElementsByClassName("js-snippet-editor-meta-description")[0]
         },
@@ -9770,7 +9780,7 @@ module.exports = {
     var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
     function print() { __p += __j.call(arguments, '') }
     with (obj) {
-    __p += '<div id="snippet_preview" class="yoast-section">\n	<section class="snippet-editor--hidden">\n		<h3 class="snippet-editor__heading snippet-editor__heading-icon snippet-editor__heading-icon-eye">' +
+    __p += '<div id="snippet_preview" class="yoast-section">\n	<section class="snippet-editor">\n		<h3 class="snippet-editor__heading snippet-editor__heading-icon snippet-editor__heading-icon-eye">' +
     __e( i18n.snippetPreview ) +
     '</h3>\n	<p class="screen-reader-text">' +
     __e( i18n.snippetPreviewDescription ) +
