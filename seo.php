@@ -119,10 +119,9 @@ class seoPlugin extends Plugin
         $pattern = '~((\/[^\/]+)+)\/([^\/]+)~';
         $replacement = '$1';
         $outputjson = "";
-        $cleanContent = $this->cleanText ($content, $config);
         $microdata = [];
         $meta = $page->metadata(null);
-        $cleanTitle = $this->cleanString ($page->title());
+
      
        
         if (isset($page->header()->googletitle)) {
@@ -208,7 +207,7 @@ class seoPlugin extends Plugin
             } else {
                // $meta['og:description']['name']     = 'og:description';
                 $meta['og:description']['property'] = 'og:description';
-                $meta['og:description']['content'] =  substr($cleanContent,0,140);
+                $meta['og:description']['content'] =  substr($content,0,140);
             }
             if (isset($page->header()->facebookauthor)) {
               //  $meta['article:author']['name']     = 'article:author';
@@ -425,7 +424,7 @@ class seoPlugin extends Plugin
             if (isset($page->header()->article['headline'])){
                $headline =  $page->header()->article['headline'];
             } else {
-                $headline = $cleanTitle;
+                $headline = $page->title();
             }
        if ($page->header()->articleenabled and $this->config['plugins']['seo']['article']) {
         $microdata['article']      = [
@@ -444,7 +443,7 @@ class seoPlugin extends Plugin
             $microdata['article']['description'] = $page->header()->article['description'];
            }
            else {
-             $microdata['article']['description'] = substr($cleanContent,0,140); 
+             $microdata['article']['description'] = substr($content,0,140); 
            };
 
          if (isset($page->header()->article['author'])) {
@@ -545,26 +544,5 @@ class seoPlugin extends Plugin
         $text=str_replace('"', '', $text);
         return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
     }
-    private function cleanText ($content, $config) {
-        $length = $config['description.length'];       
-        if ($length <=1 ) $length=20; 
- 
-        $content = $this->cleanMarkdown($content);
-        // truncate the content to the number of words set in config
-        $contentSmall = preg_replace('/((\w+\W*){'.$length.'}(\w+))(.*)/', '${1}', $content); // beware if content is less than length words, it will be nulled    
-        if ($contentSmall == '' ) $contentSmall = $content;
- 
-        return $contentSmall;
-    }
-    private function cleanString ($content) {
-        // remove some annoying characters
-        $content = str_replace("&nbsp;",' ',$content);
-        $content = str_replace('"',"'",$content);
-        $content = trim($content);
-        // Removes special chars.
-        $content = AdminUtils::slug($content);
-        return $content;
-    }
-
 
 }
