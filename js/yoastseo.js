@@ -89,6 +89,8 @@ window.onload = function () {
 		data: {
 
                 "title": document.getElementById("mytitle").value,
+                "meta": document.getElementById("desc").value,
+                "metaDescription": document.getElementById("desc").value,
                 
                             },
 	});
@@ -107,7 +109,8 @@ window.onload = function () {
 					keyword: document.getElementById("focusKeyword").value,
 					text: document.getElementById("content").value,
 					title: document.getElementById("mytitle").value,
-					metaTitle: document.getElementById("mytitle").value
+					metaTitle: document.getElementById("mytitle").value,
+					meta: document.getElementById("desc").value,
 				};
 			}
 		},
@@ -8543,7 +8546,7 @@ module.exports = function (text) {
 
 var matchStringWithRegex = require("./matchStringWithRegex.js");
 module.exports = function (text) {
-    return matchStringWithRegex(text, "<img(?:[^>]+)?>");
+    return matchStringWithRegex(text, "!\\[[^\\]]+\\]\\([^)]+\\)");
 };
 
 
