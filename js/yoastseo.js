@@ -28,7 +28,7 @@ TestPlugin.prototype.addPlugin = function () {
  * @param {object} researcher The researcher used for calling research.
  * @param {object} i18n The object used for translations.
  * @returns {object} the Assessmentresult
- */
+
 TestPlugin.prototype.scorePlugin = function (paper, researcher, i18n) {
 	var result = Math.random() * 100;
 	var assessmentResult = new AssessmentResult();
@@ -51,9 +51,9 @@ TestPlugin.prototype.scorePlugin = function (paper, researcher, i18n) {
 	}
 
 	return assessmentResult;
-};
+}; 
 
-module.exports = TestPlugin;
+module.exports = TestPlugin;*/
 
 },{"../../js/values/AssessmentResult.js":191}],2:[function(require,module,exports){
 "use strict";
@@ -85,7 +85,12 @@ var setLocale = function setLocale() {
 
 window.onload = function () {
 	var snippetPreview = new SnippetPreview({
-		targetElement: document.getElementById("snippet")
+		targetElement: document.getElementById("snippet"),
+		data: {
+
+                "title": document.getElementById("mytitle").value,
+                
+                            },
 	});
 
 	var app = new App({
@@ -188,7 +193,7 @@ var defaults = {
     sampleText: {
         baseUrl: "example.org/",
         snippetCite: "example-post/",
-        title: "This is an example title - edit by clicking here",
+        title: "Test de l'example",
         keyword: "Choose a focus keyword",
         meta: "Modify your meta description by editing it right here",
         text: "Start writing your text!"

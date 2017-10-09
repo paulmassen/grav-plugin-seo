@@ -7,38 +7,39 @@ form:
       fields:
         content:
           fields:
-            
             content:
               id: content
-            title:
+              ordering@: header.mykeyword
+            header.title:
               id: mytitle
+            header.mykeyword:
+              type: text
+              style: vertical
+              label: Focus Keyword
+              id: focusKeyword
+              ordering@: header.title
             snippetoutput:
               type: display
               id: output
-              ordering@: 1
+              ordering@: 3
               style: vertical
               content: ''
             pagemedia:
-              ordering@: 3
-            header.mynewtitle:
-              type: text
-              label: MY NEW TITLE
-              id: mytitle
-            snippettest:
+              ordering@: 0
+            header.snippettest:
               type: display
               id: locale
+              style: vertical
               content: 'en_US'
             mybutton:
               type: button
               id: 'refresh-analysis'
             snippetyoast:
               type: display
+              style: vertical
               id: snippet
               content: ''
-            mykeyword:
-              type: text
-              id: focusKeyword
-              ordering@: 0
+            
             mytemplate:
               type: display
               id: mytemplate
