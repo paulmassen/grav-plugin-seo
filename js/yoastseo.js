@@ -91,12 +91,16 @@ window.onload = function () {
                 "title": document.getElementById("mytitle").value,
                 "meta": document.getElementById("desc").value,
                 "metaDescription": document.getElementById("desc").value,
+                "metaDesc": document.getElementById("desc").value,
+                "metaTitle": document.getElementById("mytitle").value,
                 
                             },
 	});
+	snippetPreview.setTitleWidth(document.getElementById("mytitle").value.length * 8);
 
 	var app = new App({
 		snippetPreview: snippetPreview,
+		
 		targets: {
 			output: "output",
 			contentOutput: "contentOutput",
@@ -111,16 +115,20 @@ window.onload = function () {
 					title: document.getElementById("mytitle").value,
 					metaTitle: document.getElementById("mytitle").value,
 					meta: document.getElementById("desc").value,
+					metaDescription: document.getElementById("desc").value,
+					metaDesc: document.getElementById("desc").value,
 				};
 			}
 		},
-		    //fields: {
+		    fields: {
                 //keyword: drupalSettings.yoast_seo.field_ids.focus_keyword,
-                
+                metaDesc: document.getElementById("desc").value,
+                title: document.getElementById("mytitle").value,
+                metaTitle: document.getElementById("mytitle").value,
                 //nodeTitle: drupalSettings.yoast_seo.field_ids.node_title,
                 //meta: drupalSettings.yoast_seo.field_ids.description,
                 //url: drupalSettings.yoast_seo.field_ids.url
-              //      },
+                   },
 		marker: function marker(paper, marks) {
 			var text = paper.getText();
 
@@ -157,6 +165,16 @@ window.onload = function () {
 		app.getData();
 		app.runAnalyzer();
 	});
+};
+
+/* Allows to manually set the title width.
+ * This may be useful in setups where the title field will not always be rendered.
+ *
+ * @param {Number} titleWidth The width of the title in pixels.
+ * @returns {void}
+ */
+SnippetPreview.prototype.setTitleWidth = function( titleWidth ) {
+	this.data.titleWidth = titleWidth;
 };
 
 },{"../../js/app":3,"../../js/bundledPlugins/previouslyUsedKeywords.js":32,"../../js/snippetPreview":148,"./example-plugin-test.js":1,"lodash/escape":425,"lodash/forEach":432}],3:[function(require,module,exports){
@@ -8232,7 +8250,8 @@ module.exports = function (text) {
 
 module.exports = function (text) {
     var matches;
-    matches = text.match(/<a(?:[^>]+)?>(.*?)<\/a>/ig);
+    matches = text.match( /\[([^\[\]]*?)\]\((\S*?)\)/g);
+    console.log(matches);
     if (matches === null) {
         matches = [];
     }
@@ -9791,7 +9810,7 @@ module.exports = {
     var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
     function print() { __p += __j.call(arguments, '') }
     with (obj) {
-    __p += '<div id="snippet_preview" class="yoast-section">\n	<section class="snippet-editor">\n		<h3 class="snippet-editor__heading snippet-editor__heading-icon snippet-editor__heading-icon-eye">' +
+    __p += '<div id="snippet_preview" class="yoast-section">\n	<section class="snippet-editor--hidden" >\n		<h3 class="snippet-editor__heading snippet-editor__heading-icon snippet-editor__heading-icon-eye">' +
     __e( i18n.snippetPreview ) +
     '</h3>\n	<p class="screen-reader-text">' +
     __e( i18n.snippetPreviewDescription ) +

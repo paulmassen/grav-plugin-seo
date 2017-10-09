@@ -1,3 +1,8 @@
+title: Seo
+'@extends':
+    type: default
+    context: blueprints://pages
+
 form:
   fields:
     tabs:
@@ -38,7 +43,9 @@ form:
               type: display
               style: vertical
               id: snippet
+              classes: hidden
               content: ''
+            
             
             mytemplate:
               type: display
@@ -66,6 +73,7 @@ form:
                       type: textarea
                       label: PLUGINS.SEO.GOOGLE_DESC
                       id: desc
+                    
                     header.googlepreview:
                       type: google
                       label: PLUGINS.SEO.GOOGLE_PREVIEWDESC
