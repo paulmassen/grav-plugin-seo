@@ -8212,14 +8212,16 @@ module.exports = function (url, keyword, locale) {
 "use strict";
 
 var stripSpaces = require("../stringProcessing/stripSpaces.js");
-var regexAltTag = /alt=(['"])(.*?)\1/i;
+// var regexAltTag = /alt=(['"])(.*?)\1/i;
+var regexAltTag = /(!)\[([^\]]+)\]\([^)]+\)/i;
 module.exports = function (text) {
     var alt = "";
     var matches = text.match(regexAltTag);
+    console.log(matches);
     if (matches !== null) {
         alt = stripSpaces(matches[2]);
-        alt = alt.replace(/&quot;/g, "\"");
-        alt = alt.replace(/&#039;/g, "'");
+        //alt = alt.replace(/&quot;/g, "\"");
+        //alt = alt.replace(/&#039;/g, "'");
     }
     return alt;
 };
@@ -8547,6 +8549,7 @@ module.exports = function (text) {
 var matchStringWithRegex = require("./matchStringWithRegex.js");
 module.exports = function (text) {
     return matchStringWithRegex(text, "!\\[[^\\]]+\\]\\([^)]+\\)");
+    //return matchStringWithRegex(text, "!\[([^\]]*)\]");
 };
 
 
