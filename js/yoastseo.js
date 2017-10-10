@@ -152,9 +152,9 @@ window.onload = function () {
 		searchUrl: "http://example.com/search?kw={keyword}"
 	};
 
-	var testPlugin = new TestPlugin(app, args, app.i18n);
+	//var testPlugin = new TestPlugin(app, args, app.i18n);
 
-	testPlugin.addPlugin();
+	//testPlugin.addPlugin();
 
 	var previouslyUsedKeywordsPlugin = new PreviouslyUsedKeywords(app, args, app.i18n);
 	previouslyUsedKeywordsPlugin.registerPlugin();
@@ -8231,17 +8231,18 @@ module.exports = function (url, keyword, locale) {
 
 var stripSpaces = require("../stringProcessing/stripSpaces.js");
 // var regexAltTag = /alt=(['"])(.*?)\1/i;
-var regexAltTag = /(!)\[([^\]]+)\]\([^)]+\)/i;
+var regexAltTag = /!\[(.*?)\]\((?:.*?)\)/i;
 module.exports = function (text) {
     var alt = "";
     var matches = text.match(regexAltTag);
-    console.log(matches);
+     console.log("alt tag below ");
+     console.log(matches);
     if (matches !== null) {
-        alt = stripSpaces(matches[2]);
+        alt = matches;
         //alt = alt.replace(/&quot;/g, "\"");
         //alt = alt.replace(/&#039;/g, "'");
     }
-    return alt;
+    return alt[1];
 };
 
 
@@ -8250,11 +8251,11 @@ module.exports = function (text) {
 
 module.exports = function (text) {
     var matches;
-    matches = text.match( /\[([^\[\]]*?)\]\((\S*?)\)/g);
-    console.log(matches);
+    matches = text.match( /[^!]\[.+?\]\(.+?\)/ig );
     if (matches === null) {
         matches = [];
-    }
+    };
+    //console.log(matches);
     return matches;
 };
 
@@ -8266,12 +8267,14 @@ var urlHelper = require("./url");
 module.exports = function (text, url) {
     var linkType = "other";
     var anchorUrl = urlHelper.getFromAnchorTag(text);
-    if (anchorUrl.match(/https?:\/\//ig) !== null) {
+    // console.log("this is the anchor url list " + anchorUrl);
+    if (anchorUrl.match(/https?:\/\//i) !== null) {
         linkType = "external";
-        if (urlHelper.getHostname(anchorUrl) === urlHelper.getHostname(url)) {
+        if (urlHelper.getHostname(anchorUrl) === urlHelper.getHostname(window.location.href)) {
             linkType = "internal";
         }
-    }
+    };
+    // console.log(linkType);
     return linkType;
 };
 
@@ -8567,7 +8570,13 @@ module.exports = function (text) {
 
 var matchStringWithRegex = require("./matchStringWithRegex.js");
 module.exports = function (text) {
-    return matchStringWithRegex(text, "!\\[[^\\]]+\\]\\([^)]+\\)");
+    // return matchStringWithRegex(text, "(?:\[(.*?)\])(\((.*?)\))");
+    var matches = text.match(/!\[((\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\(\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*\)/g);
+    if ( matches === null ) {
+		matches = [];
+	}
+
+	return matches;
     //return matchStringWithRegex(text, "!\[([^\]]*)\]");
 };
 
@@ -9299,7 +9308,7 @@ module.exports = {
 },{}],189:[function(require,module,exports){
 "use strict";
 
-var urlFromAnchorRegex = /href=(["'])([^"']+)\1/i;
+var urlFromAnchorRegex = /[^!]\[(.+?)\]\(.+?\)/i;
 var urlMethods = require("url");
 function removeHash(url) {
     return url.split("#")[0];
@@ -9314,8 +9323,10 @@ function addTrailingSlash(url) {
     return removeTrailingSlash(url) + "/";
 }
 function getFromAnchorTag(anchorTag) {
+    //console.log("this is the anchor tag");
+    // console.log(anchorTag);
     var urlMatch = urlFromAnchorRegex.exec(anchorTag);
-    return urlMatch === null ? "" : urlMatch[2];
+    return urlMatch === null ? "" : urlMatch[1];
 }
 function areEqual(urlA, urlB) {
     urlA = removeQueryArgs(removeHash(urlA));
@@ -9324,6 +9335,8 @@ function areEqual(urlA, urlB) {
 }
 function getHostname(url) {
     url = urlMethods.parse(url);
+    //console.log("url hostname");
+    //console.log(url.hostname);
     return url.hostname;
 }
 module.exports = {
@@ -10006,6 +10019,7 @@ Paper.prototype.hasText = function () {
     return this._text !== "";
 };
 Paper.prototype.getText = function () {
+    //console.log(this._text);
     return this._text;
 };
 Paper.prototype.hasDescription = function () {
