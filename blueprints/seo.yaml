@@ -122,12 +122,12 @@ form:
                               type: text
                               label: PLUGINS.SEO.HEADLINE
                               disabled: false
-                              placeholder: Will use page title if left empty
+                              placeholder: PLUGINS.SEO.ARTICLE_PLACEHOLDER
                               field_classes: togglearticle
                             header.article.description:
                               type: textarea
                               label: PLUGINS.SEO.ARTICLE_DESCRIPTION
-                              placeholder: Will use summary if left empty
+                              placeholder: PLUGINS.SEO.ARTICLE_DESC_PLACEHOLDER
                               disabled: false
                               field_classes: togglearticle
                             header.article.image_url:

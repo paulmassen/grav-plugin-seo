@@ -37,6 +37,8 @@ en:
       HEADLINE: "Headline"
       ADD_ARTICLE_MICRODATA: "Add Article Microdata"
       ARTICLE_AUTHOR: "Article Author"
+      ARTICLE_PLACEHOLDER: "Will use page title if left empty"
+      ARTICLE_DESC_PLACEHOLDER: "Will use summary if left empty"
       ARTICLE_PUBLISHER: "Article Publisher"
       ENABLEMUSICEVENT: "Enable Music Event"
       PUBLISHER_LOGO: "Publisher Logo"
