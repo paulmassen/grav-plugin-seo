@@ -474,15 +474,12 @@ class seoPlugin extends Plugin
       };
       // Encode to json
       foreach ($microdata as $key => $value){
-        $jsonscript =   PHP_EOL . '<script type="application/ld+json">' . PHP_EOL . json_encode($microdata[$key], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT ) . PHP_EOL . '</script>';
+        $jsonscript = json_encode($microdata[$key], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT );
         $outputjson = $outputjson . $jsonscript;
       }
-      $outputjson = '</script>' . $outputjson . '<script>';
 
-      $this->grav['twig']->twig_vars['json'] = $outputjson;
-      //$this->grav['twig']->twig_vars['myvar'] = $myvar;
-      $assets->addInlineJs($outputjson, 100);
-     // return $outputjson;
+      $assets->addInlineJs($outputjson, 100,'', "application/ld+json");
+
     }
     
 
