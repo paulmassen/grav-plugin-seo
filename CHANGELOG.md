@@ -1,3 +1,11 @@
+# v2.1.0
+## 10/12/2017
+1. [](#bugfix)
+    * Fixed script tags bug. 
+    * Added highlight to Toggle fields
+    * Few languages fixes
+
+
 # v2.0.9
 ## 10/04/2017
 1. [](#bugfix)

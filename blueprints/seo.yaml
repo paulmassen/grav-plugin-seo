@@ -78,6 +78,7 @@ form:
                               id: twittertitle
                             header.twitterdescription:
                               type: textarea
+                              style: vertical
                               label: PLUGINS.SEO.TWITTER_DESCRIPTION
                               id: twitterdescription
                             
@@ -610,6 +611,7 @@ form:
                               
                             header.facebookdesc:
                               type: textarea
+                              style: vertical
                               label: PLUGINS.SEO.FACEBOOK_DESC
                               id: facebookdesc
                               placeholder: 'Max 300 character'
