@@ -31,26 +31,21 @@ form:
               content: ''
             pagemedia:
               ordering@: 0
-            header.snippettest:
-              type: display
-              id: locale
-              style: vertical
-              content: 'en_US'
-            mybutton:
-              type: button
-              id: 'refresh-analysis'
+#            header.snippettest:
+#              type: display
+#              id: locale
+#              style: vertical
+#              content: 'en_US'
+           # mybutton:
+          #    type: seobutton
+          #    id: 'refresh-analysis'
             snippetyoast:
               type: display
               style: vertical
               id: snippet
               classes: hidden
               content: ''
-            
-            
-            mytemplate:
-              type: display
-              id: mytemplate
-              content: ''
+
         seo:
           type: tab
           title: SEO
