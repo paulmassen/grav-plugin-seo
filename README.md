@@ -1,5 +1,6 @@
 # ![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/develop/logoseo.png?raw=true)
 
+![PayPal](https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donateCC_LG.gif)
 
 ##### Table of Contents:
 
