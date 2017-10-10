@@ -111,6 +111,7 @@ form:
                           fields:
                             header.articleenabled:
                               type: toggle
+                              highlight: 1
                               label: PLUGINS.SEO.ADD_ARTICLE_MICRODATA
                               default: 0
                               options:
@@ -163,6 +164,7 @@ form:
                             header.musiceventenabled:
                               type: toggle
                               label: PLUGINS.SEO.ENABLEMUSICEVENT
+                              highlight: 1
                               default: 0
                               options:
                                   1: PLUGIN_ADMIN.YES
@@ -295,6 +297,7 @@ form:
                           fields:
                             header.orgaenabled:
                               type: toggle
+                              highlight: 1
                               label: PLUGINS.SEO.ENABLEEVENT
                               default: 0
                               options:
@@ -339,6 +342,7 @@ form:
                           fields:
                             header.eventenabled:
                               type: toggle
+                              highlight: 1
                               label: PLUGINS.SEO.ENABLEORGA
                               default: 0
                               options:
@@ -406,6 +410,7 @@ form:
                           fields:
                             header.personenabled:
                               type: toggle
+                              highlight: 1
                               label: PLUGINS.SEO.ENABLE_PERSON
                               default: 0
                               options:
@@ -446,6 +451,7 @@ form:
                           fields:
                             header.musicalbumenabled:
                               type: toggle
+                              highlight: 1
                               label: PLUGINS.SEO.ADD_MUSICALBUM
                               default: 0
                               options:
@@ -512,6 +518,7 @@ form:
                           fields:
                             header.restaurantenabled:
                               type: toggle
+                              highlight: 1
                               label: PLUGINS.SEO.ADD_RESTAURANT
                               default: 0
                               options:
