@@ -388,6 +388,7 @@ class seoPlugin extends Plugin
                       ],
                   'telephone' => @$page->header()->orga['phone'],
                   'logo' => @$page->header()->orga['logo'],
+                  'url' => @$page->header()->orga['url']
                   ];
            
        }
