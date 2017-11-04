@@ -1,4 +1,4 @@
-# v2.1.0
+# v2.3.0
 ## 10/04/2017
 1. [](#new)
     * Yoast Text analysis integration
