@@ -8267,14 +8267,14 @@ var urlHelper = require("./url");
 module.exports = function (text, url) {
     var linkType = "other";
     var anchorUrl = urlHelper.getFromAnchorTag(text);
-    // console.log("this is the anchor url list " + anchorUrl);
+    //console.log("this is the anchor url list " + anchorUrl);
     if (anchorUrl.match(/https?:\/\//i) !== null) {
         linkType = "external";
         if (urlHelper.getHostname(anchorUrl) === urlHelper.getHostname(window.location.href)) {
             linkType = "internal";
         }
     };
-    // console.log(linkType);
+    console.log(linkType);
     return linkType;
 };
 
@@ -9326,7 +9326,9 @@ function getFromAnchorTag(anchorTag) {
     //console.log("this is the anchor tag");
     // console.log(anchorTag);
     var urlMatch = urlFromAnchorRegex.exec(anchorTag);
-    return urlMatch === null ? "" : urlMatch[1];
+    //console.log("this is the getfromanchortag" + urlMatch[0]);
+    return urlMatch === null ? "" : urlMatch[0];
+    // avant, retournait urlMatch1return urlMatch === null ? "" : urlMatch[1];
 }
 function areEqual(urlA, urlB) {
     urlA = removeQueryArgs(removeHash(urlA));
