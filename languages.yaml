@@ -112,10 +112,12 @@ en:
       RESTAURANT_POSTAL_CODE: "Postal Code"
       RESTAURANT_STREET: "Street"
       RESTAURANT_LOCALITY: "Locality"
+      LOCATION_URL_PLACEHOLDER: "Url to the venue website"
       RESTAURANT_REGION: "Region"
       RESTAURANT_TELEPHONE: "Telephone"
       ENABLE_PERSON: "Enable Person Microdata"
       ENABLEORGA: "Enable Organization Microdata"
+      MUSICEVENT_URL_PLACEHOLDER: "Url to the official page of this music event"
 
 ro:
   PLUGINS:
