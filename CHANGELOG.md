@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # v2.1.0
 ## 10/12/2017
 1. [](#bugfix)
@@ -6,6 +7,9 @@
     * Few languages fixes
 
 # v2.0.9
+=======
+# v2.3.0
+>>>>>>> refs/remotes/origin/develop
 ## 10/04/2017
 1. [](#bugfix)
     * Fixed string manipulation causing error on some install

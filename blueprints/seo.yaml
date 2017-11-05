@@ -110,6 +110,7 @@ form:
                               underline: true
                             header.twittershareimg:
                               type: mediapicker
+                              placeholder: Click here to open the mediapicker
                               label: PLUGINS.SEO.TWITTER_SHAREIMG
                               preview_images: true
                               id: twittimgselect
@@ -157,6 +158,7 @@ form:
                               highlight: 1
                               label: PLUGINS.SEO.ADD_ARTICLE_MICRODATA
                               default: 0
+                              highlight: 1
                               options:
                                   1: PLUGIN_ADMIN.YES
                                   0: PLUGIN_ADMIN.NO
@@ -177,6 +179,7 @@ form:
                             header.article.image_url:
                               type: mediapicker
                               label: PLUGINS.SEO.ARTICLE_IMAGE
+                              placeholder: Please click to open the mediapicker
                               disabled: false
                               field_classes: togglearticle
                             header.article.author:
@@ -187,6 +190,7 @@ form:
                             header.article.publisher_logo_url:
                               type: mediapicker
                               label: PLUGINS.SEO.PUBLISHER_LOGO
+                              placeholder: Please click to open the mediapicker
                               disabled: false
                               field_classes: togglearticle
                             header.article.publisher_name:
@@ -209,6 +213,7 @@ form:
                               label: PLUGINS.SEO.ENABLEMUSICEVENT
                               highlight: 1
                               default: 0
+                              highlight: 1
                               options:
                                   1: PLUGIN_ADMIN.YES
                                   0: PLUGIN_ADMIN.NO
@@ -239,6 +244,7 @@ form:
                                   field_classes: togglemusicevent
                                 .musicevent_image:
                                   type: mediapicker
+                                  placeholder: Please click to open the mediapicker
                                   label: PLUGINS.SEO.MUSICEVENT_IMAGE
                                   field_classes: togglemusicevent
                                 .musicevent_description:
@@ -262,7 +268,7 @@ form:
                                     'http://schema.org/PreSale': PLUGINS.SEO.PRESALE
                                     'http://schema.org/InStock': PLUGINS.SEO.INSTOCK
                                     'http://schema.org/Discontinued': PLUGINS.SEO.DISCONTINUED
-                                    'http://schema.org/InStoreOnly': PLUGINS.SEO. INSTOREONLY
+                                    'http://schema.org/InStoreOnly': PLUGINS.SEO.INSTOREONLY
                                     'http://schema.org/OutOfStock': PLUGINS.SEO.OUTOFSTOCK
                                     'http://schema.org/SoldOut': PLUGINS.SEO.SOLDOUT
                                     'http://schema.org/OnlineOnly': PLUGINS.SEO.ONLINEONLY
@@ -343,6 +349,7 @@ form:
                               highlight: 1
                               label: PLUGINS.SEO.ENABLEEVENT
                               default: 0
+                              highlight: 1
                               options:
                                   1: PLUGIN_ADMIN.YES
                                   0: PLUGIN_ADMIN.NO
@@ -388,6 +395,7 @@ form:
                               highlight: 1
                               label: PLUGINS.SEO.ENABLEORGA
                               default: 0
+                              highlight: 1
                               options:
                                   1: PLUGIN_ADMIN.YES
                                   0: PLUGIN_ADMIN.NO
@@ -437,7 +445,7 @@ form:
                                   type: text
                                   label: PLUGINS.SEO.EVENT_LOCATION_ADDRESS_LOCALITY
                                   field_classes: toggleevent
-                                .event_location_address_addressRegion:
+                                .event_locssation_address_addressRegion:
                                   type: text
                                   label: PLUGINS.SEO.EVENT_LOCATION_ADDRESS_REGION
                                   field_classes: toggleevent
@@ -456,6 +464,7 @@ form:
                               highlight: 1
                               label: PLUGINS.SEO.ENABLE_PERSON
                               default: 0
+                              highlight: 1
                               options:
                                   1: PLUGIN_ADMIN.YES
                                   0: PLUGIN_ADMIN.NO
@@ -496,6 +505,7 @@ form:
                               type: toggle
                               highlight: 1
                               label: PLUGINS.SEO.ADD_MUSICALBUM
+                              highlight: 1
                               default: 0
                               options:
                                   1: PLUGIN_ADMIN.YES
@@ -517,6 +527,7 @@ form:
                                   field_classes: togglemusicalbum
                                 .musicalbum_image:
                                   type: mediapicker
+                                  placeholder: Please click to open the mediapicker
                                   label: PLUGINS.SEO.MUSICALBUM_IMAGE
                                   field_classes: togglemusicalbum
                                 .musicalbum_url:
@@ -564,6 +575,7 @@ form:
                               highlight: 1
                               label: PLUGINS.SEO.ADD_RESTAURANT
                               default: 0
+                              highlight: 1
                               options:
                                   1: PLUGIN_ADMIN.YES
                                   0: PLUGIN_ADMIN.NO
@@ -586,6 +598,7 @@ form:
                               field_classes: togglerestaurant
                             header.restaurant.image:
                               type: mediapicker
+                              placeholder: Please click to open the mediapicker
                               label: PLUGINS.SEO.RESTAURANT_IMAGE
                               field_classes: togglerestaurant
                             header.restaurant.servesCuisine:
@@ -663,6 +676,7 @@ form:
                               placeholder: 'http://facebook.com/yourname'
                             header.facebookimg:
                               type: mediapicker
+                              placeholder: Please click to open the mediapicker
                               id: fbimgselect
                               label: PLUGINS.SEO.FACEBOOK_SHAREIMG
                              # .... subfields
