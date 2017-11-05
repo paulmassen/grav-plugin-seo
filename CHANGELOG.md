@@ -5,7 +5,6 @@
     * Added highlight to Toggle fields
     * Few languages fixes
 
-
 # v2.0.9
 ## 10/04/2017
 1. [](#bugfix)

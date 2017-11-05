@@ -1,13 +1,13 @@
 <?php
 /**
- * SEO v2.0.9
+ * SEO v2.1.0
  *
  * This plugin adds an SEO Tab to every pages for managing SEO data.
  *
  * Licensed under the MIT license, see LICENSE.
  *
  * @package     SEO
- * @version     2.0.9
+ * @version     2.1.0
  * @link        <https://github.com/paulmassen/grav-plugin-seo>
  * @author      Paul Massendari <paul@massendari.com>
  * @copyright   2017, Paul Massendari
@@ -118,6 +118,16 @@ class seoPlugin extends Plugin
         $pattern = '~((\/[^\/]+)+)\/([^\/]+)~';
         $replacement = '$1';
         $outputjson = "";
+        $uri = $this->grav['uri'];
+        $route = $this->config->get('plugins.admin.route');
+        if ($route && preg_match('#' . $route . '#', $uri->path())) {
+            $assets->addJs('user/plugins/seo/js/yoastseo.js', 1);
+            $assets->addJs('user/plugins/seo/js/loadyoast.js', 1);
+            $assets->addCss('user/plugins/seo/css/yoast-seo.min.css', 1);
+            
+        }
+        
+        $cleanContent = $this->cleanText ($content, $config);
         $microdata = [];
         $meta = $page->metadata(null);
 
