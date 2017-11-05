@@ -18,7 +18,7 @@ form:
       type: toggle
       label: PLUGIN_ADMIN.PLUGIN_STATUS
       highlight: 1
-      default: 0
+      default: 1
       options:
         1: PLUGIN_ADMIN.ENABLED
         0: PLUGIN_ADMIN.DISABLED
@@ -38,7 +38,7 @@ form:
       type: toggle
       label: Enable Event Microdata
       highlight: 1
-      default: 0
+      default: 1
       options:
         1: PLUGIN_ADMIN.ENABLED
         0: PLUGIN_ADMIN.DISABLED
@@ -48,7 +48,7 @@ form:
       type: toggle
       label: Enable Restaurant Microdata
       highlight: 1
-      default: 0
+      default: 1
       options:
         1: PLUGIN_ADMIN.ENABLED
         0: PLUGIN_ADMIN.DISABLED
@@ -58,7 +58,7 @@ form:
       type: toggle
       label: Enable Music Event Microdata
       highlight: 1
-      default: 0
+      default: 1
       options:
         1: PLUGIN_ADMIN.ENABLED
         0: PLUGIN_ADMIN.DISABLED
@@ -68,7 +68,7 @@ form:
       type: toggle
       label: Enable Person Microdata
       highlight: 1
-      default: 0
+      default: 1
       options:
         1: PLUGIN_ADMIN.ENABLED
         0: PLUGIN_ADMIN.DISABLED
@@ -78,7 +78,7 @@ form:
       type: toggle
       label: Enable Organization Microdata
       highlight: 1
-      default: 0
+      default: 1
       options:
         1: PLUGIN_ADMIN.ENABLED
         0: PLUGIN_ADMIN.DISABLED
