@@ -1,15 +1,13 @@
-<<<<<<< HEAD
 # v2.1.0
 ## 10/12/2017
 1. [](#bugfix)
-    * Fixed script tags bug. 
     * Added highlight to Toggle fields
     * Few languages fixes
+    * Added url for Organization microdata
+    * Few css fixes
+    * Added more placeholder
 
 # v2.0.9
-=======
-# v2.3.0
->>>>>>> refs/remotes/origin/develop
 ## 10/04/2017
 1. [](#bugfix)
     * Fixed string manipulation causing error on some install
