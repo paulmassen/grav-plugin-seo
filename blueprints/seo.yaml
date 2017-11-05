@@ -17,12 +17,12 @@ form:
               ordering@: header.mykeyword
             header.title:
               id: mytitle
-            header.mykeyword:
-              type: text
-              style: vertical
-              label: Focus Keyword
-              id: focusKeyword
-              ordering@: header.title
+#            header.mykeyword:
+ #                         type: text
+ #                         style: vertical
+ #                         label: Focus Keyword
+             #             id: focusKeyword
+           #               ordering@: header.title
             snippetoutput:
               type: display
               id: output

@@ -120,14 +120,6 @@ class seoPlugin extends Plugin
         $outputjson = "";
         $uri = $this->grav['uri'];
         $route = $this->config->get('plugins.admin.route');
-        if ($route && preg_match('#' . $route . '#', $uri->path())) {
-            $assets->addJs('user/plugins/seo/js/yoastseo.js', 1);
-            $assets->addJs('user/plugins/seo/js/loadyoast.js', 1);
-            $assets->addCss('user/plugins/seo/css/yoast-seo.min.css', 1);
-            
-        }
-        
-        $cleanContent = $this->cleanText ($content, $config);
         $microdata = [];
         $meta = $page->metadata(null);
 
@@ -484,14 +476,18 @@ class seoPlugin extends Plugin
        }       
       };
       // Encode to json
-      foreach ($microdata as $key => $value){
-        $jsonscript = json_encode($microdata[$key], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT );
+     foreach ($microdata as $key => $value){
+        $jsonscript =   PHP_EOL . '<script type="application/ld+json">' . PHP_EOL . json_encode($microdata[$key], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT ) . PHP_EOL . '</script>';
         $outputjson = $outputjson . $jsonscript;
       }
-
-      $assets->addInlineJs($outputjson, 100,'', "application/ld+json");
-
+      $outputjson = '</script>' . $outputjson . '<script>';
+      $this->grav['twig']->twig_vars['json'] = $outputjson;
+      //$this->grav['twig']->twig_vars['myvar'] = $myvar;
+      $assets->addInlineJs($outputjson, 100);
+     // return $outputjson;
     }
+
+     
     
 
 
