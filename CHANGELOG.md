@@ -1,3 +1,8 @@
+# v2.1.1
+## 10/12/2017
+1. [](#bugfix)
+    * Fixed duplicate toggle
+    
 # v2.1.0
 ## 10/12/2017
 1. [](#bugfix)
