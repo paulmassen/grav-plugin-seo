@@ -179,7 +179,7 @@ class seoPlugin extends Plugin
          if ($page->header()->facebookenable == 'true') {
          
                 //$meta['og:sitename']['name']        = 'og:sitename';
-                $meta['og:site_name']['property']    = 'og:sitename';
+                $meta['og:site_name']['property']    = 'og:site_name';
                 $meta['og:site_name']['content']     = $this->config->get('site.title');
             if (isset($page->header()->facebooktitle)) {
                 //$meta['og:title']['name']           = 'og:title';
