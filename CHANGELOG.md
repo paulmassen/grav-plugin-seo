@@ -1,3 +1,8 @@
+# v2.1.2
+## 10/12/2017
+1. [](#bugfix)
+    * Fixed site_name open graph
+    
 # v2.1.1
 ## 10/12/2017
 1. [](#bugfix)
