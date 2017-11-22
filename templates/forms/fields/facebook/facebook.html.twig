@@ -211,6 +211,18 @@ $('#fbimgselect').on('click', function() {
 })
 
 </script>
+<script>
+function validatepage() {
+   var protocol = location.protocol;
+ var slashes = protocol.concat("//");
+ var host = slashes.concat(window.location.hostname);
+ var structuredurl = "https://search.google.com/structured-data/testing-tool/u/0/#url="
+ var targeturl = $("[title|='Preview']").attr("href");
+ var validateurl = structuredurl + encodeURIComponent(host + targeturl);
+   window.open(validateurl, '_blank')
+}
+
+</script>
     {% if field.text %}
     {% endif %}
 
