@@ -138,6 +138,10 @@ form:
                   type: tab
                   title: Microdata
                   fields:
+                    header.validatepage:
+                      type: display
+                      markdown: true
+                      content: '<a class="button" id="validate" onclick="validatepage()"><i class="fa fa-check"></i>Validate this page microdata</a>'
                     header.article_condition:
                       type: conditional
                       condition: "config.plugins.seo.article ? 'true' : 'false'"
