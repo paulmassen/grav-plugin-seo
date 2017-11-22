@@ -1,3 +1,8 @@
+# v2.1.3
+## 11/22/2017
+1. [](#new)
+    * Added a button to validate the page microdata with Google structured data testing tool
+
 # v2.1.2
 ## 10/12/2017
 1. [](#bugfix)
