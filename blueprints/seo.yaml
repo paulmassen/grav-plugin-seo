@@ -157,7 +157,6 @@ form:
                               highlight: 1
                               label: PLUGINS.SEO.ADD_ARTICLE_MICRODATA
                               default: 0
-                              highlight: 1
                               options:
                                   1: PLUGIN_ADMIN.YES
                                   0: PLUGIN_ADMIN.NO
@@ -212,7 +211,6 @@ form:
                               label: PLUGINS.SEO.ENABLEMUSICEVENT
                               highlight: 1
                               default: 0
-                              highlight: 1
                               options:
                                   1: PLUGIN_ADMIN.YES
                                   0: PLUGIN_ADMIN.NO
@@ -348,7 +346,6 @@ form:
                               highlight: 1
                               label: PLUGINS.SEO.ENABLEEVENT
                               default: 0
-                              highlight: 1
                               options:
                                   1: PLUGIN_ADMIN.YES
                                   0: PLUGIN_ADMIN.NO
@@ -394,7 +391,6 @@ form:
                               highlight: 1
                               label: PLUGINS.SEO.ENABLEORGA
                               default: 0
-                              highlight: 1
                               options:
                                   1: PLUGIN_ADMIN.YES
                                   0: PLUGIN_ADMIN.NO
@@ -463,7 +459,6 @@ form:
                               highlight: 1
                               label: PLUGINS.SEO.ENABLE_PERSON
                               default: 0
-                              highlight: 1
                               options:
                                   1: PLUGIN_ADMIN.YES
                                   0: PLUGIN_ADMIN.NO
@@ -504,7 +499,6 @@ form:
                               type: toggle
                               highlight: 1
                               label: PLUGINS.SEO.ADD_MUSICALBUM
-                              highlight: 1
                               default: 0
                               options:
                                   1: PLUGIN_ADMIN.YES
@@ -574,7 +568,6 @@ form:
                               highlight: 1
                               label: PLUGINS.SEO.ADD_RESTAURANT
                               default: 0
-                              highlight: 1
                               options:
                                   1: PLUGIN_ADMIN.YES
                                   0: PLUGIN_ADMIN.NO
