@@ -217,7 +217,7 @@ function validatepage() {
  var slashes = protocol.concat("//");
  var host = slashes.concat(window.location.hostname);
  var structuredurl = "https://search.google.com/structured-data/testing-tool/u/0/#url="
- var targeturl = $("[title|='Preview']").attr("href");
+ var targeturl = $("[title|='{{ 'PLUGIN_ADMIN.PREVIEW'|tu }}']").attr("href");
  var validateurl = structuredurl + encodeURIComponent(host + targeturl);
    window.open(validateurl, '_blank')
 }
