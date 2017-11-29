@@ -1,3 +1,8 @@
+# v2.1.4
+## 11/22/2017
+1. [](#new)
+    * Fixed the url of structured data tool for non-english language
+   
 # v2.1.3
 ## 11/22/2017
 1. [](#new)
