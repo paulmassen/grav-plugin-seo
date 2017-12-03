@@ -480,10 +480,15 @@ class seoPlugin extends Plugin
         $jsonscript =   PHP_EOL . '<script type="application/ld+json">' . PHP_EOL . json_encode($microdata[$key], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT ) . PHP_EOL . '</script>';
         $outputjson = $outputjson . $jsonscript;
       }
+     
+          
       $outputjson = '</script>' . $outputjson . '<script>';
       $this->grav['twig']->twig_vars['json'] = $outputjson;
-      //$this->grav['twig']->twig_vars['myvar'] = $myvar;
+      $this->grav['twig']->twig_vars['myvar'] = $outputjson;
+      //Do not add to addInlineJs if there is no microdata
+       if($outputjson != "</script><script>"){
       $assets->addInlineJs($outputjson, 100);
+      }
      // return $outputjson;
     }
 
