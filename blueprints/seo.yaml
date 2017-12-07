@@ -57,16 +57,16 @@ form:
                   fields:
                     header.googletitle:
                       type: text
-                      label: PLUGINS.SEO.GOOGLE_TITLE
+                      label: PLUGIN_SEO.GOOGLE_TITLE
                       id: text
                     header.googledesc:
                       type: textarea
-                      label: PLUGINS.SEO.GOOGLE_DESC
+                      label: PLUGIN_SEO.GOOGLE_DESC
                       id: desc
                     
                     header.googlepreview:
                       type: google
-                      label: PLUGINS.SEO.GOOGLE_PREVIEWDESC
+                      label: PLUGIN_SEO.GOOGLE_PREVIEWDESC
                 twitterfields:
                   type: tab
                   title: Twitter 
@@ -90,34 +90,34 @@ form:
                                   type: bool
                             header.twittercardoptions:
                               type: select
-                              label: PLUGINS.SEO.TWITTER_CARD_SELECT
+                              label: PLUGIN_SEO.TWITTER_CARD_SELECT
                               options:
-                               #gallery: PLUGINS.SEO.TWITTER_CARD_GALLERY
-                               #photo: PLUGINS.SEO.TWITTER_CARD_PHOTO
-                              # product: PLUGINS.SEO.TWITTER_CARD_PRODUCT
-                                summary: PLUGINS.SEO.TWITTER_CARD_SUMMARY
-                              # player: PLUGINS.SEO.TWITTER_CARD_PLAYER
-                              # app: PLUGINS.SEO.TWITTER_CARD_APP
-                                summary_large_image: PLUGINS.SEO.TWITTER_CARD_SUMLARGIMG
+                               #gallery: PLUGIN_SEO.TWITTER_CARD_GALLERY
+                               #photo: PLUGIN_SEO.TWITTER_CARD_PHOTO
+                              # product: PLUGIN_SEO.TWITTER_CARD_PRODUCT
+                                summary: PLUGIN_SEO.TWITTER_CARD_SUMMARY
+                              # player: PLUGIN_SEO.TWITTER_CARD_PLAYER
+                              # app: PLUGIN_SEO.TWITTER_CARD_APP
+                                summary_large_image: PLUGIN_SEO.TWITTER_CARD_SUMLARGIMG
                             header.titlecardtwitter:
                               type: section
-                              title: PLUGINS.SEO.TWITTER_CARD_SECTITLE
+                              title: PLUGIN_SEO.TWITTER_CARD_SECTITLE
                               underline: true
                             header.twittershareimg:
                               type: mediapicker
                               placeholder: Click here to open the mediapicker
-                              label: PLUGINS.SEO.TWITTER_SHAREIMG
+                              label: PLUGIN_SEO.TWITTER_SHAREIMG
                               preview_images: true
                               id: twittimgselect
                             
                             header.twittertitle:
                               type: text
-                              label: PLUGINS.SEO.TWITTER_TITLE
+                              label: PLUGIN_SEO.TWITTER_TITLE
                               id: twittertitle
                             header.twitterdescription:
                               type: textarea
                               style: vertical
-                              label: PLUGINS.SEO.TWITTER_DESCRIPTION
+                              label: PLUGIN_SEO.TWITTER_DESCRIPTION
                               id: twitterdescription
                             
 
@@ -128,7 +128,7 @@ form:
                           fields:
                             header.twitterlabel:
                               type: section
-                              text: PLUGINS.SEO.TWITTER_PREVIEWDESC
+                              text: PLUGIN_SEO.TWITTER_PREVIEWDESC
                     
                             header.twitterpreview:
                               type: twitter
@@ -155,7 +155,7 @@ form:
                             header.articleenabled:
                               type: toggle
                               highlight: 1
-                              label: PLUGINS.SEO.ADD_ARTICLE_MICRODATA
+                              label: PLUGIN_SEO.ADD_ARTICLE_MICRODATA
                               default: 0
                               options:
                                   1: PLUGIN_ADMIN.YES
@@ -164,36 +164,36 @@ form:
                                   type: bool
                             header.article.headline:
                               type: text
-                              label: PLUGINS.SEO.HEADLINE
+                              label: PLUGIN_SEO.HEADLINE
                               disabled: false
-                              placeholder: PLUGINS.SEO.ARTICLE_PLACEHOLDER
+                              placeholder: PLUGIN_SEO.ARTICLE_PLACEHOLDER
                               field_classes: togglearticle
                             header.article.description:
                               type: textarea
-                              label: PLUGINS.SEO.ARTICLE_DESCRIPTION
-                              placeholder: PLUGINS.SEO.ARTICLE_DESC_PLACEHOLDER
+                              label: PLUGIN_SEO.ARTICLE_DESCRIPTION
+                              placeholder: PLUGIN_SEO.ARTICLE_DESC_PLACEHOLDER
                               disabled: false
                               field_classes: togglearticle
                             header.article.image_url:
                               type: mediapicker
-                              label: PLUGINS.SEO.ARTICLE_IMAGE
+                              label: PLUGIN_SEO.ARTICLE_IMAGE
                               placeholder: Please click to open the mediapicker
                               disabled: false
                               field_classes: togglearticle
                             header.article.author:
                               type: text
-                              label: PLUGINS.SEO.ARTICLE_AUTHOR
+                              label: PLUGIN_SEO.ARTICLE_AUTHOR
                               disabled: false
                               field_classes: togglearticle
                             header.article.publisher_logo_url:
                               type: mediapicker
-                              label: PLUGINS.SEO.PUBLISHER_LOGO
+                              label: PLUGIN_SEO.PUBLISHER_LOGO
                               placeholder: Please click to open the mediapicker
                               disabled: false
                               field_classes: togglearticle
                             header.article.publisher_name:
                               type: text
-                              label: PLUGINS.SEO.PUBLISHER_NAME
+                              label: PLUGIN_SEO.PUBLISHER_NAME
                               disabled: false
                               required: true
                               field_classes: togglearticle
@@ -209,7 +209,7 @@ form:
                           fields:
                             header.musiceventenabled:
                               type: toggle
-                              label: PLUGINS.SEO.ENABLEMUSICEVENT
+                              label: PLUGIN_SEO.ENABLEMUSICEVENT
                               highlight: 1
                               default: 0
                               options:
@@ -219,73 +219,73 @@ form:
                                   type: bool
                             header.musicevents:
                               type: list
-                              label: PLUGINS.SEO.ADDMUSICEVENT
+                              label: PLUGIN_SEO.ADDMUSICEVENT
                               style: vertical
                               fields:
                                 .musicevent_location_name:
                                   type: text
-                                  label: PLUGINS.SEO.LOCATION_NAME
+                                  label: PLUGIN_SEO.LOCATION_NAME
                                   field_classes: togglemusicevent
                                   placeholder: Chicago Symphony Center
                                 .musicevent_location_address:
                                   type: text
-                                  label: PLUGINS.SEO.LOCATION_ADDRESS
+                                  label: PLUGIN_SEO.LOCATION_ADDRESS
                                   field_classes: togglemusicevent
                                   placeholder: 220 S. Michigan Ave, Chicago, Illinois, USA
                                 .musicevent_location_url:
                                   type: text
-                                  placeholder: PLUGINS.SEO.LOCATION_URL_PLACEHOLDER
-                                  label: PLUGINS.SEO.LOCATION_URL
+                                  placeholder: PLUGIN_SEO.LOCATION_URL_PLACEHOLDER
+                                  label: PLUGIN_SEO.LOCATION_URL
                                 .musicevent_name:
                                   type: text
-                                  label: PLUGINS.SEO.MUSICEVENT_NAME
+                                  label: PLUGIN_SEO.MUSICEVENT_NAME
                                   field_classes: togglemusicevent
                                 .musicevent_image:
                                   type: mediapicker
                                   placeholder: Please click to open the mediapicker
-                                  label: PLUGINS.SEO.MUSICEVENT_IMAGE
+                                  label: PLUGIN_SEO.MUSICEVENT_IMAGE
                                   field_classes: togglemusicevent
                                 .musicevent_description:
                                   type: textarea
-                                  label: PLUGINS.SEO.MUSICEVENT_DESCRIPTION
+                                  label: PLUGIN_SEO.MUSICEVENT_DESCRIPTION
                                   field_classes: togglemusicevent
                                 .musicevent_url:
                                   type: text
-                                  label: PLUGINS.SEO.MUSICEVENT_URL
-                                  placeholder: PLUGINS.SEO.MUSICEVENT_URL_PLACEHOLDER
+                                  label: PLUGIN_SEO.MUSICEVENT_URL
+                                  placeholder: PLUGIN_SEO.MUSICEVENT_URL_PLACEHOLDER
                                 .musicevent_image:
                                   type: filepicker
-                                  label: PLUGINS.SEO.MUSICEVENT_IMAGE
+                                  label: PLUGIN_SEO.MUSICEVENT_IMAGE
                                   folder: '@self'
                                   field_classes: togglemusicevent
                                 .musicevent_offers_availability:
                                   type: select
                                   options:
-                                    'http://schema.org/PreOrder': PLUGINS.SEO.PREORDER
-                                    'http://schema.org/OutOfStock': PLUGINS.SEO.OUTOFSTOCK
-                                    'http://schema.org/PreSale': PLUGINS.SEO.PRESALE
-                                    'http://schema.org/InStock': PLUGINS.SEO.INSTOCK
-                                    'http://schema.org/Discontinued': PLUGINS.SEO.DISCONTINUED
-                                    'http://schema.org/InStoreOnly': PLUGINS.SEO.INSTOREONLY
-                                    'http://schema.org/OutOfStock': PLUGINS.SEO.OUTOFSTOCK
-                                    'http://schema.org/SoldOut': PLUGINS.SEO.SOLDOUT
-                                    'http://schema.org/OnlineOnly': PLUGINS.SEO.ONLINEONLY
+                                    'http://schema.org/PreOrder': PLUGIN_SEO.PREORDER
+                                    'http://schema.org/OutOfStock': PLUGIN_SEO.OUTOFSTOCK
+                                    'http://schema.org/PreSale': PLUGIN_SEO.PRESALE
+                                    'http://schema.org/InStock': PLUGIN_SEO.INSTOCK
+                                    'http://schema.org/Discontinued': PLUGIN_SEO.DISCONTINUED
+                                    'http://schema.org/InStoreOnly': PLUGIN_SEO.INSTOREONLY
+                                    'http://schema.org/OutOfStock': PLUGIN_SEO.OUTOFSTOCK
+                                    'http://schema.org/SoldOut': PLUGIN_SEO.SOLDOUT
+                                    'http://schema.org/OnlineOnly': PLUGIN_SEO.ONLINEONLY
                                   field_classes: togglemusicevent
                                     
                                 .musicevent_offers_url:
                                   type: text
-                                  label: PLUGINS.SEO.TICKET_URL
+                                  label: PLUGIN_SEO.TICKET_URL
                                   field_classes: togglemusicevent
                                 .musicevent_offers_validFrom:
                                   type: datetime
-                                  label: PLUGINS.SEO.VALID_FROM
+                                  label: PLUGIN_SEO.VALID_FROM
                                 .musicevent_offers_price:
                                   type: text
-                                  label: PLUGINS.SEO.MUSICEVENT_PRICE
+                                  label: PLUGIN_SEO.MUSICEVENT_PRICE
                                   field_classes: togglemusicevent
                                 .musicevent_offers_priceCurrency:
                                   type: select
-                                  label: PLUGINS.SEO.PRICE_CURRENCY
+                                  label: PLUGIN_SEO.PRICE_CURRENCY
                                   field_classes: togglemusicevent
                                   options:
                                     GBP: GBP		
@@ -294,39 +294,39 @@ form:
     
                                 .musicevent_performer:
                                   type: list
-                                  label: PLUGINS.SEO.ADD_PERFORMER
+                                  label: PLUGIN_SEO.ADD_PERFORMER
                                   field_classes: togglemusicevent
                                   fields:
                                     .performer_type:
                                       type: select
-                                      label: PLUGINS.SEO.PERFORMER_TYPE
+                                      label: PLUGIN_SEO.PERFORMER_TYPE
                                       options:
-                                        MusicGroup: PLUGINS.SEO.MUSICGROUP
-                                        Person: PLUGINS.SEO.PERSON
+                                        MusicGroup: PLUGIN_SEO.MUSICGROUP
+                                        Person: PLUGIN_SEO.PERSON
                                       field_classes: togglemusicevent
                                     .name:
                                       type: text
-                                      label: PLUGINS.SEO.PERFORMER_NAME
+                                      label: PLUGIN_SEO.PERFORMER_NAME
                                     .sameAs:
                                       type: text
                                       label: Same as
                                       placeholder: 'http://en.wikipedia.org/wiki/Artist_Page'
                                 .musicevent_startdate: 
                                   type: datetime
-                                  label: PLUGINS.SEO.MUSICEVENT_DATE_START
+                                  label: PLUGIN_SEO.MUSICEVENT_DATE_START
                                   field_classes: togglemusicevent
                                 .musicevent_enddate:
                                   type: datetime
-                                  label: PLUGINS.SEO.MUSICEVENT_DATE_END
+                                  label: PLUGIN_SEO.MUSICEVENT_DATE_END
                                   field_classes: togglemusicevent
                                 .musicevent_workPerformed:
                                   type: list
-                                  label: PLUGINS.SEO.WORK_PERFORMED
+                                  label: PLUGIN_SEO.WORK_PERFORMED
                                   field_classes: togglemusicevent
                                   fields:
                                     .name:
                                       type: text
-                                      label: PLUGINS.SEO.WORK_PERFORMED_NAME
+                                      label: PLUGIN_SEO.WORK_PERFORMED_NAME
                                     .sameAs:
                                       type: text
                                       label: Wikipedia or official URL
@@ -345,7 +345,7 @@ form:
                             header.orgaenabled:
                               type: toggle
                               highlight: 1
-                              label: PLUGINS.SEO.ENABLEEVENT
+                              label: PLUGIN_SEO.ENABLEEVENT
                               default: 0
                               options:
                                   1: PLUGIN_ADMIN.YES
@@ -413,7 +413,7 @@ form:
                             header.eventenabled:
                               type: toggle
                               highlight: 1
-                              label: PLUGINS.SEO.ENABLEORGA
+                              label: PLUGIN_SEO.ENABLEORGA
                               default: 0
                               options:
                                   1: PLUGIN_ADMIN.YES
@@ -423,50 +423,50 @@ form:
                             header.addevent:
                               type: list
                               style: vertical
-                              label: PLUGINS.SEO.ADD_EVENT
+                              label: PLUGIN_SEO.ADD_EVENT
                               fields:
                                 .event_name:
                                   type: text
-                                  label: PLUGINS.SEO.EVENT_NAME
+                                  label: PLUGIN_SEO.EVENT_NAME
                                   field_classes: toggleevent
                                 .event_description:
                                   type: text
-                                  label: PLUGINS.SEO.EVENT_DESCRIPTION 
+                                  label: PLUGIN_SEO.EVENT_DESCRIPTION 
                                   field_classes: toggleevent
                                 .event_startDate:
                                   type: datetime
-                                  label: PLUGINS.SEO.EVENT_START_DATE
+                                  label: PLUGIN_SEO.EVENT_START_DATE
                                   field_classes: toggleevent
                                 .event_endDate:
                                   type: datetime
-                                  label: PLUGINS.SEO.EVENT_END_DATE
+                                  label: PLUGIN_SEO.EVENT_END_DATE
                                   field_classes: toggleevent
                                 .event_offers_price:
                                   type: text
-                                  label: PLUGINS.SEO.EVENT_OFFER_PRICE
+                                  label: PLUGIN_SEO.EVENT_OFFER_PRICE
                                   field_classes: toggleevent
                                 .event_offers_currency:
                                   type: text
-                                  label: PLUGINS.SEO.EVENT_OFFER_CURRENCY
+                                  label: PLUGIN_SEO.EVENT_OFFER_CURRENCY
                                   placeholder: USD
                                 .event_offers_url:
                                   type: text
-                                  label: PLUGINS.SEO.EVENT_OFFER_URL
+                                  label: PLUGIN_SEO.EVENT_OFFER_URL
                                 .event_location_name:
                                   type: text
-                                  label: PLUGINS.SEO.EVENT_LOCATION_NAME
+                                  label: PLUGIN_SEO.EVENT_LOCATION_NAME
                                   field_classes: toggleevent
                                 .event_location_address_streetAddress:
                                   type: text
-                                  label: PLUGINS.SEO.EVENT_LOCATION_STREET_ADDRESS
+                                  label: PLUGIN_SEO.EVENT_LOCATION_STREET_ADDRESS
                                   field_classes: toggleevent
                                 .event_location_address_addressLocality:
                                   type: text
-                                  label: PLUGINS.SEO.EVENT_LOCATION_ADDRESS_LOCALITY
+                                  label: PLUGIN_SEO.EVENT_LOCATION_ADDRESS_LOCALITY
                                   field_classes: toggleevent
                                 .event_locssation_address_addressRegion:
                                   type: text
-                                  label: PLUGINS.SEO.EVENT_LOCATION_ADDRESS_REGION
+                                  label: PLUGIN_SEO.EVENT_LOCATION_ADDRESS_REGION
                                   field_classes: toggleevent
                     header.person_condition:
                       type: conditional
@@ -481,7 +481,7 @@ form:
                             header.personenabled:
                               type: toggle
                               highlight: 1
-                              label: PLUGINS.SEO.ENABLE_PERSON
+                              label: PLUGIN_SEO.ENABLE_PERSON
                               default: 0
                               options:
                                   1: PLUGIN_ADMIN.YES
@@ -491,23 +491,23 @@ form:
                             header.addperson:
                               type: list
                               style: vertical
-                              label: PLUGINS.SEO.ADD_PERSON
+                              label: PLUGIN_SEO.ADD_PERSON
                               fields:
                                 .person_name:
                                   type: text
-                                  label: PLUGINS.SEO.PERSON_NAME
+                                  label: PLUGIN_SEO.PERSON_NAME
                                   field_classes: toggleperson
                                 .person_jobTitle:
                                   type: text
-                                  label: PLUGINS.SEO.PERSON_JOB_TITLE
+                                  label: PLUGIN_SEO.PERSON_JOB_TITLE
                                   field_classes: toggleperson
                                 .person_address_addressLocality:
                                   type: text
-                                  label: PLUGINS.SEO.PERSON_ADDRESS_LOCALITY 
+                                  label: PLUGIN_SEO.PERSON_ADDRESS_LOCALITY 
                                   field_classes: toggleperson
                                 .person_address_addressRegion:
                                   type: text
-                                  label: PLUGINS.SEO.PERSON_ADDRESS_REGION  
+                                  label: PLUGIN_SEO.PERSON_ADDRESS_REGION  
                                   field_classes: toggleperson
                     header.musicalbum_condition:
                       type: conditional
@@ -522,7 +522,7 @@ form:
                             header.musicalbumenabled:
                               type: toggle
                               highlight: 1
-                              label: PLUGINS.SEO.ADD_MUSICALBUM
+                              label: PLUGIN_SEO.ADD_MUSICALBUM
                               default: 0
                               options:
                                   1: PLUGIN_ADMIN.YES
@@ -532,51 +532,51 @@ form:
                             header.musicalbums:
                               type: list
                               style: vertical
-                              label: PLUGINS.SEO.ADD_MUSICALBUM
+                              label: PLUGIN_SEO.ADD_MUSICALBUM
                               fields:
                                 .musicalbum_name:
                                   type: text
-                                  label: PLUGINS.SEO.MUSICALBUM_NAME
+                                  label: PLUGIN_SEO.MUSICALBUM_NAME
                                   field_classes: togglemusicalbum
                                 .musicalbum_byArtist_name:
                                   type: text
-                                  label: PLUGINS.SEO.MUSICALBUM_NAMEOFBAND
+                                  label: PLUGIN_SEO.MUSICALBUM_NAMEOFBAND
                                   field_classes: togglemusicalbum
                                 .musicalbum_image:
                                   type: mediapicker
                                   placeholder: Please click to open the mediapicker
-                                  label: PLUGINS.SEO.MUSICALBUM_IMAGE
+                                  label: PLUGIN_SEO.MUSICALBUM_IMAGE
                                   field_classes: togglemusicalbum
                                 .musicalbum_url:
                                   type: text
-                                  label: PLUGINS.SEO.MUSICALBUM_URL 
+                                  label: PLUGIN_SEO.MUSICALBUM_URL 
                                   field_classes: togglemusicalbum
                                 .musicalbum_genre: 
                                   type: text
-                                  label: PLUGINS.SEO.MUSICALBUM_GENRE
+                                  label: PLUGIN_SEO.MUSICALBUM_GENRE
                                   field_classes: togglemusicalbum
                                 .musicalbum_numtracks:
                                   type: text
-                                  label: PLUGINS.SEO.MUSICALBUM_TRACK_NUMBER
+                                  label: PLUGIN_SEO.MUSICALBUM_TRACK_NUMBER
                                   field_classes: togglemusicalbum
                                 .musicalbum_track:
                                   type: list   
                                   field_classes: togglemusicalbum
-                                  label: PLUGINS.SEO.MUSICALBUM_ADD_TRACK
+                                  label: PLUGIN_SEO.MUSICALBUM_ADD_TRACK
                                   default:
                                   fields:
                                     .position:
                                       type: text
-                                      label: PLUGINS.SEO.MUSICALBUM_TRACK_POSITION 
+                                      label: PLUGIN_SEO.MUSICALBUM_TRACK_POSITION 
                                     .name:
                                       type: text
-                                      label: PLUGINS.SEO.MUSICALBUM_TRACK_NAME
+                                      label: PLUGIN_SEO.MUSICALBUM_TRACK_NAME
                                     .url:
                                       type: text
-                                      label: PLUGINS.SEO.MUSICALBUM_TRACK_URL
+                                      label: PLUGIN_SEO.MUSICALBUM_TRACK_URL
                                     .duration:
                                       type: text
-                                      label: PLUGINS.SEO.MUSICALBUM_TRACK_DURATION
+                                      label: PLUGIN_SEO.MUSICALBUM_TRACK_DURATION
                     header.restaurant_condition:
                       type: conditional
                       condition: "config.plugins.seo.restaurant ? 'true' : 'false'"
@@ -590,7 +590,7 @@ form:
                             header.restaurantenabled:
                               type: toggle
                               highlight: 1
-                              label: PLUGINS.SEO.ADD_RESTAURANT
+                              label: PLUGIN_SEO.ADD_RESTAURANT
                               default: 0
                               options:
                                   1: PLUGIN_ADMIN.YES
@@ -599,32 +599,32 @@ form:
                                   type: bool      
                             header.restaurant.name:
                               type: text
-                              label: PLUGINS.SEO.RESTAURANT_NAME
+                              label: PLUGIN_SEO.RESTAURANT_NAME
                               field_classes: togglerestaurant
                             header.restaurant.acceptsReservations:
                               type: select
-                              label: PLUGINS.SEO.RESTAURANT_ACCEPT_RESERVATION
+                              label: PLUGIN_SEO.RESTAURANT_ACCEPT_RESERVATION
                               field_classes: togglerestaurant
                               options:
                                 yes: yes
                                 no: no
                             header.restaurant.menu:
                               type: text
-                              label: PLUGINS.SEO.RESTAURANT_MENU_URL
+                              label: PLUGIN_SEO.RESTAURANT_MENU_URL
                               field_classes: togglerestaurant
                             header.restaurant.image:
                               type: mediapicker
                               placeholder: Please click to open the mediapicker
-                              label: PLUGINS.SEO.RESTAURANT_IMAGE
+                              label: PLUGIN_SEO.RESTAURANT_IMAGE
                               field_classes: togglerestaurant
                             header.restaurant.servesCuisine:
                               placeholder: seafood
                               type: text
-                              label: PLUGINS.SEO.RESTAURANT_CUISINE
+                              label: PLUGIN_SEO.RESTAURANT_CUISINE
                               field_classes: togglerestaurant
                             header.restaurant.priceRange:
                               type: select
-                              label: PLUGINS.SEO.RESTAURANT_PRICE_RANGE
+                              label: PLUGIN_SEO.RESTAURANT_PRICE_RANGE
                               field_classes: togglerestaurant
                               options:
                                 $: $
@@ -632,23 +632,23 @@ form:
                                 $$$: $$$
                             header.restaurant.address_streetAddress:
                               type: text
-                              label: PLUGINS.SEO.RESTAURANT_STREET
+                              label: PLUGIN_SEO.RESTAURANT_STREET
                               field_classes: togglerestaurant
                             header.restaurant.address_addressLocality:
                               type: text
-                              label: PLUGINS.SEO.RESTAURANT_LOCALITY
+                              label: PLUGIN_SEO.RESTAURANT_LOCALITY
                               field_classes: togglerestaurant
                             header.restaurant.address_addressRegion:
                               type: text
-                              label: PLUGINS.SEO.RESTAURANT_REGION
+                              label: PLUGIN_SEO.RESTAURANT_REGION
                               field_classes: togglerestaurant
                             header.restaurant.address_postalCode:
                               type: text
-                              label: PLUGINS.SEO.RESTAURANT_POSTAL_CODE
+                              label: PLUGIN_SEO.RESTAURANT_POSTAL_CODE
                               field_classes: togglerestaurant
                             header.restaurant.telephone:
                               type: text
-                              label: PLUGINS.SEO.RESTAURANT_TELEPHONE
+                              label: PLUGIN_SEO.RESTAURANT_TELEPHONE
                               field_classes: togglerestaurant
 
                 facebookfields:
@@ -664,7 +664,7 @@ form:
                             
                             header.facebookenable:
                               type: toggle
-                              label: PLUGINS.SEO.FACEBOOK_ENABLE
+                              label: PLUGIN_SEO.FACEBOOK_ENABLE
                               id: facebookenable
                               default: 1
                               highlight: 1
@@ -676,14 +676,14 @@ form:
                              
                             header.facebooktitle:
                               type: text
-                              label: PLUGINS.SEO.FACEBOOK_TITLE
+                              label: PLUGIN_SEO.FACEBOOK_TITLE
                               id: facebooktitle
                               placeholder: Will default to page title if left empty
                               
                             header.facebookdesc:
                               type: textarea
                               style: vertical
-                              label: PLUGINS.SEO.FACEBOOK_DESC
+                              label: PLUGIN_SEO.FACEBOOK_DESC
                               id: facebookdesc
                               placeholder: 'Max 300 character'
                             header.facebookauthor:
@@ -694,7 +694,7 @@ form:
                               type: mediapicker
                               placeholder: Please click to open the mediapicker
                               id: fbimgselect
-                              label: PLUGINS.SEO.FACEBOOK_SHAREIMG
+                              label: PLUGIN_SEO.FACEBOOK_SHAREIMG
                              # .... subfields
                             
                         column4:
@@ -704,7 +704,7 @@ form:
                                 # .... subfields
                             header.facebookpreview:
                               type: facebook
-                              label: PLUGINS.SEO.FACEBOOK_PREVIEWDESC
+                              label: PLUGIN_SEO.FACEBOOK_PREVIEWDESC
                             
 #                            conditional_new_entries:
 #                             type: conditional

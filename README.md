@@ -1,4 +1,4 @@
-# ![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/develop/logoseo.png?raw=true)
+# ![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blog/master/assets/assets/logoseo.png?raw=true)
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MX77VZWPUKLTU)
 
@@ -21,12 +21,12 @@
 ### Google
 You can see and customize how your page will look on Google Search Results.
 
-![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/master/demoseoplugin.gif?raw=true)
+![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blog/master/assets/demoseoplugin.gif?raw=true)
 
 ### Twitter
 You can also preview how your page will look when shared on twitter
 
-![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blob/master/twitter.gif?raw=true)
+![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blog/master/assets/twitter.gif?raw=true)
 
 
 ### Facebook
