@@ -476,7 +476,16 @@ class seoPlugin extends Plugin
        }       
       };
       // Encode to json
+     /*foreach ($microdata as $key => $value){
+        if ($value === null){
+           unset($microdata[$key]);
+        }
+    }*/
+    $microdata = array_map('array_filter', $microdata);
+    $microdata = array_filter( $microdata );
      foreach ($microdata as $key => $value){
+        
+        
         $jsonscript =   PHP_EOL . '<script type="application/ld+json">' . PHP_EOL . json_encode($microdata[$key], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT ) . PHP_EOL . '</script>';
         $outputjson = $outputjson . $jsonscript;
       }
