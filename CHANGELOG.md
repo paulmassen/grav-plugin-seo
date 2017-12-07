@@ -1,7 +1,13 @@
+# v2.1.5
+## 12/07/2017
+1. [](#new)
+    * Removed the empty script tags that appeared on page that did not use microdata
+    * Added some required fields to the organization microdata
+
 # v2.1.4
 ## 11/22/2017
-1. [](#new)
-    * Fixed the url of structured data tool for non-english language
+1. [](#fix)
+    * Fixed the url of structured data testing tool for non-english language
    
 # v2.1.3
 ## 11/22/2017
