@@ -366,6 +366,19 @@ class seoPlugin extends Plugin
         }
         if (property_exists($page->header(),'orgaenabled')){
        if ($page->header()->orgaenabled and $this->config['plugins']['seo']['organization']) {
+        if (isset($page->header()->orga['similar'])){
+        foreach ($page->header()->orga['founders'] as $founder){
+                  $founderarray[] = [
+                      '@type' => 'Person',
+                      'name' => @$founder['name'],
+                    ];    
+                 }
+        }
+        if (isset($page->header()->orga['similar'])){
+            foreach ($page->header()->orga['similar'] as $similar){
+                      $similararray[] = $similar['sameas'];    
+                     }
+        }
         $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Organization',
@@ -380,8 +393,13 @@ class seoPlugin extends Plugin
                       ],
                   'telephone' => @$page->header()->orga['phone'],
                   'logo' => @$page->header()->orga['logo'],
-                  'url' => @$page->header()->orga['url']
+                  'url' => @$page->header()->orga['url'],
+                  'foundingDate' => @$page->header()->orga['foundingDate'],
+                  'founders' => @$founderarray,
+                  'sameAs' => @$similararray
                   ];
+                 
+                  
            
        }
        }

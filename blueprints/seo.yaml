@@ -195,6 +195,7 @@ form:
                               type: text
                               label: PLUGINS.SEO.PUBLISHER_NAME
                               disabled: false
+                              required: true
                               field_classes: togglearticle
                     header.musicevent_condition:
                       type: conditional
@@ -369,10 +370,33 @@ form:
                             header.orga.phone:
                               type: text
                               label: Organization Phone
+                            header.orga.url:
+                              type: text
+                              label: Link to official website of the organization
                             header.orga.logo:
                               type: text
                               label: Url to Organization Logo 
                               placeholder: 'include http://'
+                            header.orga.foundingDate:
+                              type: text
+                              label: Founding year
+                            header.orga.founders:
+                              type: list
+                              label: Founders
+                              fields:
+                                .name:
+                                  type: text
+                                  label: Founder name
+                            header.orga.similar:
+                              type: list
+                              label: Same as
+                              fields:
+                                .sameas:
+                                  type: text
+                                  style: vertical
+                                  label: Links to page related to this organization (social media, etc.)
+                                  placeholder: "http://wikipedia.org/en/companyname"
+                              
                               
 
                     header.conditional_new_entries:
