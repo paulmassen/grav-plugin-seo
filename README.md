@@ -1,4 +1,4 @@
-# ![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blog/master/assets/assets/logoseo.png?raw=true)
+# ![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blog/master/assets/logoseo.png?raw=true)
 
 [![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MX77VZWPUKLTU)
 
