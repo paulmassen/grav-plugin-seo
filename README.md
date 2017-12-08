@@ -32,13 +32,13 @@ You can also preview how your page will look when shared on twitter
 ### Facebook
 And on Facebook
 
-![Facebook Live Preview](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/develop/facebook.gif)
+![Facebook Live Preview](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/master/assets/facebook.gif?raw=true)
 
 
 ### JSON-LD
 
 You can also generate Schema.org JSON Microdata from the admin.
-![Article Microdata](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/develop/article_json.png)
+![Article Microdata](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/master/assets/article_json.png?raw=true)
 This will generate the following Json-ld between script tags
 ```JSON
 {
