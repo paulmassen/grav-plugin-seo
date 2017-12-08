@@ -21,24 +21,24 @@
 ### Google
 You can see and customize how your page will look on Google Search Results.
 
-![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blog/master/assets/demoseoplugin.gif?raw=true)
+![Grav SEO Plugin](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/master/assets/demoseoplugin.gif)
 
 ### Twitter
 You can also preview how your page will look when shared on twitter
 
-![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blog/master/assets/twitter.gif?raw=true)
+![Grav SEO Plugin](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/master/assets/twitter.gif)
 
 
 ### Facebook
 And on Facebook
 
-![Facebook Live Preview](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/master/assets/facebook.gif?raw=true)
+![Facebook Live Preview](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/master/assets/facebook.gif)
 
 
 ### JSON-LD
 
 You can also generate Schema.org JSON Microdata from the admin.
-![Article Microdata](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/master/assets/article_json.png?raw=true)
+![Article Microdata](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/master/assets/article_json.png)
 This will generate the following Json-ld between script tags
 ```JSON
 {
