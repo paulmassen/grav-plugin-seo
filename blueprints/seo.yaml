@@ -253,11 +253,6 @@ form:
                                   type: text
                                   label: PLUGIN_SEO.MUSICEVENT_URL
                                   placeholder: PLUGIN_SEO.MUSICEVENT_URL_PLACEHOLDER
-                                .musicevent_image:
-                                  type: filepicker
-                                  label: PLUGIN_SEO.MUSICEVENT_IMAGE
-                                  folder: '@self'
-                                  field_classes: togglemusicevent
                                 .musicevent_offers_availability:
                                   type: select
                                   options:
@@ -267,7 +262,6 @@ form:
                                     'http://schema.org/InStock': PLUGIN_SEO.INSTOCK
                                     'http://schema.org/Discontinued': PLUGIN_SEO.DISCONTINUED
                                     'http://schema.org/InStoreOnly': PLUGIN_SEO.INSTOREONLY
-                                    'http://schema.org/OutOfStock': PLUGIN_SEO.OUTOFSTOCK
                                     'http://schema.org/SoldOut': PLUGIN_SEO.SOLDOUT
                                     'http://schema.org/OnlineOnly': PLUGIN_SEO.ONLINEONLY
                                   field_classes: togglemusicevent
