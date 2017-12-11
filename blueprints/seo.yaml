@@ -195,7 +195,6 @@ form:
                               type: text
                               label: PLUGIN_SEO.PUBLISHER_NAME
                               disabled: false
-                              required: true
                               field_classes: togglearticle
                     header.musicevent_condition:
                       type: conditional
