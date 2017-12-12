@@ -7,12 +7,12 @@ form:
       fields:
         content:
           fields:
-            content:
-              id: content
-              ordering@: header.mykeyword
-            header.title:
-              id: mytitle
-#            header.mykeyword:
+ #           content:
+ #             id: content
+ #             ordering@: header.mykeyword
+ #           header.title:
+ #             id: mytitle
+ #           header.mykeyword:
  #                         type: text
  #                         style: vertical
  #                         label: Focus Keyword
