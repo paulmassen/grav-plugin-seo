@@ -1,5 +1,5 @@
 name: "SEO"
-version: "2.1.5"
+version: "2.1.6"
 description: "Manage your site’s meta tags for display in search engine results or social media networks. Includes an easy-to-use live preview feature."
 icon: "google"
 #testing: true
@@ -104,7 +104,4 @@ form:
       type: text
       label: Twitter ID
       placeholder: '@yourusername'
-    testicon:
-      type: iconpicker
-      label: icon picker
 
