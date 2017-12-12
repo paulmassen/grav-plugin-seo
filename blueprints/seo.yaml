@@ -602,7 +602,6 @@ form:
                               type: toggle
                               highlight: 1
                               label: Enable Restaurant Microdata on this page
-                              label: PLUGIN_SEO.ADD_RESTAURANT
                               default: 0
                               options:
                                   1: PLUGIN_ADMIN.YES

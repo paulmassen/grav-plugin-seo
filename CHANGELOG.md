@@ -6,8 +6,7 @@
     * Added some required fields to the organization microdata
     * Added button label on the microdata tabs.
 
-2. [](#fix)
-    * Added better styling for fieldset fields
+1. [](#fix)
     * Fixed the error Invalid Index Type on blueprints that did not use a "content" field
     * Fixed the music album microdata not being displayed
     * Removed duplicate attribute on the blueprint
