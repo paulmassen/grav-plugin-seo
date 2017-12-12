@@ -1,0 +1,8 @@
+
+enabled: true                 # Set to false to disable this plugin completely
+article: true
+restaurant: true
+event: true
+organization: true
+musicevent: true
+person: true
