@@ -1,3 +1,17 @@
+# v2.1.6
+## 12/12/2017
+1. [](#new)
+    * Added better styling for the fieldset field
+    * Added icons on fieldsets fields
+    * Added some required fields to the organization microdata
+    * Added button label on the microdata tabs.
+
+2. [](#fix)
+    * Added better styling for fieldset fields
+    * Fixed the error Invalid Index Type on blueprints that did not use a "content" field
+    * Fixed the music album microdata not being displayed
+    * Removed duplicate attribute on the blueprint
+
 # v2.1.5
 ## 12/07/2017
 1. [](#new)
