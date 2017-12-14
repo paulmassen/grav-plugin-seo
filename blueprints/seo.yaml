@@ -3,44 +3,7 @@ form:
     tabs:
       type: tabs
       active: 1
-
       fields:
-        content:
-          fields:
- #           content:
- #             id: content
- #             ordering@: header.mykeyword
- #           header.title:
- #             id: mytitle
- #           header.mykeyword:
- #                         type: text
- #                         style: vertical
- #                         label: Focus Keyword
-             #             id: focusKeyword
-           #               ordering@: header.title
-            snippetoutput:
-              type: display
-              id: output
-              ordering@: 3
-              style: vertical
-              content: ''
-            pagemedia:
-              ordering@: 0
-#            header.snippettest:
-#              type: display
-#              id: locale
-#              style: vertical
-#              content: 'en_US'
-           # mybutton:
-          #    type: seobutton
-          #    id: 'refresh-analysis'
-            snippetyoast:
-              type: display
-              style: vertical
-              id: snippet
-              classes: hidden
-              content: ''
-
         seo:
           type: tab
           title: SEO
