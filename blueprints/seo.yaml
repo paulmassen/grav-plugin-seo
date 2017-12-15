@@ -363,7 +363,7 @@ form:
                               
                               
 
-                    header.conditional_new_entries:
+                    header.conditional_event:
                       type: conditional
                       condition: "config.plugins.seo.event ? 'true' : 'false'"
                       fields:
