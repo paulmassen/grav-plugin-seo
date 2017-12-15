@@ -550,6 +550,86 @@ form:
                                     .duration:
                                       type: text
                                       label: PLUGIN_SEO.MUSICALBUM_TRACK_DURATION
+                    header.product_condition:
+                      type: conditional
+                      condition: "config.plugins.seo.product ? 'true' : 'false'"
+                      fields:
+                        header.productfieldset:
+                          type: fieldset
+                          icon: shopping-bag
+                          title: Product Microdata 
+                          collapsed: true
+                          collapsible: true
+                          fields:
+                            header.productenabled:
+                              type: toggle
+                              highlight: 1
+                              label: Add Product Microdata to this page
+                              default: 0
+                              options:
+                                  1: PLUGIN_ADMIN.YES
+                                  0: PLUGIN_ADMIN.NO
+                              validate:
+                                  type: bool      
+                            header.product.name:
+                              type: text
+                              label: Name of the Product 
+                              field_classes: togglerestaurant
+                            header.product.category:
+                              type: text
+                              label: Category of the product
+                            header.product.brand:
+                              type: text
+                              label: Product Brand
+                            header.product.brandlogo:
+                              type: mediapicker
+                              label: Logo of the brand
+                            header.product.image:
+                              type: list
+                              label: Add an image for this product
+                              btnLabel: Add image
+                              fields:
+                                .productimg:
+                                  type: mediapicker
+                                  label: Choose an image
+                                  placeholder: Please click to open the mediapicker
+                            header.product.description:
+                              type: textarea
+                              label: Product Description
+                            header.product.addoffer:
+                              type: list
+                              label: Add an offer for this product
+                              btnLabel: Add offer
+                              controls: both
+                              fields:
+                                .offer_availability:
+                                  type: select
+                                  options:
+                                    'http://schema.org/PreOrder': PLUGIN_SEO.PREORDER
+                                    'http://schema.org/OutOfStock': PLUGIN_SEO.OUTOFSTOCK
+                                    'http://schema.org/PreSale': PLUGIN_SEO.PRESALE
+                                    'http://schema.org/InStock': PLUGIN_SEO.INSTOCK
+                                    'http://schema.org/Discontinued': PLUGIN_SEO.DISCONTINUED
+                                    'http://schema.org/InStoreOnly': PLUGIN_SEO.INSTOREONLY
+                                    'http://schema.org/SoldOut': PLUGIN_SEO.SOLDOUT
+                                    'http://schema.org/OnlineOnly': PLUGIN_SEO.ONLINEONLY
+                                .offer_price:
+                                  type: text
+                                  label: Price of the product 
+                                  placeholder: "e.g: 19.99 (no currency symbol)"
+                                .offer_validFrom:
+                                    type: datetime
+                                    label: Offer is valid from
+                                    type: text
+                                .offer_priceCurrency:
+                                    type: select
+                                    label: PLUGIN_SEO.PRICE_CURRENCY
+                                    options:
+                                      GBP: GBP		
+                                      EUR: EUR	
+                                      USD: USD	
+                             
+                           
                     header.restaurant_condition:
                       type: conditional
                       condition: "config.plugins.seo.restaurant ? 'true' : 'false'"
