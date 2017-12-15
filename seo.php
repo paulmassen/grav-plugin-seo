@@ -440,6 +440,39 @@ class seoPlugin extends Plugin
 
        }
         }
+    if (property_exists($page->header(),'productenabled')){
+        if ($page->header()->productenabled and $this->config['plugins']['seo']['product']) {
+         if (isset($page->header()->product['image'])){
+             $productimagearray = []; 
+             $productimages = $page->header()->product['image'];
+             foreach ($productimages as $key => $value){
+            $productimagearray[] = $this->grav['uri']->base() . array_shift($productimages[$key]) ; 
+             };
+    
+                
+            }
+              $microdata[] = [
+                  '@context' => 'http://schema.org',
+                  '@type' => 'Product',
+                  'name' => @$page->header()->product['name'],
+                  
+                  'address' => [
+                      '@type' => 'PostalAddress',
+                      'addressLocality' => @$page->header()->restaurant['address_addressLocality'],
+                      'addressRegion' => @$page->header()->restaurant['address_addressRegion'],
+                      'streetAddress' => @$page->header()->restaurant['address_streetAddress'],
+                      'postalCode' => @$page->header()->restaurant['address_postalCode'],
+                      ],
+                  'servesCuisine' => @$page->header()->restaurant['servesCuisine'],
+                  'category' => @$page->header()->product['category'],
+                  'brand' => @$page->header()->product['brand'],
+                  'description' => @$page->header()->product['description'],
+                  'image' => @$productimagearray
+                  ];
+            
+
+       }
+        }
      if (property_exists($page->header(),'articleenabled')){
             if (isset($page->header()->article['headline'])){
                $headline =  $page->header()->article['headline'];

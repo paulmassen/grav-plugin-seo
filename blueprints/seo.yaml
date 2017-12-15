@@ -584,6 +584,7 @@ form:
                             header.product.brandlogo:
                               type: mediapicker
                               label: Logo of the brand
+                              placeholder: Please click to open the mediapicker
                             header.product.image:
                               type: list
                               label: Add an image for this product
