@@ -445,8 +445,17 @@ class seoPlugin extends Plugin
          if (isset($page->header()->product['image'])){
              $productimagearray = []; 
              $productimages = $page->header()->product['image'];
+            
+            
              foreach ($productimages as $key => $value){
-            $productimagearray[] = $this->grav['uri']->base() . array_shift($productimages[$key]) ; 
+            $imagearray = $productimages[$key];
+            foreach($imagearray as $newkey => $newvalue){
+                $imagedata = $this->seoGetimage($imagearray[$newkey]);
+                $productimage[] = 
+                $this->grav['uri']->base() .  $imagedata['url'];
+               
+            };
+            
              };
     
                 
@@ -467,7 +476,7 @@ class seoPlugin extends Plugin
                   'category' => @$page->header()->product['category'],
                   'brand' => @$page->header()->product['brand'],
                   'description' => @$page->header()->product['description'],
-                  'image' => @$productimagearray
+                  'image' => @$productimage
                   ];
             
 
