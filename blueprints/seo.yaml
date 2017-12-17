@@ -578,6 +578,17 @@ form:
                             header.product.category:
                               type: text
                               label: Category of the product
+                            header.product.ratingValue:
+                              type: range
+                              label: Star Rating
+                              help: Choose a value between 0 and 5 which should be the average ratings for your product. Make sure the value is consistent with your actual reviews.
+                              validate:
+                                min: 0
+                                max: 5
+                                step: 0.1
+                            header.product.reviewCount:
+                              type: number
+                              label: Number of reviews you used for calculating your rating.
                             header.product.brand:
                               type: text
                               label: Product Brand
@@ -588,6 +599,7 @@ form:
                             header.product.image:
                               type: list
                               label: Add an image for this product
+                              style: vertical
                               btnLabel: Add image
                               fields:
                                 .productimg:
@@ -602,6 +614,7 @@ form:
                               label: Add an offer for this product
                               btnLabel: Add offer
                               controls: both
+                              style: vertical
                               fields:
                                 .offer_availability:
                                   type: select
@@ -620,8 +633,11 @@ form:
                                   placeholder: "e.g: 19.99 (no currency symbol)"
                                 .offer_validFrom:
                                     type: datetime
-                                    label: Offer is valid from
-                                    type: text
+                                    label: Offer is valid from (optional)
+                                .offer_validUntil:
+                                    type: datetime
+                                    label: Offer is valid until (optional)
+                                   
                                 .offer_priceCurrency:
                                     type: select
                                     label: PLUGIN_SEO.PRICE_CURRENCY

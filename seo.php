@@ -457,6 +457,17 @@ class seoPlugin extends Plugin
             };
             
              };
+             $offers = $page->header()->product['addoffer'];
+             foreach ($offers as $key => $value){
+                 $offer[$key] = [
+                      '@type' => 'Offer',
+                      'priceCurrency' => @$offers[$key]['offer_priceCurrency'],
+                      'price' => @$offers[$key]['offer_price'],
+                      'validFrom' => @$offers[$key]['offer_validFrom'],
+                      'priceValidUntil' => @$offers[$key]['offer_validUntil'],
+                      'availability' => @$offers[$key]['offer_availability'],
+                     ];
+             };
     
                 
             }
@@ -464,19 +475,20 @@ class seoPlugin extends Plugin
                   '@context' => 'http://schema.org',
                   '@type' => 'Product',
                   'name' => @$page->header()->product['name'],
-                  
-                  'address' => [
-                      '@type' => 'PostalAddress',
-                      'addressLocality' => @$page->header()->restaurant['address_addressLocality'],
-                      'addressRegion' => @$page->header()->restaurant['address_addressRegion'],
-                      'streetAddress' => @$page->header()->restaurant['address_streetAddress'],
-                      'postalCode' => @$page->header()->restaurant['address_postalCode'],
-                      ],
-                  'servesCuisine' => @$page->header()->restaurant['servesCuisine'],
                   'category' => @$page->header()->product['category'],
-                  'brand' => @$page->header()->product['brand'],
+                  'brand' => [
+                      '@type' => 'Thing',
+                      'name' => @$page->header()->product['brand'],
+                      ],
+                  'offers' => $offer,
                   'description' => @$page->header()->product['description'],
-                  'image' => @$productimage
+                  'image' => @$productimage,
+                  'aggregateRating' => [
+                      '@type' => 'AggregateRating',
+                      'ratingValue' => @$page->header()->product['ratingValue'],
+                      'reviewCount' => @$page->header()->product['reviewCount'],
+                      
+                      ]
                   ];
             
 
