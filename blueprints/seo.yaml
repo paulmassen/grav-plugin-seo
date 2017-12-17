@@ -618,11 +618,12 @@ form:
                               fields:
                                 .offer_availability:
                                   type: select
+                                  label: Availability of the product
                                   options:
+                                    'http://schema.org/InStock': PLUGIN_SEO.INSTOCK
                                     'http://schema.org/PreOrder': PLUGIN_SEO.PREORDER
                                     'http://schema.org/OutOfStock': PLUGIN_SEO.OUTOFSTOCK
                                     'http://schema.org/PreSale': PLUGIN_SEO.PRESALE
-                                    'http://schema.org/InStock': PLUGIN_SEO.INSTOCK
                                     'http://schema.org/Discontinued': PLUGIN_SEO.DISCONTINUED
                                     'http://schema.org/InStoreOnly': PLUGIN_SEO.INSTOREONLY
                                     'http://schema.org/SoldOut': PLUGIN_SEO.SOLDOUT
