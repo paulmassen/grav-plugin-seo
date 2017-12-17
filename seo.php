@@ -440,6 +440,60 @@ class seoPlugin extends Plugin
 
        }
         }
+    if (property_exists($page->header(),'productenabled')){
+        if ($page->header()->productenabled and $this->config['plugins']['seo']['product']) {
+         if (isset($page->header()->product['image'])){
+             $productimagearray = []; 
+             $productimages = $page->header()->product['image'];
+            
+            
+             foreach ($productimages as $key => $value){
+            $imagearray = $productimages[$key];
+            foreach($imagearray as $newkey => $newvalue){
+                $imagedata = $this->seoGetimage($imagearray[$newkey]);
+                $productimage[] = 
+                $this->grav['uri']->base() .  $imagedata['url'];
+               
+            };
+            
+             };
+             $offers = $page->header()->product['addoffer'];
+             foreach ($offers as $key => $value){
+                 $offer[$key] = [
+                      '@type' => 'Offer',
+                      'priceCurrency' => @$offers[$key]['offer_priceCurrency'],
+                      'price' => @$offers[$key]['offer_price'],
+                      'validFrom' => @$offers[$key]['offer_validFrom'],
+                      'priceValidUntil' => @$offers[$key]['offer_validUntil'],
+                      'availability' => @$offers[$key]['offer_availability'],
+                     ];
+             };
+    
+                
+            }
+              $microdata[] = [
+                  '@context' => 'http://schema.org',
+                  '@type' => 'Product',
+                  'name' => @$page->header()->product['name'],
+                  'category' => @$page->header()->product['category'],
+                  'brand' => [
+                      '@type' => 'Thing',
+                      'name' => @$page->header()->product['brand'],
+                      ],
+                  'offers' => $offer,
+                  'description' => @$page->header()->product['description'],
+                  'image' => @$productimage,
+                  'aggregateRating' => [
+                      '@type' => 'AggregateRating',
+                      'ratingValue' => @$page->header()->product['ratingValue'],
+                      'reviewCount' => @$page->header()->product['reviewCount'],
+                      
+                      ]
+                  ];
+            
+
+       }
+        }
      if (property_exists($page->header(),'articleenabled')){
             if (isset($page->header()->article['headline'])){
                $headline =  $page->header()->article['headline'];
