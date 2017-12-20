@@ -340,9 +340,49 @@ form:
                               type: text
                               label: Url to Organization Logo 
                               placeholder: 'include http://'
+                            header.orgaratingenabled:
+                              type: toggle
+                              highlight: 1
+                              label: Add rating to this organization
+                              default: 0
+                              options:
+                                  1: PLUGIN_ADMIN.YES
+                                  0: PLUGIN_ADMIN.NO
+                              validate:
+                                  type: bool
+                            header.orga.ratingValue:
+                              type: range
+                              label: Star Rating
+                              help: Choose a value between 0 and 5 which should be the average ratings for your product. Make sure the value is consistent with your actual reviews.
+                              validate:
+                                min: 0
+                                max: 5
+                                step: 0.1
+                            header.orga.reviewCount:
+                              type: number
+                              label: Number of reviews you used for calculating your rating.
+                            header.orga.openingHours:
+                              type: list
+                              label: Opening Hours
+                              fields:
+                                .entry:
+                                  type: text
+                                  style: vertical
+                                  label: Opening hours - Please write the day or a range of day (mon-fri) followed by a space and the opening hours"
+                                  placeholder: "Exemple: Mon-Fri 09:00-18:00 or Saturday 09:00-15:00"
                             header.orga.foundingDate:
                               type: text
                               label: Founding year
+                            header.orga.email:
+                              type: email
+                              label: Official Email for this Organization
+                            header.orga.paymentaccepted:
+                              type: selectize
+                              label: Accepted Payments
+                              placeholder: Visa, Cash, Credit Card, Amex, etc.
+                              validate:
+                                type: commalist
+
                             header.orga.founders:
                               type: list
                               label: Founders

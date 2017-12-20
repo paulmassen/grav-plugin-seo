@@ -59,6 +59,17 @@ class seoPlugin extends Plugin
           //  'onBlueprintCreated' => ['onBlueprintCreated',  0]
         ];
     }
+    public function array_filter_recursive( array $array, callable $callback = null ) {
+    $array = is_callable( $callback ) ? array_filter( $array, $callback ) : array_filter( $array );
+    foreach ( $array as &$value ) {
+        if ( is_array( $value ) ) {
+            $myfunc = '$this->' . __FUNCTION__;
+            $value = $this->array_filter_recursive($value);
+        }
+    }
+ 
+        return $array;
+    }
     private function seoGetimage($imageurl){
 
     $imagedata = [];
@@ -379,6 +390,18 @@ class seoPlugin extends Plugin
                       $similararray[] = $similar['sameas'];    
                      }
         }
+        if (isset($page->header()->orga['openingHours'])){
+            foreach ($page->header()->orga['openingHours'] as $hours){
+                      $openingHours[] = $hours['entry'];    
+                     }
+        }
+        if ($page->header()->orgaratingenabled){
+        $orgarating = [
+                      '@type' => 'AggregateRating',
+                      'ratingValue' => @$page->header()->orga['ratingValue'],
+                      'reviewCount' => @$page->header()->orga['reviewCount'],
+                      ];
+        } 
         $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Organization',
@@ -394,7 +417,11 @@ class seoPlugin extends Plugin
                   'telephone' => @$page->header()->orga['phone'],
                   'logo' => @$page->header()->orga['logo'],
                   'url' => @$page->header()->orga['url'],
+                  'openingHours' => @$openingHours,
+                  'email' => @$page->header()->orga['email'],
                   'foundingDate' => @$page->header()->orga['foundingDate'],
+                  'aggregateRating' => @$orgarating,
+                  'paymentAccepted' => @$page->header()->orga['paymentAccepted'],
                   'founders' => @$founderarray,
                   'sameAs' => @$similararray
                   ];
@@ -553,8 +580,8 @@ class seoPlugin extends Plugin
            unset($microdata[$key]);
         }
     }*/
-    $microdata = array_map('array_filter', $microdata);
-    $microdata = array_filter( $microdata );
+    // $microdata = array_map('array_filter', $microdata);
+    $microdata = $this->array_filter_recursive($microdata);
      foreach ($microdata as $key => $value){
         
         
@@ -603,6 +630,8 @@ class seoPlugin extends Plugin
     {
         $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
     }
+    
+
     
     private function cleanMarkdown($text){
         $rules = array (
