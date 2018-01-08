@@ -627,8 +627,7 @@ class seoPlugin extends Plugin
     public function onBlueprintCreated(Event $event)
  {
      $newtype = $event['type'];
-     $excludetype = 'modular/';
-     if (0 === strpos($newtype, $excludetype or 0 === strpos($newtype, 'default'))) {
+     if (0 === strpos($newtype, 'modular/')) {
         } else {
                     $blueprint = $event['blueprint'];
         if ($blueprint->get('form/fields/tabs', null, '/')) {
@@ -641,6 +640,7 @@ class seoPlugin extends Plugin
         }
         
     }
+
 
     public function onTwigTemplatePaths()
     {
