@@ -364,6 +364,7 @@ form:
                             header.orga.openingHours:
                               type: list
                               label: Opening Hours
+                              btnLabel: Add opening hours details
                               fields:
                                 .entry:
                                   type: text
