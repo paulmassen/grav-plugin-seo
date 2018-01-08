@@ -1,3 +1,9 @@
+# v2.1.8
+## 12/17/2017
+1. [](#new)
+    * Added Nederland translation
+    * Fixed founder field causing crash when empty 
+
 # v2.1.7
 ## 12/17/2017
 1. [](#new)
