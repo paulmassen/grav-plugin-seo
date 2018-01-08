@@ -3,6 +3,9 @@
 1. [](#new)
     * Added Nederland translation
     * Fixed founder field causing crash when empty 
+    * Fixed default twitter image not being displayed
+    * Fixed default values for opengraph and twitter
+    * Small changes in microdata blueprints
 
 # v2.1.7
 ## 12/17/2017
