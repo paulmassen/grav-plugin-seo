@@ -361,6 +361,7 @@ form:
                             header.orga.reviewCount:
                               type: number
                               label: Number of reviews you used for calculating your rating.
+                              size: small
                             header.orga.openingHours:
                               type: list
                               label: Opening Hours
@@ -630,6 +631,7 @@ form:
                             header.product.reviewCount:
                               type: number
                               label: Number of reviews you used for calculating your rating.
+                              size: small
                             header.product.brand:
                               type: text
                               label: Product Brand
@@ -671,6 +673,7 @@ form:
                                     'http://schema.org/OnlineOnly': PLUGIN_SEO.ONLINEONLY
                                 .offer_price:
                                   type: text
+                                  size: small
                                   label: Price of the product 
                                   placeholder: "e.g: 19.99 (no currency symbol)"
                                 .offer_validFrom:

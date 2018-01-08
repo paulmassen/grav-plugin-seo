@@ -144,6 +144,9 @@ class seoPlugin extends Plugin
             $meta['description']['name']      = 'description';
             $meta['description']['content']   = $page->header()->googledesc;
         
+        } else {
+            $meta['description']['name']      = 'description';
+            $meta['description']['content']   = substr($this->cleanMarkdown($content),0,320);
         };
         
              /**
@@ -162,17 +165,29 @@ class seoPlugin extends Plugin
                 $meta['twitter:card']['name']      = 'twitter:card';
                 $meta['twitter:card']['property']  = 'twitter:card';
                 $meta['twitter:card']['content']   = $page->header()->twittercardoptions;
+            } else {
+                $meta['twitter:card']['name']      = 'twitter:card';
+                $meta['twitter:card']['property']  = 'twitter:card';
+                $meta['twitter:card']['content']   = 'summary_large_image';
             };
             
             if (isset($page->header()->twittertitle)) {
                 $meta['twitter:title']['name']      = 'twitter:title';
                 $meta['twitter:title']['property']  = 'twitter:title';
                 $meta['twitter:title']['content']   = $page->header()->twittertitle;
+            } else {
+                $meta['twitter:title']['name']      = 'twitter:title';
+                $meta['twitter:title']['property']  = 'twitter:title';
+                $meta['twitter:title']['content']   = $page->title() . ' | ' . $this->config->get('site.title');
             };
             if (isset($page->header()->twitterdescription)) {
                 $meta['twitter:description']['name']      = 'twitter:description';
                 $meta['twitter:description']['property']  = 'twitter:description';
                 $meta['twitter:description']['content']   = $page->header()->twitterdescription;
+            } else {
+                $meta['twitter:description']['name']      = 'twitter:description';
+                $meta['twitter:description']['property']  = 'twitter:description';
+                $meta['twitter:description']['content']   =  substr($this->cleanMarkdown($content),0,320);
             };
             if (isset($page->header()->twittershareimg)) {
                 $meta['twitter:image']['name']      = 'twitter:image';
@@ -219,7 +234,7 @@ class seoPlugin extends Plugin
             } else {
                // $meta['og:description']['name']     = 'og:description';
                 $meta['og:description']['property'] = 'og:description';
-                $meta['og:description']['content'] =  substr($content,0,140);
+                $meta['og:description']['content'] =  substr($content,0,320);
             }
             if (isset($page->header()->facebookauthor)) {
               //  $meta['article:author']['name']     = 'article:author';
