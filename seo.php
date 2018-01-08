@@ -377,7 +377,7 @@ class seoPlugin extends Plugin
         }
         if (property_exists($page->header(),'orgaenabled')){
        if ($page->header()->orgaenabled and $this->config['plugins']['seo']['organization']) {
-        if (isset($page->header()->orga['similar'])){
+        if (isset($page->header()->orga['founders'])){
         foreach ($page->header()->orga['founders'] as $founder){
                   $founderarray[] = [
                       '@type' => 'Person',
@@ -612,7 +612,8 @@ class seoPlugin extends Plugin
     public function onBlueprintCreated(Event $event)
  {
      $newtype = $event['type'];
-     if (0 === strpos($newtype, 'modular/')) {
+     $excludetype = 'modular/';
+     if (0 === strpos($newtype, $excludetype or 0 === strpos($newtype, 'default'))) {
         } else {
                     $blueprint = $event['blueprint'];
         if ($blueprint->get('form/fields/tabs', null, '/')) {
