@@ -1,3 +1,8 @@
+# v2.1.9
+## 01/09/2018
+1. [](#new)
+    * Fixed Changelog causing trouble with GPM
+    
 # v2.1.8
 ## 01/08/2018
 1. [](#new)
