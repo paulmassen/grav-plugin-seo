@@ -4,9 +4,11 @@
 
 ##### Table of Contents:
 
+
 * [About](#about)
 * [Features](#features)
 * [Installation and Updates](#installation-and-updates)
+* [Requirements](#requirements)
 * [Usage](#usage)
 * [Contributing](#contributing)
 * [License](#license)
@@ -72,6 +74,13 @@ This will generate the following Json-ld between script tags
     }
 }
 ```
+
+## Requirements
+
+In order to use the plugin with a custom template, there is two requirements, you must:
+- Include in your base template the metadata template that comes shipped with antimatter, such as: `{% include 'partials/metadata.html.twig' %}`
+- For Microdatas, you must use Grav's asset manager. If your template has a line with `{{ assets.js() }}`, it will works.
+
 #### Feedback needed
 
 As this plugin is in its early stage, please do not hesitate to leave a feedback, to suggest modification or features.
