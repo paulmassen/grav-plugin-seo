@@ -129,32 +129,26 @@ form:
                             header.article.headline:
                               type: text
                               label: PLUGIN_SEO.HEADLINE
-                              disabled: false
                               placeholder: PLUGIN_SEO.ARTICLE_PLACEHOLDER
                             header.article.datePublished:
                               type: datetime
                               label: PLUGINS.SEO.DATE_PUBLISHED
-                              disabled: false
                             header.article.dateModified:
                               type: datetime
                               label: PLUGINS.SEO.DATE_MODIFIED
-                              disabled: false
                             header.article.description:
                               type: textarea
                               label: PLUGIN_SEO.ARTICLE_DESCRIPTION
                               placeholder: PLUGIN_SEO.ARTICLE_DESC_PLACEHOLDER
-                              disabled: false
                               field_classes: togglearticle
                             header.article.image_url:
                               type: mediapicker
                               label: PLUGIN_SEO.ARTICLE_IMAGE
                               placeholder: Please click to open the mediapicker
-                              disabled: false
                               field_classes: togglearticle
                             header.article.author:
                               type: text
                               label: PLUGIN_SEO.ARTICLE_AUTHOR
-                              disabled: false
                               field_classes: togglearticle
                             header.article.publisher_logo_url:
                               type: mediapicker
@@ -165,7 +159,6 @@ form:
                             header.article.publisher_name:
                               type: text
                               label: PLUGIN_SEO.PUBLISHER_NAME
-                              disabled: false
                               field_classes: togglearticle
                     header.musicevent_condition:
                       type: conditional
