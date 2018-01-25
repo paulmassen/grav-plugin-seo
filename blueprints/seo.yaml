@@ -131,7 +131,14 @@ form:
                               label: PLUGIN_SEO.HEADLINE
                               disabled: false
                               placeholder: PLUGIN_SEO.ARTICLE_PLACEHOLDER
-                              field_classes: togglearticle
+                            header.article.datePublished:
+                              type: datetime
+                              label: PLUGINS.SEO.DATE_PUBLISHED
+                              disabled: false
+                            header.article.dateModified:
+                              type: datetime
+                              label: PLUGINS.SEO.DATE_MODIFIED
+                              disabled: false
                             header.article.description:
                               type: textarea
                               label: PLUGIN_SEO.ARTICLE_DESCRIPTION
