@@ -132,10 +132,10 @@ form:
                               placeholder: PLUGIN_SEO.ARTICLE_PLACEHOLDER
                             header.article.datePublished:
                               type: datetime
-                              label: PLUGINS.SEO.DATE_PUBLISHED
+                              label: PLUGIN_SEO.DATE_PUBLISHED
                             header.article.dateModified:
                               type: datetime
-                              label: PLUGINS.SEO.DATE_MODIFIED
+                              label: PLUGIN_SEO.DATE_MODIFIED
                             header.article.description:
                               type: textarea
                               label: PLUGIN_SEO.ARTICLE_DESCRIPTION
