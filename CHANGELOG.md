@@ -1,3 +1,10 @@
+# v2.2.0
+## 01/26/2018
+1. [](#new)
+    * Fixed script and style tags in page content causing problem
+    * Few languages fixes
+    * Re-added date modified and date published that mysteriously disappeared
+    
 # v2.1.9
 ## 01/09/2018
 1. [](#new)
