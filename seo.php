@@ -71,27 +71,65 @@ class seoPlugin extends Plugin
         return $array;
     }
     private function seoGetimage($imageurl){
-
-    $imagedata = [];
-    $pattern = '~((\/[^\/]+)+)\/([^\/]+)~';
+        $imagedata = [];
+        $pattern = '~((\/[^\/]+)+)\/([^\/]+)~';
         $replacement = '$1';
-    $fixedurl = preg_replace($pattern, $replacement, $imageurl);
-    $imagename = preg_replace($pattern, '$3', $imageurl);
-    $imgarray = $this->grav['page']->find($fixedurl)->media()->images();
-    $keyimages = array_keys($imgarray);
-    $imgkey = array_search($imagename, $keyimages);
-    $keyvalue = $keyimages[$imgkey];
-    //$imgkey = array_shift($imgarray);
-    $imgobject = $imgarray[$keyvalue];
-     
-    $im = getimagesize($imgobject->path());
-    $imagedata = [
-    'width' => "$im[0]",
-    'height' => "$im[1]",
-    'url' => $imgobject->url(),
-    ];
-    return $imagedata;
-}
+        $fixedurl = preg_replace($pattern, $replacement, $imageurl);
+        $imagename = preg_replace($pattern, '$3', $imageurl);
+        $imgarray = $this->grav['page']->find($fixedurl)->media()->images();
+        $keyimages = array_keys($imgarray);
+        $imgkey = array_search($imagename, $keyimages);
+        $keyvalue = $keyimages[$imgkey];
+        //$imgkey = array_shift($imgarray);
+        $imgobject = $imgarray[$keyvalue];
+         
+        $im = getimagesize($imgobject->path());
+        $imagedata = [
+        'width' => "$im[0]",
+        'height' => "$im[1]",
+        'url' => $imgobject->url(),
+        ];
+        return $imagedata;
+    }
+    private function cleanMarkdown($text){
+        $rules = array (
+            '/{%[\s\S]*?%}[\s\S]*?/'                 => '',    // remove twig include
+            '/<style(?:.|\n|\r)*?<\/style>/'         => '',    // remove style tags
+            '/<script[\s\S]*?>[\s\S]*?<\/script>/'   => '',  // remove script tags
+            '/(#+)(.*)/'                             => '\2',  // headers
+            '/(&lt;|<)!--\n((.*|\n)*)\n--(&gt;|\>)/' => '',    // comments
+            '/(\*|-|_){3}/'                          => '',    // hr
+            '/!\[([^\[]+)\]\(([^\)]+)\)/'            => '',    // images
+            '/\[([^\[]+)\]\(([^\)]+)\)/'             => '\1',  // links
+            '/(\*\*|__)(.*?)\1/'                     => '\2',  // bold
+            '/(\*|_)(.*?)\1/'                        => '\2',  // emphasis
+            '/\~\~(.*?)\~\~/'                        => '\1',  // del
+            '/\:\"(.*?)\"\:/'                        => '\1',  // quote
+            '/```(.*)\n((.*|\n)+)\n```/'             => '\2',  // fence code
+            '/`(.*?)`/'                              => '\1',  // inline code
+            '/(\*|\+|-)(.*)/'                        => '\2',  // ul lists
+            '/\n[0-9]+\.(.*)/'                       => '\2',  // ol lists
+            '/(&gt;|\>)+(.*)/'                       => '\2',  // blockquotes
+            
+            
+            );
+        $text=str_replace(".\n", '.', $text);
+        $text=str_replace("\n", '.', $text);
+        $text=str_replace('"', '', $text);
+        $text=str_replace('<p', '', $text);
+        $text=str_replace('</p>', '', $text);
+        foreach ($rules as $regex => $rep) {
+            if (is_callable ( $rep)) {
+               $text = preg_replace_callback ($regex, $rep, $text);
+            } else {
+                $text = preg_replace ($regex, $rep, $text);
+            }
+        }
+        
+        //$text=strip_tags($text);
+        return $text;
+        // htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+    }
     
 
     /**
@@ -133,8 +171,7 @@ class seoPlugin extends Plugin
         $route = $this->config->get('plugins.admin.route');
         $microdata = [];
         $meta = $page->metadata(null);
-
-     
+        $cleanedMarkdown = $this->cleanMarkdown($page->content());
        
         if (isset($page->header()->googletitle)) {
             $page->header()->title = $page->header()->googletitle;
@@ -146,7 +183,7 @@ class seoPlugin extends Plugin
         
         } else {
             $meta['description']['name']      = 'description';
-            $meta['description']['content']   = substr($this->cleanMarkdown($content),0,320);
+            $meta['description']['content']   = $cleanedMarkdown;
         };
         
              /**
@@ -187,7 +224,7 @@ class seoPlugin extends Plugin
             } else {
                 $meta['twitter:description']['name']      = 'twitter:description';
                 $meta['twitter:description']['property']  = 'twitter:description';
-                $meta['twitter:description']['content']   =  substr($this->cleanMarkdown($content),0,320);
+                $meta['twitter:description']['content']   =  $cleanedMarkdown;
             };
             if (isset($page->header()->twittershareimg)) {
                 $meta['twitter:image']['name']      = 'twitter:image';
@@ -230,11 +267,11 @@ class seoPlugin extends Plugin
             if (isset($page->header()->facebookdesc)) {
                 //$meta['og:description']['name']     = 'og:description';
                 $meta['og:description']['property'] = 'og:description';
-                $meta['og:description']['content'] =  $page->header()->facebookdesc;
+                $meta['og:description']['content'] =  substr($this->cleanMarkdown($page->header()->facebookdesc),0,320);
             } else {
                // $meta['og:description']['name']     = 'og:description';
                 $meta['og:description']['property'] = 'og:description';
-                $meta['og:description']['content'] =  substr($content,0,320);
+                $meta['og:description']['content'] =  $cleanedMarkdown;
             }
             if (isset($page->header()->facebookauthor)) {
               //  $meta['article:author']['name']     = 'article:author';
@@ -532,8 +569,6 @@ class seoPlugin extends Plugin
                       
                       ]
                   ];
-            
-
        }
         }
      if (property_exists($page->header(),'articleenabled')){
@@ -629,7 +664,7 @@ class seoPlugin extends Plugin
      $newtype = $event['type'];
      if (0 === strpos($newtype, 'modular/')) {
         } else {
-                    $blueprint = $event['blueprint'];
+            $blueprint = $event['blueprint'];
         if ($blueprint->get('form/fields/tabs', null, '/')) {
             
             $blueprints = new Blueprints(__DIR__ . '/blueprints/');
@@ -647,36 +682,4 @@ class seoPlugin extends Plugin
         $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
     }
     
-
-    
-    private function cleanMarkdown($text){
-        $rules = array (
-            '/(#+)(.*)/'                             => '\2',  // headers
-            '/(&lt;|<)!--\n((.*|\n)*)\n--(&gt;|\>)/' => '',    // comments
-            '/(\*|-|_){3}/'                          => '',    // hr
-            '/!\[([^\[]+)\]\(([^\)]+)\)/'            => '',    // images
-            '/\[([^\[]+)\]\(([^\)]+)\)/'             => '\1',  // links
-            '/(\*\*|__)(.*?)\1/'                     => '\2',  // bold
-            '/(\*|_)(.*?)\1/'                        => '\2',  // emphasis
-            '/\~\~(.*?)\~\~/'                        => '\1',  // del
-            '/\:\"(.*?)\"\:/'                        => '\1',  // quote
-            '/```(.*)\n((.*|\n)+)\n```/'             => '\2',  // fence code
-            '/`(.*?)`/'                              => '\1',  // inline code
-            '/(\*|\+|-)(.*)/'                        => '\2',  // ul lists
-            '/\n[0-9]+\.(.*)/'                       => '\2',  // ol lists
-            '/(&gt;|\>)+(.*)/'                       => '\2',  // blockquotes
-        );
-        foreach ($rules as $regex => $replacement) {
-            if (is_callable ( $replacement)) {
-                $text = preg_replace_callback ($regex, $replacement, $text);
-            } else {
-                $text = preg_replace ($regex, $replacement, $text);
-            }
-        }
-        $text=str_replace(".\n", '.', $text);
-        $text=str_replace("\n", '.', $text);
-        $text=str_replace('"', '', $text);
-        return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
-    }
-
 }
