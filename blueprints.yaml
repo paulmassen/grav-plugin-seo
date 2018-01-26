@@ -114,4 +114,20 @@ form:
       type: text
       label: Twitter ID
       placeholder: '@yourusername'
+    twitter_default:
+      type: toggle
+      label: On page creation, enable twitter metadata?
+      default: 1
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+    facebook_default:
+      type: toggle
+      label: On page creation, enable facebook metadata?
+      default: 1
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
 
