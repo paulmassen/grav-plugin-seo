@@ -114,7 +114,7 @@ class seoPlugin extends Plugin
             
             );
         $text=str_replace(".\n", '.', $text);
-        $text=str_replace("\n", '.', $text);
+        $text=str_replace("\n", '. ', $text);
         $text=str_replace('"', '', $text);
         $text=str_replace('<p', '', $text);
         $text=str_replace('</p>', '', $text);
@@ -127,7 +127,7 @@ class seoPlugin extends Plugin
         }
         
         //$text=strip_tags($text);
-        return $text;
+        return substr($text,0,320);
         // htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
     }
     
