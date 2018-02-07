@@ -4,10 +4,34 @@ form:
       type: tabs
       active: 1
       fields:
+        content:
+          fields:
+            content:
+              id: content
+              ordering@: header.mykeyword
+            header.title:
+              id: mytitle
+            header.mykeyword:
+              type: text
+              style: vertical
+              label: Focus Keyword
+              id: focusKeyword
+              ordering@: header.title
+            snippetoutput:
+              type: display
+              id: output
+              ordering@: 3
+              style: vertical
+              content: ''
+            snippetyoast:
+              type: display
+              style: vertical
+              id: snippet
+              classes: hidden
+              content: ''
         seo:
           type: tab
           title: SEO
-
           fields:
             tabs1:
               type: tabs
