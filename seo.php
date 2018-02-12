@@ -447,12 +447,14 @@ class seoPlugin extends Plugin
                       $openingHours[] = $hours['entry'];    
                      }
         }
+        if (property_exists($page->header(),'orgaratingenabled')){
         if ($page->header()->orgaratingenabled){
         $orgarating = [
                       '@type' => 'AggregateRating',
                       'ratingValue' => @$page->header()->orga['ratingValue'],
                       'reviewCount' => @$page->header()->orga['reviewCount'],
                       ];
+        } 
         } 
         $microdata[] = [
                   '@context' => 'http://schema.org',
