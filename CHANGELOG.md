@@ -1,3 +1,42 @@
+# v2.2.0
+## 01/26/2018
+1. [](#new)
+    * Fixed script and style tags in page content causing problem
+    * Few languages fixes
+    * Re-added date modified and date published that mysteriously disappeared
+    
+# v2.1.9
+## 01/09/2018
+1. [](#new)
+    * Fixed Changelog causing trouble with GPM
+    
+# v2.1.8
+## 01/08/2018
+1. [](#new)
+    * Added Nederland translation
+    * Fixed founder field causing crash when empty 
+    * Fixed default twitter image not being displayed
+    * Fixed default values for opengraph and twitter
+    * Small changes in microdata blueprints
+
+# v2.1.7
+## 12/17/2017
+1. [](#new)
+    * Added product microdata
+
+# v2.1.6
+## 12/12/2017
+1. [](#new)
+    * Added better styling for the fieldset field
+    * Added icons on fieldsets fields
+    * Added some required fields to the organization microdata
+    * Added button label on the microdata tabs.
+
+1. [](#fix)
+    * Fixed the error Invalid Index Type on blueprints that did not use a "content" field
+    * Fixed the music album microdata not being displayed
+    * Removed duplicate attribute on the blueprint
+
 # v2.1.5
 ## 12/07/2017
 1. [](#new)

@@ -4,9 +4,11 @@
 
 ##### Table of Contents:
 
+
 * [About](#about)
 * [Features](#features)
 * [Installation and Updates](#installation-and-updates)
+* [Requirements](#requirements)
 * [Usage](#usage)
 * [Contributing](#contributing)
 * [License](#license)
@@ -21,24 +23,24 @@
 ### Google
 You can see and customize how your page will look on Google Search Results.
 
-![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blog/master/assets/demoseoplugin.gif?raw=true)
+![Grav SEO Plugin](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/master/assets/demoseoplugin.gif)
 
 ### Twitter
 You can also preview how your page will look when shared on twitter
 
-![Grav SEO Plugin](https://github.com/paulmassen/grav-plugin-seo/blog/master/assets/twitter.gif?raw=true)
+![Grav SEO Plugin](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/master/assets/twitter.gif)
 
 
 ### Facebook
 And on Facebook
 
-![Facebook Live Preview](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/develop/facebook.gif)
+![Facebook Live Preview](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/master/assets/facebook.gif)
 
 
 ### JSON-LD
 
 You can also generate Schema.org JSON Microdata from the admin.
-![Article Microdata](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/develop/article_json.png)
+![Article Microdata](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/master/assets/article_json.png)
 This will generate the following Json-ld between script tags
 ```JSON
 {
@@ -72,6 +74,13 @@ This will generate the following Json-ld between script tags
     }
 }
 ```
+
+## Requirements
+
+In order to use the plugin with a custom template, there is two requirements, you must:
+- Include in your base template the metadata template that comes shipped with antimatter, such as: `{% include 'partials/metadata.html.twig' %}`
+- For Microdatas, you must use Grav's asset manager. If your template has a line with `{{ assets.js() }}`, it will works.
+
 #### Feedback needed
 
 As this plugin is in its early stage, please do not hesitate to leave a feedback, to suggest modification or features.

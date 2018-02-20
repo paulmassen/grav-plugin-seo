@@ -1,8 +1,8 @@
 name: "SEO"
-version: "2.1.5"
+version: "2.2.0"
 description: "Manage your site’s meta tags for display in search engine results or social media networks. Includes an easy-to-use live preview feature."
 icon: "google"
-#testing: true
+testing: true
 author:
   name: "Paul Massendari"
   email: "paul@massendari.com"
@@ -87,6 +87,26 @@ form:
         0: PLUGIN_ADMIN.DISABLED
       validate:
         type: bool
+    musicalbum:
+      type: toggle
+      label: Enable Music Album Microdata
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
+    product:
+      type: toggle
+      label: Enable Product Microdata
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool
     facebookid:
       type: text
       label: Facebook App ID
@@ -94,4 +114,20 @@ form:
       type: text
       label: Twitter ID
       placeholder: '@yourusername'
+    twitter_default:
+      type: toggle
+      label: On page creation, enable twitter metadata?
+      default: 1
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+    facebook_default:
+      type: toggle
+      label: On page creation, enable facebook metadata?
+      default: 1
+      highlight: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
 
