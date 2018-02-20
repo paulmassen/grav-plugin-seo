@@ -3,44 +3,7 @@ form:
     tabs:
       type: tabs
       active: 1
-
       fields:
-        content:
-          fields:
-            content:
-              id: content
-              ordering@: header.mykeyword
-            header.title:
-              id: mytitle
-#            header.mykeyword:
- #                         type: text
- #                         style: vertical
- #                         label: Focus Keyword
-             #             id: focusKeyword
-           #               ordering@: header.title
-            snippetoutput:
-              type: display
-              id: output
-              ordering@: 3
-              style: vertical
-              content: ''
-            pagemedia:
-              ordering@: 0
-#            header.snippettest:
-#              type: display
-#              id: locale
-#              style: vertical
-#              content: 'en_US'
-           # mybutton:
-          #    type: seobutton
-          #    id: 'refresh-analysis'
-            snippetyoast:
-              type: display
-              style: vertical
-              id: snippet
-              classes: hidden
-              content: ''
-
         seo:
           type: tab
           title: SEO
@@ -80,7 +43,7 @@ form:
                             header.twitterenable:
                               type: toggle
                               label: PLUGIN_ADMIN.ENABLED
-                              default: 1
+                              config-default@: plugins.seo.twitter_default
                               highlight: 1
                               help: PLUGIN_ADMIN.ENABLED_HELP
                               options:
@@ -148,6 +111,7 @@ form:
                       fields:
                         header.articlefieldset:
                           type: fieldset
+                          icon: newspaper-o
                           title: Article Microdata
                           collapsed: true
                           collapsible: true
@@ -165,25 +129,26 @@ form:
                             header.article.headline:
                               type: text
                               label: PLUGIN_SEO.HEADLINE
-                              disabled: false
                               placeholder: PLUGIN_SEO.ARTICLE_PLACEHOLDER
-                              field_classes: togglearticle
+                            header.article.datePublished:
+                              type: datetime
+                              label: PLUGIN_SEO.DATE_PUBLISHED
+                            header.article.dateModified:
+                              type: datetime
+                              label: PLUGIN_SEO.DATE_MODIFIED
                             header.article.description:
                               type: textarea
                               label: PLUGIN_SEO.ARTICLE_DESCRIPTION
                               placeholder: PLUGIN_SEO.ARTICLE_DESC_PLACEHOLDER
-                              disabled: false
                               field_classes: togglearticle
                             header.article.image_url:
                               type: mediapicker
                               label: PLUGIN_SEO.ARTICLE_IMAGE
                               placeholder: Please click to open the mediapicker
-                              disabled: false
                               field_classes: togglearticle
                             header.article.author:
                               type: text
                               label: PLUGIN_SEO.ARTICLE_AUTHOR
-                              disabled: false
                               field_classes: togglearticle
                             header.article.publisher_logo_url:
                               type: mediapicker
@@ -194,8 +159,6 @@ form:
                             header.article.publisher_name:
                               type: text
                               label: PLUGIN_SEO.PUBLISHER_NAME
-                              disabled: false
-                              required: true
                               field_classes: togglearticle
                     header.musicevent_condition:
                       type: conditional
@@ -204,6 +167,7 @@ form:
                         header.musiceventfieldset:
                           type: fieldset
                           title: Music Event
+                          icon: music
                           collapsed: true
                           collapsible: true
                           fields:
@@ -221,6 +185,8 @@ form:
                               type: list
                               label: PLUGIN_SEO.ADDMUSICEVENT
                               style: vertical
+                              controls: both
+                              btnLabel: Add a music event
                               fields:
                                 .musicevent_location_name:
                                   type: text
@@ -253,11 +219,6 @@ form:
                                   type: text
                                   label: PLUGIN_SEO.MUSICEVENT_URL
                                   placeholder: PLUGIN_SEO.MUSICEVENT_URL_PLACEHOLDER
-                                .musicevent_image:
-                                  type: filepicker
-                                  label: PLUGIN_SEO.MUSICEVENT_IMAGE
-                                  folder: '@self'
-                                  field_classes: togglemusicevent
                                 .musicevent_offers_availability:
                                   type: select
                                   options:
@@ -267,7 +228,6 @@ form:
                                     'http://schema.org/InStock': PLUGIN_SEO.INSTOCK
                                     'http://schema.org/Discontinued': PLUGIN_SEO.DISCONTINUED
                                     'http://schema.org/InStoreOnly': PLUGIN_SEO.INSTOREONLY
-                                    'http://schema.org/OutOfStock': PLUGIN_SEO.OUTOFSTOCK
                                     'http://schema.org/SoldOut': PLUGIN_SEO.SOLDOUT
                                     'http://schema.org/OnlineOnly': PLUGIN_SEO.ONLINEONLY
                                   field_classes: togglemusicevent
@@ -296,6 +256,7 @@ form:
                                   type: list
                                   label: PLUGIN_SEO.ADD_PERFORMER
                                   field_classes: togglemusicevent
+                                  btnLabel: Add a performer
                                   fields:
                                     .performer_type:
                                       type: select
@@ -322,6 +283,7 @@ form:
                                 .musicevent_workPerformed:
                                   type: list
                                   label: PLUGIN_SEO.WORK_PERFORMED
+                                  btnLabel: Add a work
                                   field_classes: togglemusicevent
                                   fields:
                                     .name:
@@ -338,6 +300,7 @@ form:
                       fields:
                         header.orgafieldset:
                           type: fieldset
+                          icon: building
                           title: Organization Microdata
                           collapsed: true
                           collapsible: true
@@ -345,7 +308,7 @@ form:
                             header.orgaenabled:
                               type: toggle
                               highlight: 1
-                              label: PLUGIN_SEO.ENABLEEVENT
+                              label: Enable Organization Microdata
                               default: 0
                               options:
                                   1: PLUGIN_ADMIN.YES
@@ -355,6 +318,18 @@ form:
                             header.orga.name:
                               type: text
                               label: Organization name
+                            header.orga.description:
+                              type: text
+                              label: Organization description
+                            header.orga.legalname:
+                              type: text
+                              label: Registered company name
+                            header.orga.taxid:
+                              type: text
+                              label: The Tax / Fiscal ID of the organization or person
+                            header.orga.vatid:
+                              type: text
+                              label: The Value-added Tax ID of the organization or person
                             header.orga.streetaddress:
                               type: text
                               label: Organization street
@@ -377,12 +352,55 @@ form:
                               type: text
                               label: Url to Organization Logo 
                               placeholder: 'include http://'
+                            header.orgaratingenabled:
+                              type: toggle
+                              highlight: 1
+                              label: Add rating to this organization
+                              default: 0
+                              options:
+                                  1: PLUGIN_ADMIN.YES
+                                  0: PLUGIN_ADMIN.NO
+                              validate:
+                                  type: bool
+                            header.orga.ratingValue:
+                              type: range
+                              label: Star Rating
+                              help: Choose a value between 0 and 5 which should be the average ratings for your product. Make sure the value is consistent with your actual reviews.
+                              validate:
+                                min: 0
+                                max: 5
+                                step: 0.1
+                            header.orga.reviewCount:
+                              type: number
+                              label: Number of reviews you used for calculating your rating.
+                              size: small
+                            header.orga.openingHours:
+                              type: list
+                              label: Opening Hours
+                              btnLabel: Add opening hours details
+                              fields:
+                                .entry:
+                                  type: text
+                                  style: vertical
+                                  label: Opening hours - Please write the two character day or a range of day (mo-fr) followed by a space and the opening hours"
+                                  placeholder: "Exemple: Mo-Fr 09:00-18:00 or Saturday 09:00-15:00"
                             header.orga.foundingDate:
                               type: text
                               label: Founding year
+                            header.orga.email:
+                              type: email
+                              label: Official Email for this Organization
+                            header.orga.paymentaccepted:
+                              type: selectize
+                              label: Accepted Payments
+                              placeholder: Visa, Cash, Credit Card, Amex, etc.
+                              validate:
+                                type: commalist
+
                             header.orga.founders:
                               type: list
                               label: Founders
+                              btnLabel: Add a founder
                               fields:
                                 .name:
                                   type: text
@@ -396,10 +414,48 @@ form:
                                   style: vertical
                                   label: Links to page related to this organization (social media, etc.)
                                   placeholder: "http://wikipedia.org/en/companyname"
-                              
-                              
+                            header.orga.offercatalog:
+                              type: list
+                              label: Offer Catalog
+                              btnLabel: Add offer
+                              fields:
+                                .offer:
+                                  type: text
+                                  style: vertical
+                                  label: Offer product or service
+                                  placeholder: Offer product or service
+                                .description:
+                                  type: text
+                                  style: vertical
+                                  label: Offer product or service description
+                                  placeholder: Offer product or service description
+                                .url:
+                                  type: text
+                                  style: vertical
+                                  label: Offer url
+                                  placeholder: Product or service url
+                                .image:
+                                  type: text
+                                  style: vertical
+                                  label: Offer image url
+                                  placeholder: Product or service image url
+                                .offereditem:
+                                  type: list
+                                  label: Offer Item
+                                  btnLabel: Add offer item
+                                  fields:
+                                    .name:
+                                      type: text
+                                      style: vertical
+                                      label: Offer detail
+                                      placeholder: Product or service detail
+                                    .url:
+                                      type: text
+                                      style: vertical
+                                      label: Offer detail url
+                                      placeholder: Product or service detail url
 
-                    header.conditional_new_entries:
+                    header.conditional_event:
                       type: conditional
                       condition: "config.plugins.seo.event ? 'true' : 'false'"
                       fields:
@@ -407,6 +463,7 @@ form:
                         header.eventfieldset:
                           type: fieldset
                           title: Event Microdata
+                          icon: calendar
                           collapsed: true
                           collapsible: true
                           fields:
@@ -423,6 +480,8 @@ form:
                             header.addevent:
                               type: list
                               style: vertical
+                              btnLabel: Add an event
+                              controls: both
                               label: PLUGIN_SEO.ADD_EVENT
                               fields:
                                 .event_name:
@@ -476,6 +535,7 @@ form:
                           type: fieldset
                           title: Person Microdata 
                           collapsed: true
+                          icon: address-card-o
                           collapsible: true
                           fields:
                             header.personenabled:
@@ -491,6 +551,8 @@ form:
                             header.addperson:
                               type: list
                               style: vertical
+                              btnLabel: Add a person
+                              controls: both
                               label: PLUGIN_SEO.ADD_PERSON
                               fields:
                                 .person_name:
@@ -516,6 +578,7 @@ form:
                         header.musicalbumfieldset:
                           type: fieldset
                           title: Music Album Microdata 
+                          icon: headphones
                           collapsed: true
                           collapsible: true
                           fields:
@@ -532,6 +595,8 @@ form:
                             header.musicalbums:
                               type: list
                               style: vertical
+                              btnLabel: Add a Music Album
+                              controls: both
                               label: PLUGIN_SEO.ADD_MUSICALBUM
                               fields:
                                 .musicalbum_name:
@@ -577,12 +642,113 @@ form:
                                     .duration:
                                       type: text
                                       label: PLUGIN_SEO.MUSICALBUM_TRACK_DURATION
+                    header.product_condition:
+                      type: conditional
+                      condition: "config.plugins.seo.product ? 'true' : 'false'"
+                      fields:
+                        header.productfieldset:
+                          type: fieldset
+                          icon: shopping-bag
+                          title: Product Microdata 
+                          collapsed: true
+                          collapsible: true
+                          fields:
+                            header.productenabled:
+                              type: toggle
+                              highlight: 1
+                              label: Add Product Microdata to this page
+                              default: 0
+                              options:
+                                  1: PLUGIN_ADMIN.YES
+                                  0: PLUGIN_ADMIN.NO
+                              validate:
+                                  type: bool      
+                            header.product.name:
+                              type: text
+                              label: Name of the Product 
+                              field_classes: togglerestaurant
+                            header.product.category:
+                              type: text
+                              label: Category of the product
+                            header.product.ratingValue:
+                              type: range
+                              label: Star Rating
+                              help: Choose a value between 0 and 5 which should be the average ratings for your product. Make sure the value is consistent with your actual reviews.
+                              validate:
+                                min: 0
+                                max: 5
+                                step: 0.1
+                            header.product.reviewCount:
+                              type: number
+                              label: Number of reviews you used for calculating your rating.
+                              size: small
+                            header.product.brand:
+                              type: text
+                              label: Product Brand
+                            header.product.brandlogo:
+                              type: mediapicker
+                              label: Logo of the brand
+                              placeholder: Please click to open the mediapicker
+                            header.product.image:
+                              type: list
+                              label: Add an image for this product
+                              style: vertical
+                              btnLabel: Add image
+                              fields:
+                                .productimg:
+                                  type: mediapicker
+                                  label: Choose an image
+                                  placeholder: Please click to open the mediapicker
+                            header.product.description:
+                              type: textarea
+                              label: Product Description
+                            header.product.addoffer:
+                              type: list
+                              label: Add an offer for this product
+                              btnLabel: Add offer
+                              controls: both
+                              style: vertical
+                              fields:
+                                .offer_availability:
+                                  type: select
+                                  label: Availability of the product
+                                  options:
+                                    'http://schema.org/InStock': PLUGIN_SEO.INSTOCK
+                                    'http://schema.org/PreOrder': PLUGIN_SEO.PREORDER
+                                    'http://schema.org/OutOfStock': PLUGIN_SEO.OUTOFSTOCK
+                                    'http://schema.org/PreSale': PLUGIN_SEO.PRESALE
+                                    'http://schema.org/Discontinued': PLUGIN_SEO.DISCONTINUED
+                                    'http://schema.org/InStoreOnly': PLUGIN_SEO.INSTOREONLY
+                                    'http://schema.org/SoldOut': PLUGIN_SEO.SOLDOUT
+                                    'http://schema.org/OnlineOnly': PLUGIN_SEO.ONLINEONLY
+                                .offer_price:
+                                  type: text
+                                  size: small
+                                  label: Price of the product 
+                                  placeholder: "e.g: 19.99 (no currency symbol)"
+                                .offer_validFrom:
+                                    type: datetime
+                                    label: Offer is valid from (optional)
+                                .offer_validUntil:
+                                    type: datetime
+                                    label: Offer is valid until (optional)
+                                   
+                                .offer_priceCurrency:
+                                    type: select
+                                    label: PLUGIN_SEO.PRICE_CURRENCY
+                                    options:
+                                      GBP: GBP		
+                                      EUR: EUR	
+                                      USD: USD	
+                             
+                           
                     header.restaurant_condition:
                       type: conditional
                       condition: "config.plugins.seo.restaurant ? 'true' : 'false'"
                       fields:
                         header.restaurantfieldset:
                           type: fieldset
+                          icon: cutlery
                           title: Restaurant Microdata 
                           collapsed: true
                           collapsible: true
@@ -590,7 +756,7 @@ form:
                             header.restaurantenabled:
                               type: toggle
                               highlight: 1
-                              label: PLUGIN_SEO.ADD_RESTAURANT
+                              label: Enable Restaurant Microdata on this page
                               default: 0
                               options:
                                   1: PLUGIN_ADMIN.YES
@@ -666,7 +832,7 @@ form:
                               type: toggle
                               label: PLUGIN_SEO.FACEBOOK_ENABLE
                               id: facebookenable
-                              default: 1
+                              default: plugins.seo.facebook_default
                               highlight: 1
                               options:
                                 1: PLUGIN_ADMIN.YES
