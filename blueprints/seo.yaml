@@ -330,6 +330,16 @@ form:
                             header.orga.zipcode:
                               type: text
                               label: Organization Zip Code
+                            header.orga.areaserved:
+                              type: list
+                              label: Area servered
+                              btnLabel: Add a location
+                              fields:
+                                .area:
+                                  type: text
+                                  style: vertical
+                                  label: The geographic area where a service or offered item is provided.
+                                  placeholder: one location per line
                             header.orga.phone:
                               type: text
                               label: Organization Phone
