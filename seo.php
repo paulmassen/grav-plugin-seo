@@ -453,16 +453,16 @@ class seoPlugin extends Plugin
                     foreach ($offer['offereditem'] as $service) {
                         $offerarray[] = [
                             '@type' => 'OfferCatalog',
-                            'name' => $offer['offer'],
-                            'description' => $offer['description'],
-                            'url' => $offer['url'],
-                            'image' => $offer['image'],
+                            'name' => @$offer['offer'],
+                            'description' => @$offer['description'],
+                            'url' => @$offer['url'],
+                            'image' => @$offer['image'],
                             'itemListElement' => [
                                 '@type' => 'Offer',
                                 'itemOffered' => [
                                     '@type' => 'Service',
-                                    'name' => $service['name'],
-                                    'url' => $service['url'],
+                                    'name' => @$service['name'],
+                                    'url' => @$service['url'],
                                 ],
                             ],
                         ];
@@ -470,10 +470,10 @@ class seoPlugin extends Plugin
                 } else {
                         $offerarray[] = [
                             '@type' => 'OfferCatalog',
-                            'name' => $offer['offer'],
-                            'description' => $offer['description'],
-                            'url' => $offer['url'],
-                            'image' => $offer['image'],
+                            'name' => @$offer['offer'],
+                            'description' => @$offer['description'],
+                            'url' => @$offer['url'],
+                            'image' => @$offer['image'],
                         ];
                 }
             }
