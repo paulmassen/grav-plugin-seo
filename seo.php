@@ -389,8 +389,8 @@ class seoPlugin extends Plugin
                       'priceCurrency' => @$event['event_offers_priceCurrency'],
                       'url' => @$event['event_offers_url'], 
                       ],
-                  'startDate' => @date("c", strtotime($event['event_startdate'])),
-                  'endDate' => @date("c", strtotime($event['event_enddate'])),
+                  'startDate' => @date("c", strtotime($event['event_startDate'])),
+                  'endDate' => @date("c", strtotime($event['event_endDate'])),
                   'description' => @$event['event_description'],
                   
                   ];
