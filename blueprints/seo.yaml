@@ -342,6 +342,16 @@ form:
                             header.orga.zipcode:
                               type: text
                               label: Organization Zip Code
+                            header.orga.areaserved:
+                              type: list
+                              label: Area servered
+                              btnLabel: Add a location
+                              fields:
+                                .area:
+                                  type: text
+                                  style: vertical
+                                  label: The geographic area where a service or offered item is provided.
+                                  placeholder: one location per line
                             header.orga.phone:
                               type: text
                               label: Organization Phone
@@ -384,6 +394,7 @@ form:
                                   style: vertical
                                   label: Opening hours - Please write the two character day or a range of day (mo-fr) followed by a space and the opening hours"
                                   placeholder: "Exemple: Mo-Fr 09:00-18:00 or Saturday 09:00-15:00"
+
                             header.orga.foundingDate:
                               type: text
                               label: Founding year

@@ -389,8 +389,8 @@ class seoPlugin extends Plugin
                       'priceCurrency' => @$event['event_offers_priceCurrency'],
                       'url' => @$event['event_offers_url'], 
                       ],
-                  'startDate' => @date("c", strtotime($event['event_startdate'])),
-                  'endDate' => @date("c", strtotime($event['event_enddate'])),
+                  'startDate' => @date("c", strtotime($event['event_startDate'])),
+                  'endDate' => @date("c", strtotime($event['event_endDate'])),
                   'description' => @$event['event_description'],
                   
                   ];
@@ -442,6 +442,11 @@ class seoPlugin extends Plugin
                       $similararray[] = $similar['sameas'];    
                      }
         }
+        if (isset($page->header()->orga['areaserved'])){
+            foreach ($page->header()->orga['areaserved'] as $areaserved){
+                      $areaservedarray[] = $areaserved['area']; 
+                     }
+        }   
         if (isset($page->header()->orga['openingHours'])){
             foreach ($page->header()->orga['openingHours'] as $hours){
                       $openingHours[] = $hours['entry'];    
@@ -478,12 +483,17 @@ class seoPlugin extends Plugin
                 }
             }
         }
+
+        if (property_exists($page->header(),'orgaratingenabled')){
+
         if ($page->header()->orgaratingenabled){
         $orgarating = [
                       '@type' => 'AggregateRating',
                       'ratingValue' => @$page->header()->orga['ratingValue'],
                       'reviewCount' => @$page->header()->orga['reviewCount'],
                       ];
+        } 
+
         } 
         $microdata[] = [
                   '@context' => 'http://schema.org',
@@ -545,6 +555,7 @@ class seoPlugin extends Plugin
                       'streetAddress' => @$page->header()->restaurant['address_streetAddress'],
                       'postalCode' => @$page->header()->restaurant['address_postalCode'],
                       ],
+                  'areaserved' => @$areaservedarray,
                   'servesCuisine' => @$page->header()->restaurant['servesCuisine'],
                   'priceRange' => @$page->header()->restaurant['priceRange'],
                   'image' => @$restaurantimage,
