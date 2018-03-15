@@ -448,12 +448,50 @@ class seoPlugin extends Plugin
                       $similararray[] = $similar['sameas'];    
                      }
         }
+        if (isset($page->header()->orga['areaserved'])){
+            foreach ($page->header()->orga['areaserved'] as $areaserved){
+                      $areaservedarray[] = $areaserved['area']; 
+                     }
+        }   
         if (isset($page->header()->orga['openingHours'])){
             foreach ($page->header()->orga['openingHours'] as $hours){
                       $openingHours[] = $hours['entry'];    
                      }
         }
+        if (isset($page->header()->orga['offercatalog'])){
+            foreach ($page->header()->orga['offercatalog'] as $offer) {
+                if (array_key_exists('offereditem', $offer)) {
+                    foreach ($offer['offereditem'] as $service) {
+                        $offerarray[] = [
+                            '@type' => 'OfferCatalog',
+                            'name' => @$offer['offer'],
+                            'description' => @$offer['description'],
+                            'url' => @$offer['url'],
+                            'image' => @$offer['image'],
+                            'itemListElement' => [
+                                '@type' => 'Offer',
+                                'itemOffered' => [
+                                    '@type' => 'Service',
+                                    'name' => @$service['name'],
+                                    'url' => @$service['url'],
+                                ],
+                            ],
+                        ];
+                    }
+                } else {
+                        $offerarray[] = [
+                            '@type' => 'OfferCatalog',
+                            'name' => @$offer['offer'],
+                            'description' => @$offer['description'],
+                            'url' => @$offer['url'],
+                            'image' => @$offer['image'],
+                        ];
+                }
+            }
+        }
+
         if (property_exists($page->header(),'orgaratingenabled')){
+
         if ($page->header()->orgaratingenabled){
         $orgarating = [
                       '@type' => 'AggregateRating',
@@ -461,11 +499,16 @@ class seoPlugin extends Plugin
                       'reviewCount' => @$page->header()->orga['reviewCount'],
                       ];
         } 
+
         } 
         $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Organization',
                   'name' => @$page->header()->orga['name'],
+                  'legalname' => @$page->header()->orga['legalname'],
+                  'taxid' => @$page->header()->orga['taxid'],
+                  'vatid' => @$page->header()->orga['vatid'],
+                  'description' => @$page->header()->orga['description'],
                   
                   'address' => [
                       '@type' => 'PostalAddress',
@@ -483,7 +526,8 @@ class seoPlugin extends Plugin
                   'aggregateRating' => @$orgarating,
                   'paymentAccepted' => @$page->header()->orga['paymentAccepted'],
                   'founders' => @$founderarray,
-                  'sameAs' => @$similararray
+                  'sameAs' => @$similararray,
+                  'hasOfferCatalog' => @$offerarray
                   ];
                  
                   
@@ -517,6 +561,7 @@ class seoPlugin extends Plugin
                       'streetAddress' => @$page->header()->restaurant['address_streetAddress'],
                       'postalCode' => @$page->header()->restaurant['address_postalCode'],
                       ],
+                  'areaserved' => @$areaservedarray,
                   'servesCuisine' => @$page->header()->restaurant['servesCuisine'],
                   'priceRange' => @$page->header()->restaurant['priceRange'],
                   'image' => @$restaurantimage,
