@@ -508,6 +508,7 @@ class seoPlugin extends Plugin
                   'legalname' => @$page->header()->orga['legalname'],
                   'taxid' => @$page->header()->orga['taxid'],
                   'vatid' => @$page->header()->orga['vatid'],
+                  'areaServed' => @$areaservedarray,
                   'description' => @$page->header()->orga['description'],
                   
                   'address' => [
