@@ -234,6 +234,10 @@ class seoPlugin extends Plugin
                 $twittershareimg = $page->header()->twittershareimg;
                 $imagedata = $this->seoGetimage($twittershareimg);
                 $meta['twitter:image']['content']   = $this->grav['uri']->base() . $imagedata['url'];
+            } else {
+                $meta['twitter:image']['name']      = 'twitter:image';
+                $meta['twitter:image']['property']  = 'twitter:image';
+                $meta['twitter:image']['content']   = array_shift($this->grav['page']->media()->images())->url();
             };
             $meta['twitter:url']['name']      = 'twitter:url';
             $meta['twitter:url']['property']  = 'twitter:url';
