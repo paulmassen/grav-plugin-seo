@@ -1,3 +1,10 @@
+# v2.3.0
+## 01/26/2018
+1. [](#fix)
+    * Fixed tag not stripped from description
+    * Added areaserved to organization and restaurant microdata
+    * Fixed event date problem
+
 # v2.2.0
 ## 01/26/2018
 1. [](#new)
