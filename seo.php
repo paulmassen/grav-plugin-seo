@@ -442,6 +442,11 @@ class seoPlugin extends Plugin
                       $similararray[] = $similar['sameas'];    
                      }
         }
+        if (isset($page->header()->orga['areaserved'])){
+            foreach ($page->header()->orga['areaserved'] as $areaserved){
+                      $areaservedarray[] = $areaserved['area']; 
+                     }
+        }   
         if (isset($page->header()->orga['openingHours'])){
             foreach ($page->header()->orga['openingHours'] as $hours){
                       $openingHours[] = $hours['entry'];    
@@ -511,6 +516,7 @@ class seoPlugin extends Plugin
                       'streetAddress' => @$page->header()->restaurant['address_streetAddress'],
                       'postalCode' => @$page->header()->restaurant['address_postalCode'],
                       ],
+                  'areaserved' => @$areaservedarray,
                   'servesCuisine' => @$page->header()->restaurant['servesCuisine'],
                   'priceRange' => @$page->header()->restaurant['priceRange'],
                   'image' => @$restaurantimage,
