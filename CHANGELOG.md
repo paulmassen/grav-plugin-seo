@@ -1,3 +1,8 @@
+# v2.3.1
+## 01/26/2018
+1. [](#fix)
+    * Fixed whoops on twitter image
+    
 # v2.3.0
 ## 01/26/2018
 1. [](#fix)
