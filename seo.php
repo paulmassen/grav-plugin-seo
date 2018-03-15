@@ -92,6 +92,7 @@ class seoPlugin extends Plugin
         return $imagedata;
     }
     private function cleanMarkdown($text){
+        $text=strip_tags($text);
         $rules = array (
             '/{%[\s\S]*?%}[\s\S]*?/'                 => '',    // remove twig include
             '/<style(?:.|\n|\r)*?<\/style>/'         => '',    // remove style tags
@@ -118,6 +119,7 @@ class seoPlugin extends Plugin
         $text=str_replace('"', '', $text);
         $text=str_replace('<p', '', $text);
         $text=str_replace('</p>', '', $text);
+        
         foreach ($rules as $regex => $rep) {
             if (is_callable ( $rep)) {
                $text = preg_replace_callback ($regex, $rep, $text);
@@ -126,7 +128,7 @@ class seoPlugin extends Plugin
             }
         }
         
-        //$text=strip_tags($text);
+        
         return substr($text,0,320);
         // htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
     }
