@@ -237,7 +237,7 @@ class seoPlugin extends Plugin
             } else {
                 $meta['twitter:image']['name']      = 'twitter:image';
                 $meta['twitter:image']['property']  = 'twitter:image';
-                $meta['twitter:image']['content']   = array_shift($this->grav['page']->media()->images())->url();
+                //$meta['twitter:image']['content']   = array_shift($this->grav['page']->media()->images())->url();
             };
             $meta['twitter:url']['name']      = 'twitter:url';
             $meta['twitter:url']['property']  = 'twitter:url';
