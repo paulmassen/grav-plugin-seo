@@ -92,6 +92,7 @@ class seoPlugin extends Plugin
         return $imagedata;
     }
     private function cleanMarkdown($text){
+        $text=strip_tags($text);
         $rules = array (
             '/{%[\s\S]*?%}[\s\S]*?/'                 => '',    // remove twig include
             '/<style(?:.|\n|\r)*?<\/style>/'         => '',    // remove style tags
@@ -118,6 +119,7 @@ class seoPlugin extends Plugin
         $text=str_replace('"', '', $text);
         $text=str_replace('<p', '', $text);
         $text=str_replace('</p>', '', $text);
+        
         foreach ($rules as $regex => $rep) {
             if (is_callable ( $rep)) {
                $text = preg_replace_callback ($regex, $rep, $text);
@@ -126,7 +128,7 @@ class seoPlugin extends Plugin
             }
         }
         
-        //$text=strip_tags($text);
+        
         return substr($text,0,320);
         // htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
     }
@@ -232,6 +234,10 @@ class seoPlugin extends Plugin
                 $twittershareimg = $page->header()->twittershareimg;
                 $imagedata = $this->seoGetimage($twittershareimg);
                 $meta['twitter:image']['content']   = $this->grav['uri']->base() . $imagedata['url'];
+            } else {
+                $meta['twitter:image']['name']      = 'twitter:image';
+                $meta['twitter:image']['property']  = 'twitter:image';
+                $meta['twitter:image']['content']   = array_shift($this->grav['page']->media()->images())->url();
             };
             $meta['twitter:url']['name']      = 'twitter:url';
             $meta['twitter:url']['property']  = 'twitter:url';
@@ -502,6 +508,7 @@ class seoPlugin extends Plugin
                   'legalname' => @$page->header()->orga['legalname'],
                   'taxid' => @$page->header()->orga['taxid'],
                   'vatid' => @$page->header()->orga['vatid'],
+                  'areaServed' => @$areaservedarray,
                   'description' => @$page->header()->orga['description'],
                   
                   'address' => [
