@@ -237,7 +237,9 @@ class seoPlugin extends Plugin
             } else {
                 $meta['twitter:image']['name']      = 'twitter:image';
                 $meta['twitter:image']['property']  = 'twitter:image';
-                $firstimage = array_shift($page->media()->images())->url();
+                $imgobject = $page->media()->images();
+                $getfirst = array_shift($imgobject);
+                $firstimage = $getfirst->url();
                 //$imagedata = $this->seoGetimage($firstimage);
                 $meta['twitter:image']['content']   = $this->grav['uri']->base() . $firstimage;
             };
@@ -294,8 +296,11 @@ class seoPlugin extends Plugin
                 $meta['og:image']['content'] =  $this->grav['uri']->base() . $imagedata['url'];
             } else {
                 $meta['og:image']['property'] = 'og:image';
-                $firstimage = array_shift($page->media()->images());
-                $firstimage = $firstimage->url();
+                $imgobject = $page->media()->images();
+                $getfirst = array_shift($imgobject);
+                $firstimage = $getfirst->url();
+                //$imagedata = $this->seoGetimage($firstimage);
+                $meta['twitter:image']['content']   = $this->grav['uri']->base() . $firstimage;
                 $meta['og:image']['content'] =  $this->grav['uri']->base() . $firstimage;
             }
        

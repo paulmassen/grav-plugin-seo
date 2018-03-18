@@ -843,7 +843,7 @@ form:
                               type: toggle
                               label: PLUGIN_SEO.FACEBOOK_ENABLE
                               id: facebookenable
-                              default: plugins.seo.facebook_default
+                              config-default@: plugins.seo.facebook_default
                               highlight: 1
                               options:
                                 1: PLUGIN_ADMIN.YES
