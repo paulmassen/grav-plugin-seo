@@ -1,5 +1,5 @@
 name: "SEO"
-version: "2.3.1"
+version: "2.3.2"
 description: "Manage your site’s meta tags for display in search engine results or social media networks. Includes an easy-to-use live preview feature."
 icon: "google"
 testing: true
@@ -17,89 +17,13 @@ dependencies:
 form:
   validation: strict
   fields:
+    plugin_section:
+      type: section
+      title: General Settings
+      underline: true
     enabled:
       type: toggle
       label: PLUGIN_ADMIN.PLUGIN_STATUS
-      highlight: 1
-      default: 1
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
-    article:
-      type: toggle
-      label: Enable Article Microdata
-      highlight: 1
-      default: 1
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
-    event:
-      type: toggle
-      label: Enable Event Microdata
-      highlight: 1
-      default: 1
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
-    restaurant:
-      type: toggle
-      label: Enable Restaurant Microdata
-      highlight: 1
-      default: 1
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
-    musicevent:
-      type: toggle
-      label: Enable Music Event Microdata
-      highlight: 1
-      default: 1
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
-    person:
-      type: toggle
-      label: Enable Person Microdata
-      highlight: 1
-      default: 1
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
-    organization:
-      type: toggle
-      label: Enable Organization Microdata
-      highlight: 1
-      default: 1
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
-    musicalbum:
-      type: toggle
-      label: Enable Music Album Microdata
-      highlight: 1
-      default: 1
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
-    product:
-      type: toggle
-      label: Enable Product Microdata
       highlight: 1
       default: 1
       options:
@@ -131,3 +55,97 @@ form:
         1: PLUGIN_ADMIN.ENABLED
         0: PLUGIN_ADMIN.DISABLED
 
+    microdata_section:
+      type: section
+      title: Microdata Settings
+      underline: true
+    md_columns:
+      type: columns
+      fields:
+        mdcolumn1:
+          type: column
+          fields:
+            article:
+              type: toggle
+              label: Enable Article Microdata
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            event:
+              type: toggle
+              label: Enable Event Microdata
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            restaurant:
+              type: toggle
+              label: Enable Restaurant Microdata
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            musicevent:
+              type: toggle
+              label: Enable Music Event Microdata
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+        mdcolumn2:
+          type: column
+          fields:
+            person:
+              type: toggle
+              label: Enable Person Microdata
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            organization:
+              type: toggle
+              label: Enable Organization Microdata
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            musicalbum:
+              type: toggle
+              label: Enable Music Album Microdata
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            product:
+              type: toggle
+              label: Enable Product Microdata
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+        
