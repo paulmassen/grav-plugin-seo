@@ -1,3 +1,8 @@
+#v2.3.4
+## 03/19/2018
+1. [](#fix)
+    * Fixed whoops on opengraph image
+    
 # v2.3.1
 ## 01/26/2018
 1. [](#fix)
