@@ -1,8 +1,14 @@
+# v2.3.4
+## 03/19/2018
+1. [](#fix)
+    * Fixed whoops on opengraph image
+    
 # v2.3.2
 ## 01/26/2018
 1. [](#fix)
     * Fixed opengraph and twitter error
     * Fixed facebook default not fetched from plugin configuration
+
 
 # v2.3.1
 ## 01/26/2018
