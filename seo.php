@@ -234,7 +234,8 @@ class seoPlugin extends Plugin
                 $twittershareimg = $page->header()->twittershareimg;
                 $imagedata = $this->seoGetimage($twittershareimg);
                 $meta['twitter:image']['content']   = $this->grav['uri']->base() . $imagedata['url'];
-            } else {
+            } elseif(!empty($page->media()->images())) {
+                
                 $meta['twitter:image']['name']      = 'twitter:image';
                 $meta['twitter:image']['property']  = 'twitter:image';
                 $imgobject = $page->media()->images();
@@ -294,7 +295,7 @@ class seoPlugin extends Plugin
                 $facebookimg = $page->header()->facebookimg;
                 $imagedata = $this->seoGetimage($facebookimg);
                 $meta['og:image']['content'] =  $this->grav['uri']->base() . $imagedata['url'];
-            } else {
+            } elseif(!empty($page->media()->images())) {
                 $meta['og:image']['property'] = 'og:image';
                 $imgobject = $page->media()->images();
                 $getfirst = array_shift($imgobject);
