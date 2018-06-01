@@ -274,7 +274,7 @@ class seoPlugin extends Plugin
                 $meta['og:type']['content']         = 'article';
                // $meta['og:url']['name']             = 'og:url';
                 $meta['og:url']['property']         = 'og:url';
-                $meta['og:url']['content']          = $this->grav['uri']->url(true);
+                $meta['og:url']['content']          = $this->grav['page']->canonical(true);
             if (isset($page->header()->facebookdesc)) {
                 //$meta['og:description']['name']     = 'og:description';
                 $meta['og:description']['property'] = 'og:description';
