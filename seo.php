@@ -1,16 +1,16 @@
 <?php
 /**
- * SEO v2.3.2
+ * SEO v2.3.5
  *
  * This plugin adds an SEO Tab to every pages for managing SEO data.
  *
  * Licensed under the MIT license, see LICENSE.
  *
  * @package     SEO
- * @version     2.1.0
+ * @version     2.3.5
  * @link        <https://github.com/paulmassen/grav-plugin-seo>
  * @author      Paul Massendari <paul@massendari.com>
- * @copyright   2017, Paul Massendari
+ * @copyright   2018, Paul Massendari
  * @license     <http://opensource.org/licenses/MIT>        MIT
  */
 
@@ -33,7 +33,6 @@ use Grav\Common\Iterator;
  *
  * This plugin adds an user-friendly SEO tab for your user to manage metadata tags
  * and appearance on Search Engine Results and Social Networks.
- *  $reader->read('/path/to/file');
  */
 
 class seoPlugin extends Plugin

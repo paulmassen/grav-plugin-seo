@@ -1,3 +1,9 @@
+# v2.3.5
+## 09/14/2018
+1. [](#fix)
+    * Changed the currency field from a select field to a text field to allow rare currencies
+    * Fixed the button to validate the page microdata
+
 # v2.3.4
 ## 03/19/2018
 1. [](#fix)
