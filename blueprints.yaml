@@ -2,7 +2,7 @@ name: "SEO"
 version: "2.3.5"
 description: "Manage your site’s meta tags for display in search engine results or social media networks. Includes an easy-to-use live preview feature."
 icon: "google"
-testing: false
+testing: true
 author:
   name: "Paul Massendari"
   email: "paul@massendari.com"

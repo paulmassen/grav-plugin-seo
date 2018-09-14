@@ -1,3 +1,8 @@
+# v2.3.6
+## 09/14/2018
+1. [](#new)
+    * New field allows to add previously generated metadata
+
 # v2.3.5
 ## 09/14/2018
 1. [](#fix)
