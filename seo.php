@@ -165,6 +165,8 @@ class seoPlugin extends Plugin
         $config = $this->mergeConfig($page);
         $content = strip_tags($page->content());
         $assets = $this->grav['assets'];
+        $customjson = "";
+        $outputcustomjson = "";
         $pattern = '~((\/[^\/]+)+)\/([^\/]+)~';
         $replacement = '$1';
         $outputjson = "";
@@ -698,14 +700,22 @@ class seoPlugin extends Plugin
     }*/
     // $microdata = array_map('array_filter', $microdata);
     $microdata = $this->array_filter_recursive($microdata);
+    $customjson = @$page->header()->add_json;
      foreach ($microdata as $key => $value){
         
         
         $jsonscript =   PHP_EOL . '<script type="application/ld+json">' . PHP_EOL . json_encode($microdata[$key], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT ) . PHP_EOL . '</script>';
         $outputjson = $outputjson . $jsonscript;
       }
-     
+    if(!empty($customjson)){
+      foreach($customjson as $json){
+        $buildjson = PHP_EOL . '<script type="application/ld+json">' . PHP_EOL . $json['custom_json'] . PHP_EOL . '</script>';
+        $outputcustomjson = $outputcustomjson . $buildjson ;
+      }
+      $outputjson = $outputjson . $outputcustomjson;
+    }
           
+      
       $outputjson = '</script>' . $outputjson . '<script>';
       $this->grav['twig']->twig_vars['json'] = $outputjson;
       $this->grav['twig']->twig_vars['myvar'] = $outputjson;

@@ -821,7 +821,18 @@ form:
                               type: text
                               label: PLUGIN_SEO.RESTAURANT_TELEPHONE
                               field_classes: togglerestaurant
-
+                    header.custom_json_condition:
+                      type: conditional
+                      condition: "config.plugins.seo.customjson ? 'true' : 'false'"
+                      fields:
+                        header.add_json:
+                          type: list
+                          label: Paste custom JSON-ld Microdata
+                          fields:
+                            .custom_json:
+                              type: textarea
+                              label: Or paste here your own JSON-ld Microdata     
+                              placeholder: (do not include the script tags)           
                 facebookfields:
                   type: tab
                   title: Facebook 

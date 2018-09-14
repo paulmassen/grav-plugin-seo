@@ -105,6 +105,16 @@ form:
                 0: PLUGIN_ADMIN.DISABLED
               validate:
                 type: bool
+            customjson:
+              type: toggle
+              label: Enable Custom Json Microdata
+              highlight: 1
+              default: 1
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
         mdcolumn2:
           type: column
           fields:
