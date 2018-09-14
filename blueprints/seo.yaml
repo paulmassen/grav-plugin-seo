@@ -244,13 +244,10 @@ form:
                                   label: PLUGIN_SEO.MUSICEVENT_PRICE
                                   field_classes: togglemusicevent
                                 .musicevent_offers_priceCurrency:
-                                  type: select
+                                  type: text
                                   label: PLUGIN_SEO.PRICE_CURRENCY
                                   field_classes: togglemusicevent
-                                  options:
-                                    GBP: GBP		
-                                    EUR: EUR	
-                                    USD: USD	
+                                  placeholder: USD
     
                                 .musicevent_performer:
                                   type: list
@@ -745,12 +742,9 @@ form:
                                     label: Offer is valid until (optional)
                                    
                                 .offer_priceCurrency:
-                                    type: select
                                     label: PLUGIN_SEO.PRICE_CURRENCY
-                                    options:
-                                      GBP: GBP		
-                                      EUR: EUR	
-                                      USD: USD	
+                                    type: text
+                                    placeholder: USD
                              
                            
                     header.restaurant_condition:
