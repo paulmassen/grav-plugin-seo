@@ -406,7 +406,7 @@ class seoPlugin extends Plugin
                   'offers' => [
                       '@type' => 'Offer',
                       'price' => @$event['event_offers_price'],
-                      'priceCurrency' => @$event['event_offers_priceCurrency'],
+                      'priceCurrency' => @$event['event_offers_currency'],
                       'url' => @$event['event_offers_url'], 
                       ],
                   'startDate' => @date("c", strtotime($event['event_startDate'])),
