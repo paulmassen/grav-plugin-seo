@@ -478,7 +478,7 @@ form:
                             header.eventenabled:
                               type: toggle
                               highlight: 1
-                              label: PLUGIN_SEO.ENABLEORGA
+                              label: PLUGIN_SEO.ENABLEEVENT
                               default: 0
                               options:
                                   1: PLUGIN_ADMIN.YES
