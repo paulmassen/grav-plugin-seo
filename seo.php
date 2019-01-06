@@ -604,6 +604,9 @@ class seoPlugin extends Plugin
             };
             
              };
+         }
+         if (isset($page->header()->product['addoffer'])){
+             
              $offers = $page->header()->product['addoffer'];
              foreach ($offers as $key => $value){
                  $offer[$key] = [
@@ -615,9 +618,9 @@ class seoPlugin extends Plugin
                       'availability' => @$offers[$key]['offer_availability'],
                      ];
              };
-    
-                
-            }
+         }
+         else { $offer = ''; }       
+            
               $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Product',
