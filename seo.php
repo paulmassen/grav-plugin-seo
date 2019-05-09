@@ -177,6 +177,7 @@ class seoPlugin extends Plugin
         $cleanedMarkdown = $this->cleanMarkdown($page->content());
        
         if (isset($page->header()->googletitle)) {
+            $page->header()->displaytitle = $page->header()->title;  // Keep original title available for template use
             $page->header()->title = $page->header()->googletitle;
         };
         if (isset($page->header()->googledesc)) {
