@@ -54,7 +54,6 @@ PLUGIN_SEO:
   INSTOCK: "In Stock"
   DISCONTINUED: "Stopgezet"
   INSTOREONLY: "In Store Only"
-  OUTOFSTOCK: "Niet in Stock"
   SOLDOUT: "Uitverkocht"
   ONLINEONLY: "Alleen online"
   TICKET_URL: "Ticket URL"
