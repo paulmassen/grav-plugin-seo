@@ -80,7 +80,7 @@ This will generate the following Json-ld between script tags
 In order to use the plugin with a custom template, there is two requirements, you must:
 - Include in your base template the metadata template that comes shipped with antimatter, such as: `{% include 'partials/metadata.html.twig' %}`
 - For Microdatas, you must use Grav's asset manager. If your template has a line with `{{ assets.js() }}`, it will works.
-
+- The SEO tab extends the default blueprint, if it does not appear, make sure your blueprint extends the default blueprint with `extends@: default`
 #### Feedback needed
 
 As this plugin is in its early stage, please do not hesitate to leave a feedback, to suggest modification or features.

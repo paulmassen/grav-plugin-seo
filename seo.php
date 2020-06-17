@@ -7,10 +7,10 @@
  * Licensed under the MIT license, see LICENSE.
  *
  * @package     SEO
- * @version     2.3.5
+ * @version     3.0
  * @link        <https://github.com/paulmassen/grav-plugin-seo>
  * @author      Paul Massendari <paul@massendari.com>
- * @copyright   2018, Paul Massendari
+ * @copyright   2020, Paul Massendari
  * @license     <http://opensource.org/licenses/MIT>        MIT
  */
 
