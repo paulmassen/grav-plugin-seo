@@ -16,7 +16,7 @@
 
 ## About
 
-`Seo` is an user-friendly plugin for [GetGrav.org](http://getgrav.org) used to manage all your metatags in order to customize your pages appearance in Search Engine Results or social networks. The plugin also allows the generation of JSON-LD Microdata.
+`Seo` is a user-friendly plugin for [GetGrav.org](http://getgrav.org) used to manage all your metatags to customize the appearance of your page in Search Engine Results or social networks. The plugin also allows the generation of JSON-LD Microdata.
 
 ## Features
 
@@ -41,7 +41,7 @@ And on Facebook
 
 You can also generate Schema.org JSON Microdata from the admin.
 ![Article Microdata](https://raw.githubusercontent.com/paulmassen/grav-plugin-seo/master/assets/article_json.png)
-This will generate the following Json-ld between script tags
+This will generate the following JSON-LD between script tags
 ```JSON
 {
     "@context": "http://schema.org",
@@ -77,13 +77,13 @@ This will generate the following Json-ld between script tags
 
 ## Requirements
 
-In order to use the plugin with a custom template, there is two requirements, you must:
+To use the plugin with a custom template, there are two requirements, you must:
 - Include in your base template the metadata template that comes shipped with antimatter, such as: `{% include 'partials/metadata.html.twig' %}`
-- For Microdatas, you must use Grav's asset manager. If your template has a line with `{{ assets.js() }}`, it will works.
+- For Microdata, you must use Grav's asset manager. If your template has a line with `{{ assets.js() }}`, it will work.
 - The SEO tab extends the default blueprint, if it does not appear, make sure your blueprint extends the default blueprint with `extends@: default`
 #### Feedback needed
 
-As this plugin is in its early stage, please do not hesitate to leave a feedback, to suggest modification or features.
+As this plugin is in its early stage, please do not hesitate to leave feedback, to suggest modification or features.
 
 ### TO-DO
 
@@ -101,23 +101,23 @@ As this plugin is in its early stage, please do not hesitate to leave a feedback
 ### Updating from Previous releases
 
 As there is a lot of changes from previous releases, be careful when updating, as your previously set values might be lost.
-The previous version required to modify your base template, whereas the 2.0+ version of the plugin now adds metadata and microdata automatically to your existing Installation.
+The previous version is required to modify your base template, whereas the 2.0+ version of the plugin now adds metadata and microdata automatically to your existing Installation.
 
 Installing or updating the `SEO` plugin can be done in one of three ways. Using the GPM (Grav Package Manager) installation update method (i.e. `bin/gpm install seo`) or manual install by downloading [this plugin](https://github.com/paulmassen/grav-plugin-seo) and extracting all plugin files to
 
     /your/site/grav/user/plugins/seo
 
-Once installed, the plugin will automatically set the metadata and append the json-ld microdatas to your document.
+Once installed, the plugin will automatically set the metadata and append the JSON-LD microdata to your document.
 If you plan on using the Twitter feature, make sure to fill your user ID in tab Plugins > SEO > Twitter ID
 
 ## Configuration
 
-Configuration is done through the plugin configuration page, accessible by clicking on Plugins > Seo. On this page, you can choose to enable the microdata fields you will use.
-Make sure to fill the Facebook ID field as well as the Twitter ID field, in order for your meta tags to be validated.
+The configuration is done through the plugin configuration page, accessible by clicking on Plugins > Seo. On this page, you can choose to enable the microdata fields you will use.
+Make sure to fill the Facebook ID field as well as the Twitter ID field, for your meta tags to be validated.
 
 ## Usage
 
-The `SEO` plugin appends a SEO tab on every pages where you can manage and define how your website will look on search engine results and on social networks. 
+The `SEO` plugin appends an SEO tab on every page where you can manage and define how your website will look on search engine results and social networks. 
 
 
 ## Contributing
