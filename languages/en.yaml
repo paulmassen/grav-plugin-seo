@@ -4,6 +4,7 @@ PLUGIN_SEO:
   PLUGIN_STATUS: "Plugin status"
   STATUS_HELP: "Set to false to disable this plugin completely."
   GOOGLE_DESC: "Override Description"
+  GOOGLE_DESC_ALL: "Override all descriptions with this one"
   GOOGLE_TITLE: "Override Title"
   GOOGLE_PREVIEWDESC: "Here is a preview of your page on Google results"
   TWITTER_ENABLE: "Activate twitter card"

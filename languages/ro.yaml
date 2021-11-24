@@ -4,6 +4,7 @@ PLUGIN_SEO:
   PLUGIN_STATUS: "Status modul"
   STATUS_HELP: "Setează ”fals” pentru a dezactiva acest modul complet."
   GOOGLE_DESC: "Adaugă descrierea pentru Google"
+  GOOGLE_DESC_ALL: "Override all descriptions with this one"
   GOOGLE_TITLE: "Setează titlul pentru Google"
   GOOGLE_PREVIEWDESC: "Acesta este previzualizarea paginii așa cum apare în rezultatele Google"
   TWITTER_ENABLE: "Activează cardul Twitter"
