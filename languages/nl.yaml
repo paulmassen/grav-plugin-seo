@@ -4,7 +4,7 @@ PLUGIN_SEO:
   PLUGIN_STATUS: "Plugin status"
   STATUS_HELP: "Zet op false om deze plugin volledig stop te zetten."
   GOOGLE_DESC: "Overschrijf omschrijving"
-  GOOGLE_DESC_ALL: "Overschrijf ale omschrijvings met dese"
+  GOOGLE_DESC_ALL: "Overschrijf ale andere lege omschrijvings met dese"
   GOOGLE_TITLE: "Overschrijf titel"
   GOOGLE_PREVIEWDESC: "Hier is een preview van jouw pagina in de google resultaten."
   TWITTER_ENABLE: "Activeer twitter kaart"
