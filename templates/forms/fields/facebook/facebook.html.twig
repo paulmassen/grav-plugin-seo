@@ -22,8 +22,13 @@
     <img class="reference-thumb" id="liveimg" src="{% if context.header.facebookimg %}{{base_url_absolute}}{{context.header.facebookimg }} {% else %} {{context.media.images|first.url }}{% endif %}" />
     <div class="reference-content">
       <div class="reference-title" id="facebooktargtitle">{{ context.header.facebooktitle|default(context.header.title ~ " | " ~ site.title )}}</div>
-      <div class="reference-subtitle" id="facebooktargdesc">{{ context.header.facebookdesc|default(context.summary|striptags) }}</div>
+      <div class="reference-subtitle" id="facebooktargdesc">
+        {% if context.header.facebookdesc %}{{ context.header.facebookdesc }}
+        {% elseif context.header.googledesc and context.header.googledescall == "1" %}{{ context.header.googledesc }}
+      {% else %}{{ context.summary|striptags|truncate(300) }}{% endif %}
+      </div>
       <div class="reference-font">{{uri.host|replace({"http://": "","/":" › " }) }}</div>
+      <textarea id="fbsummary">{{ context.summary|striptags|truncate(300) }}</textarea>
     </div>
   </div>
   <div class="social">
@@ -52,8 +57,8 @@
   border-radius:3px;
   margin: auto;
   margin-bottom:10px;
-  padding: 12px; 
-  
+  padding: 12px;
+
   box-shadow: 0 0 5px rgba(0, 0, 0, .30); /* Not original, just a test */
 }
 
@@ -65,7 +70,7 @@
   /*display:block;*/
   float:left;
   margin-right:8px;
-  
+
   width:40px;
   height:40px;
 }
@@ -77,7 +82,7 @@
   line-height: 1.38;
   color: #365899;
   text-decoration:none;
-  
+
   margin-bottom:2px;
 }
 
@@ -145,14 +150,14 @@
   font-size: 18px;
   font-weight: 500;
   line-height: 22px;
-  
+
   margin-bottom:5px;
 }
 
 .reference-subtitle {
   font-family: Helvetica;
   font-size:12px;
-  line-height: 16px; 
+  line-height: 16px;
 }
 
 .reference-font {
@@ -162,7 +167,7 @@
   line-height: 11px;
   text-transform: uppercase;
 
-  padding-top:9px; 
+  padding-top:9px;
 }
 
 .social {
@@ -174,10 +179,10 @@
   font-size: 12px;
   font-weight:bold;
   line-height:14px;
-  
+
   border-top:1px solid #e5e5e5;
   padding-top:4px;
-  
+
 }
 
 .social-buttons span {
@@ -193,37 +198,48 @@
 
 .social-buttons span i {
   padding-right:4px;
-}</style>
+}
+#fbsummary {
+  display:none;
+}
+</style>
 <script type="text/javascript">
 $('#facebooktitle').keyup(function(){
-  var keyed = $(this).val();$("#facebooktargtitle").html(keyed); 
-  
-});$('#facebookdesc').keyup(function(){var keyed = $(this).val();$("#facebooktargdesc").html(keyed);
-   $("#fbcount").text("Characters left: " + (300 - $(this).val().length));
+  var keyed = $(this).val();$("#facebooktargtitle").html(keyed);
 });
+
+$('#facebookdesc').keyup(function(){
+  var keyed = $(this).val();
+  if (keyed.length > 0) {
+    $("#facebooktargdesc").html(keyed);
+    $("#fbcount").text("Characters left: " + (300 - $(this).val().length));
+  } else {
+    var defaultDesc = $("#toggle_header\\.googledescall1").is(':checked') ? $("#desc").val() : $("#fbsummary").val();
+    $("#facebooktargdesc").html(defaultDesc);
+  }
+});
+
 $('#fbimgselect').on('click', function() {
    $('.js__media-element').on('click', function() {
       var valueselect = $(this).attr("data-file-url") ;
       var newimg = "{{ base_url_absolute }}" + valueselect ;
       $('#liveimg').attr("src", newimg);
    });
-  
-})
-
+});
 </script>
 <script>
 function validatepage() {
-   var protocol = location.protocol;
- var slashes = protocol.concat("//");
- var host = slashes.concat(window.location.hostname);
- var structuredurl = "https://search.google.com/structured-data/testing-tool/u/0/#url="
- var targeturl = $("[title|='{{ 'PLUGIN_ADMIN.PREVIEW'|tu }}']").attr("href");
- var strippedurl = targeturl.replace("/admin/preview","");
- var validateurl = structuredurl + encodeURIComponent(host + strippedurl);
-   window.open(validateurl, '_blank')
+  var protocol = location.protocol;
+  var slashes = protocol.concat("//");
+  var host = slashes.concat(window.location.hostname);
+  var structuredurl = "https://search.google.com/structured-data/testing-tool/u/0/#url="
+  var targeturl = $("[title|='{{ 'PLUGIN_ADMIN.PREVIEW'|tu }}']").attr("href");
+  var strippedurl = targeturl.replace("/admin/preview","");
+  var validateurl = structuredurl + encodeURIComponent(host + strippedurl);
+  window.open(validateurl, '_blank')
 }
-
 </script>
+
     {% if field.text %}
     {% endif %}
 
