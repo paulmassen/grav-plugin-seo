@@ -17,7 +17,7 @@
         </h2>
         <p style="padding:0px;" id="twittdesc">
           {% if context.header.twitterdescription %}{{ context.header.twitterdescription }}
-          {% elseif context.header.googledesc and context.header.googledescall == "1" %}{{ context.header.googledesc }}
+          {% elseif context.header.googledesc and context.header.googledescall == "1" %}{{ context.header.googledesc|truncate(140) }}
           {% else %}{{ context.summary|striptags|truncate(140) }}{% endif %}
         </p>
         <textarea id="summary">{{ context.summary|striptags|truncate(140) }}</textarea>
@@ -38,7 +38,7 @@
         $("#twittdesc").html(keyed);
         $("#twittcount").text("Characters left: " + (140 - $(this).val().length));
       } else {
-        var defaultDesc = $("#toggle_header\\.googledescall1").is(':checked') ? $("#desc").val() : $("#summary").val();
+        var defaultDesc = $("#toggle_header\\.googledescall1").is(':checked') ? $("#desc").val().substring(0,140) : $("#summary").val();
         $("#twittdesc").html(defaultDesc);
       }
     });

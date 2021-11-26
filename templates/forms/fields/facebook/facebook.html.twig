@@ -24,7 +24,7 @@
       <div class="reference-title" id="facebooktargtitle">{{ context.header.facebooktitle|default(context.header.title ~ " | " ~ site.title )}}</div>
       <div class="reference-subtitle" id="facebooktargdesc">
         {% if context.header.facebookdesc %}{{ context.header.facebookdesc }}
-        {% elseif context.header.googledesc and context.header.googledescall == "1" %}{{ context.header.googledesc }}
+        {% elseif context.header.googledesc and context.header.googledescall == "1" %}{{ context.header.googledesc|truncate(300) }}
       {% else %}{{ context.summary|striptags|truncate(300) }}{% endif %}
       </div>
       <div class="reference-font">{{uri.host|replace({"http://": "","/":" › " }) }}</div>
@@ -214,7 +214,7 @@ $('#facebookdesc').keyup(function(){
     $("#facebooktargdesc").html(keyed);
     $("#fbcount").text("Characters left: " + (300 - $(this).val().length));
   } else {
-    var defaultDesc = $("#toggle_header\\.googledescall1").is(':checked') ? $("#desc").val() : $("#fbsummary").val();
+    var defaultDesc = $("#toggle_header\\.googledescall1").is(':checked') ? $("#desc").val().substring(0,300) : $("#fbsummary").val();
     $("#facebooktargdesc").html(defaultDesc);
   }
 });

@@ -228,7 +228,7 @@ class seoPlugin extends Plugin
             } else if ($page->header()->googledescall == 1 && isset($page->header()->googledesc)) {
                 $meta['twitter:card']['name']      = 'twitter:card';
                 $meta['twitter:card']['property']  = 'twitter:card';
-                $meta['twitter:card']['content']   = $page->header()->googledesc;
+                $meta['twitter:card']['content']   = substr($page->header()->googledesc,0,140);
             } else {
                 $meta['twitter:description']['name']      = 'twitter:description';
                 $meta['twitter:description']['property']  = 'twitter:description';
@@ -279,8 +279,8 @@ class seoPlugin extends Plugin
                 $meta['og:description']['property'] = 'og:description';
                 $meta['og:description']['content'] =  substr($this->cleanMarkdown($page->header()->facebookdesc),0,320);
             } else if ($page->header()->googledescall == 1 && isset($page->header()->googledesc)) {
-              $meta['og:description']['property'] = 'og:description';
-              $meta['og:description']['content'] =  $page->header()->googledesc;
+                $meta['og:description']['property'] = 'og:description';
+                $meta['og:description']['content'] =  substr($page->header()->googledesc,0,320);
             } else {
                 $meta['og:description']['property'] = 'og:description';
                 $meta['og:description']['content'] =  $cleanedMarkdown;
