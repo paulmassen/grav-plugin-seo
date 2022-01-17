@@ -16,7 +16,7 @@ form:
               fields:
                 googlefields:
                   type: tab
-                  title: Google 
+                  title: Google
                   fields:
                     header.googletitle:
                       type: text
@@ -26,13 +26,23 @@ form:
                       type: textarea
                       label: PLUGIN_SEO.GOOGLE_DESC
                       id: desc
-                    
+                    header.googledescall:
+                      type: toggle
+                      label: PLUGIN_SEO.GOOGLE_DESC_ALL
+                      highlight: 1
+                      default: 0
+                      options:
+                          1: PLUGIN_ADMIN.YES
+                          0: PLUGIN_ADMIN.NO
+                      validate:
+                          type: bool
+
                     header.googlepreview:
                       type: google
                       label: PLUGIN_SEO.GOOGLE_PREVIEWDESC
                 twitterfields:
                   type: tab
-                  title: Twitter 
+                  title: Twitter
                   fields:
                     columns:
                       type: columns
@@ -72,7 +82,7 @@ form:
                               label: PLUGIN_SEO.TWITTER_SHAREIMG
                               preview_images: true
                               id: twittimgselect
-                            
+
                             header.twittertitle:
                               type: text
                               label: PLUGIN_SEO.TWITTER_TITLE
@@ -82,21 +92,21 @@ form:
                               style: vertical
                               label: PLUGIN_SEO.TWITTER_DESCRIPTION
                               id: twitterdescription
-                            
+
 
                             # .... subfields
-                    
+
                         column2:
                           type: column
                           fields:
                             header.twitterlabel:
                               type: section
                               text: PLUGIN_SEO.TWITTER_PREVIEWDESC
-                    
+
                             header.twitterpreview:
                               type: twitter
                             # .... other subfields
-                    
+
                 jsonfield:
                   type: tab
                   title: Microdata
@@ -231,7 +241,7 @@ form:
                                     'http://schema.org/SoldOut': PLUGIN_SEO.SOLDOUT
                                     'http://schema.org/OnlineOnly': PLUGIN_SEO.ONLINEONLY
                                   field_classes: togglemusicevent
-                                    
+
                                 .musicevent_offers_url:
                                   type: text
                                   label: PLUGIN_SEO.TICKET_URL
@@ -248,7 +258,7 @@ form:
                                   label: PLUGIN_SEO.PRICE_CURRENCY
                                   field_classes: togglemusicevent
                                   placeholder: USD
-    
+
                                 .musicevent_performer:
                                   type: list
                                   label: PLUGIN_SEO.ADD_PERFORMER
@@ -269,7 +279,7 @@ form:
                                       type: text
                                       label: Same as
                                       placeholder: 'http://en.wikipedia.org/wiki/Artist_Page'
-                                .musicevent_startdate: 
+                                .musicevent_startdate:
                                   type: datetime
                                   label: PLUGIN_SEO.MUSICEVENT_DATE_START
                                   field_classes: togglemusicevent
@@ -357,7 +367,7 @@ form:
                               label: Link to official website of the organization
                             header.orga.logo:
                               type: text
-                              label: Url to Organization Logo 
+                              label: Url to Organization Logo
                               placeholder: 'include http://'
                             header.orgaratingenabled:
                               type: toggle
@@ -467,7 +477,7 @@ form:
                       type: conditional
                       condition: "config.plugins.seo.event ? 'true' : 'false'"
                       fields:
-                        
+
                         header.eventfieldset:
                           type: fieldset
                           title: Event Microdata
@@ -498,7 +508,7 @@ form:
                                   field_classes: toggleevent
                                 .event_description:
                                   type: text
-                                  label: PLUGIN_SEO.EVENT_DESCRIPTION 
+                                  label: PLUGIN_SEO.EVENT_DESCRIPTION
                                   field_classes: toggleevent
                                 .event_startDate:
                                   type: datetime
@@ -541,7 +551,7 @@ form:
                       fields:
                         header.personfieldset:
                           type: fieldset
-                          title: Person Microdata 
+                          title: Person Microdata
                           collapsed: true
                           icon: address-card-o
                           collapsible: true
@@ -573,11 +583,11 @@ form:
                                   field_classes: toggleperson
                                 .person_address_addressLocality:
                                   type: text
-                                  label: PLUGIN_SEO.PERSON_ADDRESS_LOCALITY 
+                                  label: PLUGIN_SEO.PERSON_ADDRESS_LOCALITY
                                   field_classes: toggleperson
                                 .person_address_addressRegion:
                                   type: text
-                                  label: PLUGIN_SEO.PERSON_ADDRESS_REGION  
+                                  label: PLUGIN_SEO.PERSON_ADDRESS_REGION
                                   field_classes: toggleperson
                     header.musicalbum_condition:
                       type: conditional
@@ -585,7 +595,7 @@ form:
                       fields:
                         header.musicalbumfieldset:
                           type: fieldset
-                          title: Music Album Microdata 
+                          title: Music Album Microdata
                           icon: headphones
                           collapsed: true
                           collapsible: true
@@ -622,9 +632,9 @@ form:
                                   field_classes: togglemusicalbum
                                 .musicalbum_url:
                                   type: text
-                                  label: PLUGIN_SEO.MUSICALBUM_URL 
+                                  label: PLUGIN_SEO.MUSICALBUM_URL
                                   field_classes: togglemusicalbum
-                                .musicalbum_genre: 
+                                .musicalbum_genre:
                                   type: text
                                   label: PLUGIN_SEO.MUSICALBUM_GENRE
                                   field_classes: togglemusicalbum
@@ -633,14 +643,14 @@ form:
                                   label: PLUGIN_SEO.MUSICALBUM_TRACK_NUMBER
                                   field_classes: togglemusicalbum
                                 .musicalbum_track:
-                                  type: list   
+                                  type: list
                                   field_classes: togglemusicalbum
                                   label: PLUGIN_SEO.MUSICALBUM_ADD_TRACK
                                   default:
                                   fields:
                                     .position:
                                       type: text
-                                      label: PLUGIN_SEO.MUSICALBUM_TRACK_POSITION 
+                                      label: PLUGIN_SEO.MUSICALBUM_TRACK_POSITION
                                     .name:
                                       type: text
                                       label: PLUGIN_SEO.MUSICALBUM_TRACK_NAME
@@ -657,7 +667,7 @@ form:
                         header.productfieldset:
                           type: fieldset
                           icon: shopping-bag
-                          title: Product Microdata 
+                          title: Product Microdata
                           collapsed: true
                           collapsible: true
                           fields:
@@ -670,10 +680,10 @@ form:
                                   1: PLUGIN_ADMIN.YES
                                   0: PLUGIN_ADMIN.NO
                               validate:
-                                  type: bool      
+                                  type: bool
                             header.product.name:
                               type: text
-                              label: Name of the Product 
+                              label: Name of the Product
                               field_classes: togglerestaurant
                             header.product.category:
                               type: text
@@ -732,7 +742,7 @@ form:
                                 .offer_price:
                                   type: text
                                   size: small
-                                  label: Price of the product 
+                                  label: Price of the product
                                   placeholder: "e.g: 19.99 (no currency symbol)"
                                 .offer_validFrom:
                                     type: datetime
@@ -740,13 +750,13 @@ form:
                                 .offer_validUntil:
                                     type: datetime
                                     label: Offer is valid until (optional)
-                                   
+
                                 .offer_priceCurrency:
                                     label: PLUGIN_SEO.PRICE_CURRENCY
                                     type: text
                                     placeholder: USD
-                             
-                           
+
+
                     header.restaurant_condition:
                       type: conditional
                       condition: "config.plugins.seo.restaurant ? 'true' : 'false'"
@@ -754,7 +764,7 @@ form:
                         header.restaurantfieldset:
                           type: fieldset
                           icon: cutlery
-                          title: Restaurant Microdata 
+                          title: Restaurant Microdata
                           collapsed: true
                           collapsible: true
                           fields:
@@ -767,7 +777,7 @@ form:
                                   1: PLUGIN_ADMIN.YES
                                   0: PLUGIN_ADMIN.NO
                               validate:
-                                  type: bool      
+                                  type: bool
                             header.restaurant.name:
                               type: text
                               label: PLUGIN_SEO.RESTAURANT_NAME
@@ -831,11 +841,11 @@ form:
                           fields:
                             .custom_json:
                               type: textarea
-                              label: Or paste here your own JSON-ld Microdata     
-                              placeholder: (do not include the script tags)           
+                              label: Or paste here your own JSON-ld Microdata
+                              placeholder: (do not include the script tags)
                 facebookfields:
                   type: tab
-                  title: Facebook 
+                  title: Facebook
                   fields:
                     columns2:
                       type: columns
@@ -843,7 +853,7 @@ form:
                         column3:
                           type: column
                           fields:
-                            
+
                             header.facebookenable:
                               type: toggle
                               label: PLUGIN_SEO.FACEBOOK_ENABLE
@@ -855,13 +865,13 @@ form:
                                 0: PLUGIN_ADMIN.NO
                               validate:
                                 type: bool
-                             
+
                             header.facebooktitle:
                               type: text
                               label: PLUGIN_SEO.FACEBOOK_TITLE
                               id: facebooktitle
                               placeholder: Will default to page title if left empty
-                              
+
                             header.facebookdesc:
                               type: textarea
                               style: vertical
@@ -878,7 +888,7 @@ form:
                               id: fbimgselect
                               label: PLUGIN_SEO.FACEBOOK_SHAREIMG
                              # .... subfields
-                            
+
                         column4:
                           type: column
                           fields:
@@ -887,17 +897,17 @@ form:
                             header.facebookpreview:
                               type: facebook
                               label: PLUGIN_SEO.FACEBOOK_PREVIEWDESC
-                            
+
 #                            conditional_new_entries:
 #                             type: conditional
 #                              condition: "header.facebookenable ? 'false' : 'true'"
 #                              classes: overlay bottom
-#                      
+#
 #                              fields:
 #                                  field-a:
 #                                      label: New Field A
 #                                      type: text
-#                      
+#
 #                                  field-b:
 #                                      label: New Field B
 #                                      type: text
