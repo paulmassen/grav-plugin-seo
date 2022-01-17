@@ -52,7 +52,6 @@ PLUGIN_SEO:
   INSTOCK: "În stoc"
   DISCONTINUED: "Nu mai este disponibil"
   INSTOREONLY: "Doar în magazin"
-  OUTOFSTOCK: "Nu este în stoc"
   SOLDOUT: "Toate copiile vândute"
   ONLINEONLY: "Doar pe internet"
   TICKET_URL: "Link pentru bilete"
