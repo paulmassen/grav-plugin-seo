@@ -66,7 +66,7 @@ class seoPlugin extends Plugin
             $value = $this->array_filter_recursive($value);
         }
     }
- 
+
         return $array;
     }
     private function seoGetimage($imageurl){
@@ -81,7 +81,7 @@ class seoPlugin extends Plugin
         $keyvalue = $keyimages[$imgkey];
         //$imgkey = array_shift($imgarray);
         $imgobject = $imgarray[$keyvalue];
-         
+
         $im = getimagesize($imgobject->path());
         $imagedata = [
         'width' => "$im[0]",
@@ -110,15 +110,15 @@ class seoPlugin extends Plugin
             '/(\*|\+|-)(.*)/'                        => '\2',  // ul lists
             '/\n[0-9]+\.(.*)/'                       => '\2',  // ol lists
             '/(&gt;|\>)+(.*)/'                       => '\2',  // blockquotes
-            
-            
+
+
             );
         $text=str_replace(".\n", '.', $text);
         $text=str_replace("\n", '. ', $text);
         $text=str_replace('"', '', $text);
         $text=str_replace('<p', '', $text);
         $text=str_replace('</p>', '', $text);
-        
+
         foreach ($rules as $regex => $rep) {
             if (is_callable ( $rep)) {
                $text = preg_replace_callback ($regex, $rep, $text);
@@ -126,12 +126,12 @@ class seoPlugin extends Plugin
                 $text = preg_replace ($regex, $rep, $text);
             }
         }
-        
-        
+
+
         return substr($text,0,320);
         // htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
     }
-    
+
 
     /**
      * Initialize configuration
@@ -156,7 +156,7 @@ class seoPlugin extends Plugin
         }
 
         // Register events
-  
+
         $this->enable($events);
     }
     public function onPageInitialized()
@@ -175,28 +175,29 @@ class seoPlugin extends Plugin
         $microdata = [];
         $meta = $page->metadata(null);
         $cleanedMarkdown = $this->cleanMarkdown($page->content());
-       
+
         if (isset($page->header()->googletitle)) {
             $page->header()->displaytitle = $page->header()->title;  // Keep original title available for template use
             $page->header()->title = $page->header()->googletitle;
         };
+        if (isset($page->header()->googlekeywords)) {
+            $meta['keywords']['name']      = 'keywords';
+            $meta['keywords']['content']   = $page->header()->googlekeywords;
+        }
+        $meta['description']['name']      = 'description';
         if (isset($page->header()->googledesc)) {
-            
-            $meta['description']['name']      = 'description';
             $meta['description']['content']   = $page->header()->googledesc;
-        
         } else {
-            $meta['description']['name']      = 'description';
             $meta['description']['content']   = $cleanedMarkdown;
         };
-        
+
              /**
              * Set Twitter Metatags
              */
 
         if (property_exists($page->header(),'twitterenable')) {
         if ($page->header()->twitterenable == 'true') {
-        
+
             if (isset($config['twitterid'])) {
                 $meta['twitter:site']['name']      = 'twitter:site';
                 $meta['twitter:site']['property']  = 'twitter:site';
@@ -211,7 +212,7 @@ class seoPlugin extends Plugin
                 $meta['twitter:card']['property']  = 'twitter:card';
                 $meta['twitter:card']['content']   = 'summary_large_image';
             };
-            
+
             if (isset($page->header()->twittertitle)) {
                 $meta['twitter:title']['name']      = 'twitter:title';
                 $meta['twitter:title']['property']  = 'twitter:title';
@@ -237,7 +238,7 @@ class seoPlugin extends Plugin
                 $imagedata = $this->seoGetimage($twittershareimg);
                 $meta['twitter:image']['content']   = $this->grav['uri']->base() . $imagedata['url'];
             } elseif(!empty($page->media()->images())) {
-                
+
                 $meta['twitter:image']['name']      = 'twitter:image';
                 $meta['twitter:image']['property']  = 'twitter:image';
                 $imgobject = $page->media()->images();
@@ -253,7 +254,7 @@ class seoPlugin extends Plugin
         }
          if (property_exists($page->header(),'facebookenable')){
          if ($page->header()->facebookenable == 'true') {
-         
+
                 //$meta['og:sitename']['name']        = 'og:sitename';
                 $meta['og:site_name']['property']    = 'og:site_name';
                 $meta['og:site_name']['content']     = $this->config->get('site.title');
@@ -306,9 +307,9 @@ class seoPlugin extends Plugin
                 $meta['twitter:image']['content']   = $this->grav['uri']->base() . $firstimage;
                 $meta['og:image']['content'] =  $this->grav['uri']->base() . $firstimage;
             }
-       
+
          }
-             
+
          }
         // Add metadata
       $page->metadata($meta);
@@ -324,32 +325,32 @@ class seoPlugin extends Plugin
               $performerarray[] = [
                   '@type' => @$artist['performer_type'],
                   'name' => @$artist['name'],
-                  'sameAs' => @$artist['sameAs'], 
+                  'sameAs' => @$artist['sameAs'],
                   ];
-               
+
               };
               }
               if (isset($event['musicevent_workPerformed'])){
               foreach ($event['musicevent_workPerformed'] as $work){
               $workarray[] = [
                   'name' => @$work['name'],
-                  'sameAs' => @$work['sameAs'], 
+                  'sameAs' => @$work['sameAs'],
                   ];
-               
+
               }
            }
             if (isset($event['musicevent_image'])){
             $imageurl = $event['musicevent_image'];
             $imagedata = $this->seoGetimage($imageurl);
             $musiceventimage = [
-                 
+
                       '@type' => 'ImageObject',
                       'width' => $imagedata['width'],
                       'height' => $imagedata['height'],
                       'url' => $this->grav['uri']->base() .  $imagedata['url'],
-                      
+
                       ];
-                
+
             }
               $microdata[] = [
                   '@context' => 'http://schema.org',
@@ -363,35 +364,35 @@ class seoPlugin extends Plugin
                   'description' => @$event['musicevent_description'],
                   'url' => @$event['musicevent_url'],
                   'performer' => @$performerarray,
-                  'workPerformed' => @$workarray, 
+                  'workPerformed' => @$workarray,
                   'image' => @$musiceventimage,
                   'offers' => [
                       '@type' => 'Offer',
                       'price' => @$event['musicevent_offers_price'],
                       'priceCurrency' => @$event['musicevent_offers_priceCurrency'],
-                      'url' => @$event['musicevent_offers_url'], 
+                      'url' => @$event['musicevent_offers_url'],
                       ],
                   'startDate' => @date("c", strtotime($event['musicevent_startdate'])),
                   'endDate' => @date("c", strtotime($event['musicevent_enddate'])),
-                  
+
                   ];
-              
-              
+
+
             }
             }
-       }   
+       }
        }
        if (property_exists($page->header(),'eventenabled')){
        if ($page->header()->eventenabled and $this->config['plugins']['seo']['event']) {
            $eventsarray = @$page->header()->addevent;
-           
+
            if (count($eventsarray) > 0) {
            foreach ($eventsarray as $event) {
               $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Event',
                   'name' => @$event['event_name'],
-                  
+
                   'location' => [
                       '@type' => 'Place',
                       'name' => @$event['event_location_name'],
@@ -408,18 +409,18 @@ class seoPlugin extends Plugin
                       '@type' => 'Offer',
                       'price' => @$event['event_offers_price'],
                       'priceCurrency' => @$event['event_offers_currency'],
-                      'url' => @$event['event_offers_url'], 
+                      'url' => @$event['event_offers_url'],
                       ],
                   'startDate' => @date("c", strtotime($event['event_startDate'])),
                   'endDate' => @date("c", strtotime($event['event_endDate'])),
                   'description' => @$event['event_description'],
-                  
+
                   ];
-              
-              
+
+
             }
            }
-           
+
        }
        }
      if (property_exists($page->header(),'personenabled')){
@@ -431,21 +432,21 @@ class seoPlugin extends Plugin
                   '@context' => 'http://schema.org',
                   '@type' => 'Person',
                   'name' => @$person['person_name'],
-                  
+
                   'address' => [
                       '@type' => 'PostalAddress',
                       'addressLocality' => @$person['person_address_addressLocality'],
                       'addressRegion' => @$person['person_address_addressRegion'],
                       ],
                   'jobTitle' => @$person['person_jobTitle'],
-                  
+
                   ];
-            
+
 
        }
-                
+
             }
-            
+
         }
         }
         if (property_exists($page->header(),'orgaenabled')){
@@ -455,22 +456,22 @@ class seoPlugin extends Plugin
                   $founderarray[] = [
                       '@type' => 'Person',
                       'name' => @$founder['name'],
-                    ];    
+                    ];
                  }
         }
         if (isset($page->header()->orga['similar'])){
             foreach ($page->header()->orga['similar'] as $similar){
-                      $similararray[] = $similar['sameas'];    
+                      $similararray[] = $similar['sameas'];
                      }
         }
         if (isset($page->header()->orga['areaserved'])){
             foreach ($page->header()->orga['areaserved'] as $areaserved){
-                      $areaservedarray[] = $areaserved['area']; 
+                      $areaservedarray[] = $areaserved['area'];
                      }
-        }   
+        }
         if (isset($page->header()->orga['openingHours'])){
             foreach ($page->header()->orga['openingHours'] as $hours){
-                      $openingHours[] = $hours['entry'];    
+                      $openingHours[] = $hours['entry'];
                      }
         }
         if (isset($page->header()->orga['offercatalog'])){
@@ -513,9 +514,9 @@ class seoPlugin extends Plugin
                       'ratingValue' => @$page->header()->orga['ratingValue'],
                       'reviewCount' => @$page->header()->orga['reviewCount'],
                       ];
-        } 
+        }
 
-        } 
+        }
         $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Organization',
@@ -525,7 +526,7 @@ class seoPlugin extends Plugin
                   'vatid' => @$page->header()->orga['vatid'],
                   'areaServed' => @$areaservedarray,
                   'description' => @$page->header()->orga['description'],
-                  
+
                   'address' => [
                       '@type' => 'PostalAddress',
                       'streetAddress' => @$page->header()->orga['streetaddress'],
@@ -545,9 +546,9 @@ class seoPlugin extends Plugin
                   'sameAs' => @$similararray,
                   'hasOfferCatalog' => @$offerarray
                   ];
-                 
-                  
-           
+
+
+
        }
        }
         if (property_exists($page->header(),'restaurantenabled')){
@@ -556,20 +557,20 @@ class seoPlugin extends Plugin
             $imageurl = $page->header()->restaurant['image'];
             $imagedata = $this->seoGetimage($imageurl);
             $restaurantimage = [
-                 
+
                       '@type' => 'ImageObject',
                       'width' => $imagedata['width'],
                       'height' => $imagedata['height'],
                       'url' => $this->grav['uri']->base() .  $imagedata['url'],
-                      
+
                       ];
-                
+
             }
               $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Restaurant',
                   'name' => @$page->header()->restaurant['name'],
-                  
+
                   'address' => [
                       '@type' => 'PostalAddress',
                       'addressLocality' => @$page->header()->restaurant['address_addressLocality'],
@@ -582,32 +583,32 @@ class seoPlugin extends Plugin
                   'priceRange' => @$page->header()->restaurant['priceRange'],
                   'image' => @$restaurantimage,
                   'telephone' => @$page->header()->restaurant['telephone'],
-                  
+
                   ];
-            
+
 
        }
         }
     if (property_exists($page->header(),'productenabled')){
         if ($page->header()->productenabled and $this->config['plugins']['seo']['product']) {
          if (isset($page->header()->product['image'])){
-             $productimagearray = []; 
+             $productimagearray = [];
              $productimages = $page->header()->product['image'];
-            
-            
+
+
              foreach ($productimages as $key => $value){
             $imagearray = $productimages[$key];
             foreach($imagearray as $newkey => $newvalue){
                 $imagedata = $this->seoGetimage($imagearray[$newkey]);
-                $productimage[] = 
+                $productimage[] =
                 $this->grav['uri']->base() .  $imagedata['url'];
-               
+
             };
-            
+
              };
          }
          if (isset($page->header()->product['addoffer'])){
-             
+
              $offers = $page->header()->product['addoffer'];
              foreach ($offers as $key => $value){
                  $offer[$key] = [
@@ -620,8 +621,8 @@ class seoPlugin extends Plugin
                      ];
              };
          }
-         else { $offer = ''; }       
-            
+         else { $offer = ''; }
+
               $microdata[] = [
                   '@context' => 'http://schema.org',
                   '@type' => 'Product',
@@ -638,7 +639,7 @@ class seoPlugin extends Plugin
                       '@type' => 'AggregateRating',
                       'ratingValue' => @$page->header()->product['ratingValue'],
                       'reviewCount' => @$page->header()->product['reviewCount'],
-                      
+
                       ]
                   ];
        }
@@ -666,7 +667,7 @@ class seoPlugin extends Plugin
             $microdata['article']['description'] = $page->header()->article['description'];
            }
            else {
-             $microdata['article']['description'] = substr($content,0,140); 
+             $microdata['article']['description'] = substr($content,0,140);
            };
 
          if (isset($page->header()->article['author'])) {
@@ -683,7 +684,7 @@ class seoPlugin extends Plugin
             $microdata['article']['publisher']['logo']['url'] = $this->grav['uri']->base() . $imagedata['url'];
             $microdata['article']['publisher']['logo']['width'] =  $imagedata['width'];
             $microdata['article']['publisher']['logo']['height'] =  $imagedata['height'];
-            
+
            };
            if (isset($page->header()->article['image_url'])) {
             $microdata['article']['image']['@type'] = 'ImageObject';
@@ -692,9 +693,9 @@ class seoPlugin extends Plugin
             $microdata['article']['image']['url'] = $this->grav['uri']->base() . $imagedata['url'];
             $microdata['article']['image']['width'] = $imagedata['width'];
             $microdata['article']['image']['height'] = $imagedata['height'];
-          
+
             }
-       }       
+       }
       };
       // Encode to json
      /*foreach ($microdata as $key => $value){
@@ -706,8 +707,8 @@ class seoPlugin extends Plugin
     $microdata = $this->array_filter_recursive($microdata);
     $customjson = @$page->header()->add_json;
      foreach ($microdata as $key => $value){
-        
-        
+
+
         $jsonscript =   PHP_EOL . '<script type="application/ld+json">' . PHP_EOL . json_encode($microdata[$key], JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT ) . PHP_EOL . '</script>';
         $outputjson = $outputjson . $jsonscript;
       }
@@ -718,8 +719,8 @@ class seoPlugin extends Plugin
       }
       $outputjson = $outputjson . $outputcustomjson;
     }
-          
-      
+
+
       $outputjson = '</script>' . $outputjson . '<script>';
       $this->grav['twig']->twig_vars['json'] = $outputjson;
       $this->grav['twig']->twig_vars['myvar'] = $outputjson;
@@ -730,8 +731,8 @@ class seoPlugin extends Plugin
      // return $outputjson;
     }
 
-     
-    
+
+
 
 
     /**
@@ -746,14 +747,14 @@ class seoPlugin extends Plugin
         } else {
             $blueprint = $event['blueprint'];
         if ($blueprint->get('form/fields/tabs', null, '/')) {
-            
+
             $blueprints = new Blueprints(__DIR__ . '/blueprints/');
             $extends = $blueprints->get($this->name);
             $blueprint->extend($extends, true);
-        
+
         }
         }
-        
+
     }
 
 
@@ -761,5 +762,5 @@ class seoPlugin extends Plugin
     {
         $this->grav['twig']->twig_paths[] = __DIR__ . '/templates';
     }
-    
+
 }
