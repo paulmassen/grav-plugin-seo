@@ -223,7 +223,7 @@ form:
                                   type: select
                                   options:
                                     'http://schema.org/PreOrder': PLUGIN_SEO.PREORDER
-                                    'http://schema.org/OutOfStock': PLUGIN_SEO.OUTOFSTOCK
+                                    'http://schema.org/OutOfStock': PLUGIN_SEO.OUT_OF_STOCK
                                     'http://schema.org/PreSale': PLUGIN_SEO.PRESALE
                                     'http://schema.org/InStock': PLUGIN_SEO.INSTOCK
                                     'http://schema.org/Discontinued': PLUGIN_SEO.DISCONTINUED
@@ -723,7 +723,7 @@ form:
                                   options:
                                     'http://schema.org/InStock': PLUGIN_SEO.INSTOCK
                                     'http://schema.org/PreOrder': PLUGIN_SEO.PREORDER
-                                    'http://schema.org/OutOfStock': PLUGIN_SEO.OUTOFSTOCK
+                                    'http://schema.org/OutOfStock': PLUGIN_SEO.OUT_OF_STOCK
                                     'http://schema.org/PreSale': PLUGIN_SEO.PRESALE
                                     'http://schema.org/Discontinued': PLUGIN_SEO.DISCONTINUED
                                     'http://schema.org/InStoreOnly': PLUGIN_SEO.INSTOREONLY

@@ -47,7 +47,7 @@ PLUGIN_SEO:
   MUSICEVENT_IMAGE: "Imaginea evenimentului"
   MUSICEVENT_URL: "Link-ul evenimentului"
   PREORDER: "Precomandă"
-  OUTOFSTOCK: "Nu este în stoc"
+  OUT_OF_STOCK: "Nu este în stoc"
   PRESALE: "Prevânzare"
   INSTOCK: "În stoc"
   DISCONTINUED: "Nu mai este disponibil"

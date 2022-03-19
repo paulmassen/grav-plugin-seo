@@ -49,7 +49,7 @@ PLUGIN_SEO:
   MUSICEVENT_IMAGE: "Afbeelding event"
   MUSICEVENT_URL: "Muziek Event Url"
   PREORDER: "Preorder"
-  OUTOFSTOCK: "Niet in Stock"
+  OUT_OF_STOCK: "Niet in Stock"
   PRESALE: "Voorverkoop"
   INSTOCK: "In Stock"
   DISCONTINUED: "Stopgezet"
