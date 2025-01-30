@@ -74,27 +74,81 @@ class SeoPlugin extends Plugin
     return $array;
 }
   
-    private function seoGetimage($imageurl){
-        $imagedata = [];
-        $pattern = '~((\/[^\/]+)+)\/([^\/]+)~';
-        $replacement = '$1';
-        $fixedurl = preg_replace($pattern, $replacement, $imageurl);
-        $imagename = preg_replace($pattern, '$3', $imageurl);
-        $imgarray = $this->grav['page']->find($fixedurl)->media()->images();
-        $keyimages = array_keys($imgarray);
-        $imgkey = array_search($imagename, $keyimages);
-        $keyvalue = $keyimages[$imgkey];
-        //$imgkey = array_shift($imgarray);
-        $imgobject = $imgarray[$keyvalue];
-         
-        $im = getimagesize($imgobject->path());
-        $imagedata = [
-        'width' => "$im[0]",
-        'height' => "$im[1]",
-        'url' => $imgobject->url(),
+/**
+ * Récupère les métadonnées d'une image (dimensions et URL)
+ * 
+ * @param string|null $imageUrl URL de l'image à analyser
+ * @return array{width: string, height: string, url: string}
+ */
+private function seoGetImage(?string $imageUrl): array
+{
+    // Si l'URL est vide, retourner directement les valeurs par défaut
+    if (empty($imageUrl)) {
+        return [
+            'width' => '0',
+            'height' => '0',
+            'url' => '',
         ];
-        return $imagedata;
     }
+
+    try {
+        // Extraction du chemin et du nom de fichier
+        if (!preg_match('~((\/[^\/]+)+)\/([^\/]+)~', $imageUrl, $matches)) {
+            throw new \RuntimeException('Format d\'URL invalide');
+        }
+
+        $imagePath = $matches[1];
+        $imageName = $matches[3];
+
+        // Récupération de la page
+        $page = $this->grav['page']->find($imagePath);
+        if (!$page) {
+            throw new \RuntimeException("Page non trouvée: $imagePath");
+        }
+
+        // Vérification de la présence d'images
+        $images = $page->media()->images();
+        if (empty($images)) {
+            throw new \RuntimeException("Aucune image trouvée");
+        }
+
+        // Recherche de l'image spécifique
+        $availableImages = array_keys($images);
+        $imageIndex = array_search($imageName, $availableImages);
+        if ($imageIndex === false) {
+            throw new \RuntimeException("Image spécifique non trouvée");
+        }
+
+        $imageKey = $availableImages[$imageIndex];
+        $image = $images[$imageKey];
+        
+        // Vérification du chemin de l'image
+        if (!$image || !$image->path() || !file_exists($image->path())) {
+            throw new \RuntimeException("Fichier image invalide ou inaccessible");
+        }
+
+        $dimensions = @getimagesize($image->path());
+        if ($dimensions === false) {
+            throw new \RuntimeException("Impossible de lire les dimensions de l'image");
+        }
+
+        return [
+            'width' => (string)$dimensions[0],
+            'height' => (string)$dimensions[1],
+            'url' => $image->url(),
+        ];
+
+    } catch (\Exception $e) {
+        // Log l'erreur mais ne casse pas le site
+        $this->grav['log']->debug('SEO Plugin - Image Warning: ' . $e->getMessage());
+        
+        return [
+            'width' => '0',
+            'height' => '0',
+            'url' => '',
+        ];
+    }
+}
     /**
  * Nettoie et convertit le texte Markdown en texte brut
  * 
