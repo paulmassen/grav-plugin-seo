@@ -383,114 +383,180 @@ private function seoGetImage(?string $imageUrl): array
       $page->metadata($meta);
         // Set Json-Ld Microdata
         // Article Microdata
-      if (property_exists($page->header(),'musiceventenabled')){
-       if (($page->header()->musiceventenabled) and $this->config['plugins']['seo']['musicevent']) {
-           $musiceventsarray = $page->header()->musicevents;
-            if (count($musiceventsarray) > 0) {
-           foreach ($musiceventsarray as $event) {
-              if (isset($event['musicevent_performer'])){
-              foreach ($event['musicevent_performer'] as $artist){
-              $performerarray[] = [
-                  '@type' => @$artist['performer_type'],
-                  'name' => @$artist['name'],
-                  'sameAs' => @$artist['sameAs'], 
-                  ];
-               
-              };
-              }
-              if (isset($event['musicevent_workPerformed'])){
-              foreach ($event['musicevent_workPerformed'] as $work){
-              $workarray[] = [
-                  'name' => @$work['name'],
-                  'sameAs' => @$work['sameAs'], 
-                  ];
-               
-              }
-           }
-            if (isset($event['musicevent_image'])){
-            $imageurl = $event['musicevent_image'];
-            $imagedata = $this->seoGetimage($imageurl);
-            $musiceventimage = [
-                 
-                      '@type' => 'ImageObject',
-                      'width' => $imagedata['width'],
-                      'height' => $imagedata['height'],
-                      'url' => $this->grav['uri']->base() .  $imagedata['url'],
-                      
-                      ];
+     if (property_exists($page->header(), 'musiceventenabled')) {
+    if ($page->header()->musiceventenabled && $this->config['plugins']['seo']['musicevent']) {
+        $musiceventsarray = $page->header()->musicevents ?? [];
+        
+        // Vérifier que nous avons un array valide et non vide
+        if (is_array($musiceventsarray) && !empty($musiceventsarray)) {
+            foreach ($musiceventsarray as $event) {
+                $performerarray = [];  // Initialiser pour chaque événement
+                $workarray = [];       // Initialiser pour chaque événement
+                $musiceventimage = null;  // Initialiser pour chaque événement
+
+                // Gestion des performers
+                if (!empty($event['musicevent_performer']) && is_array($event['musicevent_performer'])) {
+                    foreach ($event['musicevent_performer'] as $artist) {
+                        $performerarray[] = [
+                            '@type' => $artist['performer_type'] ?? 'PerformingGroup',
+                            'name' => $artist['name'] ?? '',
+                            'sameAs' => $artist['sameAs'] ?? '',
+                        ];
+                    }
+                }
+
+                // Gestion des œuvres interprétées
+                if (!empty($event['musicevent_workPerformed']) && is_array($event['musicevent_workPerformed'])) {
+                    foreach ($event['musicevent_workPerformed'] as $work) {
+                        $workarray[] = [
+                            'name' => $work['name'] ?? '',
+                            'sameAs' => $work['sameAs'] ?? '',
+                        ];
+                    }
+                }
+
+                // Gestion de l'image
+                if (!empty($event['musicevent_image'])) {
+                    $imagedata = $this->seoGetImage($event['musicevent_image']);
+                    if (!empty($imagedata['url'])) {
+                        $musiceventimage = [
+                            '@type' => 'ImageObject',
+                            'width' => $imagedata['width'],
+                            'height' => $imagedata['height'],
+                            'url' => $this->grav['uri']->base() . $imagedata['url'],
+                        ];
+                    }
+                }
+
+                // Construction de l'événement
+                $eventData = [
+                    '@context' => 'http://schema.org',
+                    '@type' => 'MusicEvent',
+                    'name' => $event['musicevent_location_name'] ?? '',
+                    'location' => [
+                        '@type' => 'MusicVenue',
+                        'name' => $event['musicevent_location_name'] ?? '',
+                        'address' => $event['musicevent_location_address'] ?? '',
+                    ],
+                    'description' => $event['musicevent_description'] ?? '',
+                    'url' => $event['musicevent_url'] ?? '',
+                    'offers' => [
+                        '@type' => 'Offer',
+                        'price' => $event['musicevent_offers_price'] ?? '',
+                        'priceCurrency' => $event['musicevent_offers_priceCurrency'] ?? '',
+                        'url' => $event['musicevent_offers_url'] ?? '',
+                    ],
+                ];
+
+                // Ajouter les champs optionnels seulement s'ils existent
+                if (!empty($performerarray)) {
+                    $eventData['performer'] = $performerarray;
+                }
+                if (!empty($workarray)) {
+                    $eventData['workPerformed'] = $workarray;
+                }
+                if ($musiceventimage) {
+                    $eventData['image'] = $musiceventimage;
+                }
+
+                // Gestion des dates
+                if (!empty($event['musicevent_startdate'])) {
+                    $eventData['startDate'] = date("c", strtotime($event['musicevent_startdate']));
+                }
+                if (!empty($event['musicevent_enddate'])) {
+                    $eventData['endDate'] = date("c", strtotime($event['musicevent_enddate']));
+                }
+
+                $microdata[] = $eventData;
+            }
+        }
+    }
+}
+       if (property_exists($page->header(), 'eventenabled')) {
+    if ($page->header()->eventenabled && $this->config['plugins']['seo']['event']) {
+        $eventsarray = $page->header()->addevent ?? [];
+        
+        // Vérifier que nous avons un array valide et non vide
+        if (is_array($eventsarray) && !empty($eventsarray)) {
+            foreach ($eventsarray as $event) {
+                // Préparer l'adresse seulement si les données nécessaires existent
+                $address = [
+                    '@type' => 'PostalAddress',
+                ];
                 
+                // Ajouter les champs d'adresse seulement s'ils existent
+                if (!empty($event['event_location_address_addressLocality'])) {
+                    $address['addressLocality'] = $event['event_location_address_addressLocality'];
+                }
+                if (!empty($event['event_location_address_addressRegion'])) {
+                    $address['addressRegion'] = $event['event_location_address_addressRegion'];
+                }
+                if (!empty($event['event_location_streetAddress'])) {
+                    $address['streetAddress'] = $event['event_location_streetAddress'];
+                }
+
+                // Préparer l'offre seulement si les données nécessaires existent
+                $offers = [
+                    '@type' => 'Offer',
+                ];
+                if (!empty($event['event_offers_price'])) {
+                    $offers['price'] = $event['event_offers_price'];
+                }
+                if (!empty($event['event_offers_currency'])) {
+                    $offers['priceCurrency'] = $event['event_offers_currency'];
+                }
+                if (!empty($event['event_offers_url'])) {
+                    $offers['url'] = $event['event_offers_url'];
+                }
+
+                // Construction de l'événement de base
+                $eventData = [
+                    '@context' => 'http://schema.org',
+                    '@type' => 'Event',
+                    'name' => $event['event_name'] ?? '',
+                    'location' => [
+                        '@type' => 'Place',
+                        'name' => $event['event_location_name'] ?? '',
+                        'address' => $address,
+                    ],
+                ];
+
+                // Ajouter l'URL de la location si elle existe
+                if (!empty($event['musicevent_location_url'])) {
+                    $eventData['location']['url'] = $event['musicevent_location_url'];
+                }
+
+                // Ajouter la description si elle existe
+                if (!empty($event['event_description'])) {
+                    $eventData['description'] = $event['event_description'];
+                }
+
+                // Ajouter les offres si elles ne sont pas vides
+                if (count(array_filter($offers)) > 1) { // > 1 car @type est toujours présent
+                    $eventData['offers'] = $offers;
+                }
+
+                // Gestion des dates
+                if (!empty($event['event_startDate'])) {
+                    $startDate = strtotime($event['event_startDate']);
+                    if ($startDate) {
+                        $eventData['startDate'] = date("c", $startDate);
+                    }
+                }
+                if (!empty($event['event_endDate'])) {
+                    $endDate = strtotime($event['event_endDate']);
+                    if ($endDate) {
+                        $eventData['endDate'] = date("c", $endDate);
+                    }
+                }
+
+                $microdata[] = array_filter($eventData, function($value) {
+                    return $value !== null && $value !== '';
+                });
             }
-              $microdata[] = [
-                  '@context' => 'http://schema.org',
-                  '@type' => 'MusicEvent',
-                  'name' => @$event['musicevent_location_name'],
-                  'location' => [
-                      '@type' => 'MusicVenue',
-                      'name' => @$event['musicevent_location_name'],
-                      'address' => @$event['musicevent_location_address'],
-                      ],
-                  'description' => @$event['musicevent_description'],
-                  'url' => @$event['musicevent_url'],
-                  'performer' => @$performerarray,
-                  'workPerformed' => @$workarray, 
-                  'image' => @$musiceventimage,
-                  'offers' => [
-                      '@type' => 'Offer',
-                      'price' => @$event['musicevent_offers_price'],
-                      'priceCurrency' => @$event['musicevent_offers_priceCurrency'],
-                      'url' => @$event['musicevent_offers_url'], 
-                      ],
-                  'startDate' => @date("c", strtotime($event['musicevent_startdate'])),
-                  'endDate' => @date("c", strtotime($event['musicevent_enddate'])),
-                  
-                  ];
-              
-              
-            }
-            }
-       }   
-       }
-       if (property_exists($page->header(),'eventenabled')){
-       if ($page->header()->eventenabled and $this->config['plugins']['seo']['event']) {
-           $eventsarray = @$page->header()->addevent;
-           
-           if (count($eventsarray) > 0) {
-           foreach ($eventsarray as $event) {
-              $microdata[] = [
-                  '@context' => 'http://schema.org',
-                  '@type' => 'Event',
-                  'name' => @$event['event_name'],
-                  
-                  'location' => [
-                      '@type' => 'Place',
-                      'name' => @$event['event_location_name'],
-                      'address' => [
-                          '@type' => 'PostalAddress',
-                          'addressLocality' => @$event['event_location_address_addressLocality'],
-                          'addressRegion' => @$event['event_location_address_addressRegion'],
-                          'streetAddress' => @$event['event_location_streetAddress'],
-                          ],
-                       'url' => @$event['musicevent_location_url'],
-                      ],
-                  'description' => @$event['musicevent_description'],
-                  'offers' => [
-                      '@type' => 'Offer',
-                      'price' => @$event['event_offers_price'],
-                      'priceCurrency' => @$event['event_offers_currency'],
-                      'url' => @$event['event_offers_url'], 
-                      ],
-                  'startDate' => @date("c", strtotime($event['event_startDate'])),
-                  'endDate' => @date("c", strtotime($event['event_endDate'])),
-                  'description' => @$event['event_description'],
-                  
-                  ];
-              
-              
-            }
-           }
-           
-       }
-       }
+        }
+    }
+}
      if (property_exists($page->header(), 'personenabled')) {
     if ($page->header()->personenabled && $this->config['plugins']['seo']['person']) {
         $personarray = $page->header()->addperson ?? [];

@@ -216,7 +216,7 @@ function validatepage() {
    var protocol = location.protocol;
  var slashes = protocol.concat("//");
  var host = slashes.concat(window.location.hostname);
- var structuredurl = "https://search.google.com/structured-data/testing-tool/u/0/#url="
+ var structuredurl = "https://validator.schema.org/#url="
  var targeturl = $("[title|='{{ 'PLUGIN_ADMIN.PREVIEW'|tu }}']").attr("href");
  var strippedurl = targeturl.replace("/admin/preview","");
  var validateurl = structuredurl + encodeURIComponent(host + strippedurl);
