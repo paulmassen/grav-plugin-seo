@@ -715,18 +715,18 @@ private function seoGetImage(?string $imageUrl): array
                 $headline = $page->title();
             }
        if ($page->header()->articleenabled and $this->config['plugins']['seo']['article']) {
-        $microdata['article']      = [
-            '@context' => 'http://schema.org',
-            '@type' => 'Article',
-            'headline' => @$headline ,
-            'mainEntityOfPage' => [
-                "@type" => "WebPage",
-                'url' => $this->grav['uri']->base(),
-            ],
-            'articleBody' =>  @$this->cleanMarkdown($content),
-            'datePublished' => @date("c", $page->date()),
-            'dateModified' => @date("c", $page->modified()),
-        ];
+        $microdata['article'] = [
+    '@context' => 'http://schema.org',
+    '@type' => 'Article',
+    'headline' => $headline,
+    'mainEntityOfPage' => [
+        "@type" => "WebPage",
+        'url' => $this->grav['uri']->base(),
+    ],
+    'articleBody' => $this->cleanMarkdown($content),
+    'datePublished' => date("c", strtotime($page->header()->article['datePublished'] ?? '') ?: $page->date()),
+    'dateModified' => date("c", strtotime($page->header()->article['dateModified'] ?? '') ?: $page->date()),
+];
         if (isset($page->header()->article['description'])) {
             $microdata['article']['description'] = $page->header()->article['description'];
            }
