@@ -95,47 +95,57 @@ class SeoPlugin extends Plugin
         ];
         return $imagedata;
     }
-    private function cleanMarkdown($text){
-        $text=strip_tags($text);
-        $rules = array (
-            '/{%[\s\S]*?%}[\s\S]*?/'                 => '',    // remove twig include
-            '/<style(?:.|\n|\r)*?<\/style>/'         => '',    // remove style tags
-            '/<script[\s\S]*?>[\s\S]*?<\/script>/'   => '',  // remove script tags
-            '/(#+)(.*)/'                             => '\2',  // headers
-            '/(&lt;|<)!--\n((.*|\n)*)\n--(&gt;|\>)/' => '',    // comments
-            '/(\*|-|_){3}/'                          => '',    // hr
-            '/!\[([^\[]+)\]\(([^\)]+)\)/'            => '',    // images
-            '/\[([^\[]+)\]\(([^\)]+)\)/'             => '\1',  // links
-            '/(\*\*|__)(.*?)\1/'                     => '\2',  // bold
-            '/(\*|_)(.*?)\1/'                        => '\2',  // emphasis
-            '/\~\~(.*?)\~\~/'                        => '\1',  // del
-            '/\:\"(.*?)\"\:/'                        => '\1',  // quote
-            '/```(.*)\n((.*|\n)+)\n```/'             => '\2',  // fence code
-            '/`(.*?)`/'                              => '\1',  // inline code
-            '/(\*|\+|-)(.*)/'                        => '\2',  // ul lists
-            '/\n[0-9]+\.(.*)/'                       => '\2',  // ol lists
-            '/(&gt;|\>)+(.*)/'                       => '\2',  // blockquotes
-            
-            
-            );
-        $text=str_replace(".\n", '.', $text);
-        $text=str_replace("\n", '. ', $text);
-        $text=str_replace('"', '', $text);
-        $text=str_replace('<p', '', $text);
-        $text=str_replace('</p>', '', $text);
+    /**
+ * Nettoie et convertit le texte Markdown en texte brut
+ * 
+ * @param string $text Le texte Markdown à nettoyer
+ * @param int $maxLength Longueur maximale du texte retourné (défaut: 320)
+ * @return string Le texte nettoyé
+ */
+    private const MARKDOWN_RULES = [
+        // Suppression des inclusions Twig
+        '/{%[\s\S]*?%}[\s\S]*?/' => '',
         
-        foreach ($rules as $regex => $rep) {
-            if (is_callable ( $rep)) {
-               $text = preg_replace_callback ($regex, $rep, $text);
-            } else {
-                $text = preg_replace ($regex, $rep, $text);
-            }
-        }
+        // Suppression des balises HTML spécifiques
+        '/<style[^>]*?>.*?<\/style>/si' => '',
+        '/<script[^>]*?>.*?<\/script>/si' => '',
         
-        
-        return substr($text,0,320);
-        // htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+        // Conversion de la syntaxe Markdown
+        '/^#+\s*(.*)$/m' => '$1',                  // Titres
+        '/^[*\-_]{3,}$/m' => '',                   // Lignes horizontales
+        '/!\[([^\]]*)\]\([^)]+\)/' => '',          // Images
+        '/\[([^\]]+)\]\([^)]+\)/' => '$1',         // Liens
+        '/[*_]{2}(.*?)[*_]{2}/' => '$1',           // Gras
+        '/[*_](.*?)[*_]/' => '$1',                 // Italique
+        '/~~(.*?)~~/' => '$1',                     // Barré
+        '/:`(.*?)`/' => '$1',                      // Code inline
+        '/^```[\s\S]*?```$/m' => '',               // Blocs de code
+        '/^[*\-+]\s+(.*)$/m' => '$1',              // Listes non ordonnées
+        '/^\d+\.\s+(.*)$/m' => '$1',               // Listes ordonnées
+        '/^>\s*(.*)$/m' => '$1',                   // Citations
+        '/<!--[\s\S]*?-->/' => '',                 // Commentaires HTML
+    ];
+
+    private function cleanMarkdown(string $text, int $maxLength = 320): string 
+{
+
+    // Nettoyage initial
+    $text = strip_tags($text);
+
+    // Application des règles de nettoyage Markdown
+    foreach (self::MARKDOWN_RULES as $pattern => $replacement) {
+        $text = preg_replace($pattern, $replacement, $text);
     }
+
+    // Nettoyage final
+    $text = preg_replace('/\s+/', ' ', $text);           // Remplace les espaces multiples
+    $text = str_replace(["\r", "\n"], ' ', $text);       // Remplace les retours à la ligne
+    $text = preg_replace('/\. \./', '.', $text);         // Corrige la ponctuation
+    $text = trim($text);                                 // Supprime les espaces aux extrémités
+
+    // Retourne le texte tronqué à la longueur maximale
+    return mb_substr($text, 0, $maxLength);
+}
     
 
     /**
