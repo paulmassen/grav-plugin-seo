@@ -35,7 +35,7 @@ use Grav\Common\Iterator;
  * and appearance on Search Engine Results and Social Networks.
  */
 
-class seoPlugin extends Plugin
+class SeoPlugin extends Plugin
 {
 
     /** -------------
@@ -58,17 +58,22 @@ class seoPlugin extends Plugin
           //  'onBlueprintCreated' => ['onBlueprintCreated',  0]
         ];
     }
-    public function array_filter_recursive( array $array, callable $callback = null ) {
-    $array = is_callable( $callback ) ? array_filter( $array, $callback ) : array_filter( $array );
-    foreach ( $array as &$value ) {
-        if ( is_array( $value ) ) {
-            $myfunc = '$this->' . __FUNCTION__;
-            $value = $this->array_filter_recursive($value);
+
+    private function cleanArray(array $array): array 
+{
+    foreach ($array as $key => &$value) {
+        if (is_array($value)) {
+            $value = $this->cleanArray($value);
+        }
+        
+        if (empty($value) && $value !== 0 && $value !== '0') {
+            unset($array[$key]);
         }
     }
- 
-        return $array;
-    }
+    
+    return $array;
+}
+  
     private function seoGetimage($imageurl){
         $imagedata = [];
         $pattern = '~((\/[^\/]+)+)\/([^\/]+)~';
@@ -703,7 +708,7 @@ class seoPlugin extends Plugin
         }
     }*/
     // $microdata = array_map('array_filter', $microdata);
-    $microdata = $this->array_filter_recursive($microdata);
+    $microdata = $this->cleanArray($microdata);
     $customjson = @$page->header()->add_json;
      foreach ($microdata as $key => $value){
         
