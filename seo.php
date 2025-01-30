@@ -491,32 +491,28 @@ private function seoGetImage(?string $imageUrl): array
            
        }
        }
-     if (property_exists($page->header(),'personenabled')){
-        if ($page->header()->personenabled and $this->config['plugins']['seo']['person']) {
-            $personarray = @$page->header()->addperson;
-            if (count($personarray) > 0) {
-           foreach ($personarray as $person) {
-              $microdata[] = [
-                  '@context' => 'http://schema.org',
-                  '@type' => 'Person',
-                  'name' => @$person['person_name'],
-                  
-                  'address' => [
-                      '@type' => 'PostalAddress',
-                      'addressLocality' => @$person['person_address_addressLocality'],
-                      'addressRegion' => @$person['person_address_addressRegion'],
-                      ],
-                  'jobTitle' => @$person['person_jobTitle'],
-                  
-                  ];
-            
-
-       }
-                
+     if (property_exists($page->header(), 'personenabled')) {
+    if ($page->header()->personenabled && $this->config['plugins']['seo']['person']) {
+        $personarray = $page->header()->addperson ?? [];
+        
+        // Vérification que $personarray est un array et n'est pas vide
+        if (is_array($personarray) && !empty($personarray)) {
+            foreach ($personarray as $person) {
+                $microdata[] = [
+                    '@context' => 'http://schema.org',
+                    '@type' => 'Person',
+                    'name' => $person['person_name'] ?? null,
+                    'address' => [
+                        '@type' => 'PostalAddress',
+                        'addressLocality' => $person['person_address_addressLocality'] ?? null,
+                        'addressRegion' => $person['person_address_addressRegion'] ?? null,
+                    ],
+                    'jobTitle' => $person['person_jobTitle'] ?? null,
+                ];
             }
-            
         }
-        }
+    }
+}
         if (property_exists($page->header(),'orgaenabled')){
        if ($page->header()->orgaenabled and $this->config['plugins']['seo']['organization']) {
         if (isset($page->header()->orga['founders'])){
