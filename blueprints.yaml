@@ -11,8 +11,8 @@ keywords: ["seo", "meta", "microdata", "schema", "plugin"]
 bugs: "https://github.com/paulmassen/grav-plugin-seo/issues"
 license: "MIT/GPL"
 dependencies:
-    - { name: grav, version: '>=1.3.8' }
-    - { name: admin, version: '>=1.6.6' }
+    - { name: grav, version: '>=1.7.0' }
+    - { name: admin, version: '>=1.10.0' }
 
 form:
   validation: strict
